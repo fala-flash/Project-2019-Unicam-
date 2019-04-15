@@ -1,49 +1,31 @@
-import React, { Component } from 'react';
-import withFirebaseAuth from 'react-with-firebase-auth'
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
-import FirebaseConfig from './config/FirebaseConfig';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom';
 
-const firebaseApp = firebase.initializeApp(FirebaseConfig);
 
-class App extends Component {
-  render() {
-    const {
-      user,
-      signOut,
-      signInWithGoogle,
-    } = this.props;
+import SignUpPage from './components/pages/signup';
+import LandingPage from './components/pages/landing';
 
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          {
-            user
-              ? <p>Hello, {user.displayName}</p>
-              : <p>Please sign in.</p>
-          }
 
-          {
-            user
-              ? <button onClick={signOut}>Sign out</button>
-              : <button onClick={signInWithGoogle}>Sign in with Google</button>
-          }
-        </header>
-      </div>
-    );
-  }
-}
 
-const firebaseAppAuth = firebaseApp.auth();
+const App = () => (
+      <Router>
+   
 
-const providers = {
-  googleProvider: new firebase.auth.GoogleAuthProvider(),
-};
+      
 
-export default withFirebaseAuth({
-  providers,
-  firebaseAppAuth,
-})(App);
+      <Route exact path={'/'} component={LandingPage} />
+      <Route path={'/signup'} component={SignUpPage} />
+     
+    
+  </Router>
+  )
+    
+  
+
+  
+
+
+export default App;
