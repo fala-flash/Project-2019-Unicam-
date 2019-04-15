@@ -14,21 +14,29 @@ You will also see any lint errors in the console.
 
 
 commands :
+
 npm install (installare dipendenze)
+
 npm install -g firebase-tools (installare la CLI di firebase)
+
 firebase login (con le credenziali sottostanti)
+
 npm run build (per creare una production build da deployare)
+
 firebase deploy (effettua deploy su servizio di hosting firebase)
 
 
 
-console firebase : https://console.firebase.google.com/u/2/project/project-unicam-2fa57/overview
 
 login account google : 
 			
 			username -> project.unicam@gmail.com
 			
 			password -> projectUnicam2019
+			
+			
+			
 
+console firebase : https://console.firebase.google.com/u/2/project/project-unicam-2fa57/overview
 
 app deployed on : https://project-unicam-2fa57.firebaseapp.com/
