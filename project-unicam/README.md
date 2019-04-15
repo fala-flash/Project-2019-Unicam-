@@ -13,3 +13,11 @@ The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
 
+
+console firebase : https://console.firebase.google.com/u/2/project/project-unicam-2fa57/overview
+login account google : 
+			username -> project.unicam@gmail.com
+			password -> projectUnicam2019
+
+
+app deployed on : https://project-unicam-2fa57.firebaseapp.com/
