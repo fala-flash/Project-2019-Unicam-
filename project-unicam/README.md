@@ -13,22 +13,22 @@ The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
 
-commands :
+### `commands` :
 
-npm install (installare dipendenze)
+	npm install (installare dipendenze)
 
-npm install -g firebase-tools (installare la CLI di firebase)
+	npm install -g firebase-tools (installare la CLI di firebase)
 
-firebase login (con le credenziali sottostanti)
+	firebase login (con le credenziali sottostanti)
 
-npm run build (per creare una production build da deployare)
+	npm run build (per creare una production build da deployare)
 
-firebase deploy (effettua deploy su servizio di hosting firebase)
-
-
+	firebase deploy (effettua deploy su servizio di hosting firebase)
 
 
-login account google : 
+
+
+### `login account google` : 
 			
 			username -> project.unicam@gmail.com
 			
@@ -37,6 +37,6 @@ login account google :
 			
 			
 
-console firebase : https://console.firebase.google.com/u/2/project/project-unicam-2fa57/overview
+### `console firebase` : https://console.firebase.google.com/u/2/project/project-unicam-2fa57/overview
 
-app deployed on : https://project-unicam-2fa57.firebaseapp.com/
+### `app deployed on` : https://project-unicam-2fa57.firebaseapp.com/
