@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from 'react-bootstrap/Navbar';
+import { Navbar, Button } from 'react-bootstrap';
 
 
 import msgIcon from './media/msg.png';
@@ -11,41 +11,32 @@ class Footer extends Component {
     render() {
         return (
             <Navbar fixed="bottom" bg="dark" variant="dark">
-                <Navbar.Brand href="/telefona">
-                    <img
-                        alt=""
-                        src={telIcon}
-                        width="30"
-                        height="30"
-                        className="d-inline-block align-top"
-                    />
 
+            <Button variant="dark" href="/telefona">     
+                <img
+                    alt="telefonaIcona"
+                    src={telIcon}
+                    className="telefonaImg"
+                />
+                {/* <p className="telefonaText">Telefona</p> */}
+            </Button>
 
-                </Navbar.Brand>
-                <Navbar.Brand href="helpline">
-                    <img
-                        alt=""
-                        src={msgIcon}
-                        width="30"
-                        height="30"
-                        className="d-inline-block align-top"
-                    />
+            <Button variant="dark" href="/helpline">
+                <img
+                    alt=""
+                    src={msgIcon}
+                    className="helplineImg"
+                />
+            </Button>
 
-
-                </Navbar.Brand>
-                <Navbar.Brand href="/faq">
-                    <img
-                        alt=""
-                        src={quesIcon}
-                        width="30"
-                        height="30"
-                        className="d-inline-block align-top"
-                    />
-
-
-                </Navbar.Brand>
-            </Navbar>
-
+            <Button variant="dark" href="/faq">
+                <img
+                    alt=""
+                    src={quesIcon}
+                    className="faqImg"
+                />
+            </Button>
+        </Navbar>
         )
     }
 }

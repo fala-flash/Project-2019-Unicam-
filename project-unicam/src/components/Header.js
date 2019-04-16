@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Navbar, Nav, Button, Dropdown, DropdownButton } from 'react-bootstrap';
 
 import botIcon from './media/telbot.png'
 
@@ -10,29 +8,30 @@ class Header extends Component {
 
     render() {
         return (
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                    <NavDropdown.Item href="/profile">Il mio profilo</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="/logout">Sign Out</NavDropdown.Item>
-                </NavDropdown>
+
+            <Navbar className="headerNavbar" bg="dark" variant="dark">
+
+                <Button variant="dark" href="/telegrambot">
+                    <img
+                        alt=""
+                        src={botIcon}
+                        className="telegramBot"
+                    />
+                </Button>
+
                 <Navbar.Brand>UNICAM PROJECT</Navbar.Brand>
 
-                <Nav pullRight>
-                    <Navbar.Brand href="/telegrambot">
-                        <img
-                            alt=""
-                            src={botIcon}
-                            width="30"
-                            height="30"
-                            className=" mr-sm-2"
-                        />
+                <Dropdown>
+                    <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                        Menu
+                    </Dropdown.Toggle>
 
-
-                    </Navbar.Brand>
-
-                </Nav>
-
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="/profile">Profilo</Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Item href="/logout">Log Out</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
             </Navbar>
         );
 

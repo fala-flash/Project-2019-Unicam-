@@ -1,0 +1,17 @@
+/* APP */
+
+/* header */
+.telegramBot {
+    width: 30px;
+    height: 30px;    
+}
+
+.headerNavbar {
+    text-align: center;
+}
+
+/* footer */
+.telefonaImg, .helplineImg, .faqImg {
+    width: 30px;
+    height: 30px;
+}

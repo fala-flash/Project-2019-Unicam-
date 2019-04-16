@@ -4,6 +4,8 @@ import { RingLoader } from 'react-spinners';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { fire } from './config/FirebaseConfig';
 
+import Style from './components/style.css';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Login from './components/pages/Login';
@@ -84,8 +86,8 @@ class App extends React.Component {
 
     return (
       <div>
-        <div>
-          <Header />
+        <div className="headerNavbar">
+          <Header/>
         </div>
         <div className="mainStyle">
           <BrowserRouter>
@@ -125,7 +127,7 @@ class App extends React.Component {
               </Switch>
             </div>
           </BrowserRouter>
-          <div>
+          <div className="footerstyle">
             <Footer />
           </div>
         </div>
