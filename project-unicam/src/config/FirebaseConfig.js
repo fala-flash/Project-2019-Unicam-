@@ -1,3 +1,6 @@
+import firebase from 'firebase';
+/* import Rebase from 're-base'; */
+
 const config = {
     apiKey: "AIzaSyBF8tvtspyNzoy4Ydu-ASH6KRh-3U0vzAw",
     authDomain: "project-unicam-2fa57.firebaseapp.com",
@@ -7,4 +10,10 @@ const config = {
     messagingSenderId: "78676571119"
   };
 
-  export default config;
+const fire = firebase.initializeApp(config);
+
+const providerGoogle = new firebase.auth.GoogleAuthProvider();
+
+/* const base = Rebase.createClass(fire.database()) */
+
+export { fire, providerGoogle}
