@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, Button } from 'react-bootstrap';
 
+//import {  } from 'react-icons/fi';
 
 import msgIcon from '../media/msg.png';
 import telIcon from '../media/tel.png';

@@ -6,8 +6,8 @@ import { fire } from './config/FirebaseConfig';
 
 import Style from './components/style.css';
 
-import Header from './components/header';
-import Footer from './components/footer';
+import Header from './components/header/header';
+import Footer from './components/footer/footer';
 import Login from './components/pages/login/login';
 import Logout from './components/pages/logout/logout';
 import Welcome from './components/pages/landing/landing';

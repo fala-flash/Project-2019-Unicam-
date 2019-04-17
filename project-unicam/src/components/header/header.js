@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Navbar, Nav, Button, Dropdown, DropdownButton } from 'react-bootstrap';
+import React, { Component } from './node_modules/react';
+import { Navbar, Nav, Button, Dropdown, DropdownButton } from './node_modules/react-bootstrap';
 
 import botIcon from '../media/telbot.png'
 
