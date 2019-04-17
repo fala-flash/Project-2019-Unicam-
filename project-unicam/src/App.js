@@ -18,7 +18,8 @@ import Telegrambot from './components/pages/telegrambot/telegrambot';
 import Faq from './components/pages/faq/faq';
 import Telefona from './components/pages/telefona/telefona';
 import Helpline from './components/pages/helpline/helpline';
-import Segnalazioni from './components/pages/segnalazioni/segnalazioni';
+import Blog from './components/pages/blog/blog';
+
 
 
 class App extends React.Component {
@@ -123,7 +124,7 @@ class App extends React.Component {
                     <Route path="/telefona" component={Telefona} />
                     <Route path="/helpline" component={Helpline} />
                     <Route path="/faq" component={Faq} />
-                    <Route path="/segnalazioni" component={Segnalazioni} />
+                    <Route path="/blog" component={Blog} />
                   </>
                   : <Redirect to='/login' />
                 }
