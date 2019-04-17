@@ -8,15 +8,15 @@ import Style from './components/style.css';
 
 import Header from './components/header';
 import Footer from './components/footer';
-import Login from './components/pages/login';
-import Logout from './components/pages/logout';
-import Welcome from './components/pages/landing';
-import Profile from './components/pages/profile';
-import Info from './components/pages/info';
-import Telegrambot from './components/pages/telegrambot';
-import Faq from './components/pages/faq';
-import Telefona from './components/pages/telefona';
-import Helpline from './components/pages/helpline';
+import Login from './components/pages/login/login';
+import Logout from './components/pages/logout/logout';
+import Welcome from './components/pages/landing/landing';
+import Profile from './components/pages/profile/profile';
+import Info from './components/pages/info/info';
+import Telegrambot from './components/pages/telegrambot/telegrambot';
+import Faq from './components/pages/faq/faq';
+import Telefona from './components/pages/telefona/telefona';
+import Helpline from './components/pages/helpline/helpline';
 
 
 class App extends React.Component {

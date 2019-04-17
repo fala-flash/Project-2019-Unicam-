@@ -11,7 +11,9 @@ class Footer extends Component {
     render() {
         return (
             <Navbar fixed="bottom" bg="dark" variant="dark">
-
+<div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
             <Button variant="dark" href="/telefona">     
                 <img
                     alt="telefonaIcona"
@@ -20,7 +22,14 @@ class Footer extends Component {
                 />
                 {/* <p className="telefonaText">Telefona</p> */}
             </Button>
-
+            </li>
+            </ul>
+            </div>
+           
+            <div class="mx-auto order-0">
+            <ul class="navbar-nav mr-auto">
+            <li class="navbar-brand mx-auto">
+            
             <Button variant="dark" href="/helpline">
                 <img
                     alt=""
@@ -28,7 +37,14 @@ class Footer extends Component {
                     className="helplineImg"
                 />
             </Button>
+            </li>
+            </ul>
+            
+            </div>
 
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
             <Button variant="dark" href="/faq">
                 <img
                     alt=""
@@ -36,6 +52,9 @@ class Footer extends Component {
                     className="faqImg"
                 />
             </Button>
+            </li>
+            </ul>
+            </div>
         </Navbar>
         )
     }
