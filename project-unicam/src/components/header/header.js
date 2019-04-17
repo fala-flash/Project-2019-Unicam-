@@ -10,7 +10,7 @@ class Header extends Component {
         return (
 
             <Navbar bg="dark" variant="dark" expand="dark">
-                <Navbar.Brand href="#home">ProjectUnicam</Navbar.Brand>
+                <Navbar.Brand href="/">ProjectUnicam</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">

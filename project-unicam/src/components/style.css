@@ -44,3 +44,8 @@
     margin-bottom: 0px;
     transform: rotate(90deg);
 }
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.2);
+    
+   }
