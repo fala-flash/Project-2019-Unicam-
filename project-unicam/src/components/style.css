@@ -18,13 +18,6 @@
     text-align: center;
 }
 
-.footericon{
-    width: 20px;
-    height: 20px;
-    margin-top: -10px;
-    margin-bottom: 0px;
-}
-
 /* footer */
 
 .footerButton {
@@ -32,9 +25,22 @@
     margin-bottom: -2px;
 }
 
-.footerText {
-    text-align: center;
-    color: white;
+.footericon{
+    width: 20px;
+    height: 20px;
     margin-top: -10px;
-    margin-bottom: -5px;
+    margin-bottom: 0px;
+}
+
+.footerText {
+    margin-top: -5px;
+    margin-bottom: -10px;
+}
+
+.footericonPhone {
+    width: 18px;
+    height: 18px;
+    margin-top: -10px;
+    margin-bottom: 0px;
+    transform: rotate(90deg);
 }
