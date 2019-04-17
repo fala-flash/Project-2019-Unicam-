@@ -15,29 +15,29 @@ const LandingCarousel = () => (
                 <Carousel.Item>
                 <Link to={'/telegrambot'}>
                     <img src={telegram}  alt="telegramSlide" width="800" height="400" />
-                    </Link>
-                    <Carousel.Caption>
+                     <Carousel.Caption>
                         <h3>TELEGRAM BOT</h3>
                         <p>Chatta con il nostro bot di telegram.</p>
                     </Carousel.Caption>
+                    </Link>
                 </Carousel.Item>
                 <Carousel.Item>
                 <Link to={'/blog'}>
                     <img src={blog}  alt="blogSlide" width="800" height="400" />
-                    </Link>
-                    <Carousel.Caption>
+                     <Carousel.Caption>
                         <h3>BLOG</h3>
                         <p>Esprimiti liberamente nel nostro blog.</p>
                     </Carousel.Caption>
+                    </Link>
                 </Carousel.Item>
                 <Carousel.Item>
                 <Link to={'/helpline'}>
                     <img src={helpline} alt="helplineSlide" width="800" height="400" />
-                    </Link>
-                    <Carousel.Caption>
+                     <Carousel.Caption>
                         <h3>HELPLINE</h3>
                         <p>Non esitare a contattarci se lo ritieni necessario.</p>
                     </Carousel.Caption>
+                    </Link>
                 </Carousel.Item>
             </Carousel>
 
