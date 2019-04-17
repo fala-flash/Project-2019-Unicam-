@@ -9,7 +9,7 @@ class Header extends Component {
     render() {
         return (
 
-            <Navbar bg="dark" variant="dark" expand="dark">
+            <Navbar fixed="top" bg="dark" variant="dark" expand="dark">
                 <Navbar.Brand href="/">ProjectUnicam</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

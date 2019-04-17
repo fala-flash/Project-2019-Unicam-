@@ -2,9 +2,12 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import LandingCarousel from './landingCarousel';
 
+//eslint-disable-next-line
+import Style from '../../style.css';
+
 function Welcome() {
     return (
-        <div>
+        <div className="landing">
             <h1>Benvenuto!</h1>
             <br></br>
             <LandingCarousel />
