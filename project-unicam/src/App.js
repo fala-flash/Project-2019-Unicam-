@@ -4,6 +4,7 @@ import { RingLoader } from 'react-spinners';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { fire } from './config/FirebaseConfig';
 
+//eslint-disable-next-line
 import Style from './components/style.css';
 
 import Header from './components/header/header';
@@ -17,6 +18,7 @@ import Telegrambot from './components/pages/telegrambot/telegrambot';
 import Faq from './components/pages/faq/faq';
 import Telefona from './components/pages/telefona/telefona';
 import Helpline from './components/pages/helpline/helpline';
+import Segnalazioni from './components/pages/segnalazioni/segnalazioni';
 
 
 class App extends React.Component {
@@ -79,7 +81,7 @@ class App extends React.Component {
       return (
         <div className="loading">
           Loading
-          <RingLoader color={"white"} />
+          <RingLoader color={"black"} />
         </div>
       )
     }
@@ -121,6 +123,7 @@ class App extends React.Component {
                     <Route path="/telefona" component={Telefona} />
                     <Route path="/helpline" component={Helpline} />
                     <Route path="/faq" component={Faq} />
+                    <Route path="/segnalazioni" component={Segnalazioni} />
                   </>
                   : <Redirect to='/login' />
                 }

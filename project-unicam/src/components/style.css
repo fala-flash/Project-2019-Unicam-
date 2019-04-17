@@ -6,6 +6,12 @@
     text-align: center;
 }
 
+.loading{
+    width: 50%;
+    margin-left: 38%;
+    margin-top: 50%;
+}
+
 /* header */
 
 .footericon{
