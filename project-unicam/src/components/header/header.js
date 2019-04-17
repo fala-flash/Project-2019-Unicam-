@@ -1,7 +1,7 @@
-import React, { Component } from './node_modules/react';
-import { Navbar, Nav, Button, Dropdown, DropdownButton } from './node_modules/react-bootstrap';
+import React, { Component } from 'react';
+import { Navbar, Button, Dropdown } from 'react-bootstrap';
 
-import botIcon from '../media/telbot.png'
+import { FaTelegram } from 'react-icons/fa';
 
 
 class Header extends Component {
@@ -9,29 +9,26 @@ class Header extends Component {
     render() {
         return (
 
-            <Navbar className="headerNavbar" bg="dark" variant="dark">
-
-                <Button variant="dark" href="/telegrambot">
-                    <img
-                        alt=""
-                        src={botIcon}
-                        className="telegramBot"
-                    />
-                </Button>
+            <Navbar bg="dark" variant="dark">                
 
                 <Navbar.Brand>UNICAM PROJECT</Navbar.Brand>
 
-                <Dropdown>
-                    <Dropdown.Toggle variant="dark" id="dropdown-basic">
-                        Menu
-                    </Dropdown.Toggle>
+                <Button className="headerItem" variant="dark" href="/telegrambot">
+                    <FaTelegram className="headerIcon"/>
+                </Button>
 
-                    <Dropdown.Menu>
-                        <Dropdown.Item href="/profile">Profilo</Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Item href="/logout">Log Out</Dropdown.Item>
-                    </Dropdown.Menu>
+                <Dropdown>
+                <Dropdown.Toggle className="headerItem" variant="dark" id="dropdown-basic">
+                    Menu
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                    <Dropdown.Item href="/profile">Profilo</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item href="/logout">Log Out</Dropdown.Item>
+                </Dropdown.Menu>
                 </Dropdown>
+
             </Navbar>
         );
 

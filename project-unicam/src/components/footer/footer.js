@@ -1,62 +1,31 @@
 import React, { Component } from 'react';
 import { Navbar, Button } from 'react-bootstrap';
 
-//import {  } from 'react-icons/fi';
-
-import msgIcon from '../media/msg.png';
-import telIcon from '../media/tel.png';
-import quesIcon from '../media/Question.png';
+import { FiPhone, FiMessageCircle, FiHelpCircle } from 'react-icons/fi';
 
 
 class Footer extends Component {
     render() {
         return (
-            <Navbar fixed="bottom" bg="dark" variant="dark">
-<div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-            <Button variant="dark" href="/telefona">     
-                <img
-                    alt="telefonaIcona"
-                    src={telIcon}
-                    className="telefonaImg"
-                />
-                {/* <p className="telefonaText">Telefona</p> */}
-            </Button>
-            </li>
-            </ul>
-            </div>
-           
-            <div class="mx-auto order-0">
-            <ul class="navbar-nav mr-auto">
-            <li class="navbar-brand mx-auto">
-            
-            <Button variant="dark" href="/helpline">
-                <img
-                    alt=""
-                    src={msgIcon}
-                    className="helplineImg"
-                />
-            </Button>
-            </li>
-            </ul>
-            
-            </div>
 
-            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-            <Button variant="dark" href="/faq">
-                <img
-                    alt=""
-                    src={quesIcon}
-                    className="faqImg"
-                />
-            </Button>
-            </li>
-            </ul>
-            </div>
-        </Navbar>
+            <Navbar className="footerStyle" fixed="bottom" bg="dark" variant="dark">        
+
+                <Button className="footerButton" variant="dark" href="/telefona">
+                    <FiPhone className="footerIcon"/>     
+                    <p className="footerTxt">Telefona</p>
+                </Button>
+
+                <Button className="footerButton" variant="dark" href="/helpline">
+                    <FiMessageCircle className="footerIcon"/>
+                    <p className="footerTxt">Blog</p>
+                </Button>
+                
+                <Button className="footerButton" variant="dark" href="/faq">
+                    <FiHelpCircle className="footerIcon"/>
+                    <p className="footerTxt">FAQ</p>
+                </Button>                    
+                
+            </Navbar>
         )
     }
 }

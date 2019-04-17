@@ -1,17 +1,41 @@
 /* APP */
 
-/* header */
-.telegramBot {
-    width: 30px;
-    height: 30px;    
-}
-
-.headerNavbar {
+.mainStyle {
+    margin-top: 20px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
+/* header */
+.headerItem {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.headerIcon {
+    width: 20px;
+    height: 20px;
+}
+
 /* footer */
-.telefonaImg, .helplineImg, .faqImg {
-    width: 30px;
-    height: 30px;
+.footerStyle {
+    height: 55px;
+}
+ 
+.footerButton {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footerIcon {
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-bottom: 0px;
+}
+
+.footerTxt {
+    text-align: center;
+    margin-top: -5px;
+    margin-bottom: -5px;
 }
