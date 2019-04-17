@@ -13,7 +13,7 @@ const LandingCarousel = () => (
         <article className="left">
             <Carousel>
                 <Carousel.Item>
-                <Link to={'/signin'}>
+                <Link to={'/telegrambot'}>
                     <img src={telegram}  alt="telegramSlide" width="800" height="400" />
                     </Link>
                     <Carousel.Caption>
