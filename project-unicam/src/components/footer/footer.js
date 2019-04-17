@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, Button, Nav } from 'react-bootstrap';
 
-import { FiHelpCircle } from 'react-icons/fi';
-import { FiPhoneCall } from 'react-icons/fi';
+import { FiHelpCircle, FiPhoneCall } from 'react-icons/fi';
 import { FaTelegram } from 'react-icons/fa';
 
 
@@ -14,13 +13,22 @@ class Footer extends Component {
 
             <Navbar fixed="bottom" bg="dark" variant="dark" expand="dark">
                 <Nav.Item>
-                    <Button  href="/telegrambot" variant="dark"><FaTelegram className="footericon" /></Button>
+                    <Button className="footerButton" href="/telegrambot" variant="dark">
+                    <FaTelegram className="footericon" />
+                    </Button>
+                    <p className="footerText">TelegramBot</p>
                 </Nav.Item>
                 <Nav.Item>
-                    <Button  href="/telefona" variant="dark"><FiPhoneCall className="footericon" /></Button>
+                    <Button className="footerButton" href="/telefona" variant="dark">
+                    <FiPhoneCall className="footericon" />
+                    </Button>
+                    <p className="footerText">Telefona</p>
                 </Nav.Item>
                 <Nav.Item>
-                    <Button  href="/faq" variant="dark"><FiHelpCircle className="footericon" /></Button>
+                    <Button className="footerButton" href="/faq" variant="dark">
+                    <FiHelpCircle className="footericon" />
+                    </Button>
+                    <p className="footerText">FAQ</p>
                 </Nav.Item>
             </Navbar>
         );

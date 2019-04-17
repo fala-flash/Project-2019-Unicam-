@@ -22,3 +22,15 @@
 }
 
 /* footer */
+
+.footerButton {
+    margin-top: -5px;
+    margin-bottom: -2px;
+}
+
+.footerText {
+    text-align: center;
+    color: white;
+    margin-top: -10px;
+    margin-bottom: -5px;
+}
