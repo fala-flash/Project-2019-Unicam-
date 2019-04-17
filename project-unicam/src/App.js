@@ -6,17 +6,17 @@ import { fire } from './config/FirebaseConfig';
 
 import Style from './components/style.css';
 
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Login from './components/pages/Login';
-import Logout from './components/pages/Logout';
-import Welcome from './components/pages/Welcome';
-import Profile from './components/pages/Profile';
-import Info from './components/pages/Info';
-import Telegrambot from './components/pages/Telegrambot';
-import Faq from './components/pages/Faq';
-import Telefona from './components/pages/Telefona';
-import Helpline from './components/pages/Helpline';
+import Header from './components/header';
+import Footer from './components/footer';
+import Login from './components/pages/login';
+import Logout from './components/pages/logout';
+import Welcome from './components/pages/landing';
+import Profile from './components/pages/profile';
+import Info from './components/pages/info';
+import Telegrambot from './components/pages/telegrambot';
+import Faq from './components/pages/faq';
+import Telefona from './components/pages/telefona';
+import Helpline from './components/pages/helpline';
 
 
 class App extends React.Component {

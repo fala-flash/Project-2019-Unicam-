@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, Button, Dropdown, DropdownButton } from 'react-bootstrap';
 
-import botIcon from './media/telbot.png'
+import botIcon from '../media/telbot.png'
 
 
 class Header extends Component {

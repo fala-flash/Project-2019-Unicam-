@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 import { GoogleLoginButton } from "react-social-login-buttons";
-import { fire, providerGoogle } from '../../config/FirebaseConfig';
+import { fire, providerGoogle } from '../../../config/FirebaseConfig';
 
 
 

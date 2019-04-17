@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import { fire } from '../../config/FirebaseConfig';
+import { fire } from '../../../config/FirebaseConfig';
 
 class Logout extends Component {
     constructor() {

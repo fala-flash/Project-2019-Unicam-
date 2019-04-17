@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Navbar, Button } from 'react-bootstrap';
 
 
-import msgIcon from './media/msg.png';
-import telIcon from './media/tel.png';
-import quesIcon from './media/Question.png';
+import msgIcon from '../media/msg.png';
+import telIcon from '../media/tel.png';
+import quesIcon from '../media/Question.png';
 
 
 class Footer extends Component {
