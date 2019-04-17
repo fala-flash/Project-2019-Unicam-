@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
-import { Navbar, Button } from 'react-bootstrap';
+import { Navbar, Button, Nav } from 'react-bootstrap';
 
-import { FiPhone, FiMessageCircle, FiHelpCircle } from 'react-icons/fi';
+import { FiHelpCircle } from 'react-icons/fi';
+import { FiPhoneCall } from 'react-icons/fi';
+import { FaTelegram } from 'react-icons/fa';
+
+
 
 
 class Footer extends Component {
     render() {
         return (
 
-            <Navbar className="footerStyle" fixed="bottom" bg="dark" variant="dark">        
-
-                <Button className="footerButton" variant="dark" href="/telefona">
-                    <FiPhone className="footerIcon"/>     
-                    <p className="footerTxt">Telefona</p>
-                </Button>
-
-                <Button className="footerButton" variant="dark" href="/helpline">
-                    <FiMessageCircle className="footerIcon"/>
-                    <p className="footerTxt">Blog</p>
-                </Button>
-                
-                <Button className="footerButton" variant="dark" href="/faq">
-                    <FiHelpCircle className="footerIcon"/>
-                    <p className="footerTxt">FAQ</p>
-                </Button>                    
-                
+            <Navbar fixed="bottom" bg="dark" variant="dark" expand="dark">
+                <Nav.Item>
+                    <Button  href="/telegrambot" variant="dark"><FaTelegram className="footericon" /></Button>
+                </Nav.Item>
+                <Nav.Item>
+                    <Button  href="/telefona" variant="dark"><FiPhoneCall className="footericon" /></Button>
+                </Nav.Item>
+                <Nav.Item>
+                    <Button  href="/faq" variant="dark"><FiHelpCircle className="footericon" /></Button>
+                </Nav.Item>
             </Navbar>
-        )
+        );
+
     }
 }
 
 export default Footer;
+
+

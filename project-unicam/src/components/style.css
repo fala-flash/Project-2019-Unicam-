@@ -7,35 +7,12 @@
 }
 
 /* header */
-.headerItem {
-    margin-left: auto;
-    margin-right: auto;
-}
 
-.headerIcon {
-    width: 20px;
-    height: 20px;
-}
-
-/* footer */
-.footerStyle {
-    height: 55px;
-}
- 
-.footerButton {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.footerIcon {
+.footericon{
     width: 20px;
     height: 20px;
     margin-top: -10px;
     margin-bottom: 0px;
 }
 
-.footerTxt {
-    text-align: center;
-    margin-top: -5px;
-    margin-bottom: -5px;
-}
+/* footer */

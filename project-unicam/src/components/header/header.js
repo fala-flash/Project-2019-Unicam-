@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Navbar, Button, Dropdown } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 
-import { FaTelegram } from 'react-icons/fa';
+
 
 
 class Header extends Component {
@@ -9,26 +9,18 @@ class Header extends Component {
     render() {
         return (
 
-            <Navbar bg="dark" variant="dark">                
-
-                <Navbar.Brand>UNICAM PROJECT</Navbar.Brand>
-
-                <Button className="headerItem" variant="dark" href="/telegrambot">
-                    <FaTelegram className="headerIcon"/>
-                </Button>
-
-                <Dropdown>
-                <Dropdown.Toggle className="headerItem" variant="dark" id="dropdown-basic">
-                    Menu
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                    <Dropdown.Item href="/profile">Profilo</Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Item href="/logout">Log Out</Dropdown.Item>
-                </Dropdown.Menu>
-                </Dropdown>
-
+            <Navbar bg="dark" variant="dark" expand="dark">
+                <Navbar.Brand href="#home">ProjectUnicam</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto">
+                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="/profile">Profile</Nav.Link>
+                        <Nav.Link href="/segnalazioni">Segnalazioni</Nav.Link>
+                        <Nav.Link href="/info">Info</Nav.Link>
+                        <Nav.Link href="/logout">Logout</Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
             </Navbar>
         );
 
@@ -37,4 +29,3 @@ class Header extends Component {
 }
 
 export default Header;
-
