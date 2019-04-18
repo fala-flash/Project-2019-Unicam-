@@ -59,3 +59,22 @@
     margin-bottom : 70px;
     margin-top: 70px;
 }
+
+::-webkit-input-placeholder {
+    text-align: center;
+   }
+
+
+input[type="email"]{  
+    text-align: center; 
+} 
+
+input[type="password"] {  
+    text-align: center; 
+} 
+
+
+.googleCentrato{
+    display: flex;
+    justify-content: center
+}

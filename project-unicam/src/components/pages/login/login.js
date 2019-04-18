@@ -4,6 +4,9 @@ import { Button, Form } from 'react-bootstrap';
 import { GoogleLoginButton } from "react-social-login-buttons";
 import { fire, providerGoogle } from '../../../config/FirebaseConfig';
 
+//eslint-disable-next-line
+import Style from '../../style.css';
+
 
 
 class Login extends Component{
@@ -91,25 +94,29 @@ class Login extends Component{
       }
       return (
         <div className="loginStyle">
+        <br></br>
           <Form onSubmit={(event) => this.authWithEmailPassword(event)} >
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" ref={(input) => { this.emailInput = input }}/>
+          <Form.Group classcontrolId="formBasicEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="email" placeholder="Inserisci Email" ref={(input) => { this.emailInput = input }}/>
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" ref={(input) => { this.passwordInput = input }}/>
+            <Form.Control type="password" placeholder="Inserisci Password" ref={(input) => { this.passwordInput = input }}/>
           </Form.Group>
           <Form.Group controlId="formBasicChecbox">
-          </Form.Group>            
+          </Form.Group>
+          <br></br>            
           <Button variant="outline-dark" type="submit">
             Accedi
           </Button>                       
         </Form>
-
+        <br></br>
+        <div className="googleCentrato">
         <br/>
-        <GoogleLoginButton onClick={() => { this.authentication(providerGoogle) }}>Accedi con Google</GoogleLoginButton>
+        <GoogleLoginButton onClick={() => { this.authentication(providerGoogle) }}>Google Login</GoogleLoginButton>
         <br/>
+        </div>
       </div>   
       );
     }
