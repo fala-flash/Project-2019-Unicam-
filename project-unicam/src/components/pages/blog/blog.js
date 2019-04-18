@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { fire } from '../../../config/FirebaseConfig';
-import { Button, Card} from 'react-bootstrap';
+import { Button, Form, Card} from 'react-bootstrap';
 
-import { FiMessageCircle, FiPhone } from 'react-icons/fi';
+import { FiMessageCircle, FiPhone, FiSend } from 'react-icons/fi';
+import { TiDeleteOutline } from 'react-icons/ti';
 
 class Blog extends Component{
 
     constructor() {
         super();
         this.state = {
-            userID: null, //this.props.userID
             codice: [],            
             messaggio: [],
             id: [],
@@ -27,7 +27,7 @@ class Blog extends Component{
         segnalazione.once('value', snap => {
           snap.forEach(child => {
             this.setState({
-                codice: this.state.codice.concat([child.val().codice]),
+                codice: this.state.codice.concat([child.key]),
                 messaggio: this.state.messaggio.concat([child.val().messaggio]),
                 id: this.state.id.concat([child.val().id]),
                 visto: this.state.visto.concat([child.val().visto])
@@ -50,15 +50,72 @@ class Blog extends Component{
         });
         alert('Telefono '+this.state.telefonoUtente) */
 
-        const rootRef = fire.database().ref();
-        const utente = rootRef.child('Utente/001/')
-        utente.on('value', snap => {
-            alert(snap.val())
-          });
       }
 
       consoleDisplay(id) {
         alert(id)
+      }
+
+      writeUserData(codice, idUtente, messaggioUtente) {
+        fire.database().ref('Segnalazioni/' + codice).set({
+            id: idUtente,
+            messaggio: messaggioUtente,
+            visto: "false",
+        }).then((data)=>{
+            //success callback
+            console.log('data ' , data)
+        }).catch((error)=>{
+            //error callback
+            console.log('error ' , error)
+        })
+      }
+
+      aggiungiSegnalazione() {
+        /* const codice = this.accountInput.value
+        const idUtente = this.usernameInput.value */
+        const messaggio = this.testoSegnalazione.value
+        if (messaggio !== '') {          
+          this.writeUserData("0000000002", this.props.userID, messaggio) //id=this.state.userID
+          alert("Segnalazione "+"0000000002"+" inviata correttamente")
+        } else {
+          alert("Tutti i campi devono essere compilati")
+        }
+        this.segnForm.reset();
+      }
+
+      resetForm() {
+        this.segnForm.reset();
+      }
+
+      getSegnalazioneForm() {
+        return (
+          <div className="segnalazioneForm">
+            <Form onSubmit={() => { this.aggiungiSegnalazione() }} ref={(form) => { this.segnForm = form }}>
+            <Card bg="info" text="white" className="cardStyle">
+              {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+              <Card.Header>Segnalazione</Card.Header>
+                <Card.Body>
+                    {/* <Card.Title></Card.Title> */}
+                    <Card.Text>
+                    <Form.Group controlId="formBasicInput">
+                      {/* <Form.Label> Invia la segnalazione completando i seguenti campi: </Form.Label><br /><br />  */}
+                      <Form.Group className="testoForm" controlId="formBasicInput">
+                        <Form.Label> Testo: </Form.Label>
+                        <Form.Control className="testoForm" as="textarea" rows="2" ref={(input) => { this.testoSegnalazione = input }}/>
+                      </Form.Group>
+                    </Form.Group>
+                    </Card.Text>
+                    <Button className="commentaButton" variant="success" type="submit">Invia<FiSend className="blogIcon"/>
+                    </Button>
+                    <Button variant="danger" 
+                      onClick={() => { this.resetForm() }} ref={(form) => { this.segnForm = form }}>Cancella 
+                      <TiDeleteOutline className="blogIcon"/>
+                    </Button>
+                </Card.Body>
+              </Card>
+            </Form>
+          </div>
+        )
       }
 
       getSegnalazioni() {
@@ -79,7 +136,7 @@ class Blog extends Component{
                                   </Card.Text>
                                   <Button className="commentaButton" variant="outline-light">Commenta 
                                     <FiMessageCircle className="blogIcon"/></Button>
-                                  <Button variant="outline-light" onClick={this.consoleDisplay}>
+                                  <Button variant="outline-light">
                                     Contatta 
                                     <FiPhone className="blogIcon"/></Button>
                               </Card.Body>
@@ -107,6 +164,7 @@ class Blog extends Component{
       }
 
       componentDidMount() {
+        /* this.props.setStateUser() */
         this.readSegnalazioni()
       }
 
@@ -114,8 +172,8 @@ class Blog extends Component{
         return (
             <div>
                 <h1>Blog</h1>
-                <p>Nome: {this.state.nomeUtente}</p>
-                <p>Telefono: {this.state.telefonoUtente}</p>
+                <p>ID: {this.props.userID}</p>
+                {/* <p>Telefono: {this.state.telefonoUtente}</p> */} 
                 {this.props.userType
                     ? 
                         <>
@@ -125,6 +183,7 @@ class Blog extends Component{
                     :
                         <>
                             <p>Utente</p> {/* visualizza pagina segnalazione */}
+                            {this.getSegnalazioneForm()}
                             {this.getSegnalazioni()}
                         </>
                 }

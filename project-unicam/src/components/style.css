@@ -19,8 +19,8 @@
 }
 
 .cardStyle {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .blogIcon {
@@ -28,6 +28,12 @@
     margin-right: -2px;
     margin-bottom: 5px;
 }
+
+.segnalazioneForm {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 
 /* header */
 
