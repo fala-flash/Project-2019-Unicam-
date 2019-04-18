@@ -12,6 +12,24 @@
     margin-top: 50%;
 }
 
+/* blog */
+
+.commentaButton {
+    margin-right: 50px;
+}
+
+.cardStyle {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blogIcon {
+    margin-left: 7px;
+    margin-right: -2px;
+    margin-bottom: 5px;
+}
+
 /* header */
 
 .mr-auto{
