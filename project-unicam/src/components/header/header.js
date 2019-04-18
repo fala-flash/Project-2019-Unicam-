@@ -17,7 +17,9 @@ class Header extends Component {
                         <Nav.Link href="/profile">Profilo</Nav.Link>
                         <Nav.Link href="/faq">FAQ</Nav.Link>
                         <Nav.Link href="/info">Info</Nav.Link>
-                        <Nav.Link href="/logout">Logout</Nav.Link>
+                        {this.props.authenticated
+                        ? <Nav.Link href="/logout">Logout</Nav.Link>
+                        : <></>}
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
@@ -28,3 +30,4 @@ class Header extends Component {
 }
 
 export default Header;
+

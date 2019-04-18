@@ -90,7 +90,7 @@ class App extends React.Component {
     return (
       <div>
         <div className="headerNavbar">
-          <Header/>
+          <Header authenticated={this.state.authenticated} />
         </div>
         <div className="mainStyle">
           <BrowserRouter>
@@ -125,7 +125,7 @@ class App extends React.Component {
                     <Route path="/helpline" component={Helpline} />
                     <Route path="/faq" component={Faq} />
                     <Route path="/blog" component={Blog} />
-                  </>
+                    </>
                   : <Redirect to='/login' />
                 }
               </Switch>
