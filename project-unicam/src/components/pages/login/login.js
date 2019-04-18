@@ -96,7 +96,7 @@ class Login extends Component{
         <div className="loginStyle">
         <br></br>
           <Form onSubmit={(event) => this.authWithEmailPassword(event)} >
-          <Form.Group classcontrolId="formBasicEmail">
+          <Form.Group controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control type="email" placeholder="Inserisci Email" ref={(input) => { this.emailInput = input }}/>
           </Form.Group>
