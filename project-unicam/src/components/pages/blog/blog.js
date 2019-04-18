@@ -57,8 +57,8 @@ class Blog extends Component{
           });
       }
 
-      consoleDisplay() {
-        alert('ciao')
+      consoleDisplay(id) {
+        alert(id)
       }
 
       getSegnalazioni() {
@@ -79,7 +79,7 @@ class Blog extends Component{
                                   </Card.Text>
                                   <Button className="commentaButton" variant="outline-light">Commenta 
                                     <FiMessageCircle className="blogIcon"/></Button>
-                                  <Button variant="outline-light" onClick={this.getDatiUtente}>
+                                  <Button variant="outline-light" onClick={this.consoleDisplay}>
                                     Contatta 
                                     <FiPhone className="blogIcon"/></Button>
                               </Card.Body>
