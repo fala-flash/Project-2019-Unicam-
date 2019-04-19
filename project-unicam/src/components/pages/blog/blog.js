@@ -76,7 +76,7 @@ class Blog extends Component{
         const messaggio = this.testoSegnalazione.value
         if (messaggio !== '') {          
           this.writeUserData("0000000002", this.props.userID, messaggio) //id=this.state.userID
-          alert("Segnalazione "+"0000000002"+" inviata correttamente")
+          alert(`${'Segnalazione'}  ${'0000000002'}  ${'inviata correttamente'}`)
         } else {
           alert("Tutti i campi devono essere compilati")
         }
