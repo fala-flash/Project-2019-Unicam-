@@ -14,21 +14,17 @@ class Blog extends Component {
       messaggio: [],
       id: [],
       visto: [],
+      buttonCommenta: [],
+      buttonContatta: [],
       indexModal: null,
       nomeUtente: null,
       telefonoUtente: null
     }
+    this.contattaUtente = this.contattaUtente.bind(this)
   }
 
   uniqueIDCode() {
     var ID = Date.now();
-
-    if (ID <= this.uniqueIDCode.previous) {
-      ID = ++this.uniqueIDCode.previous;
-    } else {
-      this.uniqueNumber.previous = ID;
-    }
-
     return ID;
   }
 
@@ -42,8 +38,9 @@ class Blog extends Component {
           codice: this.state.codice.concat([child.key]),
           messaggio: this.state.messaggio.concat([child.val().messaggio]),
           id: this.state.id.concat([child.val().id]),
-          visto: this.state.visto.concat([child.val().visto])
-          /* button: this.state.button.concat(false), */
+          visto: this.state.visto.concat([child.val().visto]),
+          buttonCommenta: this.state.buttonCommenta.concat(false),
+          buttonContatta: this.state.buttonContatta.concat(false)
         });
       });
     });
@@ -127,6 +124,11 @@ class Blog extends Component {
     )
   }
 
+  contattaUtente(event, index) {
+    alert("ID:")
+    event.preventDefault()
+  }
+
   getSegnalazioni() {
     return (
       <div>
@@ -144,10 +146,10 @@ class Blog extends Component {
                     {this.state.messaggio[index]}
                   </Card.Text>
                   <Button className="commentaButton" variant="outline-light">Commenta
-                                    <FiMessageCircle className="blogIcon" /></Button>
-                  <Button variant="outline-light">
-                    Contatta
-                                    <FiPhone className="blogIcon" /></Button>
+                    <FiMessageCircle className="blogIcon" /></Button>
+                  <Button variant="outline-light" type="submit"
+                    onClick={(event) => {this.contattaUtente(event, index)}}>Contatta
+                    <FiPhone className="blogIcon" /></Button>
                 </Card.Body>
               </Card>
               :
@@ -175,6 +177,7 @@ class Blog extends Component {
   componentDidMount() {
     /* this.props.setStateUser() */
     this.readSegnalazioni()
+    this.uniqueIDCode()
   }
 
   render() {
