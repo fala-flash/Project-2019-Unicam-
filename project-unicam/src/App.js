@@ -82,7 +82,6 @@ class App extends React.Component {
     if (this.state.loading === true) {
       return (
         <div className="loading">
-          Loading
           <RingLoader color={"black"} />
         </div>
       )
