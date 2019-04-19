@@ -7,6 +7,7 @@ class Profile extends Component{
     constructor() {
         super();
         this.state = {
+            nome: null,
             istituto: null,
             telefono: null
           }      
@@ -18,6 +19,7 @@ class Profile extends Component{
         
         rootRef.on('value', snap => {
             this.setState({
+                nome: snap.val().nome,
                 istituto: snap.val().istituto,
                 telefono: snap.val().telefono
             })  
@@ -40,10 +42,11 @@ class Profile extends Component{
       }
 
       aggiornaDati() {
+        const nome = this.aggiornaNome.value
         const istituto = this.aggiornaIstituto.value            
         const telefono = this.aggiornaTelefono.value
         if (istituto !== '' && telefono !== '') {          
-          this.writeUserData(this.props.userID, this.props.name, this.props.email, telefono, istituto)
+          this.writeUserData(this.props.userID, nome, this.props.email, telefono, istituto)
           //alert('dati aggiornati')
         } else {
           alert("Tutti i campi devono essere compilati")
@@ -69,11 +72,19 @@ class Profile extends Component{
                   </Button> 
                 }
 
-                <p>Nome: {this.props.name}</p>
-                <p>email: {this.props.email}</p>
-
-
                 <Form className="formDati" onSubmit={(event) => this.aggiornaDati(event)} ref={(form) => { this.datiForm = form }}>
+                    
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Nome</Form.Label>
+                        {this.props.name === 'null'
+                        ?   <Form.Control type="text" placeholder="inserisci nome" ref={(input) => { this.aggiornaNome = input }}/>
+                        :   <Form.Control type="text" placeholder={this.state.nome} ref={(input) => { this.aggiornaNome = input }}/>
+                        }                        
+                    </Form.Group>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control type="text" placeholder={this.props.email} ref={(input) => { this.aggiornaEmail = input }}/>
+                    </Form.Group>                    
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Istituto</Form.Label>
                         <Form.Control type="text" placeholder={this.state.istituto} ref={(input) => { this.aggiornaIstituto = input }}/>
