@@ -152,7 +152,7 @@ class App extends React.Component {
             </div>
           </BrowserRouter>
           <div className="footerstyle">
-            <Footer />
+            <Footer authenticated={this.state.authenticated} />
           </div>
         </div>
       </div>
