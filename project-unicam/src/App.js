@@ -116,6 +116,7 @@ class App extends React.Component {
                         userID={this.state.userID}
                         email={this.state.email}
                         name={this.state.name}
+                        picture={this.state.picture}
                         setStateUser={this.setStateUser}
                         setLocalUser={this.setStateUser} />
                     } />
@@ -129,6 +130,7 @@ class App extends React.Component {
                         userID={this.state.userID}
                         email={this.state.email}
                         name={this.state.name}
+                        picture={this.state.picture}
                         userType={this.state.userType}
                         setStateUser={this.setStateUser}
                         setLocalUser={this.setStateUser} />
