@@ -43,12 +43,28 @@ class Login extends Component{
       this.props.setStateUser()
     }
 
+    addUser() {
+      fire.database().ref('Utente/' + this.state.user.uid).set({
+        nome: this.state.user.displayName,
+        email: this.state.user.email,
+        telefono: "",
+        istituto: ""
+      }).then((data)=>{
+          //success callback
+          console.log('data ' , data)
+      }).catch((error)=>{
+          //error callback
+          console.log('error ' , error)
+      })
+    }
+
     authentication(provider) {
       fire.auth().signInWithPopup(provider)
       .then((result) => {    
         this.setUser(result.user) 
         this.setUserInfo()        
         this.props.setAuthenticated(true)
+        this.addUser()  //aggiungo l'utente al db
       })
       .catch((error) => {
         if(error.code === 'auth/account-exists-with-different-credential') {

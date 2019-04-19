@@ -12,6 +12,7 @@ class Profile extends Component{
           }      
       }
 
+
       readUserData() {
         const rootRef = fire.database().ref('Utente/'+this.props.userID);
         
@@ -38,7 +39,7 @@ class Profile extends Component{
         })
       }
 
-      aggornaDati() {
+      aggiornaDati() {
         const istituto = this.aggiornaIstituto.value            
         const telefono = this.aggiornaTelefono.value
         if (istituto !== '' && telefono !== '') {          
@@ -72,7 +73,7 @@ class Profile extends Component{
                 <p>email: {this.props.email}</p>
 
 
-                <Form className="formDati" onSubmit={(event) => this.aggornaDati(event)} ref={(form) => { this.datiForm = form }}>
+                <Form className="formDati" onSubmit={(event) => this.aggiornaDati(event)} ref={(form) => { this.datiForm = form }}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Istituto</Form.Label>
                         <Form.Control type="text" placeholder={this.state.istituto} ref={(input) => { this.aggiornaIstituto = input }}/>
