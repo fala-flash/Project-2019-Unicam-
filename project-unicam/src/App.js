@@ -32,7 +32,8 @@ class App extends React.Component {
       userID: null,
       email: null,
       name: null,
-      picture: null
+      picture: null,
+      userType: false, //false=user, true=psicologo
     }
     this.setAuthenticated = this.setAuthenticated.bind(this)
     this.setStateUser = this.setStateUser.bind(this)
@@ -81,7 +82,6 @@ class App extends React.Component {
     if (this.state.loading === true) {
       return (
         <div className="loading">
-          Loading
           <RingLoader color={"black"} />
         </div>
       )
@@ -90,7 +90,7 @@ class App extends React.Component {
     return (
       <div>
         <div className="headerNavbar">
-          <Header/>
+          <Header authenticated={this.state.authenticated} />
         </div>
         <div className="mainStyle">
           <BrowserRouter>
@@ -124,8 +124,16 @@ class App extends React.Component {
                     <Route path="/telefona" component={Telefona} />
                     <Route path="/helpline" component={Helpline} />
                     <Route path="/faq" component={Faq} />
-                    <Route path="/blog" component={Blog} />
-                  </>
+                    <Route path="/blog" render={() =>
+                      <Blog
+                        userID={this.state.userID}
+                        email={this.state.email}
+                        name={this.state.name}
+                        userType={this.state.userType}
+                        setStateUser={this.setStateUser}
+                        setLocalUser={this.setStateUser} />
+                    } />
+                    </>
                   : <Redirect to='/login' />
                 }
               </Switch>

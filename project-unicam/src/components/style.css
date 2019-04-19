@@ -7,10 +7,33 @@
 }
 
 .loading{
-    width: 50%;
-    margin-left: 38%;
-    margin-top: 50%;
+    margin-top: 300px;
+    display: flex;
+    justify-content: center;
 }
+
+/* blog */
+
+.commentaButton {
+    margin-right: 50px;
+}
+
+.cardStyle {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.blogIcon {
+    margin-left: 7px;
+    margin-right: -2px;
+    margin-bottom: 5px;
+}
+
+.segnalazioneForm {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 
 /* header */
 
@@ -58,4 +81,23 @@
 .landing{
     margin-bottom : 70px;
     margin-top: 70px;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+   }
+
+
+input[type="email"]{  
+    text-align: center; 
+} 
+
+input[type="password"] {  
+    text-align: center; 
+} 
+
+
+.googleCentrato{
+    display: flex;
+    justify-content: center
 }

@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-/* import Rebase from 're-base'; */
+import Rebase from 're-base';
 
 const config = {
     apiKey: "AIzaSyBF8tvtspyNzoy4Ydu-ASH6KRh-3U0vzAw",
@@ -14,6 +14,6 @@ const fire = firebase.initializeApp(config);
 
 const providerGoogle = new firebase.auth.GoogleAuthProvider();
 
-/* const base = Rebase.createClass(fire.database()) */
+const base = Rebase.createClass(fire.database())
 
-export { fire, providerGoogle}
+export { fire, providerGoogle, base}
