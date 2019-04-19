@@ -5,9 +5,7 @@ import Alert from 'react-bootstrap/Alert';
 
 function Telefona() {
     return (
-        <div>
-            <h1>Telefona</h1>     
-            <p></p> 
+        <div> 
             <Alert className="alertTelefona" variant="success">
             <Alert.Heading>Chiama!</Alert.Heading>
             <p>
@@ -17,7 +15,9 @@ function Telefona() {
             </p>
             <hr />
             <p className="mb-0">
-            <Button variant="outline-success" size="lg"><a  text="white" href="tel:+393315909161">CHIAMA</a></Button>
+            <Button variant="outline-success" size="lg">
+                <a className="chiamaText" text="white" href="tel:+393315909161">CHIAMA</a>
+            </Button>
             </p>
             </Alert>
         </div>

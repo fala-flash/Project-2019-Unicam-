@@ -28,6 +28,7 @@ class App extends React.Component {
     super();
     this.state = {
       authenticated: false,
+      ruolo: null,
       loading: true,
       userID: null,
       email: null,
@@ -36,14 +37,16 @@ class App extends React.Component {
       userType: false, //false=user, true=psicologo
     }
     this.setAuthenticated = this.setAuthenticated.bind(this)
+    this.setRuolo = this.setRuolo.bind(this)
     this.setStateUser = this.setStateUser.bind(this)
   }
 
-  setLocalUser(id, em, na, pic) {
+  setLocalUser(id, em, na, pic, ru) {
     localStorage.setItem('userID', id);
     localStorage.setItem('userEmail', em);
     localStorage.setItem('userName', na);
     localStorage.setItem('userPicture', pic);
+    localStorage.setItem('userRole', ru);
   }
 
   setStateUser() {
@@ -51,13 +54,20 @@ class App extends React.Component {
       userID: localStorage.getItem('userID'),
       email: localStorage.getItem('userEmail'),
       name: localStorage.getItem('userName'),
-      picture: localStorage.getItem('userPicture')
+      picture: localStorage.getItem('userPicture'),
+      ruolo: localStorage.getItem('userRole')
     })
   }
 
   setAuthenticated(param) {
     this.setState({
       authenticated: param
+    });
+  }
+
+  setRuolo(param) {
+    this.setState({
+      ruolo: param
     });
   }
 

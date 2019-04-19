@@ -12,6 +12,13 @@
     justify-content: center;
 }
 
+/* login */
+
+.formLogin {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 /* blog */
 
 .commentaButton {
@@ -62,6 +69,10 @@
     margin-right: 30px;
 }
 
+.chiamaText {
+    color: rgb(0, 102, 0);
+}
+
 /* footer */
 
 .footerButton {
@@ -90,8 +101,7 @@
 }
 
 .carousel-caption {
-    background: rgba(0, 0, 0, 0.2);
-    
+    background: rgba(0, 0, 0, 0.2);    
    }
 
 
@@ -100,6 +110,8 @@
 }
 
 .landing{
+    margin-right : 10px;
+    margin-left: 10px;
     margin-bottom : 70px;
     margin-top: 70px;
 }

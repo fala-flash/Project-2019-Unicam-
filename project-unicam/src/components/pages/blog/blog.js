@@ -52,10 +52,6 @@ class Blog extends Component{
 
       }
 
-      consoleDisplay(id) {
-        alert(id)
-      }
-
       writeUserData(codice, idUtente, messaggioUtente) {
         fire.database().ref('Segnalazioni/' + codice).set({
             id: idUtente,

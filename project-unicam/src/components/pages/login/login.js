@@ -14,7 +14,8 @@ class Login extends Component{
   constructor() {
       super();        
       this.state = {
-        user: null
+        user: null,
+        tipo: null
       }        
       this.authentication = this.authentication.bind(this)
       this.authWithEmailPassword = this.authWithEmailPassword.bind(this)
@@ -38,7 +39,8 @@ class Login extends Component{
         JSON.parse(JSON.stringify(this.state.user.uid)),
         JSON.parse(JSON.stringify(this.state.user.email)),
         JSON.parse(JSON.stringify(this.state.user.displayName)),
-        JSON.parse(JSON.stringify(this.state.user.photoURL))
+        JSON.parse(JSON.stringify(this.state.user.photoURL)),
+        JSON.parse(JSON.stringify(this.state.tipo))
       )
       this.props.setStateUser()
     }
@@ -47,8 +49,7 @@ class Login extends Component{
       fire.database().ref('Utente/' + this.state.user.uid).set({
         nome: this.state.user.displayName,
         email: this.state.user.email,
-        telefono: "",
-        istituto: ""
+        tipo: this.state.tipo
       }).then((data)=>{
           //success callback
           console.log('data ' , data)
@@ -75,7 +76,10 @@ class Login extends Component{
   
     authWithEmailPassword (event) {    
       const email = this.emailInput.value
-      const password = this.passwordInput.value 
+      const password = this.passwordInput.value
+      this.setState({
+        tipo: this.tipoInput.value
+      })
       fire.auth().signInWithEmailAndPassword(email, password)
         .then((result) => {       
         this.setUser(result.user)  
@@ -92,6 +96,7 @@ class Login extends Component{
               this.setUser(result.user) 
               this.setUserInfo()        
               this.props.setAuthenticated(true)
+              this.addUser()  //aggiungo l'utente al db
             }).catch((error) => {
               if(error.code === 'auth/weak-password') {
                 alert("La password deve contenere almeno 6 caratteri");
@@ -111,7 +116,7 @@ class Login extends Component{
       return (
         <div className="loginStyle">
         <br></br>
-          <Form onSubmit={(event) => this.authWithEmailPassword(event)} >
+          <Form className="formLogin" onSubmit={(event) => this.authWithEmailPassword(event)} >
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control type="email" placeholder="Inserisci Email" ref={(input) => { this.emailInput = input }}/>
@@ -121,6 +126,14 @@ class Login extends Component{
             <Form.Control type="password" placeholder="Inserisci Password" ref={(input) => { this.passwordInput = input }}/>
           </Form.Group>
           <Form.Group controlId="formBasicChecbox">
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlSelect1">
+          <Form.Label>Sono uno</Form.Label>
+            <Form.Control as="select" ref={(input) => { this.tipoInput = input }}>
+              <option>Studente</option>
+              <option>Psicologo</option>
+              <option>Altro</option>
+            </Form.Control>
           </Form.Group>
           <br></br>            
           <Button variant="outline-dark" type="submit">

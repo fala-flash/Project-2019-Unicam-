@@ -26,10 +26,9 @@ class Profile extends Component{
         })         
       }
 
-      writeUserData(id, no, em, tel, ist) {
+      writeUserData(id, no, tel, ist) {
         fire.database().ref('Utente/' + id).set({
             nome: no,
-            email: em,
             telefono: tel,
             istituto: ist
         }).then((data)=>{
@@ -46,7 +45,7 @@ class Profile extends Component{
         const istituto = this.aggiornaIstituto.value            
         const telefono = this.aggiornaTelefono.value
         if (istituto !== '' && telefono !== '') {          
-          this.writeUserData(this.props.userID, nome, this.props.email, telefono, istituto)
+          this.writeUserData(this.props.userID, nome, telefono, istituto)
           //alert('dati aggiornati')
         } else {
           alert("Tutti i campi devono essere compilati")
@@ -62,7 +61,7 @@ class Profile extends Component{
         return (
             <div>
                 <h1>Profilo</h1>
-                
+                <p>Ruolo: </p>
                 {this.props.picture === 'null'
                 ? <Button variant="outline" href="/profile" size="sm">
                     Inserisci immagine
@@ -78,12 +77,12 @@ class Profile extends Component{
                         <Form.Label>Nome</Form.Label>
                         {this.props.name === 'null'
                         ?   <Form.Control type="text" placeholder="inserisci nome" ref={(input) => { this.aggiornaNome = input }}/>
-                        :   <Form.Control type="text" placeholder={this.state.nome} ref={(input) => { this.aggiornaNome = input }}/>
+                        :   <Form.Control type="text" value={this.state.nome} ref={(input) => { this.aggiornaNome = input }}/>
                         }                        
                     </Form.Group>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="text" placeholder={this.props.email} ref={(input) => { this.aggiornaEmail = input }}/>
+                        <Form.Control type="text" defaultValue={this.props.email} ref={(input) => { this.aggiornaEmail = input }}/>
                     </Form.Group>                    
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Istituto</Form.Label>
