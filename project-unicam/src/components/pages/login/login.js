@@ -120,7 +120,7 @@ class Login extends Component{
 
     formAccesso() {
       return (
-        <div>
+        <div className="formAccesso">
           <Form className="formLogin" onSubmit={(event) => this.autenticaEmailPassword(event)} >
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
@@ -188,12 +188,12 @@ class Login extends Component{
         <div className="loginStyle">
         <h1>Login/Registrazione</h1>
         <br></br>
-        <h4>Accedi a Stop! Bullying</h4>
-        <Button variant='outline-dark' className="accountSalvati"
-        onClick={() => this.setState({ openRegistrazione: false , openAccesso: !openAccesso})}
-        aria-controls="collapse-accedi"
-        aria-expanded={openAccesso}>
-        Accesso
+        <h4>Hai già un account Stop! Bullying?</h4>
+        <Button variant='outline-dark' className="accessoButton"
+          onClick={() => this.setState({ openRegistrazione: false , openAccesso: !openAccesso})}
+          aria-controls="collapse-accedi"
+          aria-expanded={openAccesso}>
+          Accedi
         </Button>
         <br></br>
         <Collapse in={this.state.openAccesso}>
@@ -203,15 +203,15 @@ class Login extends Component{
         </Collapse>
         
         <br></br>
-        <h4>Prima volta su Stop! Bullying? Iscriviti ora</h4>
-        <Button variant='outline-dark' className="accountSalvati"
-        onClick={() => this.setState({ openAccesso: false , openRegistrazione: !openRegistrazione})}
-        aria-controls="collapse-registrazione"
-        aria-expanded={openRegistrazione}>
-        Registrazione
+        <h4>Prima volta su Stop! Bullying?</h4>
+        <Button variant='outline-dark' className="accessoButton"
+          onClick={() => this.setState({ openAccesso: false , openRegistrazione: !openRegistrazione})}
+          aria-controls="collapse-registrazione"
+          aria-expanded={openRegistrazione}>
+          Iscriviti ora
         </Button>
         <br></br>
-        <Collapse in={this.state.openAccesso}>
+        <Collapse in={this.state.openRegistrazione}>
           <div className="nuovoAccountStyle" id="collapse-registrazione">
           {this.formRegistrazione()}
           </div>

@@ -12,6 +12,10 @@
     justify-content: center;
 }
 
+.headerStyle {
+    margin-bottom: 70px;
+}
+
 .pageStyle{
     margin-right : 10px;
     margin-left: 10px;
@@ -24,6 +28,16 @@
 .formLogin {
     margin-left: 10px;
     margin-right: 10px;
+}
+
+.accessoButton {
+    margin-bottom : 30px;
+    margin-top: 10px;
+}
+
+.formAccesso {
+    margin-bottom : 30px;
+    margin-top: 10px;
 }
 
 /* blog */

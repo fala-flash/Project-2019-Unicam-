@@ -101,9 +101,13 @@ class App extends React.Component {
 
     return (
       <div>
-        <div>
-          <Header authenticated={this.state.authenticated} />
-        </div>
+        {this.state.authenticated
+          ?
+            <div className="headerStyle">
+              <Header authenticated={this.state.authenticated} />
+            </div>
+          : null
+        }        
         <div className="mainStyle">
           <BrowserRouter>
             <div className="pageStyle">
