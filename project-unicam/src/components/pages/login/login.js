@@ -77,8 +77,8 @@ class Login extends Component{
     }
   
     autenticaEmailPassword (event) {    
-      const email = this.emailInput.value
-      const password = this.passwordInput.value
+      const email = this.emailInputAccesso.value
+      const password = this.passwordInputAccesso.value
       fire.auth().signInWithEmailAndPassword(email, password)
         .then((result) => {       
         this.setUser(result.user)  
@@ -91,14 +91,14 @@ class Login extends Component{
             alert("Password errata");
           } else if (error.code === 'auth/user-not-found') {
             alert("Account inesistente");
-          } else alert("Errore login:"+error)
+          } else alert("Errore login: "+error)
         })
       event.preventDefault()
     }
 
     registraEmailPassword (event) {    
-      const email = this.emailInput.value
-      const password = this.passwordInput.value
+      const email = this.emailInputRegistrazione.value
+      const password = this.passwordInputRegistrazione.value
       this.setState({
         tipo: this.tipoInput.value
       })      
@@ -121,14 +121,14 @@ class Login extends Component{
     formAccesso() {
       return (
         <div className="formAccesso">
-          <Form className="formLogin" onSubmit={(event) => this.autenticaEmailPassword(event)} >
+          <Form className="formLogin" onSubmit={(event) => this.autenticaEmailPassword(event)}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Inserisci Email" ref={(input) => { this.emailInput = input }}/>
+            <Form.Control type="email" placeholder="Inserisci Email" ref={(input) => { this.emailInputAccesso = input }}/>
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Inserisci Password" ref={(input) => { this.passwordInput = input }}/>
+            <Form.Control type="password" placeholder="Inserisci Password" ref={(input) => { this.passwordInputAccesso = input }}/>
           </Form.Group>
           <Form.Group controlId="formBasicChecbox">
           </Form.Group>
@@ -151,14 +151,14 @@ class Login extends Component{
     formRegistrazione() {
       return (
         <div>
-          <Form className="formLogin" onSubmit={(event) => this.registraEmailPassword(event)} >
+          <Form className="formLogin" onSubmit={(event) => this.registraEmailPassword(event)}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Inserisci Email" ref={(input) => { this.emailInput = input }}/>
+            <Form.Control type="email" placeholder="Inserisci Email" ref={(input) => { this.emailInputRegistrazione = input }}/>
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Inserisci Password" ref={(input) => { this.passwordInput = input }}/>
+            <Form.Control type="password" placeholder="Inserisci Password" ref={(input) => { this.passwordInputRegistrazione = input }}/>
           </Form.Group>
           <Form.Group controlId="formBasicChecbox">
           </Form.Group>
@@ -197,7 +197,7 @@ class Login extends Component{
         </Button>
         <br></br>
         <Collapse in={this.state.openAccesso}>
-          <div className="nuovoAccountStyle" id="collapse-accedi">
+          <div className="" id="collapse-accedi">
             {this.formAccesso()}
           </div>
         </Collapse>
@@ -212,7 +212,7 @@ class Login extends Component{
         </Button>
         <br></br>
         <Collapse in={this.state.openRegistrazione}>
-          <div className="nuovoAccountStyle" id="collapse-registrazione">
+          <div className="" id="collapse-registrazione">
           {this.formRegistrazione()}
           </div>
         </Collapse>
