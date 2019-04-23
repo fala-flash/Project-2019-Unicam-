@@ -1,8 +1,8 @@
 import React from 'react';
-import { RingLoader } from 'react-spinners';
 
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { fire } from './config/FirebaseConfig';
+import { Spinner } from 'react-bootstrap'
 
 //eslint-disable-next-line
 import Style from './components/style.css';
@@ -92,19 +92,21 @@ class App extends React.Component {
     if (this.state.loading === true) {
       return (
         <div className="loading">
-          <RingLoader color={"black"} />
+          <Spinner animation="grow"/>
+          <Spinner animation="grow"/>
+          <Spinner animation="grow"/>
         </div>
       )
     }
 
     return (
       <div>
-        <div className="headerNavbar">
+        <div>
           <Header authenticated={this.state.authenticated} />
         </div>
         <div className="mainStyle">
           <BrowserRouter>
-            <div>
+            <div className="pageStyle">
               <Switch>
                 <Route exact path="/" component={Welcome} />
                 <Route path="/login" render={() =>

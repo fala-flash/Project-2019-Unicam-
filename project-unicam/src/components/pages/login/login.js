@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Collapse } from 'react-bootstrap';
 import { GoogleLoginButton } from "react-social-login-buttons";
 import { fire, providerGoogle } from '../../../config/FirebaseConfig';
 
 //eslint-disable-next-line
 import Style from '../../style.css';
-
 
 
 class Login extends Component{
@@ -15,10 +14,13 @@ class Login extends Component{
       super();        
       this.state = {
         user: null,
-        tipo: null
+        tipo: null,
+        openAccesso: false,
+        openRegistrazione: false,
       }        
       this.authentication = this.authentication.bind(this)
-      this.authWithEmailPassword = this.authWithEmailPassword.bind(this)
+      this.autenticaEmailPassword = this.autenticaEmailPassword.bind(this)
+      this.registraEmailPassword = this.registraEmailPassword.bind(this)
       this.setUser = this.setUser.bind(this)
     }
 
@@ -74,12 +76,9 @@ class Login extends Component{
       });
     }
   
-    authWithEmailPassword (event) {    
+    autenticaEmailPassword (event) {    
       const email = this.emailInput.value
       const password = this.passwordInput.value
-      this.setState({
-        tipo: this.tipoInput.value
-      })
       fire.auth().signInWithEmailAndPassword(email, password)
         .then((result) => {       
         this.setUser(result.user)  
@@ -91,32 +90,68 @@ class Login extends Component{
           } else if (error.code === 'auth/wrong-password') {
             alert("Password errata");
           } else if (error.code === 'auth/user-not-found') {
-            fire.auth().createUserWithEmailAndPassword(email, password)
-            .then((result) => {    
-              this.setUser(result.user) 
-              this.setUserInfo()        
-              this.props.setAuthenticated(true)
-              this.addUser()  //aggiungo l'utente al db
-            }).catch((error) => {
-              if(error.code === 'auth/weak-password') {
-                alert("La password deve contenere almeno 6 caratteri");
-              } else if (error.code === 'auth/invalid-email') {
-                alert("Email non valida");
-              } else alert("Errore creazione account:"+error)
-            })
+            alert("Account inesistente");
           } else alert("Errore login:"+error)
         })
       event.preventDefault()
     }
 
-    render() {
-      if (this.props.authenticated === true) {
-        return <Redirect to='/profile'/>
-      }
+    registraEmailPassword (event) {    
+      const email = this.emailInput.value
+      const password = this.passwordInput.value
+      this.setState({
+        tipo: this.tipoInput.value
+      })      
+      fire.auth().createUserWithEmailAndPassword(email, password)
+      .then((result) => {    
+        this.setUser(result.user) 
+        this.setUserInfo()        
+        this.props.setAuthenticated(true)
+        this.addUser()  //aggiungo l'utente al db
+      }).catch((error) => {
+        if(error.code === 'auth/weak-password') {
+          alert("La password deve contenere almeno 6 caratteri");
+        } else if (error.code === 'auth/invalid-email') {
+          alert("Email non valida");
+        } else alert("Errore creazione account:"+error)
+      })          
+      event.preventDefault()
+    }
+
+    formAccesso() {
       return (
-        <div className="loginStyle">
+        <div>
+          <Form className="formLogin" onSubmit={(event) => this.autenticaEmailPassword(event)} >
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="email" placeholder="Inserisci Email" ref={(input) => { this.emailInput = input }}/>
+          </Form.Group>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Inserisci Password" ref={(input) => { this.passwordInput = input }}/>
+          </Form.Group>
+          <Form.Group controlId="formBasicChecbox">
+          </Form.Group>
+          <br></br>            
+          <Button variant="outline-dark" type="submit">
+            Accedi
+          </Button>                       
+        </Form>
         <br></br>
-          <Form className="formLogin" onSubmit={(event) => this.authWithEmailPassword(event)} >
+        <p>Oppure</p>
+        <div className="googleCentrato">
+          <br/>
+          <GoogleLoginButton onClick={() => { this.authentication(providerGoogle) }}>Accedi con Google</GoogleLoginButton>
+          <br/>
+        </div>
+        </div>
+      )            
+    }
+
+    formRegistrazione() {
+      return (
+        <div>
+          <Form className="formLogin" onSubmit={(event) => this.registraEmailPassword(event)} >
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control type="email" placeholder="Inserisci Email" ref={(input) => { this.emailInput = input }}/>
@@ -137,15 +172,51 @@ class Login extends Component{
           </Form.Group>
           <br></br>            
           <Button variant="outline-dark" type="submit">
-            Accedi
+            Registrati
           </Button>                       
         </Form>
-        <br></br>
-        <div className="googleCentrato">
-        <br/>
-        <GoogleLoginButton onClick={() => { this.authentication(providerGoogle) }}>Google Login</GoogleLoginButton>
-        <br/>
         </div>
+      )          
+    }
+
+    render() {
+      if (this.props.authenticated === true) {
+        return <Redirect to='/profile'/>
+      }
+      const { openAccesso, openRegistrazione } = this.state;
+      return (
+        <div className="loginStyle">
+        <h1>Login/Registrazione</h1>
+        <br></br>
+        <h4>Accedi a Stop! Bullying</h4>
+        <Button variant='outline-dark' className="accountSalvati"
+        onClick={() => this.setState({ openRegistrazione: false , openAccesso: !openAccesso})}
+        aria-controls="collapse-accedi"
+        aria-expanded={openAccesso}>
+        Accesso
+        </Button>
+        <br></br>
+        <Collapse in={this.state.openAccesso}>
+          <div className="nuovoAccountStyle" id="collapse-accedi">
+            {this.formAccesso()}
+          </div>
+        </Collapse>
+        
+        <br></br>
+        <h4>Prima volta su Stop! Bullying? Iscriviti ora</h4>
+        <Button variant='outline-dark' className="accountSalvati"
+        onClick={() => this.setState({ openAccesso: false , openRegistrazione: !openRegistrazione})}
+        aria-controls="collapse-registrazione"
+        aria-expanded={openRegistrazione}>
+        Registrazione
+        </Button>
+        <br></br>
+        <Collapse in={this.state.openAccesso}>
+          <div className="nuovoAccountStyle" id="collapse-registrazione">
+          {this.formRegistrazione()}
+          </div>
+        </Collapse>
+        <br></br>
       </div>   
       );
     }
