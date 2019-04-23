@@ -11,7 +11,7 @@ import Style from '../../style.css';
 const LandingCarousel = () => (
     <main className="core">
         <article className="left">
-            <Carousel>
+            <Carousel interval="2000">
                 <Carousel.Item>
                 <Link to={'/telegrambot'}>
                     <img src={telegram}  alt="telegramSlide" width="800" height="400" />
