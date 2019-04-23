@@ -33,8 +33,7 @@ class App extends React.Component {
       userID: null,
       email: null,
       name: null,
-      picture: null,
-      userType: false, //false=user, true=psicologo
+      picture: null
     }
     this.setAuthenticated = this.setAuthenticated.bind(this)
     this.setRuolo = this.setRuolo.bind(this)
@@ -116,8 +115,8 @@ class App extends React.Component {
                 <Route path="/login" render={() =>
                   <Login setAuthenticated={this.setAuthenticated}
                     authenticated={this.state.authenticated}
-                    setLocalUser={this.setLocalUser}
-                    setStateUser={this.setStateUser} />
+                    setStateUser={this.setStateUser}
+                    setLocalUser={this.setLocalUser} />
                 } />
 
                 {this.state.authenticated
@@ -133,6 +132,8 @@ class App extends React.Component {
                         email={this.state.email}
                         name={this.state.name}
                         picture={this.state.picture}
+                        ruolo={this.state.ruolo}
+                        setRuolo={this.state.setRuolo}
                         setStateUser={this.setStateUser}
                         setLocalUser={this.setStateUser} />
                     } />
@@ -147,7 +148,8 @@ class App extends React.Component {
                         email={this.state.email}
                         name={this.state.name}
                         picture={this.state.picture}
-                        userType={this.state.userType}
+                        ruolo={this.state.ruolo}
+                        setRuolo={this.state.setRuolo}
                         setStateUser={this.setStateUser}
                         setLocalUser={this.setStateUser} />
                     } />

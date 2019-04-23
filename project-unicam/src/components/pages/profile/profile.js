@@ -8,22 +8,40 @@ class Profile extends Component{
         super();
         this.state = {
             nome: null,
+            email: null,
             istituto: null,
-            telefono: null
+            telefono: null,
+            ruolo: null
           }      
       }
 
-
       readUserData() {
-        const rootRef = fire.database().ref('Utente/'+this.props.userID);
+        const rootUtente = fire.database().ref('Utente/'+this.props.userID);
+        const rootPsicologo = fire.database().ref('Psicologo/'+this.props.userID);        
         
-        rootRef.on('value', snap => {
-            this.setState({
+        rootUtente.on('value', snap => {  //verifico se utente
+            if (snap.val() !== null) {  //utente
+              this.setState({
                 nome: snap.val().nome,
                 istituto: snap.val().istituto,
-                telefono: snap.val().telefono
+                telefono: snap.val().telefono,
+                ruolo: 'utente'
+              })
+            } else if (snap.val() === null) {  //se non è utente
+              rootPsicologo.on('value', snapshot => { //verifico se psicologo
+                if (snapshot.val() !== null) {  //se psicologo
+                  this.setState({
+                    nome: snapshot.val().nome,
+                    email: snapshot.val().email,
+                    ruolo: 'psicologo'
+                  })
+                } else if (snapshot.val() === null) {  //altrimenti nulla
+                  alert('problemi lettura dati account')
+                }
             })  
-        })         
+            }
+        })          
+        this.props.setStateUser()
       }
 
       writeUserData(id, no, tel, ist) {
@@ -54,14 +72,15 @@ class Profile extends Component{
       }
 
       componentDidMount() {
-        this.readUserData()
+        this.readUserData()       
       }
 
-      render () {
+      render () {        
         return (
             <div>
                 <h1>Profilo</h1>
-                <p>Ruolo: </p>
+                <p>Ruolo: {this.state.ruolo}</p>
+                <p>Ruolo: {this.props.ruolo}</p>
                 {this.props.picture === 'null'
                 ? <Button variant="outline" href="/profile" size="sm">
                     Inserisci immagine

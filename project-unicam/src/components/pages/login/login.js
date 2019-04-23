@@ -44,14 +44,27 @@ class Login extends Component{
         JSON.parse(JSON.stringify(this.state.user.photoURL)),
         JSON.parse(JSON.stringify(this.state.tipo))
       )
+      alert("tipo: "+this.state.tipo)
       this.props.setStateUser()
     }
 
     addUser() {
+      fire.database().ref(this.state.tipo +'/'+ this.state.user.uid).set({
+        nome: "",
+        email: this.state.user.email
+      }).then((data)=>{
+          //success callback
+          console.log('data ' , data)
+      }).catch((error)=>{
+          //error callback
+          console.log('error ' , error)
+      })
+    }
+
+    addUserGoogle() {
       fire.database().ref('Utente/' + this.state.user.uid).set({
         nome: this.state.user.displayName,
-        email: this.state.user.email,
-        tipo: this.state.tipo
+        email: this.state.user.email
       }).then((data)=>{
           //success callback
           console.log('data ' , data)
@@ -67,13 +80,32 @@ class Login extends Component{
         this.setUser(result.user) 
         this.setUserInfo()        
         this.props.setAuthenticated(true)
-        this.addUser()  //aggiungo l'utente al db
+        this.addUserGoogle()  //aggiungo l'utente al db
       })
       .catch((error) => {
         if(error.code === 'auth/account-exists-with-different-credential') {
           alert("Credenziali di accesso  collegate ad un altro account");
         } else alert("Errore login:"+error)
       });
+    }
+
+    getUserType() {
+        const rootUtente = fire.database().ref('Utente/'+this.state.user.uid);
+        const rootPsicologo = fire.database().ref('Psicologo/'+this.state.user.uid);        
+        
+        rootUtente.on('value', snap => {  //verifico se utente
+            if (snap.val() !== null) {  //utente
+              this.setTipo("utente");
+            } else if (snap.val() === null) {  //se non è utente
+              rootPsicologo.on('value', snapshot => { //verifico se psicologo
+                if (snapshot.val() !== null) {  //se psicologo
+                  this.setTipo("psicologo");
+                } else if (snapshot.val() === null) {  //altrimenti nulla
+                  alert('problemi lettura dati account')
+                }
+              })  
+            }
+        })
     }
   
     autenticaEmailPassword (event) {    
@@ -82,6 +114,7 @@ class Login extends Component{
       fire.auth().signInWithEmailAndPassword(email, password)
         .then((result) => {       
         this.setUser(result.user)  
+        //this.getUserType()
         this.setUserInfo()        
         this.props.setAuthenticated(true)
         }).catch((error) => {
@@ -100,20 +133,21 @@ class Login extends Component{
       const email = this.emailInputRegistrazione.value
       const password = this.passwordInputRegistrazione.value
       this.setState({
-        tipo: this.tipoInput.value
-      })      
+        tipo: this.tipoInputRegistrazione.value
+      })
       fire.auth().createUserWithEmailAndPassword(email, password)
       .then((result) => {    
         this.setUser(result.user) 
         this.setUserInfo()        
         this.props.setAuthenticated(true)
         this.addUser()  //aggiungo l'utente al db
+        alert(this.state.tipo + " aggiunto correttamente")
       }).catch((error) => {
         if(error.code === 'auth/weak-password') {
           alert("La password deve contenere almeno 6 caratteri");
         } else if (error.code === 'auth/invalid-email') {
           alert("Email non valida");
-        } else alert("Errore creazione account:"+error)
+        } else alert("Errore creazione account: "+error)
       })          
       event.preventDefault()
     }
@@ -164,9 +198,9 @@ class Login extends Component{
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlSelect1">
           <Form.Label>Sono uno</Form.Label>
-            <Form.Control as="select" ref={(input) => { this.tipoInput = input }}>
-              <option>Studente</option>
+            <Form.Control as="select" ref={(input) => { this.tipoInputRegistrazione = input }}>
               <option>Psicologo</option>
+              <option>Utente</option>
               <option>Altro</option>
             </Form.Control>
           </Form.Group>
