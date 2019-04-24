@@ -13,33 +13,33 @@ class Footer extends Component {
             <div>
                 {this.props.authenticated
                     ?
-                    <Navbar fixed="bottom" bg="dark" variant="dark" expand="dark" className="navbar">
+                    <Navbar fixed="bottom" bg="info" variant="light" expand="light" className="navbar">
 
                         <Nav.Item>
-                            <Button className="footerButton" href="/" variant="dark">
+                            <Button className="footerButton" href="/" variant="info">
                                 <FaHome className="footericon" />
-                                <p className="footerText">Home</p>
+                                <p className="footerText" style={{fontWeight:'bold'}}>Home</p>
                             </Button>
                         </Nav.Item>
 
                         <Nav.Item>
-                            <Button className="footerButton" href="/telegrambot" variant="dark">
+                            <Button className="footerButton" href="/telegrambot" variant="info">
                                 <FaTelegramPlane className="footericon" />
-                                <p className="footerText">Bot</p>
+                                <p className="footerText" style={{fontWeight:'bold'}}>Bot</p>
                             </Button>
                         </Nav.Item>
 
                         <Nav.Item>
-                            <Button className="footerButton" href="/blog" variant="dark">
+                            <Button className="footerButton" href="/blog" variant="info">
                                 <FaBloggerB className="footericon" />
-                                <p className="footerText">Blog</p>
+                                <p className="footerText" style={{fontWeight:'bold'}}>Blog</p>
                             </Button>
                         </Nav.Item>
 
                         <Nav.Item>
-                            <Button className="footerButton" href="/telefona" variant="dark">
+                            <Button className="footerButton" href="/telefona" variant="info">
                                 <FaPhone className="footericonPhone" />
-                                <p className="footerText">Chiama</p>
+                                <p className="footerText" style={{fontWeight:'bold'}}>Chiama</p>
                             </Button>
                         </Nav.Item>
                     </Navbar>

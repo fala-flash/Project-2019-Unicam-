@@ -82,10 +82,10 @@ class Profile extends Component{
                 <p>Ruolo: {this.state.ruolo}</p>
                 <p>Ruolo: {this.props.ruolo}</p>
                 {this.props.picture === 'null'
-                ? <Button variant="outline" href="/profile" size="sm">
+                ? <Button variant="info" href="/profile" size="sm">
                     Inserisci immagine
                   </Button>
-                : <Button variant="outline" href="/profile" size="sm">
+                : <Button variant="info" href="/profile" size="sm">
                     <img className="profileImg" src={this.props.picture} alt="UserPicture"/>
                   </Button> 
                 }
@@ -114,7 +114,7 @@ class Profile extends Component{
                     <Form.Group controlId="formBasicChecbox">
                     </Form.Group>
                     <br></br>            
-                    <Button variant="outline-dark" type="submit">
+                    <Button variant="info" type="submit" style={{fontWeight:'bold'}}>
                         Aggiorna
                     </Button>                       
                 </Form>

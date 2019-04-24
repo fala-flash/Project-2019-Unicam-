@@ -5,18 +5,18 @@ import LandingCarousel from './landingCarousel';
 //eslint-disable-next-line
 import Style from '../../style.css';
 
-function Welcome() {
+function Landing() {
     return (
         <div>
-            <h1>Benvenuto!</h1>
+            <h1 className="text-info">Benvenuto!</h1>
             <br></br>
             <LandingCarousel />
             <br></br>
-            <Button variant="outline-dark" type="submit" href="/login">
+            <Button variant="info" type="submit" href="/login" style={{fontWeight:'bold'}}>
                 ENTRA !
             </Button>
         </div>
     );
 }
 
-export default Welcome;
+export default Landing;

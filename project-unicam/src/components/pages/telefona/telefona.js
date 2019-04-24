@@ -7,7 +7,7 @@ function Telefona() {
     return (
         <div> 
             <Alert className="alertTelefona" variant="success">
-            <Alert.Heading>Chiama!</Alert.Heading>
+            <Alert.Heading style={{fontWeight:'bold'}}>Chiama!</Alert.Heading>
             <p>
             Per ogni emergenza, noi siamo disponibili e volenterosi di ascoltarti. Chiamaci! </p>
             <p>
@@ -15,7 +15,7 @@ function Telefona() {
             </p>
             <hr />
             <p className="mb-0">
-            <Button variant="outline-success" size="lg">
+            <Button variant="outline-success" size="lg" style={{fontWeight:'bold'}}>
                 <a className="chiamaText" text="white" href="tel:+393315909161">CHIAMA</a>
             </Button>
             </p>

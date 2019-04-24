@@ -167,7 +167,7 @@ class Login extends Component{
           <Form.Group controlId="formBasicChecbox">
           </Form.Group>
           <br></br>            
-          <Button variant="outline-dark" type="submit">
+          <Button variant="info" type="submit" style={{fontWeight:'bold'}}>
             Accedi
           </Button>                       
         </Form>
@@ -175,7 +175,7 @@ class Login extends Component{
         <p>Oppure</p>
         <div className="googleCentrato">
           <br/>
-          <GoogleLoginButton onClick={() => { this.authentication(providerGoogle) }}>Accedi con Google</GoogleLoginButton>
+          <GoogleLoginButton style={{fontWeight:'bold'}} onClick={() => { this.authentication(providerGoogle) }}>Accedi con Google</GoogleLoginButton>
           <br/>
         </div>
         </div>
@@ -205,7 +205,7 @@ class Login extends Component{
             </Form.Control>
           </Form.Group>
           <br></br>            
-          <Button variant="outline-dark" type="submit">
+          <Button variant="info" type="submit" style={{fontWeight:'bold'}}>
             Registrati
           </Button>                       
         </Form>
@@ -223,7 +223,7 @@ class Login extends Component{
         <h1>Login/Registrazione</h1>
         <br></br>
         <h4>Hai già un account Stop! Bullying?</h4>
-        <Button variant='outline-dark' className="accessoButton"
+        <Button variant='info' className="accessoButton" style={{fontWeight:'bold'}}
           onClick={() => this.setState({ openRegistrazione: false , openAccesso: !openAccesso})}
           aria-controls="collapse-accedi"
           aria-expanded={openAccesso}>
@@ -238,7 +238,7 @@ class Login extends Component{
         
         <br></br>
         <h4>Prima volta su Stop! Bullying?</h4>
-        <Button variant='outline-dark' className="accessoButton"
+        <Button variant='info' className="accessoButton" style={{fontWeight:'bold'}}
           onClick={() => this.setState({ openAccesso: false , openRegistrazione: !openRegistrazione})}
           aria-controls="collapse-registrazione"
           aria-expanded={openRegistrazione}>

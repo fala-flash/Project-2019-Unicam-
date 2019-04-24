@@ -18,7 +18,7 @@ function Faq
             <br /> <br /> <br />
 
 
-            <Card  className="faqcard" bg="dark" text="white" style={{ width: '22rem' }}>
+            <Card  className="faqcard" bg="info" text="white" style={{ width: '22rem' }}>
     <Card.Header><h3>Che cosa si intende con bullismo? </h3></Card.Header>
     <Card.Body>
       <Card.Text>
@@ -35,7 +35,7 @@ function Faq
 
 
 
-            <Card  className="faqcard" bg="dark" text="white" style={{ width: '22rem' }}>
+            <Card  className="faqcard" bg="info" text="white" style={{ width: '22rem' }}>
     <Card.Header><h3>In Italia, quanto è diffuso il bullismo ? </h3></Card.Header>
     <Card.Body>
       <Card.Text>
@@ -51,7 +51,7 @@ volte a settimana
   </Card>
   <br />
 
-  <Card  className="faqcard" bg="dark" text="white" style={{ width: '22rem' }}>
+  <Card  className="faqcard" bg="info" text="white" style={{ width: '22rem' }}>
     <Card.Header><h3>Ed il CyberBullismo? </h3></Card.Header>
     <Card.Body>
       <Card.Text>
@@ -65,7 +65,7 @@ strumenti di comunicazione.
   </Card>
   <br />
 
-  <Card  className="faqcard" bg="dark" text="white" style={{ width: '22rem' }}>
+  <Card  className="faqcard" bg="info" text="white" style={{ width: '22rem' }}>
     <Card.Header><h3>Quali sono le conseguenze del bullismo? </h3></Card.Header>
     <Card.Body>
       <Card.Text>
@@ -82,7 +82,7 @@ strumenti di comunicazione.
   </Card>
   <br />
 
-  <Card  className="faqcard" bg="dark" text="white" style={{ width: '22rem' }}>
+  <Card  className="faqcard" bg="info" text="white" style={{ width: '22rem' }}>
     <Card.Header><h3>Secondo i ragazzi come si risolve una situazione di bullismo? </h3></Card.Header>
     <Card.Body>
       <Card.Text>
@@ -97,7 +97,7 @@ ritiene opportuno rivolgersi agli insegnanti.
   </Card>
   <br />
 
-  <Card  className="faqcard" bg="dark" text="white" style={{ width: '22rem' }}>
+  <Card  className="faqcard" bg="info" text="white" style={{ width: '22rem' }}>
     <Card.Header><h3>Come combatterlo? </h3></Card.Header>
     <Card.Body>
       <Card.Text>

@@ -11,13 +11,12 @@ import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import Login from './components/pages/login/login';
 import Logout from './components/pages/logout/logout';
-import Welcome from './components/pages/landing/landing';
+import Landing from './components/pages/landing/landing';
 import Profile from './components/pages/profile/profile';
 import Info from './components/pages/info/info';
 import Telegrambot from './components/pages/telegrambot/telegrambot';
 import Faq from './components/pages/faq/faq';
 import Telefona from './components/pages/telefona/telefona';
-import Helpline from './components/pages/helpline/helpline';
 import Blog from './components/pages/blog/blog';
 
 
@@ -111,7 +110,7 @@ class App extends React.Component {
           <BrowserRouter>
             <div className="pageStyle">
               <Switch>
-                <Route exact path="/" component={Welcome} />
+                <Route exact path="/" component={Landing} />
                 <Route path="/login" render={() =>
                   <Login setAuthenticated={this.setAuthenticated}
                     authenticated={this.state.authenticated}
@@ -140,7 +139,6 @@ class App extends React.Component {
                     <Route path="/info" component={Info} />
                     <Route path="/telegrambot" component={Telegrambot} />
                     <Route path="/telefona" component={Telefona} />
-                    <Route path="/helpline" component={Helpline} />
                     <Route path="/faq" component={Faq} />
                     <Route path="/blog" render={() =>
                       <Blog

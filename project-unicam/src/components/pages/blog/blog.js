@@ -99,21 +99,21 @@ class Blog extends Component {
         <Form onSubmit={() => { this.aggiungiSegnalazione() }} ref={(form) => { this.segnForm = form }}>
           <Card bg="info" text="white" className="cardStyle">
             {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-            <Card.Header>Segnalazione</Card.Header>
+            <Card.Header style={{fontWeight:'bold'}}>Segnalazione</Card.Header>
             <Card.Body>
               {/* <Card.Title></Card.Title> */}
               <Card.Text>
                 <Form.Group controlId="formBasicInput">
                   {/* <Form.Label> Invia la segnalazione completando i seguenti campi: </Form.Label><br /><br />  */}
                   <Form.Group className="testoForm" controlId="formBasicInput">
-                    <Form.Label> Testo: </Form.Label>
+                    <Form.Label style={{fontWeight:'bold'}}> Testo: </Form.Label>
                     <Form.Control className="testoForm" as="textarea" rows="2" ref={(input) => { this.testoSegnalazione = input }} />
                   </Form.Group>
                 </Form.Group>
               </Card.Text>
-              <Button className="commentaButton" variant="success" type="submit">Invia<FiSend className="blogIcon" />
+              <Button style={{fontWeight:'bold'}} className="commentaButton" variant="success" type="submit">Invia<FiSend className="blogIcon" />
               </Button>
-              <Button variant="danger"
+              <Button variant="danger" style={{fontWeight:'bold'}}
                 onClick={() => { this.resetForm() }} ref={(form) => { this.segnForm = form }}>Cancella
                       <TiDeleteOutline className="blogIcon" />
               </Button>
