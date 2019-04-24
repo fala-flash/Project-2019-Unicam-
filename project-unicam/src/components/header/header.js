@@ -10,7 +10,7 @@ class Header extends Component {
         return (
             <div>                
                 <Navbar fixed="top" bg="info" variant="light" expand="light">
-                    <Navbar.Brand style={{color:'white', fontWeight:'bold'}} href="/">ProjectUnicam</Navbar.Brand>
+                    <Navbar.Brand style={{color:'white', fontWeight:'bold'}} href="/">Stop! Bullying</Navbar.Brand>
                     <Navbar.Toggle style={{backgroundColor:'white'}}aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
