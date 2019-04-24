@@ -3,7 +3,12 @@ import { fire } from '../../../config/FirebaseConfig';
 import { Button, Form, Card, Collapse } from 'react-bootstrap';
 
 import { FiMessageCircle, FiSend, FiInfo } from 'react-icons/fi';
+import { FaPhone, FaHome } from 'react-icons/fa';
 import { TiDeleteOutline } from 'react-icons/ti';
+import { MdEmail } from "react-icons/md";
+
+//eslint-disable-next-line
+import Style from '../../style.css';
 
 class Blog extends Component {
 
@@ -245,10 +250,18 @@ class Blog extends Component {
 
               <Collapse in={this.state.buttonContatta[index]}>
                 <div className="" id="collapse-info">
-                  <p>{this.state.nome}</p>
-                  <p>{this.state.email}</p>
-                  <p>{this.state.istituto}</p>
-                  <p>{this.state.telefono}</p>
+                <div className="infoCard">
+                <Card bg="info" text="white" style={{fontWeight:'bold' }}>
+                    <Card.Body>
+                        <ul style={{listStyleType: 'disc'}}>
+                          <li><p>{this.state.nome}</p></li>
+                          <li><a href="tel:" >{this.state.telefono}</a><FaPhone/></li>
+                          <li><a href="https://www.google.com/search?q=">{this.state.istituto}</a><FaHome/></li>
+                          <li><a style={{color:'white'}} href="mailto:">{this.state.email}</a><MdEmail/></li>
+                        </ul>
+                    </Card.Body>
+                </Card>
+                </div>
                 </div>
               </Collapse>
             </div>
