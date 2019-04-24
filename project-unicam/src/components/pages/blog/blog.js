@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { fire } from '../../../config/FirebaseConfig';
 import { Button, Form, Card, Collapse } from 'react-bootstrap';
 
-import { FiMessageCircle, FiPhone, FiSend, FiInfo } from 'react-icons/fi';
+import { FiMessageCircle, FiSend, FiInfo } from 'react-icons/fi';
 import { TiDeleteOutline } from 'react-icons/ti';
 
 class Blog extends Component {
@@ -139,9 +139,14 @@ class Blog extends Component {
           alert("Impossibile recuperare dati utente")  
         }
     })
-    this.state.buttonCommenta[index] = false
-    this.state.buttonContatta[index] = !this.state.buttonContatta[index]
-    event.preventDefault()
+      let stateCommenta = this.state.buttonCommenta.slice(); //creo un clone dello state buttonCommenta
+      stateCommenta[index] = false; //setto a false lo stato dell'index dell'array
+      this.setState({buttonCommenta: stateCommenta}); //setto lo state così, altrimenti da warning
+      //faccio la stessa cosa per buttonContatta
+      let stateContatta = this.state.buttonContatta.slice();
+      stateContatta[index] = !this.state.buttonContatta[index];
+      this.setState({buttonContatta: stateContatta});
+      event.preventDefault()
   }
 
   commentaUtente(event, index) {
@@ -154,7 +159,7 @@ class Blog extends Component {
         //error callback
         console.log('error ' , error)
     })
-    fire.database().ref('Segnalazioni/'+ this.state.codice[index]).set({
+    fire.database().ref('Segnalazioni/'+ this.state.codice[index]).update({
       visto: "true"
     }).then((data)=>{
         //success callback
@@ -163,9 +168,14 @@ class Blog extends Component {
         //error callback
         console.log('error ' , error)
     })
-    this.state.buttonContatta[index] = false
-    this.state.buttonCommenta[index] = !this.state.buttonCommenta[index]
-    event.preventDefault()
+      let stateContatta2 = this.state.buttonContatta.slice(); //creo un clone dello state buttonContatta
+      stateContatta2[index] = false; //setto a false lo stato dell'index dell'array
+      this.setState({buttonContatta: stateContatta2}); //setto lo state così, altrimenti da warning
+      //faccio la stessa cosa per buttonCommenta
+      let stateCommenta2 = this.state.buttonCommenta.slice();
+      stateCommenta2[index] = !this.state.buttonCommenta[index];
+      this.setState({buttonContatta: stateCommenta2});
+      event.preventDefault()
   }
 
   getSegnalazioni() {
