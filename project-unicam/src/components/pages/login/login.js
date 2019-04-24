@@ -154,28 +154,28 @@ class Login extends Component{
       return (
         <div className="formAccesso">
           <Form className="formLogin" onSubmit={(event) => this.autenticaEmailPassword(event)}>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Inserisci Email" ref={(input) => { this.emailInputAccesso = input }}/>
-          </Form.Group>
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Inserisci Password" ref={(input) => { this.passwordInputAccesso = input }}/>
-          </Form.Group>
-          <Form.Group controlId="formBasicChecbox">
-          </Form.Group>
-          <br></br>            
-          <Button variant="info" type="submit" style={{fontWeight:'bold'}}>
-            Accedi
-          </Button>                       
-        </Form>
-        <br></br>
-        <p>Oppure</p>
-        <div className="googleCentrato">
-          <br/>
-          <GoogleLoginButton style={{fontWeight:'bold'}} onClick={() => { this.authentication(providerGoogle) }}>Accedi con Google</GoogleLoginButton>
-          <br/>
-        </div>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Email</Form.Label>
+              <Form.Control type="email" placeholder="Inserisci Email" ref={(input) => { this.emailInputAccesso = input }}/>
+            </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" placeholder="Inserisci Password" ref={(input) => { this.passwordInputAccesso = input }}/>
+            </Form.Group>
+            <Form.Group controlId="formBasicChecbox">
+            </Form.Group>
+            <br></br>            
+            <Button variant="info" type="submit" style={{fontWeight:'bold'}}>
+              Accedi
+            </Button>                       
+          </Form>
+          <br></br>
+          <p>Oppure</p>
+          <div className="googleCentrato">
+            <br/>
+            <GoogleLoginButton style={{fontWeight:'bold'}} onClick={() => { this.authentication(providerGoogle) }}>Accedi con Google</GoogleLoginButton>
+            <br/>
+          </div>
         </div>
       )            
     }

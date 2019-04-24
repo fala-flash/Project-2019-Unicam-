@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { fire } from '../../../config/FirebaseConfig';
-import { Button, Form, Card } from 'react-bootstrap';
+import { Button, Form, Card, Collapse } from 'react-bootstrap';
 
-import { FiMessageCircle, FiPhone, FiSend } from 'react-icons/fi';
+import { FiMessageCircle, FiPhone, FiSend, FiInfo } from 'react-icons/fi';
 import { TiDeleteOutline } from 'react-icons/ti';
 
 class Blog extends Component {
@@ -20,7 +20,7 @@ class Blog extends Component {
       nomeUtente: null,
       telefonoUtente: null
     }
-    this.contattaUtente = this.contattaUtente.bind(this)
+    //this.contattaUtente = this.contattaUtente.bind(this)
   }
 
   uniqueIDCode() {
@@ -125,7 +125,37 @@ class Blog extends Component {
   }
 
   contattaUtente(event, index) {
-    alert("ID:")
+    //alert(this.state.id[index])
+    const rootUtente = fire.database().ref('Utente/'+this.state.id[index]);
+    rootUtente.on('value', snap => {  //verifico se utente
+        if (snap.val() !== null) {  //utente
+          this.setState({
+            nome: snap.val().nome,
+            email: snap.val().email,
+            istituto: snap.val().istituto,
+            telefono: snap.val().telefono
+          })
+        } else if (snap.val() === null) {  //se non è utente
+          alert("Impossibile recuperare dati utente")  
+        }
+    })
+    this.state.buttonCommenta[index] = false
+    this.state.buttonContatta[index] = !this.state.buttonContatta[index]
+    event.preventDefault()
+  }
+
+  commentaUtente(event, index) {
+    fire.database().ref('Discussioni/'+ this.state.codice[index]+'/'+this.props.userID).set({
+      commento: "commentoPsicologo"
+    }).then((data)=>{
+        //success callback
+        console.log('data ' , data)
+    }).catch((error)=>{
+        //error callback
+        console.log('error ' , error)
+    })
+    this.state.buttonContatta[index] = false
+    this.state.buttonCommenta[index] = !this.state.buttonCommenta[index]
     event.preventDefault()
   }
 
@@ -145,28 +175,64 @@ class Blog extends Component {
                   <Card.Text>
                     {this.state.messaggio[index]}
                   </Card.Text>
-                  <Button className="commentaButton" variant="outline-light">Commenta
-                    <FiMessageCircle className="blogIcon" /></Button>
-                  <Button variant="outline-light" type="submit"
-                    onClick={(event) => {this.contattaUtente(event, index)}}>Contatta
-                    <FiPhone className="blogIcon" /></Button>
+                  <Button className="blogButton" variant="outline-light">Commenta
+                    <FiMessageCircle className="blogIcon"/></Button>
+                  {/* <Button variant="outline-light" className="blogButton"
+                    //onClick={(event) => {this.contattaUtente(event, index)}}
+                    >Contatta<FiPhone className="blogIcon" />
+                  </Button> */}
+                  <Button variant="outline-light" className="blogButton"
+                    //onClick={(event) => {this.contattaUtente(event, index)}}
+                    >Info Utente<FiInfo className="blogIcon"/>
+                  </Button>
                 </Card.Body>
               </Card>
               :
-              <Card bg="danger" text="white" className="cardStyle">
-                {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-                <Card.Header>Segnalazione #{codice} stato: {this.state.visto[index]}</Card.Header>
-                <Card.Body>
-                  <Card.Title>{this.state.id[index]}</Card.Title>
-                  <Card.Text>
-                    {this.state.messaggio[index]}
-                  </Card.Text>
-                  <Button className="commentaButton" variant="outline-light">Commenta
-                                <FiMessageCircle className="blogIcon" /></Button>
-                  <Button variant="outline-light">Contatta
-                                <FiPhone className="blogIcon" /></Button>
-                </Card.Body>
-              </Card>
+              <div>
+                <Card bg="danger" text="white" className="cardStyle">
+                  {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+                  <Card.Header><Card.Title>Segnalazione #{codice} stato: {this.state.visto[index]}</Card.Title></Card.Header>
+                  <Card.Body>
+                    {/* <Card.Title>{this.state.id[index]}</Card.Title> */}
+                    <Card.Text>
+                      {this.state.messaggio[index]}
+                    </Card.Text>
+                    <Button className="blogButton" variant="outline-light"
+                      onClick={(event) => {this.commentaUtente(event, index)}}
+                      aria-controls="collapse-commenta"
+                      aria-expanded={this.state.buttonCommenta[index]}>Commenta
+                      <FiMessageCircle className="blogIcon"/>
+                    </Button>
+                    {/* <Button variant="outline-light" className="blogButton"
+                      onClick={(event) => {this.contattaUtente(event, index)}}
+                      aria-controls="collapse-accedi" 
+                      aria-expanded={this.state.buttonContatta[index]}>Contatta
+                      <FiPhone className="blogIcon" />
+                    </Button> */}
+                    <Button className="blogButton" variant="outline-light"
+                      onClick={(event) => {this.contattaUtente(event, index)}}
+                      aria-controls="collapse-info"
+                      aria-expanded={this.state.buttonContatta[index]}>Info Utente
+                      <FiInfo className="blogIcon"/>
+                    </Button>
+                  </Card.Body>
+                </Card>
+
+                <Collapse in={this.state.buttonCommenta[index]}>
+                  <div className="" id="collapse-commenta">
+                  <p>AAA</p>
+                </div>
+              </Collapse>
+
+              <Collapse in={this.state.buttonContatta[index]}>
+                <div className="" id="collapse-info">
+                  <p>{this.state.nome}</p>
+                  <p>{this.state.email}</p>
+                  <p>{this.state.istituto}</p>
+                  <p>{this.state.telefono}</p>
+                </div>
+              </Collapse>
+            </div>
             }
           </div>
         ))}
@@ -176,7 +242,7 @@ class Blog extends Component {
 
   componentDidMount() {
     this.readSegnalazioni()
-    this.uniqueIDCode()
+    //this.uniqueIDCode()
   }
 
   render() {
