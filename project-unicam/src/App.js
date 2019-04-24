@@ -32,7 +32,9 @@ class App extends React.Component {
       userID: null,
       email: null,
       name: null,
-      picture: null
+      picture: null,
+      istututo: null,
+      telefono: null,
     }
     this.setAuthenticated = this.setAuthenticated.bind(this)
     this.setRuolo = this.setRuolo.bind(this)
@@ -55,13 +57,23 @@ class App extends React.Component {
     localStorage.setItem('userName', na);
   }
 
+  setLocalTelefono(tel) {
+    localStorage.setItem('userTelefono', tel);
+  }
+
+  setLocalIstituto(is) {
+    localStorage.setItem('userIstituto', is);
+  }
+
   setStateUser() {
     this.setState({
       userID: localStorage.getItem('userID'),
       email: localStorage.getItem('userEmail'),
       name: localStorage.getItem('userName'),
       picture: localStorage.getItem('userPicture'),
-      ruolo: localStorage.getItem('userRole')
+      ruolo: localStorage.getItem('userRole'),
+      ruolo: localStorage.getItem('userTelefono'),
+      ruolo: localStorage.getItem('userIstituto')
     })
   }
 
@@ -140,10 +152,14 @@ class App extends React.Component {
                         name={this.state.name}
                         picture={this.state.picture}
                         ruolo={this.state.ruolo}
+                        istituto={this.state.istituto}
+                        telefono={this.state.telefono}
                         setRuolo={this.state.setRuolo}
                         setStateUser={this.setStateUser}
+                        setLocalTelefono={this.setLocalTelefono}
+                        setLocalName={this.setLocalName}
                         setLocalRole={this.setLocalRole}
-                        setLocalName={this.setsetLocalName}
+                        setLocalIstituto={this.setLocalIstituto}
                         setLocalUser={this.setLocalUser} />
                     } />
                     <Route path="/info" component={Info} />

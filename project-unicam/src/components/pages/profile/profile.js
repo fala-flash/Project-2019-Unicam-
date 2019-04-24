@@ -28,6 +28,7 @@ class Profile extends Component{
                 ruolo: 'Utente'
               })
               //imposto ruolo e state App
+              //this.props.setLocalIstituto(this.state.istituto)
               this.props.setLocalRole(this.state.ruolo)
               this.props.setStateUser()
             } else if (snap.val() === null) {  //se non è utente
@@ -36,10 +37,14 @@ class Profile extends Component{
                   this.setState({
                     nome: snapshot.val().nome,
                     email: snapshot.val().email,
+                    istituto: snapshot.val().istituto,
                     telefono: snapshot.val().telefono,
                     ruolo: 'Psicologo'
                   })
                   //imposto ruolo e state App
+                  this.props.setLocalName(this.state.nome)
+                  this.props.setLocalTelefono(this.state.telefono)
+                  this.props.setLocalIstituto(this.state.istituto)
                   this.props.setLocalRole(this.state.ruolo)
                   this.props.setStateUser()
                 } else if (snapshot.val() === null) {  //altrimenti nulla
@@ -51,7 +56,7 @@ class Profile extends Component{
       }
 
       writeUserData(id, no, tel, ist) {
-        fire.database().ref(this.props.ruolo+'/' + id).set({
+        fire.database().ref(this.props.ruolo + '/' + id).update({
             nome: no,
             telefono: tel,
             istituto: ist
@@ -68,8 +73,7 @@ class Profile extends Component{
         const nome = this.aggiornaNome.value
         const istituto = this.aggiornaIstituto.value            
         const telefono = this.aggiornaTelefono.value
-        if (istituto !== '' && telefono !== '') {     
-          this.props.setLocalName(nome)     
+        if (nome !== '' && istituto !== '' && telefono !== '') {
           this.writeUserData(this.props.userID, nome, telefono, istituto)
           //this.props.setLocalName(nome)
           //this.props.setStateUser()
@@ -81,14 +85,13 @@ class Profile extends Component{
       }
 
       componentDidMount() {
-        this.readUserData()       
+        this.readUserData();
       }
 
       render () {        
         return (
             <div>
-                <h3>Profilo</h3>
-                <p>Ruolo: {this.props.ruolo}</p>
+                <h3>Profilo {this.props.ruolo}</h3>
                 {this.props.picture === 'null'
                 ? <Button variant="info" href="/profile" size="sm">
                     Inserisci immagine
@@ -100,12 +103,28 @@ class Profile extends Component{
                 <Form className="formDati" onSubmit={(event) => this.aggiornaDati(event)} ref={(form) => { this.datiForm = form }}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Nome</Form.Label>
-                        {this.state.name === 'null'
+                        {this.props.name === 'null'
                         ?   <Form.Control className="formDatiLabel" type="text" placeholder="inserisci nome" ref={(input) => { this.aggiornaNome = input }}/>
                         :   <Form.Control className="formDatiLabel" type="text" value={this.state.nome} ref={(input) => { this.aggiornaNome = input }}/>
                         }                        
                     </Form.Group>
+
                     <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Istituto</Form.Label>
+                        {this.props.istituto === 'null'
+                        ?   <Form.Control className="formDatiLabel" type="text" placeholder="inserisci istituto" ref={(input) => { this.aggiornaIstituto = input }}/>
+                        :   <Form.Control className="formDatiLabel" type="text" value={this.state.istituto} ref={(input) => { this.aggiornaIstituto = input }}/>
+                        }
+                    </Form.Group>
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Telefono</Form.Label>
+                        {this.props.telefono === 'null'
+                        ?   <Form.Control className="formDatiLabel" type="text" placeholder="inserisci telefono" ref={(input) => { this.aggiornaTelefono = input }}/>
+                        :   <Form.Control className="formDatiLabel" type="text" value={this.state.telefono} ref={(input) => { this.aggiornaTelefono = input }}/>
+                        }
+                    </Form.Group>
+
+                    {/* <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
                         <Form.Control className="formDatiLabel" type="text" defaultValue={this.props.email} ref={(input) => { this.aggiornaEmail = input }}/>
                     </Form.Group>                    
@@ -116,7 +135,7 @@ class Profile extends Component{
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Telefono</Form.Label>
                         <Form.Control className="formDatiLabel" type="text" placeholder={this.state.telefono} ref={(input) => { this.aggiornaTelefono = input }}/>
-                    </Form.Group>
+                    </Form.Group> */}
                     <Form.Group controlId="formBasicChecbox">
                     </Form.Group>
                     <br></br>            
