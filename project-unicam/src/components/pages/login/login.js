@@ -49,7 +49,9 @@ class Login extends Component{
     addUser() {
       fire.database().ref(this.state.tipo +'/'+ this.state.user.uid).set({
         nome: "",
-        email: this.state.user.email
+        email: this.state.user.email,
+        istituto: "",
+        telefono: ""
       }).then((data)=>{
           //success callback
           console.log('data ' , data)
@@ -60,9 +62,11 @@ class Login extends Component{
     }
 
     addUserGoogle() {
-      fire.database().ref('Utente/' + this.state.user.uid).set({
+      fire.database().ref('Utente/' + this.state.user.uid).update({
         nome: this.state.user.displayName,
-        email: this.state.user.email
+        email: this.state.user.email,
+        istituto: "",
+        telefono: ""
       }).then((data)=>{
           //success callback
           console.log('data ' , data)
