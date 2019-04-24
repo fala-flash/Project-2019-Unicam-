@@ -154,6 +154,15 @@ class Blog extends Component {
         //error callback
         console.log('error ' , error)
     })
+    fire.database().ref('Segnalazioni/'+ this.state.codice[index]).set({
+      visto: "true"
+    }).then((data)=>{
+        //success callback
+        console.log('data ' , data)
+    }).catch((error)=>{
+        //error callback
+        console.log('error ' , error)
+    })
     this.state.buttonContatta[index] = false
     this.state.buttonCommenta[index] = !this.state.buttonCommenta[index]
     event.preventDefault()
