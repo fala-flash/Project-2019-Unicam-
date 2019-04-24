@@ -108,7 +108,10 @@ class Profile extends Component{
                         :   <Form.Control className="formDatiLabel" type="text" value={this.state.nome} ref={(input) => { this.aggiornaNome = input }}/>
                         }                        
                     </Form.Group>
-
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control className="formDatiLabel" type="text" defaultValue={this.props.email} ref={(input) => { this.aggiornaEmail = input }}/>
+                    </Form.Group>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Istituto</Form.Label>
                         {this.props.istituto === 'null'

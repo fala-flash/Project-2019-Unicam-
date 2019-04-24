@@ -72,8 +72,8 @@ class App extends React.Component {
       name: localStorage.getItem('userName'),
       picture: localStorage.getItem('userPicture'),
       ruolo: localStorage.getItem('userRole'),
-      ruolo: localStorage.getItem('userTelefono'),
-      ruolo: localStorage.getItem('userIstituto')
+      telefono: localStorage.getItem('userTelefono'),
+      istituto: localStorage.getItem('userIstituto')
     })
   }
 

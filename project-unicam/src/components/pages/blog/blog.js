@@ -15,15 +15,17 @@ class Blog extends Component {
   constructor() {
     super();
     this.state = {
+      nome: null,
+      email: null,
+      istituto: null,
+      telefono: null,
       codice: [],
       messaggio: [],
       id: [],
       visto: [],
       buttonCommenta: [],
       buttonContatta: [],
-      indexModal: null,
-      nomeUtente: null,
-      telefonoUtente: null
+      indexModal: null
     }
     //this.contattaUtente = this.contattaUtente.bind(this)
   }
@@ -191,31 +193,67 @@ class Blog extends Component {
             <br />
             {this.state.visto[index] === 'true'
               ?
+              <div>
               <Card bg="success" text="white" className="cardStyle">
                 {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-                <Card.Header>Segnalazione #{codice} visto: {this.state.visto[index]}</Card.Header>
+                <Card.Header><Card.Title>Segnalazione #{codice}</Card.Title></Card.Header>
                 <Card.Body>
-                  <Card.Title>{this.state.id[index]}</Card.Title>
                   <Card.Text>
                     {this.state.messaggio[index]}
                   </Card.Text>
-                  <Button className="blogButton" variant="outline-light">Commenta
-                    <FiMessageCircle className="blogIcon"/></Button>
-                  {/* <Button variant="outline-light" className="blogButton"
-                    //onClick={(event) => {this.contattaUtente(event, index)}}
-                    >Contatta<FiPhone className="blogIcon" />
-                  </Button> */}
-                  <Button variant="outline-light" className="blogButton"
-                    //onClick={(event) => {this.contattaUtente(event, index)}}
-                    >Info Utente<FiInfo className="blogIcon"/>
-                  </Button>
+                  <Button className="blogButton" variant="outline-light"
+                      onClick={(event) => {this.commentaUtente(event, index)}}
+                      aria-controls="collapse-commenta"
+                      aria-expanded={this.state.buttonCommenta[index]}>Commenta
+                      <FiMessageCircle className="blogIcon"/>
+                    </Button>
+                    {/* <Button variant="outline-light" className="blogButton"
+                      onClick={(event) => {this.contattaUtente(event, index)}}
+                      aria-controls="collapse-accedi" 
+                      aria-expanded={this.state.buttonContatta[index]}>Contatta
+                      <FiPhone className="blogIcon" />
+                    </Button> */}
+                    <Button className="blogButton" variant="outline-light"
+                      onClick={(event) => {this.contattaUtente(event, index)}}
+                      aria-controls="collapse-info"
+                      aria-expanded={this.state.buttonContatta[index]}>Info Utente
+                      <FiInfo className="blogIcon"/>
+                    </Button>
                 </Card.Body>
               </Card>
+
+              <Collapse in={this.state.buttonCommenta[index]}>
+              <div className="" id="collapse-commenta">
+                <p>AAA</p>
+              </div>
+              </Collapse>
+
+              <Collapse in={this.state.buttonContatta[index]}>
+              <div className="infoCard" id="collapse-info">
+              <Card bg="info" style={{fontWeight:'bold' }}>
+                  <Card.Body>
+                      <ul style={{listStyleType: 'none'}}>
+                        <li><p>{this.state.nome}</p></li>
+                        <li><a style={{color:'white'}} href={"tel:"+ this.state.telefono}>
+                            {this.state.telefono}</a><FaPhone className="contattiIcon"/>
+                        </li>
+                        <li><a style={{color:'white'}} href={"https://www.google.com/search?q="+ this.state.istituto}>
+                            {this.state.istituto}</a><FaHome className="contattiIcon"/>
+                        </li>
+                        <li><a style={{color:'white'}} href={"mailto:"+ this.state.email}>
+                            {this.state.email}</a><MdEmail className="contattiIcon"/>
+                        </li>
+                      </ul>
+                  </Card.Body>
+              </Card>
+              </div>
+              </Collapse>
+              </div>
               :
               <div>
                 <Card bg="danger" text="white" className="cardStyle">
                   {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-                  <Card.Header><Card.Title>Segnalazione #{codice} stato: {this.state.visto[index]}</Card.Title></Card.Header>
+                  <Card.Header><Card.Title>Segnalazione #{codice}</Card.Title></Card.Header>
                   <Card.Body>
                     {/* <Card.Title>{this.state.id[index]}</Card.Title> */}
                     <Card.Text>
@@ -244,24 +282,28 @@ class Blog extends Component {
 
                 <Collapse in={this.state.buttonCommenta[index]}>
                   <div className="" id="collapse-commenta">
-                  <p>AAA</p>
-                </div>
-              </Collapse>
+                    <p>AAA</p>
+                  </div>
+                </Collapse>
 
               <Collapse in={this.state.buttonContatta[index]}>
-                <div className="" id="collapse-info">
-                <div className="infoCard">
-                <Card bg="info" text="white" style={{fontWeight:'bold' }}>
-                    <Card.Body>
-                        <ul style={{listStyleType: 'disc'}}>
-                          <li><p>{this.state.nome}</p></li>
-                          <li><a href={"tel:"+ this.state.telefono}>{this.state.telefono}</a><FaPhone/></li>
-                          <li><a href={"https://www.google.com/search?q="+ this.state.istituto}>{this.state.istituto}</a><FaHome/></li>
-                          <li><a style={{color:'white'}} href={"mailto:"+ this.state.email}>{this.state.email}</a><MdEmail/></li>
-                        </ul>
-                    </Card.Body>
-                </Card>
-                </div>
+                <div className="infoCard" id="collapse-info">
+                  <Card bg="info" style={{fontWeight:'bold' }}>
+                      <Card.Body>
+                          <ul style={{listStyleType: 'none'}}>
+                            <li><p>{this.state.nome}</p></li>
+                            <li><a style={{color:'white'}} href={"tel:"+ this.state.telefono}>
+                                {this.state.telefono}</a><FaPhone className="contattiIcon"/>
+                            </li>
+                            <li><a style={{color:'white'}} href={"https://www.google.com/search?q="+ this.state.istituto}>
+                                {this.state.istituto}</a><FaHome className="contattiIcon"/>
+                            </li>
+                            <li><a style={{color:'white'}} href={"mailto:"+ this.state.email}>
+                                {this.state.email}</a><MdEmail className="contattiIcon"/>
+                            </li>
+                          </ul>
+                      </Card.Body>
+                  </Card>
                 </div>
               </Collapse>
             </div>
@@ -280,17 +322,17 @@ class Blog extends Component {
   render() {
     return (
       <div>
-        <h3>Blog</h3>
+        <h3>Blog {this.props.ruolo}</h3>
         {/* <p>ID: {this.props.userID}</p> */}
         {this.props.ruolo === 'Psicologo'
           ?
           <>
-            <p>Psicologo</p>  {/* visualizza segnalazioni da analizzare */}
+            {/* visualizza segnalazioni da analizzare */}
             {this.getSegnalazioni()}
           </>
           :
           <>
-            <p>Utente</p> {/* visualizza pagina segnalazione */}
+            {/* visualizza pagina segnalazione */}
             {this.getSegnalazioneForm()}
           </>
         }

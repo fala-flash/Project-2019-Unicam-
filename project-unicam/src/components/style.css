@@ -66,6 +66,22 @@
     margin-right: 10px;
 }
 
+.infoCard{
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.contattiList {
+    list-style-type: none
+}
+
+.contattiIcon {
+    margin-left: 5px;
+    margin-bottom: 4px;
+}
 
 /* header */
 
@@ -161,9 +177,4 @@ input[type="password"] {
 .googleCentrato{
     display: flex;
     justify-content: center
-}
-
-.infoCard{
-    display: flex;
-    justify-content: center;
 }
