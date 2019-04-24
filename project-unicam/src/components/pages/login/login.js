@@ -41,10 +41,8 @@ class Login extends Component{
         JSON.parse(JSON.stringify(this.state.user.uid)),
         JSON.parse(JSON.stringify(this.state.user.email)),
         JSON.parse(JSON.stringify(this.state.user.displayName)),
-        JSON.parse(JSON.stringify(this.state.user.photoURL)),
-        JSON.parse(JSON.stringify(this.state.tipo))
+        JSON.parse(JSON.stringify(this.state.user.photoURL))
       )
-      alert("tipo: "+this.state.tipo)
       this.props.setStateUser()
     }
 
@@ -95,11 +93,11 @@ class Login extends Component{
         
         rootUtente.on('value', snap => {  //verifico se utente
             if (snap.val() !== null) {  //utente
-              this.setTipo("utente");
+              this.setScopo('utente')
             } else if (snap.val() === null) {  //se non è utente
               rootPsicologo.on('value', snapshot => { //verifico se psicologo
                 if (snapshot.val() !== null) {  //se psicologo
-                  this.setTipo("psicologo");
+                  this.setScopo('psicologo')
                 } else if (snapshot.val() === null) {  //altrimenti nulla
                   alert('problemi lettura dati account')
                 }
@@ -125,7 +123,7 @@ class Login extends Component{
           } else if (error.code === 'auth/user-not-found') {
             alert("Account inesistente");
           } else alert("Errore login: "+error)
-        })
+        })        
       event.preventDefault()
     }
 
@@ -220,9 +218,9 @@ class Login extends Component{
       const { openAccesso, openRegistrazione } = this.state;
       return (
         <div className="loginStyle">
-        <h1>Login/Registrazione</h1>
+        <h3>Login/Registrazione</h3>
         <br></br>
-        <h4>Hai già un account Stop! Bullying?</h4>
+        <h5>Hai già un account Stop! Bullying?</h5>
         <Button variant='info' className="accessoButton" style={{fontWeight:'bold'}}
           onClick={() => this.setState({ openRegistrazione: false , openAccesso: !openAccesso})}
           aria-controls="collapse-accedi"
@@ -237,7 +235,7 @@ class Login extends Component{
         </Collapse>
         
         <br></br>
-        <h4>Prima volta su Stop! Bullying?</h4>
+        <h5>Prima volta su Stop! Bullying?</h5>
         <Button variant='info' className="accessoButton" style={{fontWeight:'bold'}}
           onClick={() => this.setState({ openAccesso: false , openRegistrazione: !openRegistrazione})}
           aria-controls="collapse-registrazione"

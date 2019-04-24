@@ -3,7 +3,7 @@ import React from 'react';
 function Helpline() {
     return (
         <div>
-            <h1>Helpline</h1>
+            <h3>Helpline</h3>
         </div>
     );
 }

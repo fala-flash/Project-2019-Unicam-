@@ -39,12 +39,20 @@ class App extends React.Component {
     this.setStateUser = this.setStateUser.bind(this)
   }
 
-  setLocalUser(id, em, na, pic, ru) {
+  setLocalUser(id, em, na, pic) {
     localStorage.setItem('userID', id);
     localStorage.setItem('userEmail', em);
     localStorage.setItem('userName', na);
     localStorage.setItem('userPicture', pic);
-    localStorage.setItem('userRole', ru);
+    //localStorage.setItem('userRole', ru);
+  }
+
+  setLocalRole(r) {
+    localStorage.setItem('userRole', r);
+  }
+
+  setLocalName(na) {
+    localStorage.setItem('userName', na);
   }
 
   setStateUser() {
@@ -134,7 +142,9 @@ class App extends React.Component {
                         ruolo={this.state.ruolo}
                         setRuolo={this.state.setRuolo}
                         setStateUser={this.setStateUser}
-                        setLocalUser={this.setStateUser} />
+                        setLocalRole={this.setLocalRole}
+                        setLocalName={this.setsetLocalName}
+                        setLocalUser={this.setLocalUser} />
                     } />
                     <Route path="/info" component={Info} />
                     <Route path="/telegrambot" component={Telegrambot} />
@@ -149,7 +159,7 @@ class App extends React.Component {
                         ruolo={this.state.ruolo}
                         setRuolo={this.state.setRuolo}
                         setStateUser={this.setStateUser}
-                        setLocalUser={this.setStateUser} />
+                        setLocalUser={this.setLocalUser} />
                     } />
                     </>
                   : <Redirect to='/login' />

@@ -175,7 +175,6 @@ class Blog extends Component {
   }
 
   componentDidMount() {
-    /* this.props.setStateUser() */
     this.readSegnalazioni()
     this.uniqueIDCode()
   }
@@ -183,20 +182,18 @@ class Blog extends Component {
   render() {
     return (
       <div>
-        <h1>Blog</h1>
-        <p>ID: {this.props.userID}</p>
-        {/* <p>Telefono: {this.state.telefonoUtente}</p> */}
-        {this.props.userType
+        <h3>Blog</h3>
+        {/* <p>ID: {this.props.userID}</p> */}
+        {this.props.ruolo === 'Psicologo'
           ?
           <>
             <p>Psicologo</p>  {/* visualizza segnalazioni da analizzare */}
-
+            {this.getSegnalazioni()}
           </>
           :
           <>
             <p>Utente</p> {/* visualizza pagina segnalazione */}
             {this.getSegnalazioneForm()}
-            {this.getSegnalazioni()}
           </>
         }
       </div>

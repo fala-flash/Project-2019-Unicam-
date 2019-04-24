@@ -83,8 +83,14 @@
 }
 
 .formDati {
+    margin-top: 30px;
     margin-left: 50px;
     margin-right: 50px;
+
+}
+
+.formDatiLabel {
+    text-align: center;
 }
 
 /* telefona */

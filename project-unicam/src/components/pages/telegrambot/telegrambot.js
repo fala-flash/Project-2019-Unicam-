@@ -3,7 +3,7 @@ import React from 'react';
 function Telegrambot() {
     return (
         <div>
-            <h1>Clicca per contattare il bot di telegram..</h1>
+            <h3>Clicca per contattare il bot di telegram..</h3>
         </div>
     );
 }

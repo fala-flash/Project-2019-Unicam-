@@ -8,7 +8,7 @@ import Style from '../../style.css';
 function Landing() {
     return (
         <div>
-            <h1 className="text-info">Benvenuto!</h1>
+            <h3 className="text-info">Benvenuto!</h3>
             <br></br>
             <LandingCarousel />
             <br></br>

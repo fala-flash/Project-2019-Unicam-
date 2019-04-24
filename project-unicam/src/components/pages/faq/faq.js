@@ -8,9 +8,9 @@ function Faq
 () {
     return (
         <div>
-            <h1>Faq
+            <h3>Faq
                 
-            </h1>
+            </h3>
             <p>"Conosci il nemico come conosci te stesso. Se farai così, anche in mezzo a cento battaglie non ti troverai mai in pericolo.
 " - Sun Tzu</p>
             <p>Ad oggi, il fenomeno di bullismo e cyberbullismo e incredibilmente sottovalutato e ancor meno conosciuto.</p>
