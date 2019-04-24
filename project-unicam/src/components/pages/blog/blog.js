@@ -255,9 +255,9 @@ class Blog extends Component {
                     <Card.Body>
                         <ul style={{listStyleType: 'disc'}}>
                           <li><p>{this.state.nome}</p></li>
-                          <li><a href="tel:" >{this.state.telefono}</a><FaPhone/></li>
-                          <li><a href="https://www.google.com/search?q=">{this.state.istituto}</a><FaHome/></li>
-                          <li><a style={{color:'white'}} href="mailto:">{this.state.email}</a><MdEmail/></li>
+                          <li><a href={"tel:"+ this.state.telefono}>{this.state.telefono}</a><FaPhone/></li>
+                          <li><a href={"https://www.google.com/search?q="+ this.state.istituto}>{this.state.istituto}</a><FaHome/></li>
+                          <li><a style={{color:'white'}} href={"mailto:"+ this.state.email}>{this.state.email}</a><MdEmail/></li>
                         </ul>
                     </Card.Body>
                 </Card>
