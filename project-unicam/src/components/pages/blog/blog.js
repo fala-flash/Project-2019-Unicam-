@@ -25,9 +25,24 @@ class Blog extends Component {
       visto: [],
       buttonCommenta: [],
       buttonContatta: [],
-      indexModal: null
+      indexModal: null,
+      key: 'home'
     }
-    //this.contattaUtente = this.contattaUtente.bind(this)
+    this.resetCommenta = this.resetCommenta.bind(this)
+    this.resetContatta = this.resetContatta.bind(this)
+  }
+
+  setVisto() {
+    for (var i = 0; i < this.state.visto.length; i++) {
+      if(this.state.visto[i] === 'true') {
+        //eslint-disable-next-line
+        this.state.visto[i] = 'success'
+      } else if (this.state.visto[i] === 'false') {
+        //eslint-disable-next-line
+        this.state.visto[i] = 'danger'
+      }
+    }
+    console.log("VISTO: "+this.state.visto)
   }
 
   uniqueIDCode() {
@@ -53,21 +68,6 @@ class Blog extends Component {
     });
   }
 
-  getDatiUtente() {
-    /* const rootRef = fire.database().ref();
-    const utente = rootRef.child('Utente/001')
-    utente.once('value', snap => {
-      snap.forEach(child => {
-        this.setState({
-          nomeUtente: child.val().nome,
-           telefonoUtente: child.val().telefono
-        });
-      });    
-    });
-    alert('Telefono '+this.state.telefonoUtente) */
-
-  }
-
   writeUserData(codice, idUtente, messaggioUtente) {
     fire.database().ref('Segnalazioni/' + codice).set({
       id: idUtente,
@@ -89,7 +89,7 @@ class Blog extends Component {
     const codiceSegnalazione = this.uniqueIDCode();
     if (messaggio !== '') {
       this.writeUserData(codiceSegnalazione, this.props.userID, messaggio) //id=this.state.userID
-      alert(`${'Segnalazione'}  ${codiceSegnalazione}  ${'inviata correttamente'}`)
+      alert('Segnalazione '+codiceSegnalazione+' inviata correttamente')
     } else {
       alert("Tutti i campi devono essere compilati")
     }
@@ -98,6 +98,49 @@ class Blog extends Component {
 
   resetForm() {
     this.segnForm.reset();
+  }
+
+  resetCommenta() {
+    for (var i = 0; i < this.state.buttonCommenta.length; i++) {
+      //eslint-disable-next-line
+      this.state.buttonCommenta[i] = false;
+    }
+  }  
+
+  resetContatta() {
+    for (var i = 0; i < this.state.buttonContatta.length; i++) {
+      //eslint-disable-next-line
+      this.state.buttonContatta[i] = false;
+    }
+  }
+
+  updateCommenta(index) {
+    for (var i = 0; i < index; i++) {
+      //eslint-disable-next-line
+      this.state.buttonCommenta[i] = false;
+    }
+    for (var j = index+1; j < this.state.buttonCommenta.length; j++) {
+      //eslint-disable-next-line
+      this.state.buttonCommenta[j] = false;
+    }
+    this.state.buttonCommenta.splice(index, 1, !this.state.buttonCommenta[index])  //rimpiazzo 1 elemento alla posizione index con true
+  }
+
+  updateContatta(index) {
+    for (var i = 0; i < index; i++) {
+      //eslint-disable-next-line
+      this.state.buttonContatta[i] = false;
+    }
+    for (var j = index+1; j < this.state.buttonContatta.length; j++) {
+      //eslint-disable-next-line
+      this.state.buttonContatta[j] = false;
+    }
+    /* if (this.state.buttonContatta[index] === 'true') {
+      this.state.buttonContatta.splice(index, 1, 'false')
+    } else {
+      this.state.buttonContatta.splice(index, 1, !this.state.buttonContatta[index])  //rimpiazzo 1 elemento alla posizione index con true
+    } */
+    this.state.buttonContatta.splice(index, 1, !this.state.buttonContatta[index])  //rimpiazzo 1 elemento alla posizione index con true
   }
 
   getSegnalazioneForm() {
@@ -118,11 +161,11 @@ class Blog extends Component {
                   </Form.Group>
                 </Form.Group>
               </Card.Text>
-              <Button style={{fontWeight:'bold'}} className="commentaButton" variant="success" type="submit">Invia<FiSend className="blogIcon" />
+              <Button variant="success" style={{fontWeight:'bold'}} className="segnalazioneButton" type="submit">Invia<FiSend className="blogIcon" />
               </Button>
-              <Button variant="danger" style={{fontWeight:'bold'}}
+              <Button variant="danger" style={{fontWeight:'bold'}} className="segnalazioneButton"
                 onClick={() => { this.resetForm() }} ref={(form) => { this.segnForm = form }}>Cancella
-                      <TiDeleteOutline className="blogIcon" />
+                <TiDeleteOutline className="blogIcon" />
               </Button>
             </Card.Body>
           </Card>
@@ -143,171 +186,110 @@ class Blog extends Component {
             telefono: snap.val().telefono
           })
         } else if (snap.val() === null) {  //se non è utente
-          alert("Impossibile recuperare dati utente")  
+          alert("Impossibile recuperare dati utente")
         }
     })
-      let stateCommenta = this.state.buttonCommenta.slice(); //creo un clone dello state buttonCommenta
-      stateCommenta[index] = false; //setto a false lo stato dell'index dell'array
-      this.setState({buttonCommenta: stateCommenta}); //setto lo state così, altrimenti da warning
-      //faccio la stessa cosa per buttonContatta
-      let stateContatta = this.state.buttonContatta.slice();
-      stateContatta[index] = !this.state.buttonContatta[index];
-      this.setState({buttonContatta: stateContatta});
-      event.preventDefault()
+    this.resetCommenta()
+    this.updateContatta(index)
+    console.log("ARRAY Commenta: "+this.state.buttonCommenta)
+    console.log("ARRAY Contatta: "+this.state.buttonContatta)
+    event.preventDefault()
   }
 
-  commentaUtente(event, index) {
+  aggiungiCommento(event, index) {
+    const testo = this.testoCommento.value
+    alert("Commento: "+testo+this.testoCommento.value)
+    //alert("Indice: "+index)
     fire.database().ref('Discussioni/'+ this.state.codice[index]+'/'+this.props.userID).set({
-      commento: "commentoPsicologo"
+      commento: testo
     }).then((data)=>{
         //success callback
-        console.log('data ' , data)
+        //console.log('data ' , data)
     }).catch((error)=>{
         //error callback
-        console.log('error ' , error)
+        //console.log('error ' , error)
     })
     fire.database().ref('Segnalazioni/'+ this.state.codice[index]).update({
       visto: "true"
     }).then((data)=>{
         //success callback
-        console.log('data ' , data)
+        //console.log('data ' , data)
     }).catch((error)=>{
         //error callback
-        console.log('error ' , error)
+        //console.log('error ' , error)
     })
-      let stateContatta2 = this.state.buttonContatta.slice(); //creo un clone dello state buttonContatta
-      stateContatta2[index] = false; //setto a false lo stato dell'index dell'array
-      this.setState({buttonContatta: stateContatta2}); //setto lo state così, altrimenti da warning
-      //faccio la stessa cosa per buttonCommenta
-      let stateCommenta2 = this.state.buttonCommenta.slice();
-      stateCommenta2[index] = !this.state.buttonCommenta[index];
-      this.setState({buttonContatta: stateCommenta2});
-      event.preventDefault()
+  }
+
+/*   getCommenti(index) {
+    const rootRef = fire.database().ref();
+    const discussioni = rootRef.child('Discussioni/'+this.state.codice[index])
+    let idCommento
+    let testoCommento
+    discussioni.once('value', snap => {
+      snap.forEach(child => {
+        idCommento = child.key,
+        testoCommento = child.val().commento                
+      });
+    });
+  } */
+
+  commentaUtente(event, index) {
+    //this.scriviCommento("commento", index)
+    this.resetContatta()
+    this.updateCommenta(index)
+    console.log("ARRAY Commenta: "+this.state.buttonCommenta)
+    console.log("ARRAY Contatta: "+this.state.buttonContatta)
+    event.preventDefault()
   }
 
   getSegnalazioni() {
     return (
       <div>
+        {this.setVisto()}
         {this.state.codice.map((codice, index) => (
           <div key={codice}>
-            <br />
-            {this.state.visto[index] === 'true'
-              ?
-              <div>
-              <Card bg="success" text="white" className="cardStyle">
-                {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+            <br />            
+              <Card bg={this.state.visto[index]} text="white" className="cardStyle">              
                 <Card.Header><Card.Title>Segnalazione #{codice}</Card.Title></Card.Header>
-                <Card.Body>
+                <Card.Body>                
                   <Card.Text>
                     {this.state.messaggio[index]}
                   </Card.Text>
                   <Button className="blogButton" variant="outline-light"
-                      onClick={(event) => {this.commentaUtente(event, index)}}
-                      aria-controls="collapse-commenta"
-                      aria-expanded={this.state.buttonCommenta[index]}>Commenta
-                      <FiMessageCircle className="blogIcon"/>
-                    </Button>
-                    {/* <Button variant="outline-light" className="blogButton"
-                      onClick={(event) => {this.contattaUtente(event, index)}}
-                      aria-controls="collapse-accedi" 
-                      aria-expanded={this.state.buttonContatta[index]}>Contatta
-                      <FiPhone className="blogIcon" />
-                    </Button> */}
-                    <Button className="blogButton" variant="outline-light"
-                      onClick={(event) => {this.contattaUtente(event, index)}}
-                      aria-controls="collapse-info"
-                      aria-expanded={this.state.buttonContatta[index]}>Info Utente
-                      <FiInfo className="blogIcon"/>
-                    </Button>
-                </Card.Body>
-              </Card>
+                    onClick={(event) => {this.contattaUtente(event, index)}}
+                    aria-controls="collapse-info"
+                    aria-expanded={this.state.buttonContatta[index]}>Info Utente
+                    <FiInfo className="blogIcon"/>
+                  </Button>
 
-              <Collapse in={this.state.buttonCommenta[index]}>
-              <div className="" id="collapse-commenta">
-                <p>AAA</p>
-              </div>
-              </Collapse>
-
-              <Collapse in={this.state.buttonContatta[index]}>
-              <div className="infoCard" id="collapse-info">
-              <Card bg="info" style={{fontWeight:'bold' }}>
-                  <Card.Body>
-                      <ul style={{listStyleType: 'none'}}>
-                        <li><p>{this.state.nome}</p></li>
-                        <li><a style={{color:'white'}} href={"tel:"+ this.state.telefono}>
+                  <Collapse in={this.state.buttonContatta[index]}>
+                    <div className="infoCard" id="collapse-info">
+                        <p>{this.state.nome}</p>
+                        <p><a style={{color:'white'}} href={"tel:"+ this.state.telefono}>
                             {this.state.telefono}</a><FaPhone className="contattiIcon"/>
-                        </li>
-                        <li><a style={{color:'white'}} href={"https://www.google.com/search?q="+ this.state.istituto}>
+                        </p>
+                        <p><a style={{color:'white'}} href={"https://www.google.com/search?q="+ this.state.istituto}>
                             {this.state.istituto}</a><FaHome className="contattiIcon"/>
-                        </li>
-                        <li><a style={{color:'white'}} href={"mailto:"+ this.state.email}>
+                        </p>
+                        <p><a style={{color:'white'}} href={"mailto:"+ this.state.email}>
                             {this.state.email}</a><MdEmail className="contattiIcon"/>
-                        </li>
-                      </ul>
-                  </Card.Body>
-              </Card>
-              </div>
-              </Collapse>
-              </div>
-              :
-              <div>
-                <Card bg="danger" text="white" className="cardStyle">
-                  {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-                  <Card.Header><Card.Title>Segnalazione #{codice}</Card.Title></Card.Header>
-                  <Card.Body>
-                    {/* <Card.Title>{this.state.id[index]}</Card.Title> */}
-                    <Card.Text>
-                      {this.state.messaggio[index]}
-                    </Card.Text>
-                    <Button className="blogButton" variant="outline-light"
-                      onClick={(event) => {this.commentaUtente(event, index)}}
-                      aria-controls="collapse-commenta"
-                      aria-expanded={this.state.buttonCommenta[index]}>Commenta
-                      <FiMessageCircle className="blogIcon"/>
-                    </Button>
-                    {/* <Button variant="outline-light" className="blogButton"
-                      onClick={(event) => {this.contattaUtente(event, index)}}
-                      aria-controls="collapse-accedi" 
-                      aria-expanded={this.state.buttonContatta[index]}>Contatta
-                      <FiPhone className="blogIcon" />
-                    </Button> */}
-                    <Button className="blogButton" variant="outline-light"
-                      onClick={(event) => {this.contattaUtente(event, index)}}
-                      aria-controls="collapse-info"
-                      aria-expanded={this.state.buttonContatta[index]}>Info Utente
-                      <FiInfo className="blogIcon"/>
-                    </Button>
-                  </Card.Body>
-                </Card>
-
-                <Collapse in={this.state.buttonCommenta[index]}>
-                  <div className="" id="collapse-commenta">
-                    <p>AAA</p>
+                        </p>
+                    </div>
+                  </Collapse>
+                </Card.Body>
+                <Card.Footer className="text-muted">
+                  <div className="commentaFormStyle">
+                    <Form onSubmit={(event, index) => { this.aggiungiCommento(event, index) }} ref={(form) => { this.commentoForm = form }}>
+                      <Form.Group className="testoForm" controlId="formCommentoInput">
+                        <Form.Control className="testoForm" as="textarea" rows="2" ref={(input) => { this.testoCommento = input }}/>
+                      </Form.Group>
+                      <Button className="commentoButton" variant="outline-light" type="submit">
+                        Commenta<FiMessageCircle className="blogIcon"/>
+                      </Button>
+                    </Form>
                   </div>
-                </Collapse>
-
-              <Collapse in={this.state.buttonContatta[index]}>
-                <div className="infoCard" id="collapse-info">
-                  <Card bg="info" style={{fontWeight:'bold' }}>
-                      <Card.Body>
-                          <ul style={{listStyleType: 'none'}}>
-                            <li><p>{this.state.nome}</p></li>
-                            <li><a style={{color:'white'}} href={"tel:"+ this.state.telefono}>
-                                {this.state.telefono}</a><FaPhone className="contattiIcon"/>
-                            </li>
-                            <li><a style={{color:'white'}} href={"https://www.google.com/search?q="+ this.state.istituto}>
-                                {this.state.istituto}</a><FaHome className="contattiIcon"/>
-                            </li>
-                            <li><a style={{color:'white'}} href={"mailto:"+ this.state.email}>
-                                {this.state.email}</a><MdEmail className="contattiIcon"/>
-                            </li>
-                          </ul>
-                      </Card.Body>
-                  </Card>
-                </div>
-              </Collapse>
-            </div>
-            }
+                </Card.Footer>
+              </Card>
           </div>
         ))}
       </div>
@@ -329,6 +311,7 @@ class Blog extends Component {
           <>
             {/* visualizza segnalazioni da analizzare */}
             {this.getSegnalazioni()}
+            {this.setVisto()}
           </>
           :
           <>
