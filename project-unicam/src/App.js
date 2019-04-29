@@ -155,7 +155,7 @@ class App extends React.Component {
                     } />
 
 
-<Route path="/modifyProfile" render={() =>
+                    <Route path="/modifyProfile" render={() =>
                       <ModifyProfile
                         userID={this.state.userID}
                         email={this.state.email}
@@ -173,22 +173,15 @@ class App extends React.Component {
                         setLocalUser={this.setLocalUser} />
                     } />
 
-<Route path="/deleteProfile" render={() =>
-                      <DeleteProfile
+                    <Route path="/deleteProfile" render={() =>
+                      <DeleteProfile 
+                        authenticated={this.state.authenticated}
                         userID={this.state.userID}
-                        email={this.state.email}
                         name={this.state.name}
-                        picture={this.state.picture}
+                        email={this.state.email}
                         ruolo={this.state.ruolo}
                         istituto={this.state.istituto}
-                        telefono={this.state.telefono}
-                        setRuolo={this.state.setRuolo}
-                        setStateUser={this.setStateUser}
-                        setLocalTelefono={this.setLocalTelefono}
-                        setLocalName={this.setLocalName}
-                        setLocalRole={this.setLocalRole}
-                        setLocalIstituto={this.setLocalIstituto}
-                        setLocalUser={this.setLocalUser} />
+                        telefono={this.state.telefono} />
                     } />
 
 

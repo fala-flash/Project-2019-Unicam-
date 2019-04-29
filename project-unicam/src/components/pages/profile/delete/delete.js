@@ -1,129 +1,123 @@
-import React, { Component } from 'react';
-import { fire } from '../../../../config/FirebaseConfig';
-import { Button } from 'react-bootstrap';
-import {FaAngleLeft} from 'react-icons/fa';
+import React, { Component } from "react";
+import { fire } from "../../../../config/FirebaseConfig";
+import { Button, Modal } from "react-bootstrap";
+import { FaAngleLeft } from "react-icons/fa";
 
+class DeleteProfile extends Component {
+  constructor() {
+    super();
+    this.state = {
+      show: false
+    };
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
 
+  handleClose() {
+    this.setState({ show: false });
+  }
 
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Popover from 'react-bootstrap/Popover';
+  handleShow() {
+    this.setState({ show: true });
+  }
 
+  deleteUserData = () => {
+    //cancellazione dati firebase
+    fire
+      .database()
+      .ref(this.props.ruolo + '/' + this.props.userID)
+      .remove();
+    //logout
+    fire.auth().signOut();
+    //chiusura modal
+    this.handleClose();
+    //cancellazione local storage
+    this.deleteStorage();
+  };
 
-class deleteProfile extends Component{
+  deleteStorage() {
+    let keysToRemove = [
+      "userID",
+      "userName",
+      "userEmail",
+      "userPicture",
+      "userRole",
+      "userTelefono",
+      "userIstituto"
+    ];
+    keysToRemove.forEach(k => localStorage.removeItem(k));
+  }
 
-    constructor() {
-        super();
-        this.state = {
-            nome: null,
-            email: null,
-            istituto: null,
-            telefono: null,
-            ruolo: null
-          }      
-
-          this.deleteaccount = this.deleteaccount.bind(this);
-      }
-
-      readUserData() {
-        const rootUtente = fire.database().ref('Utente/'+this.props.userID);
-        const rootPsicologo = fire.database().ref('Psicologo/'+this.props.userID);        
-        
-        rootUtente.on('value', snap => {  //verifico se utente
-            if (snap.val() !== null) {  //utente
-              this.setState({
-                nome: snap.val().nome,
-                istituto: snap.val().istituto,
-                telefono: snap.val().telefono,
-                ruolo: 'Utente'
-              })
-              //imposto ruolo e state App
-              //this.props.setLocalIstituto(this.state.istituto)
-              this.props.setLocalRole(this.state.ruolo)
-              this.props.setStateUser()
-            } else if (snap.val() === null) {  //se non è utente
-              rootPsicologo.on('value', snapshot => { //verifico se psicologo
-                if (snapshot.val() !== null) {  //se psicologo
-                  this.setState({
-                    nome: snapshot.val().nome,
-                    email: snapshot.val().email,
-                    istituto: snapshot.val().istituto,
-                    telefono: snapshot.val().telefono,
-                    ruolo: 'Psicologo'
-                  })
-                  //imposto ruolo e state App
-                  this.props.setLocalName(this.state.nome)
-                  this.props.setLocalTelefono(this.state.telefono)
-                  this.props.setLocalIstituto(this.state.istituto)
-                  this.props.setLocalRole(this.state.ruolo)
-                  this.props.setStateUser()
-                } else if (snapshot.val() === null) {  //altrimenti nulla
-                  alert('problemi lettura dati account')
-                }
-            })  
-            }
-        })
-      }
-
-      deleteaccount()
-      {
-        fire.database().ref('Utente/'+this.props.userID).remove();
-        
-        
-        // se psicologo
-        //fire.database().ref('Psicologo/'+this.props.userID).remove();
-
-
-        //logout
-        fire.auth().signOut()
-        this.deleteStorage()
-    }
-
-    deleteStorage() {
-      let keysToRemove = ["userID", "email", "istituto", "nome", "telefono"];
-      keysToRemove.forEach(k => localStorage.removeItem(k))
-    }
-
-      componentDidMount() {
-        this.readUserData();
-      }
-
-      render () {        
-        return (
-            <div>
-                <div style={{display:"flex", justifyContent:"left"}}><Button variant="info" href="/profile"> <FaAngleLeft    /> </Button></div>
-                
-               <h1>Elimina il tuo profilo</h1>
-               <br/>
-               <h4><strong>Una volta eliminato l'account non potrai più leggere alcuna delle tue conversazioni.</strong></h4>
-
-               <br/>
-               <br/>
-               <br/>
-
-               <OverlayTrigger
-      trigger="click"
-      key='bottom'      placement='bottom'
-      overlay={
-        <Popover
-          id={`popover-positioned-bottom`}
-          title={`Elimina`}
-        >
-          <strong>Eliminare Definitivamente ?</strong>  <br/>
-          <br/>
-          <br/>         
-          <div className="btn-toolbar" style={{display:'flex'}}>
-          
-        <Button  variant="danger" onClick={this.deleteaccount} > Elimina</Button>  {   }
-        <Button style={{marginLeft:50}} href="/deleteProfile "variant="secondary">Annulla</Button>
+  render() {
+    return (
+      <div>
+        <div style={{ display: "flex", justifyContent: "left" }}>
+          <Button variant="info" href="/profile">
+            <FaAngleLeft />
+          </Button>
         </div>
-        </Popover>
-      }
-    >
-      <Button variant="danger">Elimina account </Button>
-    </OverlayTrigger>
-            </div>
-        );
-      }    
+
+        <div className="deleteComponents">
+          <br />
+          <div className="txtdelete">
+            <h3>
+              Sei davvero sicuro di voler cancellare i dati relativi al tuo
+              account?
+            </h3>
+            <br />
+            Le modifiche effettuate e le segnalazioni aggiunte andranno perse,
+            <br />
+            per la disattivazione dell'account contattare gli sviluppatori nella
+            pagina info
+            <br />
+            <br />
+          </div>
+          <Button
+            style={{fontWeight:'bold'}}
+            variant="danger"
+            className="deleteButton"
+            onClick={this.handleShow}
+          >
+            Cancellazione Dati Account
+          </Button>
+
+          <Modal show={this.state.show} onHide={this.handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Cancellazione Dati Account</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <h5>Dati account</h5>
+              <ul>
+                <li>UserID: {this.props.userID}</li>
+                <li>Email: {this.props.email}</li>
+                {this.props.ruolo === "null" ? null : (
+                  <li>Ruolo: {this.props.ruolo}</li>
+                )}
+                {this.props.name === "null" ? null : (
+                  <li>Nome: {this.props.name}</li>
+                )}
+                {this.props.istituto === "null" ? null : (
+                  <li>Istituto: {this.props.istituto}</li>
+                )}
+                {this.props.telefono === "null" ? null : (
+                  <li>Telefono: {this.props.telefono}</li>
+                )}
+              </ul>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button style={{fontWeight:'bold'}} variant="success" onClick={this.handleClose}>
+                Annulla
+              </Button>
+              <Button style={{fontWeight:'bold'}} variant="danger" onClick={this.deleteUserData}>
+                Elimina
+              </Button>
+            </Modal.Footer>
+          </Modal>
+          <br />
+        </div>
+      </div>
+    );
+  }
 }
 
-export default deleteProfile;
+export default DeleteProfile;
