@@ -88,8 +88,12 @@ class Blog extends Component {
     const messaggio = this.testoSegnalazione.value
     const codiceSegnalazione = this.uniqueIDCode();
     if (messaggio !== '') {
-      this.writeUserData(codiceSegnalazione, this.props.userID, messaggio) //id=this.state.userID
+      if(codiceSegnalazione !== '' && codiceSegnalazione !== null) {
+        this.writeUserData(codiceSegnalazione, this.props.userID, messaggio) //id=this.state.userID
       alert('Segnalazione '+codiceSegnalazione+' inviata correttamente')
+      } else {
+        alert('Errore generazione codice segnalazione, riprova')
+      }      
     } else {
       alert("Tutti i campi devono essere compilati")
     }
@@ -242,7 +246,7 @@ class Blog extends Component {
     event.preventDefault()
   }
 
-  getSegnalazioni() {
+  getSegnalazioniPsicologo() {
     return (
       <div>
         {this.setVisto()}
@@ -296,27 +300,49 @@ class Blog extends Component {
     )
   }
 
+  getSegnalazioniUtente() {
+    return (
+      <div>
+        {this.state.codice.map((codice, index) => (
+          <div key={codice}>
+            <br/>            
+              <Card bg="info" text="white" className="cardStyle">              
+                <Card.Header><Card.Title>Segnalazione #{codice}</Card.Title></Card.Header>
+                <Card.Body>                
+                  <Card.Text>
+                    {this.state.messaggio[index]}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
   componentDidMount() {
     this.readSegnalazioni()
-    //this.uniqueIDCode()
   }
 
   render() {
     return (
       <div>
         <h3>Blog {this.props.ruolo}</h3>
+        <br/>
         {/* <p>ID: {this.props.userID}</p> */}
         {this.props.ruolo === 'Psicologo'
           ?
           <>
             {/* visualizza segnalazioni da analizzare */}
-            {this.getSegnalazioni()}
-            {this.setVisto()}
+            {this.getSegnalazioniPsicologo()}
           </>
           :
           <>
             {/* visualizza pagina segnalazione */}
             {this.getSegnalazioneForm()}
+            <br/>
+            <p>Altri utenti hanno pubblicato le seguenti segnalazioni (ordine cronologico) :</p>
+            {this.getSegnalazioniUtente()}
           </>
         }
       </div>
