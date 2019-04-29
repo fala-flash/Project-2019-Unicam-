@@ -62,18 +62,29 @@ class Login extends Component{
     }
 
     addUserGoogle() {
-      fire.database().ref('Utente/' + this.state.user.uid).update({
-        nome: this.state.user.displayName,
-        email: this.state.user.email,
-        istituto: "",
-        telefono: ""
-      }).then((data)=>{
-          //success callback
-          console.log('data ' , data)
-      }).catch((error)=>{
-          //error callback
-          console.log('error ' , error)
-      })
+      const rootUtente = fire.database().ref("Utente/" + this.props.userID);
+
+      rootUtente.on("value", snap => {
+        //verifico se utente esiste
+        if (snap.val() === null) {
+          //se non esiste lo aggiungo nel database
+          fire.database().ref('Utente/' + this.state.user.uid).set({
+            nome: this.state.user.displayName,
+            email: this.state.user.email,
+            istituto: "",
+            telefono: ""
+          }).then((data)=>{
+              //success callback
+              console.log('data ' , data)
+          }).catch((error)=>{
+              //error callback
+              console.log('error ' , error)
+          })
+        }
+        /* } else if (snap.val() !== null) {
+          //esiste          
+        } */
+      });
     }
 
     authentication(provider) {

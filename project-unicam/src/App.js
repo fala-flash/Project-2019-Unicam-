@@ -134,7 +134,9 @@ class App extends React.Component {
               <Switch>
                 <Route exact path="/" component={Landing} />
                 <Route path="/login" render={() =>
-                  <Login setAuthenticated={this.setAuthenticated}
+                  <Login
+                    userID={this.state.userID}
+                    setAuthenticated={this.setAuthenticated}
                     authenticated={this.state.authenticated}
                     setStateUser={this.setStateUser}
                     setLocalUser={this.setLocalUser} />
