@@ -75,7 +75,6 @@ class modifyProfile extends Component{
         const telefono = this.aggiornaTelefono.value
         if (nome !== '' && istituto !== '' && telefono !== '') {
           this.writeUserData(this.props.userID, nome, telefono, istituto)
-          alert('dati aggiornati')
         } else {
           alert("Tutti i campi devono essere compilati")
         }
@@ -112,7 +111,10 @@ class modifyProfile extends Component{
                   </Form.Group>
                   <Form.Group controlId="formBasicEmail">
                       <Form.Label>Email</Form.Label>
-                      <Form.Control className="formDatiLabel" type="text" defaultValue={this.props.email} ref={(input) => { this.aggiornaEmail = input }}/>
+                      {this.props.email === ''
+                      ?   <Form.Control className="formDatiLabel" type="text" placeholder="inserisci email" ref={(input) => { this.aggiornaEmail = input }}/>
+                      :   <Form.Control className="formDatiLabel" type="text" defaultValue={this.props.email} ref={(input) => { this.aggiornaEmail = input }}/>
+                      }
                   </Form.Group>
                   <Form.Group controlId="formBasicEmail">
                       <Form.Label>Istituto</Form.Label>
