@@ -26,16 +26,16 @@ class Profile extends Component{
               <br/>
               <br/>
 
-                <Button href="/myconversation" variant="primary" size="lg" block>
+                <Button href="/myconversation" variant="info" size="lg" block>
     Le mie conversazioni
   </Button>
 
   <br/>
-  <Button href="modifyProfile" variant="primary" size="lg" block>
+  <Button href="modifyProfile" variant="info" size="lg" block>
    Modifica profilo
   </Button>
   <br/>
-  <Button href="deleteProfile" variant="primary" size="lg" block>
+  <Button href="deleteProfile" variant="info" size="lg" block>
    Elimina profilo
   </Button>
 
