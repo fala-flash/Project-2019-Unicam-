@@ -111,10 +111,10 @@ class deleteProfile extends Component{
           <strong>Eliminare Definitivamnte ?</strong>  <br/>
           <br/>
           <br/>         
-          <div class="btn-toolbar">
+          <div className="btn-toolbar" style={{display:'felx'}}>
           
-        <Button className="btn-sm" variant="danger" onClick={this.deleteaccount} > Elimina</Button>  
-        <Button className="btn-sm" href="/deleteProfile "variant="secondary">Annulla</Button>
+        <Button  variant="danger" onClick={this.deleteaccount} > Elimina</Button>  {   }
+        <Button style={{marginLeft:50}} href="/deleteProfile "variant="secondary">Annulla</Button>
         </div>
         </Popover>
       }
