@@ -104,28 +104,28 @@ class modifyProfile extends Component{
               <Form className="formDati" onSubmit={(event) => this.aggiornaDati(event)} ref={(form) => { this.datiForm = form }}>
                   <Form.Group controlId="formBasicEmail">
                       <Form.Label>Nome</Form.Label>
-                      {this.props.name === ''
+                      {this.props.name === '' || this.props.name === null
                       ?   <Form.Control className="formDatiLabel" type="text" placeholder="inserisci nome" ref={(input) => { this.aggiornaNome = input }}/>
                       :   <Form.Control className="formDatiLabel" type="text" defaultValue={this.props.name} ref={(input) => { this.aggiornaNome = input }}/>
                       }                        
                   </Form.Group>
                   <Form.Group controlId="formBasicEmail">
                       <Form.Label>Email</Form.Label>
-                      {this.props.email === ''
+                      {this.props.email === '' || this.props.email === null
                       ?   <Form.Control className="formDatiLabel" type="text" placeholder="inserisci email" ref={(input) => { this.aggiornaEmail = input }}/>
                       :   <Form.Control className="formDatiLabel" type="text" value={this.props.email}/>
                       }
                   </Form.Group>
                   <Form.Group controlId="formBasicEmail">
                       <Form.Label>Istituto</Form.Label>
-                      {this.props.istituto === ''
+                      {this.props.istituto === ''  || this.props.istituto === null
                       ?   <Form.Control className="formDatiLabel" type="text" placeholder="inserisci istituto" ref={(input) => { this.aggiornaIstituto = input }}/>
                       :   <Form.Control className="formDatiLabel" type="text" defaultValue={this.props.istituto} ref={(input) => { this.aggiornaIstituto = input }}/>
                       }
                   </Form.Group>
                   <Form.Group controlId="formBasicPassword">
                       <Form.Label>Telefono</Form.Label>
-                      {this.props.telefono === ''
+                      {this.props.telefono === ''  || this.props.telefono === null
                       ?   <Form.Control className="formDatiLabel" type="text" placeholder="inserisci telefono" ref={(input) => { this.aggiornaTelefono = input }}/>
                       :   <Form.Control className="formDatiLabel" type="text" defaultValue={this.props.telefono} ref={(input) => { this.aggiornaTelefono = input }}/>
                       }

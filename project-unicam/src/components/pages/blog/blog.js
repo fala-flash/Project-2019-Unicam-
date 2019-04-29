@@ -26,6 +26,8 @@ class Blog extends Component {
       visto: [],
       buttonCommenta: [],
       buttonContatta: [],
+      idCommento: [],
+      testoCommento: [],
       indexModal: null,
       key: 'home'
     }
@@ -190,7 +192,6 @@ class Blog extends Component {
   }
 
   contattaUtente(event, index) {
-    //alert(this.state.id[index])
     const rootUtente = fire.database().ref('Utente/'+this.state.id[index]);
     rootUtente.on('value', snap => {  //verifico se utente
         if (snap.val() !== null) {  //utente
@@ -212,10 +213,9 @@ class Blog extends Component {
   }
 
   aggiungiCommento(event, index) {
-    const testo = this.testoCommento.value
-    alert("Commento: "+testo+this.testoCommento.value)
-    //alert("Indice: "+index)
-    fire.database().ref('Discussioni/'+ this.state.codice[index]+'/'+this.props.userID).set({
+    const testo = this.testoTextArea.value
+    alert('Testo: '+testo)
+    /* fire.database().ref('Discussioni/'+ this.state.codice[index]+'/'+this.props.userID).set({
       commento: testo
     }).then((data)=>{
         //success callback
@@ -232,22 +232,33 @@ class Blog extends Component {
     }).catch((error)=>{
         //error callback
         //console.log('error ' , error)
-    })
+    }) */
   }
 
-/*   getCommenti(index) {
+   getCommenti(event, index) {
     const rootRef = fire.database().ref();
     const discussioni = rootRef.child('Discussioni/'+this.state.codice[index])
-    let idCommento
-    let testoCommento
+    //alert('Discussioni/'+index)
     discussioni.once('value', snap => {
       snap.forEach(child => {
-        idCommento = child.key,
-        testoCommento = child.val().commento                
+        this.setState({
+          idCommento : this.state.idCommento.concat([child.key]),
+          testoCommento : this.state.testoCommento.concat([child.val().commento])
+        })               
       });
+      alert(index+" "+this.state.codice[index]+"/"+this.state.idCommento[index]+" "+this.state.testoCommento[index])
     });
-  } */
+  }
 
+  getCommentiSegnalazione(index) {
+    return (
+      <div>
+        <p>{this.state.testoCommento[index]}</p>
+      </div>
+    )
+  }
+
+  //collapse
   commentaUtente(event, index) {
     //this.scriviCommento("commento", index)
     this.resetContatta()
@@ -292,17 +303,17 @@ class Blog extends Component {
                     </div>
                   </Collapse>
                 </Card.Body>
-                <Card.Footer className="text-muted">
-                  <div className="commentaFormStyle">
-                    <Form onSubmit={(event, index) => { this.aggiungiCommento(event, index) }} ref={(form) => { this.commentoForm = form }}>
-                      <Form.Group className="testoForm" controlId="formCommentoInput">
-                        <Form.Control className="testoForm" as="textarea" rows="2" ref={(input) => { this.testoCommento = input }}/>
-                      </Form.Group>
-                      <Button className="commentoButton" variant="outline-light" type="submit">
-                        Commenta<FiMessageCircle className="blogIcon"/>
-                      </Button>
-                    </Form>
-                  </div>
+                <Card.Footer> 
+                  <textarea className="testoForm" rows="2" ref={(input) => { this.testoTextArea = input }}></textarea>
+                  <Button className="commentoButton" variant="outline-light"
+                    onClick={(event) => {this.aggiungiCommento(event, index)}}>
+                    Commenta<FiMessageCircle className="blogIcon"/>
+                  </Button>
+                  <Button className="" variant="outline-light" type=""
+                    onClick={(event) => {this.getCommenti(event, index)}}>
+                    Leggi Commenti<FiMessageCircle className="blogIcon"/>
+                  </Button>   
+                  {this.getCommentiSegnalazione(index)}                 
                 </Card.Footer>
               </Card>
           </div>

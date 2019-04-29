@@ -81,8 +81,17 @@
     margin-top: 5px; 
 }
 
-.commentaFormStyle {
-    margin-top: 10px;
+.testoForm {
+    margin-top:5px;
+    margin-bottom:5px;
+    width: 200px;
+    margin-left: 0px;
+}
+
+.commentoButton {
+    margin-top:-50px;
+    margin-bottom:5px;
+    margin-left: 5px;
 }
 
 .segnalazioneButton {
