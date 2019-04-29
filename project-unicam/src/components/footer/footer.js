@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, Button, Nav } from 'react-bootstrap';
 
-import { FaTelegramPlane, FaBloggerB, FaPhone, FaHome } from 'react-icons/fa';
+import { FaTelegramPlane, FaBloggerB, FaPhone, FaUserCircle } from 'react-icons/fa';
 
 //eslint-disable-next-line
 import Style from '../style.css';
@@ -16,9 +16,9 @@ class Footer extends Component {
                     <Navbar fixed="bottom" bg="info" variant="light" expand="light" className="navbar">
 
                         <Nav.Item>
-                            <Button className="footerButton" href="/" variant="info">
-                                <FaHome className="footericon" />
-                                <p className="footerText" style={{fontWeight:'bold'}}>Home</p>
+                            <Button className="footerButton" href="/profile" variant="info">
+                                <FaUserCircle className="footericon" />
+                                <p className="footerText" style={{fontWeight:'bold'}}>Profilo</p>
                             </Button>
                         </Nav.Item>
 
