@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { fire } from '../../../config/FirebaseConfig';
-import { Button, Form } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 class Profile extends Component{
 
@@ -95,12 +95,12 @@ class Profile extends Component{
               <br/>
               <br/>
 
-                <Button href="/myconversation" variant="primary" size="lg" block>
+                <Button href="/myconversation" variant="info" size="lg" block>
     Le mie conversazioni
   </Button>
 
   <br/>
-  <Button href="modifyProfile" variant="primary" size="lg" block>
+  <Button href="modifyProfile" variant="info" size="lg" block>
    Modifica profilo
   </Button>
 

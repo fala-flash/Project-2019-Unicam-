@@ -92,7 +92,7 @@ class modifyProfile extends Component{
       render () {        
         return (
             <div>
-                <Button href="/profile"> <FaAngleLeft    /> </Button>
+                <Button variant="info" href="/profile"> <FaAngleLeft    /> </Button>
                 
                 <h3>Profilo {this.props.ruolo}</h3>
                 {this.props.picture === 'null'
