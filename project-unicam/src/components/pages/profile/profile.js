@@ -1,110 +1,121 @@
-import React, { Component } from 'react';
-import { fire } from '../../../config/FirebaseConfig';
-import { Button } from 'react-bootstrap';
+import React, { Component } from "react";
+import { fire } from "../../../config/FirebaseConfig";
+import { Button } from "react-bootstrap";
 
-class Profile extends Component{
+class Profile extends Component {
+  constructor() {
+    super();
+    this.state = {
+      nome: null,
+      email: null,
+      istituto: null,
+      telefono: null,
+      ruolo: null
+    };
+  }
 
-    constructor() {
-        super();
-        this.state = {
-            nome: null,
-            email: null,
-            istituto: null,
-            telefono: null,
-            ruolo: null
-          }      
+  readUserData() {
+    const rootUtente = fire.database().ref("Utente/" + this.props.userID);
+    const rootPsicologo = fire.database().ref("Psicologo/" + this.props.userID);
+
+    rootUtente.on("value", snap => {
+      //verifico se utente
+      if (snap.val() !== null) {
+        //utente
+        this.setState({
+          nome: snap.val().nome,
+          istituto: snap.val().istituto,
+          telefono: snap.val().telefono,
+          ruolo: "Utente"
+        });
+        //imposto ruolo e state App
+        //this.props.setLocalIstituto(this.state.istituto)
+        this.props.setLocalRole(this.state.ruolo);
+        this.props.setStateUser();
+      } else if (snap.val() === null) {
+        //se non è utente
+        rootPsicologo.on("value", snapshot => {
+          //verifico se psicologo
+          if (snapshot.val() !== null) {
+            //se psicologo
+            this.setState({
+              nome: snapshot.val().nome,
+              email: snapshot.val().email,
+              istituto: snapshot.val().istituto,
+              telefono: snapshot.val().telefono,
+              ruolo: "Psicologo"
+            });
+            //imposto ruolo e state App
+            this.props.setLocalName(this.state.nome);
+            this.props.setLocalTelefono(this.state.telefono);
+            this.props.setLocalIstituto(this.state.istituto);
+            this.props.setLocalRole(this.state.ruolo);
+            this.props.setStateUser();
+          } else if (snapshot.val() === null) {
+            //altrimenti nulla
+            alert("problemi lettura dati account");
+          }
+        });
       }
+    });
+  }
 
-      readUserData() {
-        const rootUtente = fire.database().ref('Utente/'+this.props.userID);
-        const rootPsicologo = fire.database().ref('Psicologo/'+this.props.userID);        
-        
-        rootUtente.on('value', snap => {  //verifico se utente
-            if (snap.val() !== null) {  //utente
-              this.setState({
-                nome: snap.val().nome,
-                istituto: snap.val().istituto,
-                telefono: snap.val().telefono,
-                ruolo: 'Utente'
-              })
-              //imposto ruolo e state App
-              //this.props.setLocalIstituto(this.state.istituto)
-              this.props.setLocalRole(this.state.ruolo)
-              this.props.setStateUser()
-            } else if (snap.val() === null) {  //se non è utente
-              rootPsicologo.on('value', snapshot => { //verifico se psicologo
-                if (snapshot.val() !== null) {  //se psicologo
-                  this.setState({
-                    nome: snapshot.val().nome,
-                    email: snapshot.val().email,
-                    istituto: snapshot.val().istituto,
-                    telefono: snapshot.val().telefono,
-                    ruolo: 'Psicologo'
-                  })
-                  //imposto ruolo e state App
-                  this.props.setLocalName(this.state.nome)
-                  this.props.setLocalTelefono(this.state.telefono)
-                  this.props.setLocalIstituto(this.state.istituto)
-                  this.props.setLocalRole(this.state.ruolo)
-                  this.props.setStateUser()
-                } else if (snapshot.val() === null) {  //altrimenti nulla
-                  alert('problemi lettura dati account')
-                }
-            })  
-            }
-        })
-      }
+  writeUserData(id, no, tel, ist) {
+    fire
+      .database()
+      .ref(this.props.ruolo + "/" + id)
+      .update({
+        nome: no,
+        telefono: tel,
+        istituto: ist
+      })
+      .then(data => {
+        //success callback
+        console.log("data ", data);
+      })
+      .catch(error => {
+        //error callback
+        console.log("error ", error);
+      });
+  }
 
-      writeUserData(id, no, tel, ist) {
-        fire.database().ref(this.props.ruolo + '/' + id).update({
-            nome: no,
-            telefono: tel,
-            istituto: ist
-        }).then((data)=>{
-            //success callback
-            console.log('data ' , data)
-        }).catch((error)=>{
-            //error callback
-            console.log('error ' , error)
-        })
-      }
+  aggiornaDati() {
+    const nome = this.aggiornaNome.value;
+    const istituto = this.aggiornaIstituto.value;
+    const telefono = this.aggiornaTelefono.value;
+    if (nome !== "" && istituto !== "" && telefono !== "") {
+      this.writeUserData(this.props.userID, nome, telefono, istituto);
+      //this.props.setLocalName(nome)
+      //this.props.setStateUser()
+      //alert('dati aggiornati')
+    } else {
+      alert("Tutti i campi devono essere compilati");
+    }
+    //this.datiForm.reset();
+  }
 
-      aggiornaDati() {
-        const nome = this.aggiornaNome.value
-        const istituto = this.aggiornaIstituto.value            
-        const telefono = this.aggiornaTelefono.value
-        if (nome !== '' && istituto !== '' && telefono !== '') {
-          this.writeUserData(this.props.userID, nome, telefono, istituto)
-          //this.props.setLocalName(nome)
-          //this.props.setStateUser()
-          //alert('dati aggiornati')
-        } else {
-          alert("Tutti i campi devono essere compilati")
-        }
-        //this.datiForm.reset();
-      }
+  componentDidMount() {
+    this.readUserData();
+  }
 
-      componentDidMount() {
-        this.readUserData();
-      }
+  render() {
+    return (
+      <div>
+        <h3>Profilo {this.props.ruolo}</h3>
+        <br />
+        <br />
 
-      render () {        
-        return (
-            <div>
-                <h3>Profilo {this.props.ruolo}</h3>
-              <br/>
-              <br/>
+        <Button href="/myconversation" variant="info" size="lg">
+          Le mie conversazioni
+        </Button>
 
-                <Button href="/myconversation" variant="info" size="lg" block>
-    Le mie conversazioni
-  </Button>
+        <br />
+        <br />
+        <Button href="modifyProfile" variant="info" size="lg">
+          Modifica profilo
+        </Button>
 
-  <br/>
-  <Button href="modifyProfile" variant="info" size="lg" block>
-   Modifica profilo
-  </Button>
-
-             {/* 
+        {/* 
              
                 {this.props.picture === 'null'
                 ? <Button variant="info" href="/profile" size="sm">
@@ -163,10 +174,9 @@ class Profile extends Component{
 
 
 */}
-
-            </div>
-        );
-      }    
+      </div>
+    );
+  }
 }
 
 export default Profile;
