@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { fire } from '../../../config/FirebaseConfig';
+import { fire } from '../../../../config/FirebaseConfig';
 import { Button, Form } from 'react-bootstrap';
+import {FaAngleLeft} from 'react-icons/fa';
 
-class Profile extends Component{
+class modifyProfile extends Component{
 
     constructor() {
         super();
@@ -91,21 +92,9 @@ class Profile extends Component{
       render () {        
         return (
             <div>
+                <Button href="/profile"> <FaAngleLeft    /> </Button>
+                
                 <h3>Profilo {this.props.ruolo}</h3>
-              <br/>
-              <br/>
-
-                <Button href="/myconversation" variant="primary" size="lg" block>
-    Le mie conversazioni
-  </Button>
-
-  <br/>
-  <Button href="modifyProfile" variant="primary" size="lg" block>
-   Modifica profilo
-  </Button>
-
-             {/* 
-             
                 {this.props.picture === 'null'
                 ? <Button variant="info" href="/profile" size="sm">
                     Inserisci immagine
@@ -152,7 +141,7 @@ class Profile extends Component{
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Telefono</Form.Label>
                         <Form.Control className="formDatiLabel" type="text" placeholder={this.state.telefono} ref={(input) => { this.aggiornaTelefono = input }}/>
-                    </Form.Group> 
+                    </Form.Group> */}
                     <Form.Group controlId="formBasicChecbox">
                     </Form.Group>
                     <br></br>            
@@ -160,13 +149,9 @@ class Profile extends Component{
                         Aggiorna
                     </Button>                       
                 </Form>
-
-
-*/}
-
             </div>
         );
       }    
 }
 
-export default Profile;
+export default modifyProfile;

@@ -13,6 +13,7 @@ import Login from './components/pages/login/login';
 import Logout from './components/pages/logout/logout';
 import Landing from './components/pages/landing/landing';
 import Profile from './components/pages/profile/profile';
+import ModifyProfile from './components/pages/profile/modify/modify';
 import Info from './components/pages/info/info';
 import Telegrambot from './components/pages/telegrambot/telegrambot';
 import Faq from './components/pages/faq/faq';
@@ -162,6 +163,27 @@ class App extends React.Component {
                         setLocalIstituto={this.setLocalIstituto}
                         setLocalUser={this.setLocalUser} />
                     } />
+
+
+<Route path="/modifyProfile" render={() =>
+                      <ModifyProfile
+                        userID={this.state.userID}
+                        email={this.state.email}
+                        name={this.state.name}
+                        picture={this.state.picture}
+                        ruolo={this.state.ruolo}
+                        istituto={this.state.istituto}
+                        telefono={this.state.telefono}
+                        setRuolo={this.state.setRuolo}
+                        setStateUser={this.setStateUser}
+                        setLocalTelefono={this.setLocalTelefono}
+                        setLocalName={this.setLocalName}
+                        setLocalRole={this.setLocalRole}
+                        setLocalIstituto={this.setLocalIstituto}
+                        setLocalUser={this.setLocalUser} />
+                    } />
+
+
                     <Route path="/info" component={Info} />
                     <Route path="/telegrambot" component={Telegrambot} />
                     <Route path="/telefona" component={Telefona} />
