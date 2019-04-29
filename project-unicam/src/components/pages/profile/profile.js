@@ -1,3 +1,59 @@
+
+//////// PROFILE DI CIO ////////////////
+
+import React, { Component } from 'react';
+
+import { Button } from 'react-bootstrap';
+
+class Profile extends Component{
+
+    constructor() {
+        super();
+        this.state = {
+            nome: null,
+            email: null,
+            istituto: null,
+            telefono: null,
+            ruolo: null
+          }      
+      }
+
+     
+      render () {        
+        return (
+            <div>
+                <h3>Profilo {this.props.ruolo}</h3>
+              <br/>
+              <br/>
+
+                <Button href="/myconversation" variant="primary" size="lg" block>
+    Le mie conversazioni
+  </Button>
+
+  <br/>
+  <Button href="modifyProfile" variant="primary" size="lg" block>
+   Modifica profilo
+  </Button>
+  <br/>
+  <Button href="deleteProfile" variant="primary" size="lg" block>
+   Elimina profilo
+  </Button>
+
+
+            
+
+            </div>
+        );
+      }    
+}
+
+export default Profile;
+
+
+// PROFILE DI MICIO
+
+
+/*
 import React, { Component } from "react";
 import { fire } from "../../../config/FirebaseConfig";
 import { Button } from "react-bootstrap";
@@ -173,10 +229,14 @@ class Profile extends Component {
                 </Form>
 
 
-*/}
+
       </div>
     );
   }
 }
 
 export default Profile;
+
+*/
+
+
