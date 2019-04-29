@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, Popover, OverlayTrigger } from "react-bootstrap";
 import { FaAngleLeft } from "react-icons/fa";
 
 function MyConversation() {
@@ -8,7 +8,24 @@ function MyConversation() {
       <Button variant="info" href="/profile">
         <FaAngleLeft />
       </Button>
-      <h1>Guarda che belle chat!</h1>
+
+      <br />
+      <br />
+
+      <OverlayTrigger
+        trigger="click"
+        key="bottom"
+        placement="bottom"
+        overlay={
+          <Popover id={`popover-positioned-bottom`} title={`Conversazione 1`}>
+            <h1>ciao</h1>
+            <h1>ciao</h1>
+            <h1>ciao</h1>
+          </Popover>
+        }
+      >
+        <Button variant="outline-info">Conversazione 1</Button>
+      </OverlayTrigger>
     </div>
   );
 }
