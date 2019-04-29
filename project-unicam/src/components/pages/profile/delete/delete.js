@@ -90,7 +90,8 @@ class deleteProfile extends Component{
       render () {        
         return (
             <div>
-                <Button href="/profile"> <FaAngleLeft    /> </Button>
+                <div style={{display:"flex", justifyContent:"left"}}><Button variant="info" href="/profile"> <FaAngleLeft    /> </Button></div>
+                
                <h1>Elimina il tuo profilo</h1>
                <br/>
                <h4><strong>Una volta eliminato l'account non potrai più leggere alcuna delle tue conversazioni.</strong></h4>
@@ -109,10 +110,12 @@ class deleteProfile extends Component{
         >
           <strong>Eliminare Definitivamnte ?</strong>  <br/>
           <br/>
-          <br/>
+          <br/>         
+          <div className="btn-toolbar" style={{display:'felx'}}>
           
-        <Button variant="danger" onClick={this.deleteaccount} > si</Button> {'--------------'} <Button href="/deleteProfile "variant="secondary">no</Button>
-
+        <Button  variant="danger" onClick={this.deleteaccount} > Elimina</Button>  {   }
+        <Button style={{marginLeft:50}} href="/deleteProfile "variant="secondary">Annulla</Button>
+        </div>
         </Popover>
       }
     >
