@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { fire } from "../../../../config/FirebaseConfig";
 import { Button, Modal } from "react-bootstrap";
 import { FaAngleLeft } from "react-icons/fa";
+import firebase from 'firebase';
 
 class DeleteProfile extends Component {
   constructor() {
@@ -22,11 +23,17 @@ class DeleteProfile extends Component {
   }
 
   deleteUserData = () => {
+
+    //cancellazione account
+    var userDeleted = firebase.auth().currentUser;
+    userDeleted.delete();
+    
     //cancellazione dati firebase
     fire
       .database()
       .ref(this.props.ruolo + '/' + this.props.userID)
       .remove();
+
     //logout
     fire.auth().signOut();
     //chiusura modal
@@ -61,16 +68,10 @@ class DeleteProfile extends Component {
           <br />
           <div className="txtdelete">
             <h3>
-              Sei davvero sicuro di voler cancellare i dati relativi al tuo
-              account?
+              Sei davvero sicuro di voler cancellare il tuo account e i dati relativi ad esso?
             </h3>
             <br />
-            Le modifiche effettuate e le segnalazioni aggiunte andranno perse,
-            <br />
-            per la disattivazione dell'account contattare gli sviluppatori nella
-            pagina info
-            <br />
-            <br />
+            Le modifiche effettuate e le segnalazioni aggiunte andranno perse.
           </div>
           <Button
             style={{fontWeight:'bold'}}
