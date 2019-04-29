@@ -21,6 +21,7 @@ class Blog extends Component {
       telefono: null,
       codice: [],
       messaggio: [],
+      data: [],
       id: [],
       visto: [],
       buttonCommenta: [],
@@ -50,6 +51,13 @@ class Blog extends Component {
     return ID;
   }
 
+  getData() {
+    const giorno = new Date().getDate();
+    const mese = new Date().getMonth() + 1;
+    const anno = new Date().getFullYear();
+    return `${giorno}${'/'}${mese<10?`0${mese}`:`${mese}`}${'/'}${anno}`
+  }
+
   readSegnalazioni() {
     const rootRef = fire.database().ref();
     const segnalazione = rootRef.child('Segnalazioni/')
@@ -59,6 +67,7 @@ class Blog extends Component {
         this.setState({
           codice: this.state.codice.concat([child.key]),
           messaggio: this.state.messaggio.concat([child.val().messaggio]),
+          data: this.state.data.concat([child.val().data]),
           id: this.state.id.concat([child.val().id]),
           visto: this.state.visto.concat([child.val().visto]),
           buttonCommenta: this.state.buttonCommenta.concat(false),
@@ -68,10 +77,11 @@ class Blog extends Component {
     });
   }
 
-  writeUserData(codice, idUtente, messaggioUtente) {
+  writeUserData(codice, idUtente, messaggioUtente, dataSegnalazione) {
     fire.database().ref('Segnalazioni/' + codice).set({
       id: idUtente,
       messaggio: messaggioUtente,
+      data: dataSegnalazione,
       visto: "false",
     }).then((data) => {
       //success callback
@@ -87,9 +97,10 @@ class Blog extends Component {
     const idUtente = this.usernameInput.value */
     const messaggio = this.testoSegnalazione.value
     const codiceSegnalazione = this.uniqueIDCode();
+    const data = this.getData();
     if (messaggio !== '') {
       if(codiceSegnalazione !== '' && codiceSegnalazione !== null) {
-        this.writeUserData(codiceSegnalazione, this.props.userID, messaggio) //id=this.state.userID
+        this.writeUserData(codiceSegnalazione, this.props.userID, messaggio, data) //id=this.state.userID
       alert('Segnalazione '+codiceSegnalazione+' inviata correttamente')
       } else {
         alert('Errore generazione codice segnalazione, riprova')
@@ -252,9 +263,9 @@ class Blog extends Component {
         {this.setVisto()}
         {this.state.codice.map((codice, index) => (
           <div key={codice}>
-            <br />            
+            <br/>            
               <Card bg={this.state.visto[index]} text="white" className="cardStyle">              
-                <Card.Header><Card.Title>Segnalazione #{codice}</Card.Title></Card.Header>
+                <Card.Header><Card.Title>Segnalazione #{codice} del {this.state.data[index]}</Card.Title></Card.Header>
                 <Card.Body>                
                   <Card.Text>
                     {this.state.messaggio[index]}
@@ -307,7 +318,7 @@ class Blog extends Component {
           <div key={codice}>
             <br/>            
               <Card bg="info" text="white" className="cardStyle">              
-                <Card.Header><Card.Title>Segnalazione #{codice}</Card.Title></Card.Header>
+                <Card.Header><Card.Title>Segnalazione #{codice} del {this.state.data[index]}</Card.Title></Card.Header>
                 <Card.Body>                
                   <Card.Text>
                     {this.state.messaggio[index]}
