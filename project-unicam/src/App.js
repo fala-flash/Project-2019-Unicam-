@@ -165,11 +165,11 @@ class App extends React.Component {
                         istituto={this.state.istituto}
                         telefono={this.state.telefono}
                         setRuolo={this.state.setRuolo}
-                        setStateUser={this.setStateUser}
-                        setLocalTelefono={this.setLocalTelefono}
+                        setStateUser={this.setStateUser}                        
                         setLocalName={this.setLocalName}
                         setLocalRole={this.setLocalRole}
                         setLocalIstituto={this.setLocalIstituto}
+                        setLocalTelefono={this.setLocalTelefono}
                         setLocalUser={this.setLocalUser} />
                     } />
 

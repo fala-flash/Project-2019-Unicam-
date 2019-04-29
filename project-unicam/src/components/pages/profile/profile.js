@@ -20,23 +20,18 @@ class Profile extends Component {
     return (
       <div>
         <h3>Profilo {this.props.ruolo}</h3>
-        <br />
-        <br />
-
+        <br/>
+        <br/>
         <Button style={{fontWeight:'bold'}} href="/myconversation" variant="info" size="lg">
           Le mie conversazioni
         </Button>
-
-        <br />
-        <br />
-
+        <br/>
+        <br/>
         <Button style={{fontWeight:'bold'}} href="modifyProfile" variant="info" size="lg">
           Modifica profilo
         </Button>
-
-        <br />
-        <br />
-
+        <br/>
+        <br/>
         <Button  style={{fontWeight:'bold'}} href="deleteProfile" variant="info" size="lg">
           Elimina profilo
         </Button>

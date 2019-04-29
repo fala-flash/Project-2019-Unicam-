@@ -18,7 +18,7 @@ class Logout extends Component {
     }
 
     deleteStorage() {
-        let keysToRemove = ["userID", "userName", "userEmail", "userPicture", "userRole"];
+        let keysToRemove = ["userID", "userName", "userEmail", "userPicture", "userRole", "userIstituto", "userTelefono"];
         keysToRemove.forEach(k => localStorage.removeItem(k))
     }
 
