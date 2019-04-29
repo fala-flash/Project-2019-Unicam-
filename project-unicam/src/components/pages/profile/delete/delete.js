@@ -108,10 +108,10 @@ class deleteProfile extends Component{
           id={`popover-positioned-bottom`}
           title={`Elimina`}
         >
-          <strong>Eliminare Definitivamnte ?</strong>  <br/>
+          <strong>Eliminare Definitivamente ?</strong>  <br/>
           <br/>
           <br/>         
-          <div className="btn-toolbar" style={{display:'felx'}}>
+          <div className="btn-toolbar" style={{display:'flex'}}>
           
         <Button  variant="danger" onClick={this.deleteaccount} > Elimina</Button>  {   }
         <Button style={{marginLeft:50}} href="/deleteProfile "variant="secondary">Annulla</Button>
@@ -119,7 +119,7 @@ class deleteProfile extends Component{
         </Popover>
       }
     >
-      <Button variant="secondary">Elimina account </Button>
+      <Button variant="danger">Elimina account </Button>
     </OverlayTrigger>
             </div>
         );

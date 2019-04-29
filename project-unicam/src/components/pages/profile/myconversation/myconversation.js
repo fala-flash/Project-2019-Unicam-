@@ -5,9 +5,11 @@ import { FaAngleLeft } from "react-icons/fa";
 function MyConversation() {
   return (
     <div>
-      <Button variant="info" href="/profile">
-        <FaAngleLeft />
-      </Button>
+      <div style={{ display: "flex", justifyContent: "left" }}>
+        <Button variant="info" href="/profile">
+          <FaAngleLeft />
+        </Button>
+      </div>
 
       <br />
       <br />
