@@ -305,10 +305,13 @@ class Blog extends Component {
                 </Card.Body>
                 <Card.Footer> 
                   <textarea className="testoForm" rows="2" ref={(input) => { this.testoTextArea = input }}></textarea>
+                  <br/>
                   <Button className="commentoButton" variant="outline-light"
                     onClick={(event) => {this.aggiungiCommento(event, index)}}>
                     Commenta<FiMessageCircle className="blogIcon"/>
                   </Button>
+                  <br/>
+                  <br/>
                   <Button className="" variant="outline-light" type=""
                     onClick={(event) => {this.getCommenti(event, index)}}>
                     Leggi Commenti<FiMessageCircle className="blogIcon"/>
