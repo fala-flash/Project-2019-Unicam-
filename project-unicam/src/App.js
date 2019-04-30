@@ -37,7 +37,7 @@ class App extends React.Component {
       name: null,
       picture: null,
       istututo: null,
-      telefono: null,
+      telefono: null
     }
     this.setAuthenticated = this.setAuthenticated.bind(this)
     this.setRuolo = this.setRuolo.bind(this)

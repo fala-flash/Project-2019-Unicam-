@@ -29,10 +29,13 @@ class Blog extends Component {
       idCommento: [],
       testoCommento: [],
       indexModal: null,
-      key: 'home'
+      key: 'home',
+      txtComment: null
     }
     this.resetCommenta = this.resetCommenta.bind(this)
     this.resetContatta = this.resetContatta.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.aggiungiCommento = this.aggiungiCommento.bind(this)
   }
 
   setVisto() {
@@ -212,30 +215,7 @@ class Blog extends Component {
     event.preventDefault()
   }
 
-  aggiungiCommento(index) {
-    const testo = this.testoTextArea.value
-    fire.database().ref('Discussioni/'+ this.state.codice[index]+'/'+this.props.userID).set({
-      commento: testo
-    }).then((data)=>{
-        //success callback
-        //console.log('data ' , data)
-    }).catch((error)=>{
-        //error callback
-        //console.log('error ' , error)
-    })
-    fire.database().ref('Segnalazioni/'+ this.state.codice[index]).update({
-      visto: "true"
-    }).then((data)=>{
-        //success callback
-        //console.log('data ' , data)
-    }).catch((error)=>{
-        //error callback
-        //console.log('error ' , error)
-    })
-    window.location.reload();
-  }
-
-   getCommenti(event, index) {
+  getCommenti(event, index) {
     const rootRef = fire.database().ref();
     const discussioni = rootRef.child('Discussioni/'+this.state.codice[index])
     //alert('Discussioni/'+index)
@@ -266,6 +246,32 @@ class Blog extends Component {
     console.log("ARRAY Commenta: "+this.state.buttonCommenta)
     console.log("ARRAY Contatta: "+this.state.buttonContatta)
     event.preventDefault()
+  }
+
+  handleChange(event) {
+    this.setState({txtComment: event.target.value});
+  }
+
+  aggiungiCommento(index) {
+    fire.database().ref('Discussioni/'+ this.state.codice[index]+'/'+this.props.userID).set({
+      commento: this.state.txtComment
+    }).then((data)=>{
+        //success callback
+        //console.log('data ' , data)
+    }).catch((error)=>{
+        //error callback
+        //console.log('error ' , error)
+    })
+    fire.database().ref('Segnalazioni/'+ this.state.codice[index]).update({
+      visto: "true"
+    }).then((data)=>{
+        //success callback
+        //console.log('data ' , data)
+    }).catch((error)=>{
+        //error callback
+        //console.log('error ' , error)
+    })
+    alert('Commento alla segnalazione: ' +this.state.codice[index]+' aggiunto');
   }
 
   getSegnalazioniPsicologo() {
@@ -303,12 +309,15 @@ class Blog extends Component {
                     </div>
                   </Collapse>
                 </Card.Body>
-                <Card.Footer> 
-                  <textarea className="testoForm" rows="2" ref={(input) => { this.testoTextArea = input }}></textarea>
-                  <Button className="commentoButton" variant="outline-light"
-                    onClick={() => {this.aggiungiCommento(index)}}>
-                    Commenta<FiMessageCircle className="blogIcon"/>
-                  </Button>
+                <Card.Footer>
+                  <Form onSubmit={() => { this.aggiungiCommento(index) }}>
+                    <textarea className="testoForm" rows="2" placeholder="inserisci testo commento" 
+                      value={this.state.txtComment}
+                      onChange={this.handleChange} />
+                    <Button className="commentoButton" variant="outline-light" type="submit" value="Submit">
+                      Commenta<FiMessageCircle className="blogIcon"/>
+                    </Button>
+                  </Form>
                   <Button className="leggiCommentiButton" variant="outline-light" type=""
                     onClick={(event) => {this.getCommenti(event, index)}}>
                     Leggi Commenti<FiMessageCircle className="blogIcon"/>
