@@ -212,10 +212,9 @@ class Blog extends Component {
     event.preventDefault()
   }
 
-  aggiungiCommento(event, index) {
+  aggiungiCommento(index) {
     const testo = this.testoTextArea.value
-    alert('Testo: '+testo)
-    /* fire.database().ref('Discussioni/'+ this.state.codice[index]+'/'+this.props.userID).set({
+    fire.database().ref('Discussioni/'+ this.state.codice[index]+'/'+this.props.userID).set({
       commento: testo
     }).then((data)=>{
         //success callback
@@ -232,7 +231,8 @@ class Blog extends Component {
     }).catch((error)=>{
         //error callback
         //console.log('error ' , error)
-    }) */
+    })
+    window.location.reload();
   }
 
    getCommenti(event, index) {
@@ -246,7 +246,7 @@ class Blog extends Component {
           testoCommento : this.state.testoCommento.concat([child.val().commento])
         })               
       });
-      alert(index+" "+this.state.codice[index]+"/"+this.state.idCommento[index]+" "+this.state.testoCommento[index])
+      //alert(index+" "+this.state.codice[index]+"/"+this.state.idCommento[index]+" "+this.state.testoCommento[index])
     });
   }
 
@@ -305,14 +305,11 @@ class Blog extends Component {
                 </Card.Body>
                 <Card.Footer> 
                   <textarea className="testoForm" rows="2" ref={(input) => { this.testoTextArea = input }}></textarea>
-                  <br/>
                   <Button className="commentoButton" variant="outline-light"
-                    onClick={(event) => {this.aggiungiCommento(event, index)}}>
+                    onClick={() => {this.aggiungiCommento(index)}}>
                     Commenta<FiMessageCircle className="blogIcon"/>
                   </Button>
-                  <br/>
-                  <br/>
-                  <Button className="" variant="outline-light" type=""
+                  <Button className="leggiCommentiButton" variant="outline-light" type=""
                     onClick={(event) => {this.getCommenti(event, index)}}>
                     Leggi Commenti<FiMessageCircle className="blogIcon"/>
                   </Button>   
@@ -345,7 +342,7 @@ class Blog extends Component {
     )
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.readSegnalazioni()
   }
 
@@ -353,7 +350,6 @@ class Blog extends Component {
     return (
       <div>
         <h3>Blog {this.props.ruolo}</h3>
-        <br/>
         {/* <p>ID: {this.props.userID}</p> */}
         {this.props.ruolo === 'Psicologo'
           ?

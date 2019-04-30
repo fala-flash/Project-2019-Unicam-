@@ -81,7 +81,7 @@ class modifyProfile extends Component{
         //this.datiForm.reset();
       }
 
-      componentDidMount() {
+      componentWillMount() {
         this.readUserData();
       }
 

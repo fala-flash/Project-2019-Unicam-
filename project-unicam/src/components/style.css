@@ -81,19 +81,25 @@
     margin-top: 5px; 
 }
 
-/* .testoForm {
-    margin-top:5px;
-    margin-bottom:5px;
-    width: 200px;
-    margin-left: 0px;
+.testoForm {
+    margin-top: 5px;
+    width: 100%;
 }
 
 .commentoButton {
-    margin-top:-50px;
+    margin-top: 5px;
     margin-bottom:5px;
+    margin-right: 5px;
     margin-left: 5px;
 }
- */
+
+.leggiCommentiButton {
+    margin-top: 5px;
+    margin-bottom:5px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
 .segnalazioneButton {
     margin-top: 5px;
     margin-bottom: 5px;

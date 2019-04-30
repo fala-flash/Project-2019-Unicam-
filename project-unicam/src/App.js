@@ -92,7 +92,7 @@ class App extends React.Component {
     });
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.removeAuthListener = fire.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({
@@ -130,7 +130,11 @@ class App extends React.Component {
           <BrowserRouter>
             <div className="pageStyle">
               <Switch>
-                <Route exact path="/" component={Landing} />
+                <Route exact path="/" render={() =>
+                  <Landing
+                    authenticated={this.state.authenticated} />
+                } />
+                
                 <Route path="/login" render={() =>
                   <Login
                     userID={this.state.userID}
@@ -148,7 +152,21 @@ class App extends React.Component {
                     } />
 
                     <Route path="/profile" render={() =>
-                      <Profile/>
+                      <Profile
+                        userID={this.state.userID}
+                        email={this.state.email}
+                        name={this.state.name}
+                        picture={this.state.picture}
+                        ruolo={this.state.ruolo}
+                        istituto={this.state.istituto}
+                        telefono={this.state.telefono}
+                        /* setRuolo={this.state.setRuolo} 
+                        setLocalUser={this.setLocalUser} */
+                        setStateUser={this.setStateUser}                        
+                        setLocalName={this.setLocalName}
+                        setLocalRole={this.setLocalRole}
+                        setLocalIstituto={this.setLocalIstituto}
+                        setLocalTelefono={this.setLocalTelefono} />                     
                     } />
 
 
