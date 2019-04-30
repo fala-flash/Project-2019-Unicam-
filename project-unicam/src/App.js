@@ -132,7 +132,8 @@ class App extends React.Component {
               <Switch>
                 <Route exact path="/" render={() =>
                   <Landing
-                    authenticated={this.state.authenticated} />
+                    authenticated={this.state.authenticated}
+                    name = {this.state.name} />
                 } />
                 
                 <Route path="/login" render={() =>

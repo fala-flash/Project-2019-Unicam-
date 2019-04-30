@@ -14,9 +14,12 @@ class Landing extends Component {
     render() {
         return (
             <div>
-                <h3 className="text-info">Benvenuto!</h3>
-                <p>A: {this.props.authenticated}</p>
+                <h3 className="text-info">
+                Benvenuto <span>{this.props.authenticated ? this.props.name : null}</span>!
+                </h3>
+
                 <br></br>
+
                 <LandingCarousel />
                 <br></br>
                 {this.props.authenticated === false
