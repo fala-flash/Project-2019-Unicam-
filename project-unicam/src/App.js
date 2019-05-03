@@ -205,7 +205,9 @@ class App extends React.Component {
                     <Route path="/telegrambot" component={Telegrambot} />
                     <Route path="/telefona" component={Telefona} />
                     <Route path="/faq" component={Faq} />
-                    <Route path="/myconversation" component={MyConversation} />
+                    <Route path="/myconversation" render={() =>
+                      <MyConversation />
+                    } />
                     <Route path="/blog" render={() =>
                       <Blog
                         userID={this.state.userID}
