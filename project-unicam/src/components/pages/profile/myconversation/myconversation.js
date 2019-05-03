@@ -4,20 +4,71 @@ import { Button } from "react-bootstrap";
 import { FaAngleLeft } from "react-icons/fa";
 
 class MyConversation extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { commenti: [] }; // <- set up react state
+  constructor() {
+    super();
+    this.state = { 
+      segnalazioni: [],
+      idSegnalazione: [],
+      idPsicologo: [],
+      nomePsicologo: [],
+      commento: [],
+      nome: null
+    }; // <- set up react state
   }
-  componentWillMount() {
-    /* Create reference to comment in Firebase Database */
-    let commentiRef = fire.database().ref().child("Discussioni/");
-    commentiRef.on('child_added', snapshot => {
-      snapshot.forEach(child => {
-        /* Update React state when comment is added at Firebase Database */
-      let message = { text: child.val().commento, id: child.key };
-      this.setState({ messages: [message].concat(this.state.messages) });
-      })
+
+  readSegnalazioni() {
+    const rootRef = fire.database().ref();
+    const segnalazioni = rootRef.child('Segnalazioni/')
+
+    segnalazioni.once('value', snap => {
+      snap.forEach(child => {
+        if(child.val().id === this.props.userID)
+        this.setState({
+          segnalazioni: this.state.segnalazioni.concat([child.key])
+        });
+      });
     });
+  }
+
+  readDiscussioni() {
+    const rootRef = fire.database().ref();
+    const discussioni = rootRef.child('Discussioni/')
+
+    discussioni.once('value', snap => {
+       snap.forEach(child => {
+
+        if (this.isInArray(child.key)) {  //segnalazione effettuata dall'utente loggato
+          
+          child.forEach(extraChild => {
+            this.setState({
+              idPsicologo: this.state.idPsicologo.concat([extraChild.key]),
+              nomePsicologo: this.state.nomePsicologo.concat([this.readPsicologoName(extraChild.key)]),
+              commento: this.state.commento.concat([extraChild.val().commento])
+            });
+          });
+        }
+      });
+    });
+  }
+
+  isInArray(value) {
+    return this.state.segnalazioni.indexOf(value) > -1;
+  }
+
+  readPsicologoName(id) {
+    const rootRef = fire.database().ref();
+    const psicologo = rootRef.child('Psicologo/'+id)
+    let n;
+
+    psicologo.on('value', snap => {
+        n = snap.val().nome
+    });
+    return n
+  }
+
+  componentWillMount() {
+    this.readSegnalazioni() 
+    this.readDiscussioni()    
   }
 
   render() {
@@ -28,14 +79,15 @@ class MyConversation extends React.Component {
             <FaAngleLeft />
           </Button>
         </div>
+        {this.state.segnalazioni.map((codice, index) => (
+          <div key={codice}>
+            <p>Codice: {codice}</p>
+            <p>id psicologo: {this.state.idPsicologo[index]}</p>
+            <p>nome psicologo: {this.state.nomePsicologo[index]}</p>
+            <p>commento: {this.state.commento[index]}</p>
+          </div>
+        ))}
 
-        <br />
-        <ul>
-          {/* Render the list of messages */
-          this.state.commenti.map(message => (
-            <li key={message.id}>{message.text}</li>
-          ))}
-        </ul>
       </div>
     );
   }

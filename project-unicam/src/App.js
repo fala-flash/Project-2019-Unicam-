@@ -206,7 +206,8 @@ class App extends React.Component {
                     <Route path="/telefona" component={Telefona} />
                     <Route path="/faq" component={Faq} />
                     <Route path="/myconversation" render={() =>
-                      <MyConversation />
+                      <MyConversation 
+                        userID={this.state.userID}/>
                     } />
                     <Route path="/blog" render={() =>
                       <Blog
