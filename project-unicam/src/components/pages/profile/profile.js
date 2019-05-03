@@ -63,8 +63,8 @@ class Profile extends Component {
         <h3>Profilo {this.props.ruolo}</h3>
         <br/>
         <br/>
-        <Button style={{fontWeight:'bold'}} href="/myconversation" variant="info" size="lg">
-          Le mie conversazioni
+        <Button style={{fontWeight:'bold'}} href="/myreports" variant="info" size="lg">
+          Le mie Segnalazioni
         </Button>
         <br/>
         <br/>

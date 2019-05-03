@@ -20,7 +20,7 @@ import Telegrambot from './components/pages/telegrambot/telegrambot';
 import Faq from './components/pages/faq/faq';
 import Telefona from './components/pages/telefona/telefona';
 import Blog from './components/pages/blog/blog';
-import MyConversation from './components/pages/profile/myconversation/myconversation'
+import MyReports from './components/pages/profile/myreports/myreports'
 
 
 
@@ -205,8 +205,8 @@ class App extends React.Component {
                     <Route path="/telegrambot" component={Telegrambot} />
                     <Route path="/telefona" component={Telefona} />
                     <Route path="/faq" component={Faq} />
-                    <Route path="/myconversation" render={() =>
-                      <MyConversation 
+                    <Route path="/myreports" render={() =>
+                      <MyReports 
                         userID={this.state.userID}/>
                     } />
                     <Route path="/blog" render={() =>

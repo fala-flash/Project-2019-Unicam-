@@ -3,7 +3,7 @@ import { fire } from "../../../../config/FirebaseConfig";
 import { Button } from "react-bootstrap";
 import { FaAngleLeft } from "react-icons/fa";
 
-class MyConversation extends React.Component {
+class MyReports extends React.Component {
   constructor() {
     super();
     this.state = { 
@@ -97,4 +97,4 @@ class MyConversation extends React.Component {
   }
 }
 
-export default MyConversation;
+export default MyReports;
