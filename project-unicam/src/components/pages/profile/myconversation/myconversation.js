@@ -42,28 +42,32 @@ class MyConversation extends React.Component {
           child.forEach(extraChild => {
             this.setState({
               idPsicologo: this.state.idPsicologo.concat([extraChild.key]),
-              nomePsicologo: this.state.nomePsicologo.concat([this.readPsicologoName(extraChild.key)]),
               commento: this.state.commento.concat([extraChild.val().commento])
             });
           });
         }
       });
     });
+    this.readPsicologoName()
   }
 
   isInArray(value) {
     return this.state.segnalazioni.indexOf(value) > -1;
   }
 
-  readPsicologoName(id) {
+  readPsicologoName() {
     const rootRef = fire.database().ref();
-    const psicologo = rootRef.child('Psicologo/'+id)
-    let n;
+    
+    for (var i=0; i<this.state.idPsicologo.length; i++) {
+      rootRef.child('Psicologo/'+this.state.idPsicologo[i]).on('value', snap => {
+        alert(snap.val().nome)
+      })
+    }
 
-    psicologo.on('value', snap => {
+    /* psicologo.on('value', snap => {
         n = snap.val().nome
     });
-    return n
+    return n */
   }
 
   componentWillMount() {
