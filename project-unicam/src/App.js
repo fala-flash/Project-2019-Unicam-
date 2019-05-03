@@ -19,9 +19,10 @@ import Info from './components/pages/info/info';
 import Telegrambot from './components/pages/telegrambot/telegrambot';
 import Faq from './components/pages/faq/faq';
 import Telefona from './components/pages/telefona/telefona';
-import Blog from './components/pages/blog/blog';
-import MyReports from './components/pages/profile/myreports/myreports'
-
+import BlogUtente from './components/pages/blog/blogUtente';
+import BlogPsicologo from './components/pages/blog/blogPsicologo';
+import MyReports from './components/pages/profile/myreports/myReports'
+import MyComments from './components/pages/profile/myreports/myComments'
 
 
 class App extends React.Component {
@@ -205,21 +206,59 @@ class App extends React.Component {
                     <Route path="/telegrambot" component={Telegrambot} />
                     <Route path="/telefona" component={Telefona} />
                     <Route path="/faq" component={Faq} />
-                    <Route path="/myreports" render={() =>
-                      <MyReports 
-                        userID={this.state.userID}/>
-                    } />
-                    <Route path="/blog" render={() =>
-                      <Blog
-                        userID={this.state.userID}
-                        email={this.state.email}
-                        name={this.state.name}
-                        picture={this.state.picture}
-                        ruolo={this.state.ruolo}
-                        setRuolo={this.state.setRuolo}
-                        setStateUser={this.setStateUser}
-                        setLocalUser={this.setLocalUser} />
-                    } />
+
+                    {this.state.ruolo === 'Psicologo'
+                      ?
+                        <Route path="/blogPsicologo" render={() =>
+                          <BlogPsicologo
+                            userID={this.state.userID}
+                            email={this.state.email}
+                            name={this.state.name}
+                            picture={this.state.picture}
+                            ruolo={this.state.ruolo}
+                            setRuolo={this.state.setRuolo}
+                            setStateUser={this.setStateUser}
+                            setLocalUser={this.setLocalUser} />
+                        } />
+                      : null
+                    }
+
+                    {this.state.ruolo === 'Utente'
+                      ?
+                        <Route path="/myReports" render={() =>
+                          <MyReports 
+                            userID={this.state.userID}
+                            ruolo={this.state.ruolo}/>
+                        } />
+                      : null
+                    }
+
+                    {this.state.ruolo === 'Psicologo'
+                      ?
+                        <Route path="/myComments" render={() =>
+                          <MyComments
+                            userID={this.state.userID}
+                            ruolo={this.state.ruolo}/>
+                        } />
+                      : null
+                    }
+
+                    {this.state.ruolo === 'Utente'
+                      ?
+                        <Route path="/blogUtente" render={() =>
+                          <BlogUtente
+                            userID={this.state.userID}
+                            email={this.state.email}
+                            name={this.state.name}
+                            picture={this.state.picture}
+                            ruolo={this.state.ruolo}
+                            setRuolo={this.state.setRuolo}
+                            setStateUser={this.setStateUser}
+                            setLocalUser={this.setLocalUser} />
+                        } />
+                      : null
+                    }
+                    
                     </>
                   : <Redirect to='/login' />
                 }
@@ -227,7 +266,9 @@ class App extends React.Component {
             </div>
           </BrowserRouter>
           <div className="footerstyle">
-            <Footer authenticated={this.state.authenticated} />
+            <Footer 
+            authenticated={this.state.authenticated} 
+            ruolo={this.state.ruolo}/>
           </div>
         </div>
       </div>

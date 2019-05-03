@@ -3,18 +3,15 @@ import { fire } from "../../../../config/FirebaseConfig";
 import { Button, Card } from "react-bootstrap";
 import { FaAngleLeft } from "react-icons/fa";
 
-class MyReports extends React.Component {
+class MyComments extends React.Component {
   constructor() {
     super();
     this.state = { 
-      segnalazioni: [],
+      idSegnalazione: [],
       testoSegnalazione: [],
       dataSegnalazione: [],
       visto: [],
-      idPsicologo: [],
-      nomePsicologo: [],
-      commento: [],
-      nome: null
+      commentoPsicologo: []
     };
   }
 
@@ -28,6 +25,28 @@ class MyReports extends React.Component {
         this.state.visto[i] = 'danger'
       }
     }
+  } 
+
+  readDiscussioni() {
+    const rootRef = fire.database().ref();
+    const discussioni = rootRef.child('Discussioni/')
+
+    discussioni.once('value', snap => {
+       snap.forEach(child => {        
+          child.forEach(extraChild => {
+              if(extraChild.key === this.props.userID) {
+                  this.setState({
+                      idSegnalazione: this.state.idSegnalazione.concat([child.key]),
+                      commentoPsicologo: this.state.commentoPsicologo.concat([extraChild.val().commento])
+                  })
+              }
+          });
+      });
+    });
+  } 
+  
+  isInArray(value) {
+    return this.state.idSegnalazione.indexOf(value) > -1;
   }
 
   readSegnalazioni() {
@@ -36,72 +55,38 @@ class MyReports extends React.Component {
 
     segnalazioni.once('value', snap => {
       snap.forEach(child => {
-        if(child.val().id === this.props.userID)
-        this.setState({
-          segnalazioni: this.state.segnalazioni.concat([child.key]),
-          testoSegnalazione: this.state.testoSegnalazione.concat([child.val().messaggio]),
-          dataSegnalazione : this.state.dataSegnalazione.concat([child.val().data]),
-          visto: this.state.visto.concat([child.val().visto])
-        });
-      });
-    });
-  }
 
-  isInArray(value) {
-    return this.state.segnalazioni.indexOf(value) > -1;
-  }
-
-  readDiscussioni() {
-    const rootRef = fire.database().ref();
-    const discussioni = rootRef.child('Discussioni/')
-
-    discussioni.once('value', snap => {
-       snap.forEach(child => {
-
-        if (this.isInArray(child.key)) {  //segnalazione effettuata dall'utente loggato
-          child.forEach(extraChild => {
+        if (this.isInArray(child.key)) {  //segnalazionecommentata dallo psicologo loggato          
             this.setState({
-              idPsicologo: this.state.idPsicologo.concat([extraChild.key]),
-              commento: this.state.commento.concat([extraChild.val().commento])
-            });
-          });
+              testoSegnalazione: this.state.testoSegnalazione.concat([child.val().messaggio]),
+              dataSegnalazione: this.state.dataSegnalazione.concat([child.val().data]),
+              visto: this.state.visto.concat([child.val().visto])
+            });       
         }
       });
     });
-    /* this.readPsicologoName() */
-  }  
-
- /*  readPsicologoName() {
-    const rootRef = fire.database().ref();    
-
-    /* psicologo.on('value', snap => {
-        n = snap.val().nome
-    });
-    return n
-  } */
+  }
 
   getSegnalazioni() {
     return (
       <div>
         {this.setVisto()}
-        {this.state.segnalazioni.map((codice, index) => (
+        {this.state.idSegnalazione.map((codice, index) => (
           <div key={codice}>
             <br/>            
               <Card bg={this.state.visto[index]} text="white" className="cardStyle">              
-                <Card.Header><Card.Title>Segnalazione #{codice} del {this.state.dataSegnalazione[index]}</Card.Title></Card.Header>
+                <Card.Header><Card.Title>Segnalazione #{codice} del: {this.state.dataSegnalazione[index]} </Card.Title></Card.Header>
                 <Card.Body>                
                   <Card.Text>
                     {this.state.testoSegnalazione[index]}
                   </Card.Text>                  
                 </Card.Body>
                 <Card.Footer className="footerMieSegn">
-                  {/* <p>id psicologo: {this.state.idPsicologo[index]}</p>
-                  <p>nome psicologo: {this.state.nomePsicologo[index]}</p> */}
-                  {this.state.visto[index] === 'success'
+                {this.state.visto[index] === 'success'
                     ? 
                       <>
                         <p style={{fontWeight: "bold"}}>Risposta:</p>
-                        <p>{this.state.commento[index]}</p>
+                        <p>{this.state.commentoPsicologo[index]}</p>
                       </>
                     : <p style={{fontWeight: "bold"}}>In attesa di risposta</p>
                   }
@@ -114,9 +99,9 @@ class MyReports extends React.Component {
   }
 
   componentWillMount() {
-    this.readSegnalazioni() 
-    this.readDiscussioni()    
-  }
+    this.readDiscussioni()
+    this.readSegnalazioni()
+}
 
   render() {
     return (
@@ -133,4 +118,4 @@ class MyReports extends React.Component {
   }
 }
 
-export default MyReports;
+export default MyComments;

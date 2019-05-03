@@ -27,13 +27,27 @@ class Footer extends Component {
                                 <FaTelegramPlane className="footericon" />
                                 <p className="footerText" style={{fontWeight:'bold'}}>Bot</p>
                             </Button>
-                        </Nav.Item>
+                        </Nav.Item>                        
 
                         <Nav.Item>
-                            <Button className="footerButton" href="/blog" variant="info">
-                                <FaBloggerB className="footericon" />
-                                <p className="footerText" style={{fontWeight:'bold'}}>Blog</p>
-                            </Button>
+                            {this.props.ruolo === 'Utente'
+                                ?   
+                                    <Button className="footerButton" href="/blogUtente" variant="info">
+                                        <FaBloggerB className="footericon" />
+                                        <p className="footerText" style={{fontWeight:'bold'}}>Blog</p>
+                                    </Button>
+                                : null
+                            }
+
+                            {this.props.ruolo === 'Psicologo'
+                                ?   
+                                    <Button className="footerButton" href="/blogPsicologo" variant="info">
+                                        <FaBloggerB className="footericon" />
+                                        <p className="footerText" style={{fontWeight:'bold'}}>Blog</p>
+                                    </Button>
+                                : null
+                            }
+                            
                         </Nav.Item>
 
                         <Nav.Item>

@@ -63,9 +63,21 @@ class Profile extends Component {
         <h3>Profilo {this.props.ruolo}</h3>
         <br/>
         <br/>
-        <Button style={{fontWeight:'bold'}} href="/myreports" variant="info" size="lg">
-          Le mie Segnalazioni
-        </Button>
+        {this.props.ruolo === 'Psicologo'
+          ? 
+            <Button style={{fontWeight:'bold'}} href="/myComments" variant="info" size="lg">
+              Le mie Risposte
+            </Button>
+          : null
+        }
+
+        {this.props.ruolo === 'Utente'
+          ? 
+            <Button style={{fontWeight:'bold'}} href="/myReports" variant="info" size="lg">
+              Le mie Segnalazioni
+            </Button>
+          : null
+        }
         <br/>
         <br/>
         <Button style={{fontWeight:'bold'}} href="modifyProfile" variant="info" size="lg">
