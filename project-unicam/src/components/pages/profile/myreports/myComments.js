@@ -111,7 +111,7 @@ class MyComments extends React.Component {
             <FaAngleLeft />
           </Button>          
         </div>
-        <h3>Le mie segnalazioni</h3>
+        <h3>Le mie risposte</h3>
         {this.getSegnalazioni()}
       </div>
     );
