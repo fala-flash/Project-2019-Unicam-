@@ -6,10 +6,6 @@
     margin-top: 0px;
     text-align: center;
 }
-.navbarbrand{
-    font-family: 'Courgette', 
-    cursive;
-}
 
 .loading{
     margin-top: 300px;
@@ -121,13 +117,20 @@
 
 /* header */
 
+.navbarTesto {
+    width:30%;
+    margin-left: 35%;
+  }
+
 .mr-auto{
     text-align: center;
+    font-weight: bold;
 }
 
-/* .headerNull {
-    background-color: red;
-} */
+.navbarbrand{
+    font-family: 'Courgette', 
+    cursive;
+}
 
 /* profile */
 
