@@ -82,14 +82,10 @@
 }
 
 .testoForm {
-    margin-top: 5px;
-    width: 100%;
+    resize: none;
 }
 
 .commentoButton {
-    margin-top: 5px;
-    margin-bottom:5px;
-    margin-right: 5px;
     margin-left: 5px;
 }
 

@@ -25,9 +25,8 @@ class BlogPsicologo extends Component {
       visto: [],
       buttonCommenta: [],
       buttonContatta: [],
-      idCommento: [],
-      testoCommento: [],
-      indexModal: null,
+      commentiPsicologo: [],
+      commento: [],
       txtComment: null
     }
     this.resetCommenta = this.resetCommenta.bind(this)
@@ -63,6 +62,17 @@ class BlogPsicologo extends Component {
           buttonCommenta: this.state.buttonCommenta.concat(false),
           buttonContatta: this.state.buttonContatta.concat(false)
         });
+        rootRef.child('Segnalazioni/'+child.key+'/Commenti').once('value', snapCommenti => {
+          snapCommenti.forEach(extraChild => {
+            this.setState({
+              commento: this.state.commento.concat([<div><br/>{extraChild.val().nome}:<br/>{extraChild.val().commento}<br/></div>])
+            });
+          });
+          this.setState({
+            commentiPsicologo: this.state.commentiPsicologo.concat([this.state.commento]),
+            commento: []
+          });
+        });    
       });
     });
   }
@@ -143,39 +153,6 @@ class BlogPsicologo extends Component {
 
   isInArray(value) {
     return this.state.codice.indexOf(value) > -1;
-  }
-
-  getCommenti() {
-    const rootRef = fire.database().ref();
-    const discussioni = rootRef.child('Discussioni/')
-
-    discussioni.once('value', snap => {
-       snap.forEach(child => {
-        //alert("discussione: "+child.key)
-
-        /* if (this.isInArray(child.key)) {  //segnalazione effettuata dall'utente loggato
-          child.forEach(extraChild => {
-            /* this.setState({
-              idPsicologo: this.state.idPsicologo.concat([extraChild.key]),
-              commento: this.state.commento.concat([extraChild.val().commento])
-            });
-          });
-        } */
-      });
-    });
-
-    /* const rootRef = fire.database().ref();
-    const discussioni = rootRef.child('Discussioni/'+this.state.codice[index])
-    //alert('Discussioni/'+index)
-    discussioni.once('value', snap => {
-      snap.forEach(child => {
-        this.setState({
-          idCommento : this.state.idCommento.concat([child.key]),
-          testoCommento : this.state.testoCommento.concat([child.val().commento])
-        })               
-      });
-      //alert(index+" "+this.state.codice[index]+"/"+this.state.idCommento[index]+" "+this.state.testoCommento[index])
-    }); */
   }
 
   //collapse
@@ -275,25 +252,25 @@ class BlogPsicologo extends Component {
                     </div>
                   </Collapse>
                 </Card.Body>
-                <Card.Footer>
-                  <Form onSubmit={() => { this.aggiungiCommento(index) }}>
-                    <textarea className="testoForm" rows="2" placeholder="inserisci testo commento" 
-                      value={this.state.txtComment}
-                      onChange={this.handleChange} />
-                    <Button className="commentoButton" variant="outline-light" type="submit" value="Submit">
-                      Commenta<FiMessageCircle className="blogIcon"/>
-                    </Button>
-                  </Form>                                              
-                </Card.Footer>
                 <Card.Footer> 
                   {this.state.visto[index] === 'success'
                     ? 
                       <>
                         <text style={{fontWeight: "bold"}}>Risposta/e:</text>
-                        <p>{this.state.testoCommento[index]}</p> 
+                        <p>{this.state.commentiPsicologo[index]}</p>                         
                       </>
                     : <text style={{fontWeight: "bold"}}>In attesa di risposta</text>
-                  }     
+                  }
+                  <Form onSubmit={() => { this.aggiungiCommento(index) }}>
+                  <div class="input-group">
+                      <Form.Control class="form-control" as="textarea" placeholder="inserisci testo commento" 
+                        defaultValue={this.state.txtComment}
+                        onChange={this.handleChange}/>
+                      <Button class="input-group-addon" variant="outline-light" type="submit" value="Submit">
+                        Invia<FiMessageCircle className="blogIcon"/>
+                      </Button>
+                  </div>
+                  </Form>
                   </Card.Footer>
                 </Card>
           </div>
@@ -304,7 +281,7 @@ class BlogPsicologo extends Component {
 
   componentWillMount() {
     this.readSegnalazioni()
-    this.getCommenti()
+    this.readCommenti()
   }
 
   render() {

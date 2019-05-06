@@ -34,56 +34,31 @@ class MyReports extends React.Component {
 
     segnalazioni.once('value', snap => {
       snap.forEach(child => {
-        if(child.val().id === this.props.userID)
-        this.setState({
-          segnalazioni: this.state.segnalazioni.concat([child.key]),
-          testoSegnalazione: this.state.testoSegnalazione.concat([child.val().messaggio]),
-          dataSegnalazione : this.state.dataSegnalazione.concat([child.val().data]),
-          visto: this.state.visto.concat([child.val().visto])
-        });
-        rootRef.child('Segnalazioni/'+child.key+'/Commenti').once('value', snapCommenti => {
+        if(child.val().id === this.props.userID) {
           this.setState({
-            commento: []
-          })
-          snapCommenti.forEach(extraChild => {
-            this.setState({
-              commento: this.state.commento.concat([<div><br/>{extraChild.val().nome}:<br/>{extraChild.val().commento}<br/></div>])
+            segnalazioni: this.state.segnalazioni.concat([child.key]),
+            testoSegnalazione: this.state.testoSegnalazione.concat([child.val().messaggio]),
+            dataSegnalazione : this.state.dataSegnalazione.concat([child.val().data]),
+            visto: this.state.visto.concat([child.val().visto])
+          });
+          rootRef.child('Segnalazioni/'+child.key+'/Commenti').once('value', snapCommenti => {
+            snapCommenti.forEach(extraChild => {
+              this.setState({
+                commento: this.state.commento.concat([<div><br/>{extraChild.val().nome}:<br/>{extraChild.val().commento}<br/></div>])
+              });
             });
-          });
-          this.setState({
-            commentiPsicologo: this.state.commentiPsicologo.concat([this.state.commento])
-          });
-        });        
+            this.setState({
+              commentiPsicologo: this.state.commentiPsicologo.concat([this.state.commento]),
+              commento: []
+            });
+          });   
+        }
       });
     });
   }
 
   isInArray(value) {
     return this.state.segnalazioni.indexOf(value) > -1;
-  }
-
-  readCommenti() {
-    const rootRef = fire.database().ref();
-    const discussioni = rootRef.child('Segnalazioni/')
-
-    discussioni.once('value', snap => {
-       snap.forEach(child => {
-        if (this.isInArray(child.key)) {  //segnalazione effettuata dall'utente loggato
-          //annullo psicologo e commento
-          this.setState({
-            commento: []
-          })
-          child.forEach(extraChild => {
-            this.setState({
-              commento: this.state.commento.concat([<div><br/>{extraChild.val().nome}:<br/>{extraChild.val().commento}<br/></div>])
-            });
-          });
-          this.setState({
-            commentiPsicologo: this.state.commentiPsicologo.concat([this.state.commento])
-          });
-        }
-      });
-    });
   }
 
   getSegnalazioni() {
