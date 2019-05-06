@@ -11,10 +11,8 @@ class MyReports extends React.Component {
       testoSegnalazione: [],
       dataSegnalazione: [],
       visto: [],
-      idPsicologo: [],
-      nomePsicologo: [],
-      commento: [],
-      nome: null
+      commentiPsicologo: [],
+      commento: []
     };
   }
 
@@ -30,7 +28,7 @@ class MyReports extends React.Component {
     }
   }
 
-  readSegnalazioni() {
+  readSegnalazioni() {  //leggo tutte le segnalazioni con id dell'utente loggato
     const rootRef = fire.database().ref();
     const segnalazioni = rootRef.child('Segnalazioni/')
 
@@ -59,26 +57,22 @@ class MyReports extends React.Component {
        snap.forEach(child => {
 
         if (this.isInArray(child.key)) {  //segnalazione effettuata dall'utente loggato
+          //annullo psicologo e commento
+          this.setState({
+            commento: []
+          })
           child.forEach(extraChild => {
             this.setState({
-              idPsicologo: this.state.idPsicologo.concat([extraChild.key]),
-              commento: this.state.commento.concat([extraChild.val().commento])
+              commento: this.state.commento.concat([<div>{extraChild.val().nome}:<br/>{extraChild.val().commento}<br/><br/></div>])
             });
+          });
+          this.setState({
+            commentiPsicologo: this.state.commentiPsicologo.concat([this.state.commento])
           });
         }
       });
     });
-    /* this.readPsicologoName() */
-  }  
-
- /*  readPsicologoName() {
-    const rootRef = fire.database().ref();    
-
-    /* psicologo.on('value', snap => {
-        n = snap.val().nome
-    });
-    return n
-  } */
+  }
 
   getSegnalazioni() {
     return (
@@ -94,14 +88,12 @@ class MyReports extends React.Component {
                     {this.state.testoSegnalazione[index]}
                   </Card.Text>                  
                 </Card.Body>
-                <Card.Footer className="footerMieSegn">
-                  {/* <p>id psicologo: {this.state.idPsicologo[index]}</p>
-                  <p>nome psicologo: {this.state.nomePsicologo[index]}</p> */}
+                <Card.Footer className="footerMieSegn">             
                   {this.state.visto[index] === 'success'
                     ? 
                       <>
-                        <p style={{fontWeight: "bold"}}>Risposta:</p>
-                        <p>{this.state.commento[index]}</p>
+                        <p style={{fontWeight: "bold"}}>Risposta/e:</p>
+                        <p>{this.state.commentiPsicologo[index]}</p>
                       </>
                     : <p style={{fontWeight: "bold"}}>In attesa di risposta</p>
                   }

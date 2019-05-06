@@ -194,7 +194,8 @@ class BlogPsicologo extends Component {
 
   aggiungiCommento(index) {
     fire.database().ref('Discussioni/'+ this.state.codice[index]+'/'+this.props.userID).set({
-      commento: this.state.txtComment
+      commento: this.state.txtComment,
+      nome: this.props.name
     }).then((data)=>{
         //success callback
         //console.log('data ' , data)
