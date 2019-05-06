@@ -12,7 +12,7 @@ class Header extends Component {
                 {this.props.authenticated
                     ?
                     <Navbar fixed="top" bg="info" variant="light" expand="light">
-                        <Navbar.Brand style={{color:'white', fontWeight:'bold'}} href="/">Stop! Bullying</Navbar.Brand>
+                        <Navbar.Brand  className="navbarbrand"style={{color:'white'}} href="/">Stop! Bullying</Navbar.Brand>
                         <Navbar.Toggle style={{backgroundColor:'white'}}aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="mr-auto">
@@ -24,7 +24,7 @@ class Header extends Component {
                     </Navbar>
                     :
                     <Navbar fixed="top" bg="info" variant="light" expand="light">
-                        <Navbar.Brand style={{color:'white', fontWeight:'bold'}} href="/">Stop! Bullying</Navbar.Brand>
+                        <Navbar.Brand  className="navbarbrand" style={{color:'white'}} href="/">Stop! Bullying</Navbar.Brand>
                     </Navbar>
                 }                
                             

@@ -1,9 +1,14 @@
 /* APP */
+@import url('https://fonts.googleapis.com/css?family=Courgette');
 
 .mainStyle {
     margin-bottom : 70px;
     margin-top: 0px;
     text-align: center;
+}
+.navbarbrand{
+    font-family: 'Courgette', 
+    cursive;
 }
 
 .loading{

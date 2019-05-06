@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { fire } from '../../../config/FirebaseConfig';
-import { Button, Form, Card, Collapse, FormControl, InputGroup, Navbar } from 'react-bootstrap';
+import { Button, Form, Card, Collapse } from 'react-bootstrap';
 
 import { FiMessageCircle, FiInfo } from 'react-icons/fi';
 import { FaPhone, FaHome } from 'react-icons/fa';

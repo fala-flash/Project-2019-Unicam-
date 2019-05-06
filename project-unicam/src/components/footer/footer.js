@@ -59,7 +59,7 @@ class Footer extends Component {
                     </Navbar>
                     :
                     <Navbar fixed="bottom" bg="info" variant="light" expand="light">
-                        <Navbar.Brand style={{color:'white', fontWeight:'bold'}} href="https://www.unicam.it/">UNICAM 2019</Navbar.Brand>
+                        <Navbar.Brand  className="navbarbrand" style={{color:'white'}} href="https://www.unicam.it/">Unicam 2019</Navbar.Brand>
                     </Navbar>}
             </div>
         );
