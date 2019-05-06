@@ -262,15 +262,13 @@ class BlogPsicologo extends Component {
                     : <text style={{fontWeight: "bold"}}>In attesa di risposta</text>
                   }
                   <Form onSubmit={() => { this.aggiungiCommento(index) }}>
-                  <div class="input-group">
-                      <Form.Control class="form-control" as="textarea" placeholder="inserisci testo commento" 
-                        defaultValue={this.state.txtComment}
-                        onChange={this.handleChange}/>
-                      <Button class="input-group-addon" variant="outline-light" type="submit" value="Submit">
-                        Invia<FiMessageCircle className="blogIcon"/>
-                      </Button>
-                  </div>
-                  </Form>
+                    <textarea className="testoForm" rows="1" placeholder="inserisci testo commento" 
+                      value={this.state.txtComment}
+                      onChange={this.handleChange} />
+                    <Button className="commentoButton" variant="outline-light" type="submit" value="Submit">
+                      Commenta<FiMessageCircle className="blogIcon"/>
+                    </Button>
+                  </Form>    
                   </Card.Footer>
                 </Card>
           </div>

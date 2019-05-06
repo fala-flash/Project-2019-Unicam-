@@ -81,12 +81,26 @@
     margin-top: 5px; 
 }
 
+
 .testoForm {
-    resize: none;
+    /* margin-top: 15px;    
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px; */
+    width: 100%;
+    height: 300px;
+    margin: 0;
+    padding: 0;
 }
 
 .commentoButton {
-    margin-left: 5px;
+    /* margin-top: 5px;
+    margin-bottom:5px;
+    margin-right: 5px;
+    margin-left: 5px; */
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
 }
 
 .leggiCommentiButton {
