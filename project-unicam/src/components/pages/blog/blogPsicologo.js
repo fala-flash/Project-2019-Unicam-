@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { fire } from '../../../config/FirebaseConfig';
-import { Button, Form, Card, Collapse } from 'react-bootstrap';
+import { Button, Form, Card, Collapse, FormControl, InputGroup, Navbar } from 'react-bootstrap';
 
 import { FiMessageCircle, FiInfo } from 'react-icons/fi';
 import { FaPhone, FaHome } from 'react-icons/fa';
@@ -261,14 +261,13 @@ class BlogPsicologo extends Component {
                       </>
                     : <text style={{fontWeight: "bold"}}>In attesa di risposta</text>
                   }
-                  <Form onSubmit={() => { this.aggiungiCommento(index) }}>
-                    <textarea className="testoForm" rows="1" placeholder="inserisci testo commento" 
-                      value={this.state.txtComment}
-                      onChange={this.handleChange} />
-                    <Button className="commentoButton" variant="outline-light" type="submit" value="Submit">
-                      Commenta<FiMessageCircle className="blogIcon"/>
-                    </Button>
-                  </Form>    
+                  <Form.Control className="testoForm" placeholder="inserisci testo commento" 
+                    value={this.state.txtComment}
+                    onChange={this.handleChange}/>
+                  <Button className="commentoButton" variant="outline-light" type="submit" value="Submit"
+                    onClick={() => {this.aggiungiCommento(index)}}>
+                    Commenta<FiMessageCircle className="blogIcon"/>
+                  </Button>
                   </Card.Footer>
                 </Card>
           </div>
