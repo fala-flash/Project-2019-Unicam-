@@ -193,7 +193,7 @@ class BlogPsicologo extends Component {
   }
 
   aggiungiCommento(index) {
-    fire.database().ref('Discussioni/'+ this.state.codice[index]+'/'+this.props.userID).set({
+    fire.database().ref('Segnalazioni/'+ this.state.codice[index]+'/Commenti/'+this.props.userID).set({
       commento: this.state.txtComment,
       nome: this.props.name
     }).then((data)=>{
@@ -213,6 +213,31 @@ class BlogPsicologo extends Component {
         //console.log('error ' , error)
     })
     alert('Commento alla segnalazione: ' +this.state.codice[index]+' aggiunto');
+  }
+
+  readCommenti() {
+    const rootRef = fire.database().ref();
+    const discussioni = rootRef.child('Discussioni/')
+
+    discussioni.once('value', snap => {
+       snap.forEach(child => {
+
+        if (this.isInArray(child.key)) {  //segnalazione effettuata dall'utente loggato
+          //annullo psicologo e commento
+          this.setState({
+            commento: []
+          })
+          child.forEach(extraChild => {
+            this.setState({
+              commento: this.state.commento.concat([<div><br/>{extraChild.val().nome}:<br/>{extraChild.val().commento}<br/></div>])
+            });
+          });
+          this.setState({
+            commentiPsicologo: this.state.commentiPsicologo.concat([this.state.commento])
+          });
+        }
+      });
+    });
   }
 
   getSegnalazioniPsicologo() {
@@ -258,11 +283,19 @@ class BlogPsicologo extends Component {
                     <Button className="commentoButton" variant="outline-light" type="submit" value="Submit">
                       Commenta<FiMessageCircle className="blogIcon"/>
                     </Button>
-                  </Form>   
-                  <p>Commenti: </p> 
-                  <p>{this.state.testoCommento[index]}</p>               
+                  </Form>                                              
                 </Card.Footer>
-              </Card>
+                <Card.Footer> 
+                  {this.state.visto[index] === 'success'
+                    ? 
+                      <>
+                        <text style={{fontWeight: "bold"}}>Risposta/e:</text>
+                        <p>{this.state.testoCommento[index]}</p> 
+                      </>
+                    : <text style={{fontWeight: "bold"}}>In attesa di risposta</text>
+                  }     
+                  </Card.Footer>
+                </Card>
           </div>
         ))}
       </div>

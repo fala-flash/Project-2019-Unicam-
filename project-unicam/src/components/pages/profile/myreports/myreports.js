@@ -41,6 +41,19 @@ class MyReports extends React.Component {
           dataSegnalazione : this.state.dataSegnalazione.concat([child.val().data]),
           visto: this.state.visto.concat([child.val().visto])
         });
+        rootRef.child('Segnalazioni/'+child.key+'/Commenti').once('value', snapCommenti => {
+          this.setState({
+            commento: []
+          })
+          snapCommenti.forEach(extraChild => {
+            this.setState({
+              commento: this.state.commento.concat([<div><br/>{extraChild.val().nome}:<br/>{extraChild.val().commento}<br/></div>])
+            });
+          });
+          this.setState({
+            commentiPsicologo: this.state.commentiPsicologo.concat([this.state.commento])
+          });
+        });        
       });
     });
   }
@@ -49,13 +62,12 @@ class MyReports extends React.Component {
     return this.state.segnalazioni.indexOf(value) > -1;
   }
 
-  readDiscussioni() {
+  readCommenti() {
     const rootRef = fire.database().ref();
-    const discussioni = rootRef.child('Discussioni/')
+    const discussioni = rootRef.child('Segnalazioni/')
 
     discussioni.once('value', snap => {
        snap.forEach(child => {
-
         if (this.isInArray(child.key)) {  //segnalazione effettuata dall'utente loggato
           //annullo psicologo e commento
           this.setState({
@@ -63,7 +75,7 @@ class MyReports extends React.Component {
           })
           child.forEach(extraChild => {
             this.setState({
-              commento: this.state.commento.concat([<div>{extraChild.val().nome}:<br/>{extraChild.val().commento}<br/><br/></div>])
+              commento: this.state.commento.concat([<div><br/>{extraChild.val().nome}:<br/>{extraChild.val().commento}<br/></div>])
             });
           });
           this.setState({
@@ -92,10 +104,10 @@ class MyReports extends React.Component {
                   {this.state.visto[index] === 'success'
                     ? 
                       <>
-                        <p style={{fontWeight: "bold"}}>Risposta/e:</p>
+                        <text style={{fontWeight: "bold"}}>Risposta/e:</text>
                         <p>{this.state.commentiPsicologo[index]}</p>
                       </>
-                    : <p style={{fontWeight: "bold"}}>In attesa di risposta</p>
+                    : <text style={{fontWeight: "bold"}}>In attesa di risposta</text>
                   }
                 </Card.Footer>
               </Card>
@@ -107,7 +119,7 @@ class MyReports extends React.Component {
 
   componentWillMount() {
     this.readSegnalazioni() 
-    this.readDiscussioni()    
+    //this.readCommenti()    
   }
 
   render() {
