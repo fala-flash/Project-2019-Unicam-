@@ -41,7 +41,7 @@ function Telegrambot() {
 
       
 
-      <Button style={{fontWeight:'bold'}} href="https://web.telegram.org/#/im?p=@Cyberbullismo_Bot" variant="dark" size="lg">
+      <Button style={{fontWeight:'bold'}} href="https://t.me/Cyberbullismo_Bot" variant="dark" size="lg">
           CHAT
           <br></br>
           <FaTelegramPlane size={30}/>
