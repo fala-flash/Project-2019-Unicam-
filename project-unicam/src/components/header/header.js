@@ -11,9 +11,9 @@ class Header extends Component {
             <div>
                 {this.props.authenticated
                     ?
-                    <Navbar fixed="top" bg="info" variant="light" expand="light">
+                    <Navbar fixed="top" bg="info" variant="dark" expand="dark">
                         <Navbar.Brand  className="navbarbrand"style={{color:'white'}} href="/">Stop! Bullying</Navbar.Brand>
-                        <Navbar.Toggle style={{backgroundColor:'white'}}aria-controls="basic-navbar-nav" />
+                        <Navbar.Toggle  style={{backgroundColor:'info'}}aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="mr-auto">
                                 <Nav.Link style={{color:'white', fontWeight:'bold'}} href="/faq">FAQ</Nav.Link>
