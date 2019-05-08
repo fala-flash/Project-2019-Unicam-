@@ -51,39 +51,49 @@ class MyComments extends React.Component {
   }
 
   getSegnalazioni() {
-    return (
-      <div>
-        {this.setVisto()}
-        {this.state.idSegnalazione.map((codice, index) => (
-          <div key={codice}>
-            <br/>            
-              <Card bg={this.state.visto[index]} text="white" className="cardStyle">              
-                <Card.Header><Card.Title>Segnalazione #{codice} del: {this.state.dataSegnalazione[index]} </Card.Title></Card.Header>
-                <Card.Body>                
-                  <Card.Text>
-                    {this.state.testoSegnalazione[index]}
-                  </Card.Text>                  
-                </Card.Body>
-                <Card.Footer className="footerMieSegn">
-                {this.state.visto[index] === 'success'
-                    ? 
-                      <>
-                        <p style={{fontWeight: "bold"}}>Risposta:</p>
-                        <p>{this.state.commentoPsicologo[index]}</p>
-                      </>
-                    : <p style={{fontWeight: "bold"}}>In attesa di risposta</p>
-                  }
-                </Card.Footer>
-              </Card>
-          </div>
-        ))}
-      </div>
-    )
+    if (this.state.idSegnalazione[0] !== undefined) {
+      return (
+        <div>
+          {this.setVisto()}        
+          {this.state.idSegnalazione.map((codice, index) => (
+            <div key={codice}>
+              <br/>            
+                <Card bg={this.state.visto[index]} text="white" className="cardStyle">              
+                  <Card.Header><Card.Title>Segnalazione #{codice} del: {this.state.dataSegnalazione[index]} </Card.Title></Card.Header>
+                  <Card.Body>                
+                    <Card.Text>
+                      {this.state.testoSegnalazione[index]}
+                    </Card.Text>                  
+                  </Card.Body>
+                  <Card.Footer className="footerMieSegn">
+                  {this.state.visto[index] === 'success'
+                      ? 
+                        <>
+                          <p style={{fontWeight: "bold"}}>Risposta:</p>
+                          <p>{this.state.commentoPsicologo[index]}</p>
+                        </>
+                      : <p style={{fontWeight: "bold"}}>In attesa di risposta</p>
+                    }
+                  </Card.Footer>
+                </Card>
+            </div>
+          ))}
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <br/>
+          <h5>Non hai ancora commentato alcuna segnalazione</h5>
+        </div>
+      )
+    }
+    
   }
 
   componentWillMount() {
     this.readSegnalazioni()
-}
+  }
 
   render() {
     return (

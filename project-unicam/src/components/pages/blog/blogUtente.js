@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { fire } from '../../../config/FirebaseConfig';
-import { Button, Form, Card } from 'react-bootstrap';
-
+import { Button, Card } from 'react-bootstrap';
 import { FiSend,  } from 'react-icons/fi';
-import { TiDeleteOutline } from 'react-icons/ti';
 
 //eslint-disable-next-line
 import Style from '../../style.css';
@@ -15,8 +13,15 @@ class BlogUtente extends Component {
     this.state = {
       codice: [],
       messaggio: [],
-      data: []
+      data: [],
+      //textarea
+			rows: 1,
+			minRows: 1,
+      maxRows: 15,
+      txtSegnalazione: null
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleTextArea = this.handleTextArea.bind(this)
   }
 
   uniqueIDCode() {
@@ -62,14 +67,11 @@ class BlogUtente extends Component {
   }
 
   aggiungiSegnalazione() {
-    /* const codice = this.accountInput.value
-    const idUtente = this.usernameInput.value */
-    const messaggio = this.testoSegnalazione.value
     const codiceSegnalazione = this.uniqueIDCode();
     const data = this.getData();
-    if (messaggio !== '') {
+    if (this.state.txtSegnalazione !== '') {
       if(codiceSegnalazione !== '' && codiceSegnalazione !== null) {
-        this.writeUserData(codiceSegnalazione, this.props.userID, messaggio, data) //id=this.state.userID
+        this.writeUserData(codiceSegnalazione, this.props.userID, this.state.txtSegnalazione, data) //id=this.state.userID
       alert('Segnalazione '+codiceSegnalazione+' inviata correttamente')
       } else {
         alert('Errore generazione codice segnalazione, riprova')
@@ -77,40 +79,55 @@ class BlogUtente extends Component {
     } else {
       alert("Tutti i campi devono essere compilati")
     }
-    this.segnForm.reset();
+    window.location.reload();
   }
 
-  resetForm() {
-    this.segnForm.reset();
+  handleChange(event) {
+    this.handleTextArea(event)
+    this.setState({txtSegnalazione: event.target.value});
   }
+
+  handleTextArea (event) {
+		const textareaLineHeight = 24;
+		const { minRows, maxRows } = this.state;
+		
+		const previousRows = event.target.rows;
+  	event.target.rows = minRows; // reset number of rows in textarea 
+		
+		const currentRows = ~~(event.target.scrollHeight / textareaLineHeight);
+    
+    if (currentRows === previousRows) {
+    	event.target.rows = currentRows;
+    }
+		
+		if (currentRows >= maxRows) {
+			event.target.rows = maxRows;
+			event.target.scrollTop = event.target.scrollHeight;
+		}
+    
+  	this.setState({
+    	value: event.target.value,
+      rows: currentRows < maxRows ? currentRows : maxRows,
+    });
+  };
 
   getSegnalazioneForm() {
     return (
       <div className="segnalazioneForm">
-        <Form onSubmit={() => { this.aggiungiSegnalazione() }} ref={(form) => { this.segnForm = form }}>
           <Card bg="info" text="white">
-            {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-            <Card.Header >Segnalazione</Card.Header>
+            <Card.Header><Card.Title>Segnalazione</Card.Title></Card.Header>
             <Card.Body>
-              {/* <Card.Title></Card.Title> */}
               <Card.Text>
-                <Form.Group controlId="formBasicInput">
-                  {/* <Form.Label> Invia la segnalazione completando i seguenti campi: </Form.Label><br /><br />  */}
-                  <Form.Group className="testoForm" controlId="formBasicInput">
-                    <Form.Label> Testo: </Form.Label>
-                    <Form.Control className="testoForm" as="textarea" rows="3" ref={(input) => { this.testoSegnalazione = input }} />
-                  </Form.Group>
-                </Form.Group>
+                <textarea className="testoForm" placeholder="inserisci testo segnalazione"
+                  rows={this.state.rows}
+                  defaultValue={this.state.txtSegnalazione}
+                  onChange={this.handleChange}/>
               </Card.Text>
-              <Button variant="success" className="segnalazioneButton" type="submit">Invia<FiSend className="blogIcon" />
-              </Button>
-              <Button variant="danger" className="segnalazioneButton"
-                onClick={() => { this.resetForm() }} ref={(form) => { this.segnForm = form }}>Cancella
-                <TiDeleteOutline className="blogIconCancella" />
+              <Button variant="success" className="segnalazioneButton"
+                onClick={() => this.aggiungiSegnalazione()}>Invia<FiSend className="blogIcon" />
               </Button>
             </Card.Body>
           </Card>
-        </Form>
       </div>
     )
   }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { fire } from '../../../config/FirebaseConfig';
-import { Button, Form, Card, Collapse } from 'react-bootstrap';
-
+import { Button, Card, Collapse } from 'react-bootstrap';
 import { FiMessageCircle, FiInfo } from 'react-icons/fi';
 import { FaPhone, FaHome } from 'react-icons/fa';
 import { MdEmail } from "react-icons/md";
@@ -27,11 +26,16 @@ class BlogPsicologo extends Component {
       buttonContatta: [],
       commentiPsicologo: [],
       commento: [],
-      txtComment: null
+      txtComment: null,
+      //textarea
+			rows: 1,
+			minRows: 1,
+			maxRows: 15,
     }
     this.resetCommenta = this.resetCommenta.bind(this)
     this.resetContatta = this.resetContatta.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleTextArea = this.handleTextArea.bind(this)
     this.aggiungiCommento = this.aggiungiCommento.bind(this)
   }
 
@@ -165,10 +169,6 @@ class BlogPsicologo extends Component {
     event.preventDefault()
   }
 
-  handleChange(event) {
-    this.setState({txtComment: event.target.value});
-  }
-
   aggiungiCommento(index) {
     fire.database().ref('Segnalazioni/'+ this.state.codice[index]+'/Commenti/'+this.props.userID).set({
       commento: this.state.txtComment,
@@ -190,7 +190,37 @@ class BlogPsicologo extends Component {
         //console.log('error ' , error)
     })
     alert('Commento alla segnalazione: ' +this.state.codice[index]+' aggiunto');
+    window.location.reload();
   }
+
+  handleChange(event) {
+    this.handleTextArea(event)
+    this.setState({txtComment: event.target.value});
+  }
+
+  handleTextArea (event) {
+		const textareaLineHeight = 24;
+		const { minRows, maxRows } = this.state;
+		
+		const previousRows = event.target.rows;
+  	event.target.rows = minRows; // reset number of rows in textarea 
+		
+		const currentRows = ~~(event.target.scrollHeight / textareaLineHeight);
+    
+    if (currentRows === previousRows) {
+    	event.target.rows = currentRows;
+    }
+		
+		if (currentRows >= maxRows) {
+			event.target.rows = maxRows;
+			event.target.scrollTop = event.target.scrollHeight;
+		}
+    
+  	this.setState({
+    	value: event.target.value,
+      rows: currentRows < maxRows ? currentRows : maxRows,
+    });
+	};
 
   getSegnalazioniPsicologo() {
     return (
@@ -236,8 +266,9 @@ class BlogPsicologo extends Component {
                       </>
                     : <text style={{fontWeight: "bold"}}>In attesa di risposta</text>
                   }
-                  <Form.Control className="testoForm" placeholder="inserisci testo commento" 
-                    value={this.state.txtComment}
+                  <textarea className="testoForm" placeholder="inserisci testo commento"
+                    rows={this.state.rows}
+                    defaultValue={this.state.txtComment}
                     onChange={this.handleChange}/>
                   <Button className="commentoButton" variant="outline-light" type="submit" value="Submit"
                     onClick={() => {this.aggiungiCommento(index)}}>

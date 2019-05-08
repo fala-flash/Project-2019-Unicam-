@@ -14,41 +14,35 @@ function Faq
               " - Sun Tzu</p>
             <p>Ad oggi, il fenomeno di bullismo e cyberbullismo e incredibilmente sottovalutato e ancor meno conosciuto.</p>
             <p>Di seguito scoprirai quanto questo fenomeno è presente nella nostra società</p>
-            <br /> <br /> <br />
-
-
+            <br />
             <Card  className="faqcard" bg="info" text="white" style={{ width: '22rem' }}>
-    <Card.Header><h4>Che cosa si intende con bullismo?</h4></Card.Header>
-    <Card.Body>
-      <Card.Text>
-      Con il termine bullismo s’intende definire un comportamento aggressivo 
-      ripetitivo nei confronti di chi non è in grado di difendersi. Solitamente,
-       i ruoli del bullismo sono ben definiti: da una parte c’è il bullo, colui 
-       che attua dei comportamenti violenti fisicamente e/o psicologicamente e
-        dall’altra parte la vittima, colui che invece subisce tali atteggiamenti. 
-
-      </Card.Text>
-    </Card.Body>
-  </Card>
-  <br />
-
-
-
+              <Card.Header><h4>Che cosa si intende con bullismo?</h4></Card.Header>
+              <Card.Body>
+                <Card.Text>
+                  Con il termine bullismo s’intende definire un comportamento aggressivo 
+                  ripetitivo nei confronti di chi non è in grado di difendersi. Solitamente,
+                  i ruoli del bullismo sono ben definiti: da una parte c’è il bullo, colui 
+                  che attua dei comportamenti violenti fisicamente e/o psicologicamente e
+                  dall’altra parte la vittima, colui che invece subisce tali atteggiamenti. 
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            <br />
             <Card  className="faqcard" bg="info" text="white" style={{ width: '22rem' }}>
-    <Card.Header><h3>In Italia, quanto è diffuso il bullismo ? </h3></Card.Header>
-    <Card.Body>
-      <Card.Text>
-     In un indagine ISTAT del 2015, più del 50% degli intervistati
-11-17enni riferisce di essere rimasto vittima, nei 12 mesi precedenti
-l’intervista, di un qualche episodio offensivo, non rispettoso e/o violento. Una
-percentuale significativa, quasi uno su cinque (19,8%), dichiara di aver subìto
-azioni tipiche di bullismo una o più volte al mese. In circa la metà di questi casi
-(9,1%), si tratta di una ripetizione degli atti decisamente asfissiante, una o più
-volte a settimana
-      </Card.Text>
-    </Card.Body>
-  </Card>
-  <br />
+            <Card.Header><h3>In Italia, quanto è diffuso il bullismo ? </h3></Card.Header>
+            <Card.Body>
+              <Card.Text>
+                In un indagine ISTAT del 2015, più del 50% degli intervistati
+                11-17enni riferisce di essere rimasto vittima, nei 12 mesi precedenti
+                l’intervista, di un qualche episodio offensivo, non rispettoso e/o violento. Una
+                percentuale significativa, quasi uno su cinque (19,8%), dichiara di aver subìto
+                azioni tipiche di bullismo una o più volte al mese. In circa la metà di questi casi
+                (9,1%), si tratta di una ripetizione degli atti decisamente asfissiante, una o più
+                volte a settimana
+              </Card.Text>
+            </Card.Body>
+          </Card>
+          <br />
 
   <Card  className="faqcard" bg="info" text="white" style={{ width: '22rem' }}>
     <Card.Header><h3>Ed il CyberBullismo? </h3></Card.Header>

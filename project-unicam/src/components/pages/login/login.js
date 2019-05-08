@@ -115,6 +115,7 @@ class Login extends Component{
                   this.setScopo('psicologo')
                 } else if (snapshot.val() === null) {  //altrimenti nulla
                   alert('problemi lettura dati account')
+                  window.location.reload();
                 }
               })  
             }
@@ -154,7 +155,7 @@ class Login extends Component{
         this.setUserInfo()        
         this.props.setAuthenticated(true)
         this.addUser()  //aggiungo l'utente al db
-        alert(this.state.tipo + " aggiunto correttamente")
+        alert('Account '+this.state.tipo+" aggiunto correttamente")
       }).catch((error) => {
         if(error.code === 'auth/weak-password') {
           alert("La password deve contenere almeno 6 caratteri");
