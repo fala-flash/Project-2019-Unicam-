@@ -105,7 +105,7 @@ class MyReports extends React.Component {
             <FaAngleLeft />
           </Button>          
         </div>
-        <h3>Le mie segnalazioni</h3>
+        <h3 style={{fontWeight:'bold'}}>Le mie segnalazioni</h3>
         {this.getSegnalazioni()}
       </div>
     );

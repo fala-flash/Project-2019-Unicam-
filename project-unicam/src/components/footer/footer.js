@@ -13,7 +13,7 @@ class Footer extends Component {
             <div>
                 {this.props.authenticated
                     ?
-                    <Navbar fixed="bottom" bg="info" variant="light" expand="light" className="navbar">
+                    <Navbar fixed="bottom" bg="info" variant="light" expand="light" className="navbarFooter">
 
                         <Nav.Item>
                             <Button className="footerButton" href="/profile" variant="info">

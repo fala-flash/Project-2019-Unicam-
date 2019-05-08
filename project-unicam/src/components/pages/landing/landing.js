@@ -14,7 +14,7 @@ class Landing extends Component {
     render() {
         return (
             <div>
-                <h3 className="text-info">
+                <h3 style={{fontWeight:'bold'}}>
                 Benvenuto <span>{this.props.authenticated ? this.props.name : null}</span>!
                 </h3>
 

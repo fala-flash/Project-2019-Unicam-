@@ -1,11 +1,15 @@
 /* APP */
 @import url('https://fonts.googleapis.com/css?family=Courgette');
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
 
 .mainStyle {
     margin-bottom : 70px;
     margin-top: 0px;
     text-align: center;
+    font-family: 'Work Sans',
+    sans-serif;
 }
+
 .navbarbrand{
     font-family: 'Courgette', 
     cursive;
@@ -62,8 +66,15 @@
 
 .blogIcon {
     margin-left: 7px;
-    margin-right: 7px;
     margin-bottom: 5px;
+}
+
+.blogIconCancella {
+    margin-left: 7px;
+    margin-bottom: 0px;
+    margin-top: -5px;
+    width: 21px;
+    height: 21px;
 }
 
 .segnalazioneForm {
@@ -75,6 +86,21 @@
     color: white;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.infoIcon {
+    margin-left: 5px;
+}
+
+.infoIconTelefona {
+    margin-left: 5px;
+    transform: rotate(90deg);
+}
+
+.unicamLogo {
+    margin-left: 5px;
+    width: 15px;
+    height: 18px;
 }
 
 .commentaCard {
@@ -90,6 +116,7 @@
 .testoForm {
     margin-top: 5px;
     margin-bottom:5px;
+    resize: none;
 }
 
 .commentoButton {
@@ -124,11 +151,9 @@
 
 .mr-auto{
     text-align: center;
+    font-family: 'Courgette', 
+    cursive;
 }
-
-/* .headerNull {
-    background-color: red;
-} */
 
 /* profile */
 
@@ -164,6 +189,18 @@
     color: rgb(0, 102, 0);
 }
 
+.buttonTelefona {
+    color: rgb(0, 102, 0);
+}
+
+.telefonaIcon {
+    width: 25px;
+    height: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transform: rotate(90deg);
+}
+
 /* footer */
 
 .footerButton {
@@ -196,8 +233,9 @@
    }
 
 
-.navbar{
-    margin-bottom: 0px;
+.navbarFooter{
+    font-family: 'Work Sans',
+    sans-serif;
 }
 
 ::-webkit-input-placeholder {

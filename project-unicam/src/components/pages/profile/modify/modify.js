@@ -92,11 +92,9 @@ class modifyProfile extends Component{
                 <Button variant="info" href="/profile"><FaAngleLeft/>
                 </Button>
               </div>
-              <h3>Profilo {this.props.ruolo}</h3>
+              <h3 style={{fontWeight:'bold'}}>Profilo {this.props.ruolo}</h3>
               {this.props.picture === 'null'
-              ? <Button variant="info" href="/profile" size="sm">
-                  Inserisci immagine
-                </Button>
+              ? null
               : <Button variant="outline" href="/profile" size="sm">
                   <img className="profileImg" src={this.props.picture} alt="UserPicture"/>
                 </Button> 

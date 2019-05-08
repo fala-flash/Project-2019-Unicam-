@@ -8,18 +8,17 @@ function Faq
 () {
     return (
         <div>
-            <h3>Faq
-                
-            </h3>
+            <h3 style={{fontWeight:'bold'}}>Faq</h3>
+            <br/>
             <p>"Conosci il nemico come conosci te stesso. Se farai così, anche in mezzo a cento battaglie non ti troverai mai in pericolo.
-" - Sun Tzu</p>
+              " - Sun Tzu</p>
             <p>Ad oggi, il fenomeno di bullismo e cyberbullismo e incredibilmente sottovalutato e ancor meno conosciuto.</p>
             <p>Di seguito scoprirai quanto questo fenomeno è presente nella nostra società</p>
             <br /> <br /> <br />
 
 
             <Card  className="faqcard" bg="info" text="white" style={{ width: '22rem' }}>
-    <Card.Header><h3>Che cosa si intende con bullismo? </h3></Card.Header>
+    <Card.Header><h4>Che cosa si intende con bullismo?</h4></Card.Header>
     <Card.Body>
       <Card.Text>
       Con il termine bullismo s’intende definire un comportamento aggressivo 

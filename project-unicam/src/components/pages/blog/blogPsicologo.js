@@ -192,31 +192,6 @@ class BlogPsicologo extends Component {
     alert('Commento alla segnalazione: ' +this.state.codice[index]+' aggiunto');
   }
 
-  readCommenti() {
-    const rootRef = fire.database().ref();
-    const discussioni = rootRef.child('Discussioni/')
-
-    discussioni.once('value', snap => {
-       snap.forEach(child => {
-
-        if (this.isInArray(child.key)) {  //segnalazione effettuata dall'utente loggato
-          //annullo psicologo e commento
-          this.setState({
-            commento: []
-          })
-          child.forEach(extraChild => {
-            this.setState({
-              commento: this.state.commento.concat([<div><br/>{extraChild.val().nome}:<br/>{extraChild.val().commento}<br/></div>])
-            });
-          });
-          this.setState({
-            commentiPsicologo: this.state.commentiPsicologo.concat([this.state.commento])
-          });
-        }
-      });
-    });
-  }
-
   getSegnalazioniPsicologo() {
     return (
       <div>
@@ -278,13 +253,13 @@ class BlogPsicologo extends Component {
 
   componentWillMount() {
     this.readSegnalazioni()
-    this.readCommenti()
   }
 
   render() {
     return (
       <div>
-        <h3>Blog Psicologo</h3>
+        <h3 style={{fontWeight:'bold'}}>Blog Psicologo</h3>
+        <br/>
         {this.getSegnalazioniPsicologo()}          
       </div>
     );

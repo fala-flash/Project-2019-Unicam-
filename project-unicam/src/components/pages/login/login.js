@@ -180,7 +180,7 @@ class Login extends Component{
             <Form.Group controlId="formBasicChecbox">
             </Form.Group>
             <br></br>            
-            <Button variant="info" type="submit" style={{fontWeight:'bold'}}>
+            <Button variant="info" type="submit">
               Accedi
             </Button>                       
           </Form>
@@ -188,7 +188,7 @@ class Login extends Component{
           <p>Oppure</p>
           <div className="googleCentrato">
             <br/>
-            <GoogleLoginButton style={{fontWeight:'bold'}} onClick={() => { this.authentication(providerGoogle) }}>Accedi con Google</GoogleLoginButton>
+            <GoogleLoginButton onClick={() => { this.authentication(providerGoogle) }}>Accedi con Google</GoogleLoginButton>
             <br/>
           </div>
         </div>
@@ -218,7 +218,7 @@ class Login extends Component{
             </Form.Control>
           </Form.Group>
           <br></br>            
-          <Button variant="info" type="submit" style={{fontWeight:'bold'}}>
+          <Button variant="info" type="submit">
             Registrati
           </Button>                       
         </Form>
@@ -233,10 +233,10 @@ class Login extends Component{
       const { openAccesso, openRegistrazione } = this.state;
       return (
         <div className="loginStyle">
-        <h3>Login/Registrazione</h3>
+        <h3 style={{fontWeight:'bold'}}>Login/Registrazione</h3>
         <br></br>
         <h5>Hai già un account Stop! Bullying?</h5>
-        <Button variant='info' className="accessoButton" style={{fontWeight:'bold'}}
+        <Button variant='info' className="accessoButton"
           onClick={() => this.setState({ openRegistrazione: false , openAccesso: !openAccesso})}
           aria-controls="collapse-accedi"
           aria-expanded={openAccesso}>
@@ -251,7 +251,7 @@ class Login extends Component{
         
         <br></br>
         <h5>Prima volta su Stop! Bullying?</h5>
-        <Button variant='info' className="accessoButton" style={{fontWeight:'bold'}}
+        <Button variant='info' className="accessoButton"
           onClick={() => this.setState({ openAccesso: false , openRegistrazione: !openRegistrazione})}
           aria-controls="collapse-registrazione"
           aria-expanded={openRegistrazione}>

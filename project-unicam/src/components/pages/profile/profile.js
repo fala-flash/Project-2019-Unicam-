@@ -60,12 +60,12 @@ class Profile extends Component {
   render() {
     return (
       <div>
-        <h3>Profilo {this.props.ruolo}</h3>
+        <h3 style={{fontWeight:'bold'}}>Profilo {this.props.ruolo}</h3>
         <br/>
         <br/>
         {this.props.ruolo === 'Psicologo'
           ? 
-            <Button style={{fontWeight:'bold'}} href="/myComments" variant="success" size="lg">
+            <Button href="/myComments" variant="success" size="lg">
               Le mie Risposte
             </Button>
           : null
@@ -73,24 +73,24 @@ class Profile extends Component {
 
         {this.props.ruolo === 'Utente'
           ? 
-            <Button style={{fontWeight:'bold'}} href="/myReports" variant="success" size="lg">
+            <Button href="/myReports" variant="success" size="lg">
               Le mie Segnalazioni
             </Button>
           : null
         }
         <br/>
         <br/>
-        <Button style={{fontWeight:'bold'}} href="modifyProfile" variant="secondary" size="lg">
+        <Button href="modifyProfile" variant="info" size="lg">
           Modifica profilo
         </Button>
         <br/>
         <br/>
-        <Button  style={{fontWeight:'bold'}} href="deleteProfile" variant="danger" size="lg">
+        <Button href="deleteProfile" variant="danger" size="lg">
           Elimina profilo
         </Button>
         <br/>
         <br/>
-        <Button  style={{fontWeight:'bold', color:'white'}} href="logout" variant="warning" size="lg">
+        <Button href="logout" variant="secondary" size="lg">
           Logout
         </Button>
       </div>

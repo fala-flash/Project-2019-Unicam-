@@ -6,7 +6,7 @@ import { FaAngleLeft } from "react-icons/fa";
 class MyComments extends React.Component {
   constructor() {
     super();
-    this.state = { 
+    this.state = {
       idSegnalazione: [],
       testoSegnalazione: [],
       dataSegnalazione: [],
@@ -25,44 +25,27 @@ class MyComments extends React.Component {
         this.state.visto[i] = 'danger'
       }
     }
-  } 
-
-  readDiscussioni() {
-    const rootRef = fire.database().ref();
-    const discussioni = rootRef.child('Discussioni/')
-
-    discussioni.once('value', snap => {
-       snap.forEach(child => {        
-          child.forEach(extraChild => {
-              if(extraChild.key === this.props.userID) {
-                  this.setState({
-                      idSegnalazione: this.state.idSegnalazione.concat([child.key]),
-                      commentoPsicologo: this.state.commentoPsicologo.concat([extraChild.val().commento])
-                  })
-              }
-          });
-      });
-    });
-  } 
-  
-  isInArray(value) {
-    return this.state.idSegnalazione.indexOf(value) > -1;
   }
 
   readSegnalazioni() {
     const rootRef = fire.database().ref();
-    const segnalazioni = rootRef.child('Segnalazioni/')
+    const segnalazione = rootRef.child('Segnalazioni/')
 
-    segnalazioni.once('value', snap => {
+    segnalazione.once('value', snap => {
       snap.forEach(child => {
-
-        if (this.isInArray(child.key)) {  //segnalazionecommentata dallo psicologo loggato          
-            this.setState({
-              testoSegnalazione: this.state.testoSegnalazione.concat([child.val().messaggio]),
-              dataSegnalazione: this.state.dataSegnalazione.concat([child.val().data]),
-              visto: this.state.visto.concat([child.val().visto])
-            });       
-        }
+        rootRef.child('Segnalazioni/'+child.key+'/Commenti').once('value', snapCommenti => {
+          snapCommenti.forEach(extraChild => {
+            if(extraChild.key === this.props.userID) {
+              this.setState({
+                idSegnalazione : this.state.idSegnalazione.concat([child.key]),
+                testoSegnalazione: this.state.testoSegnalazione.concat([child.val().messaggio]),
+                dataSegnalazione: this.state.dataSegnalazione.concat([child.val().data]),
+                visto: this.state.visto.concat([child.val().visto]),
+                commentoPsicologo: this.state.commentoPsicologo.concat(extraChild.val().commento)
+              });
+            }            
+          });          
+        });    
       });
     });
   }
@@ -99,7 +82,6 @@ class MyComments extends React.Component {
   }
 
   componentWillMount() {
-    this.readDiscussioni()
     this.readSegnalazioni()
 }
 
@@ -111,7 +93,7 @@ class MyComments extends React.Component {
             <FaAngleLeft />
           </Button>          
         </div>
-        <h3>Le mie risposte</h3>
+        <h3 style={{fontWeight:'bold'}}>Le mie risposte</h3>
         {this.getSegnalazioni()}
       </div>
     );

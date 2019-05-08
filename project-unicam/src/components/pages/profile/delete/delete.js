@@ -67,14 +67,16 @@ class DeleteProfile extends Component {
         <div className="deleteComponents">
           <br />
           <div className="txtdelete">
-            <h3>
+            <h3 style={{fontWeight:'bold'}}>Cancellazione Profilo</h3>
+            <br/>
+            <h4>
               Sei davvero sicuro di voler cancellare il tuo account e i dati relativi ad esso?
-            </h3>
             <br />
-            Le modifiche effettuate e le segnalazioni aggiunte andranno perse.
+              Le modifiche effettuate e le segnalazioni aggiunte andranno perse.
+            </h4>
           </div>
+          <br/>
           <Button
-            style={{fontWeight:'bold'}}
             variant="danger"
             className="deleteButton"
             onClick={this.handleShow}
