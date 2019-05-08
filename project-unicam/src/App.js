@@ -123,9 +123,11 @@ class App extends React.Component {
 
     return (
       <div>
-            <div className="headerStyle">
-              <Header authenticated={this.state.authenticated} />
-            </div>
+        <div className="headerStyle">
+          <Header
+          authenticated={this.state.authenticated}
+          name={this.state.name}/>
+        </div>
          
         <div className="mainStyle">
           <BrowserRouter>

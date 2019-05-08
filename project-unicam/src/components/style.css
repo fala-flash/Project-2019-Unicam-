@@ -15,6 +15,14 @@
     cursive;
 }
 
+.navbarText {
+    margin-top: 5px;
+    font-size: 25px;
+    color: white;
+    font-family: 'Work Sans',
+    sans-serif;
+}
+
 .loading{
     margin-top: 300px;
     display: flex;
@@ -43,6 +51,10 @@
 .accessoButton {
     margin-bottom : 30px;
     margin-top: 10px;
+}
+
+.accessoButtonText {
+    margin-top: 5px;
 }
 
 .formAccesso {

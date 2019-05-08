@@ -215,7 +215,6 @@ class Login extends Component{
             <Form.Control as="select" ref={(input) => { this.tipoInputRegistrazione = input }}>
               <option>Psicologo</option>
               <option>Utente</option>
-              <option>Altro</option>
             </Form.Control>
           </Form.Group>
           <br></br>            
@@ -235,28 +234,25 @@ class Login extends Component{
       return (
         <div className="loginStyle">
         <h3 style={{fontWeight:'bold'}}>Login/Registrazione</h3>
-        <br></br>
-        <h5>Hai già un account Stop! Bullying?</h5>
+        <br/>
         <Button variant='info' className="accessoButton"
           onClick={() => this.setState({ openRegistrazione: false , openAccesso: !openAccesso})}
           aria-controls="collapse-accedi"
           aria-expanded={openAccesso}>
-          Accedi
+          <h6 className="accessoButtonText">Hai già un account Stop! Bullying?</h6>
         </Button>
-        <br></br>
+        <br/>
         <Collapse in={this.state.openAccesso}>
           <div className="" id="collapse-accedi">
             {this.formAccesso()}
           </div>
         </Collapse>
         
-        <br></br>
-        <h5>Prima volta su Stop! Bullying?</h5>
         <Button variant='info' className="accessoButton"
           onClick={() => this.setState({ openAccesso: false , openRegistrazione: !openRegistrazione})}
           aria-controls="collapse-registrazione"
           aria-expanded={openRegistrazione}>
-          Iscriviti ora
+          <h6 className="accessoButtonText">Prima volta su Stop! Bullying?</h6>
         </Button>
         <br></br>
         <Collapse in={this.state.openRegistrazione}>

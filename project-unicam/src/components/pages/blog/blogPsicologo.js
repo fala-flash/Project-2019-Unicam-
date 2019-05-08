@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { fire } from '../../../config/FirebaseConfig';
-import { Button, Card, Collapse } from 'react-bootstrap';
+import { Button, Card, Collapse, Modal } from 'react-bootstrap';
 import { FiMessageCircle, FiInfo } from 'react-icons/fi';
 import { FaPhone, FaHome } from 'react-icons/fa';
 import { MdEmail } from "react-icons/md";
@@ -31,13 +31,17 @@ class BlogPsicologo extends Component {
       //textarea
 			rows: 1,
 			minRows: 1,
-			maxRows: 15,
+      maxRows: 15,
+      show: false, //modal
+      indexSegnalazione: null
     }
     this.resetCommenta = this.resetCommenta.bind(this)
     this.resetContatta = this.resetContatta.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleTextArea = this.handleTextArea.bind(this)
     this.aggiungiCommento = this.aggiungiCommento.bind(this)
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   setVisto() {
@@ -70,7 +74,8 @@ class BlogPsicologo extends Component {
         rootRef.child('Segnalazioni/'+child.key+'/Commenti').once('value', snapCommenti => {
           snapCommenti.forEach(extraChild => {
             this.setState({
-              commento: this.state.commento.concat([<div><br/>{extraChild.val().nome}:<br/>{extraChild.val().commento}<br/></div>])
+              commento: this.state.commento.concat([
+              <div><hr/><span>({extraChild.val().data}) </span>{extraChild.val().nome}:<br/>{extraChild.val().commento}<br/></div>])
             });
           });
           this.setState({
@@ -234,7 +239,43 @@ class BlogPsicologo extends Component {
     	value: event.target.value,
       rows: currentRows < maxRows ? currentRows : maxRows,
     });
-	};
+  };
+  
+  handleClose() {
+    this.setState({ show: false });
+  }
+
+  handleShow(index) {
+    this.setState({
+      indexSegnalazione: index,
+      show: true
+    });
+  }
+
+  getModalElimina() {
+    return (
+      <Modal show={this.state.show} onHide={this.handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Conferma Eliminazione</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h5>Dati segnalazione</h5>
+          <ul>
+            <li>ID: {this.state.codice[this.state.indexSegnalazione]}</li>
+            <li>Testo: {this.state.messaggio[this.state.indexSegnalazione]}</li>
+          </ul>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button style={{fontWeight:'bold'}} variant="success" onClick={this.handleClose}>
+            Annulla
+          </Button>
+          <Button style={{fontWeight:'bold'}} variant="danger" onClick={() => this.eliminaSegnalazione(this.state.indexSegnalazione)}>
+            Elimina
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    )
+  }
 
   getSegnalazioniPsicologo() {
     return (
@@ -257,9 +298,10 @@ class BlogPsicologo extends Component {
                     <FiInfo className="blogIcon"/>
                   </Button>
                   <Button className="blogButtonElimina" variant="outline-light"
-                    onClick={() => {this.eliminaSegnalazione(index)}}>
+                    onClick={() => this.handleShow(index)}>
                     Elimina<TiDeleteOutline className="deleteIcon"/>
                   </Button>
+                  {this.getModalElimina()}
 
                   <Collapse in={this.state.buttonContatta[index]}>
                     <div className="infoCard" id="collapse-info">
@@ -309,7 +351,6 @@ class BlogPsicologo extends Component {
     return (
       <div>
         <h3 style={{fontWeight:'bold'}}>Blog Psicologo</h3>
-        <br/>
         {this.getSegnalazioniPsicologo()}          
       </div>
     );

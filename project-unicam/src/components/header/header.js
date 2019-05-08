@@ -24,13 +24,10 @@ class Header extends Component {
                     <Navbar fixed="top" bg="info" variant="light" expand="light">
                         <Navbar.Brand  className="navbarbrand" style={{color:'white'}} href="/">Stop! Bullying</Navbar.Brand>
                     </Navbar>
-                }                
-                            
+                }
             </div>
         );
-
     }
-
 }
 
 export default Header;

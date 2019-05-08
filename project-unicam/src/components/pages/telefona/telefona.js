@@ -8,12 +8,12 @@ function Telefona() {
         <div> 
             <Alert className="alertTelefona" variant="success">
             <Alert.Heading style={{fontWeight:'bold'}}>Chiama !</Alert.Heading>
+            <hr/>
             <p>
             Per ogni emergenza, noi siamo disponibili e volenterosi di ascoltarti. Chiamaci! </p>
             <p>
             Il nostro addetto alle chiamate: Marco.
             </p>
-            <hr />
             <p className="mb-0">
             <Button className="buttonTelefona" variant="outline-success" size="lg" href="tel:+393315909161">
                 <FaPhone className="telefonaIcon"/> +39 3334445550
