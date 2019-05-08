@@ -4,6 +4,7 @@ import { Button, Card, Collapse } from 'react-bootstrap';
 import { FiMessageCircle, FiInfo } from 'react-icons/fi';
 import { FaPhone, FaHome } from 'react-icons/fa';
 import { MdEmail } from "react-icons/md";
+import { TiDeleteOutline } from 'react-icons/ti'
 
 //eslint-disable-next-line
 import Style from '../../style.css';
@@ -150,8 +151,6 @@ class BlogPsicologo extends Component {
     })
     this.resetCommenta()
     this.updateContatta(index)
-    console.log("ARRAY Commenta: "+this.state.buttonCommenta)
-    console.log("ARRAY Contatta: "+this.state.buttonContatta)
     event.preventDefault()
   }
 
@@ -169,10 +168,19 @@ class BlogPsicologo extends Component {
     event.preventDefault()
   }
 
+  getData() {
+    const giorno = new Date().getDate();
+    const mese = new Date().getMonth() + 1;
+    const anno = new Date().getFullYear();
+    return `${giorno}${'/'}${mese<10?`0${mese}`:`${mese}`}${'/'}${anno}`
+  }
+
   aggiungiCommento(index) {
+    const time = this.getData();
     fire.database().ref('Segnalazioni/'+ this.state.codice[index]+'/Commenti/'+this.props.userID).set({
       commento: this.state.txtComment,
-      nome: this.props.name
+      nome: this.props.name,
+      data: time
     }).then((data)=>{
         //success callback
         //console.log('data ' , data)
@@ -191,6 +199,12 @@ class BlogPsicologo extends Component {
     })
     alert('Commento alla segnalazione: ' +this.state.codice[index]+' aggiunto');
     window.location.reload();
+  }
+
+  eliminaSegnalazione(index) {
+    fire.database().ref('Segnalazioni/'+this.state.codice[index]).remove()
+    alert("Segnalazione "+this.state.codice[index]+" eliminata")
+    window.location.reload()
   }
 
   handleChange(event) {
@@ -230,8 +244,9 @@ class BlogPsicologo extends Component {
           <div key={codice}>
             <br/>            
               <Card bg={this.state.visto[index]} text="white" className="cardStyle">              
-                <Card.Header><Card.Title>Segnalazione #{codice} del {this.state.data[index]}</Card.Title></Card.Header>
-                <Card.Body>                
+                <Card.Header><Card.Title>Segnalazione #{codice} del {this.state.data[index]}</Card.Title>
+                </Card.Header>
+                <Card.Body>          
                   <Card.Text>
                     {this.state.messaggio[index]}
                   </Card.Text>
@@ -240,6 +255,10 @@ class BlogPsicologo extends Component {
                     aria-controls="collapse-info"
                     aria-expanded={this.state.buttonContatta[index]}>Info Utente
                     <FiInfo className="blogIcon"/>
+                  </Button>
+                  <Button className="blogButtonElimina" variant="outline-light"
+                    onClick={() => {this.eliminaSegnalazione(index)}}>
+                    Elimina<TiDeleteOutline className="deleteIcon"/>
                   </Button>
 
                   <Collapse in={this.state.buttonContatta[index]}>
@@ -274,8 +293,8 @@ class BlogPsicologo extends Component {
                     onClick={() => {this.aggiungiCommento(index)}}>
                     Commenta<FiMessageCircle className="blogIcon"/>
                   </Button>
-                  </Card.Footer>
-                </Card>
+                </Card.Footer>
+              </Card>
           </div>
         ))}
       </div>

@@ -47,6 +47,7 @@ class Profile extends Component {
               this.props.setStateUser()
             } else if (snapshot.val() === null) {  //altrimenti nulla
               alert('problemi lettura dati account')
+              window.location.reload()
             }
         })  
         }

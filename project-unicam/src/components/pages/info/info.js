@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaPhone } from 'react-icons/fa';
 import { MdEmail } from "react-icons/md";
-import UnicamLogo from "C:/Users/diego/Desktop/Project/Project-2019-Unicam-/project-unicam/src/components/media/unicam.png";
+import UnicamLogo from "../../media/unicam.png";
 
 
 
@@ -21,7 +21,6 @@ function Info() {
                             <p>Web, Android, iOS</p>
                             <p>Sviluppato da: <a href="https://www.unicam.it/" style={{color:'white', textDecoration:'underline', textDecorationColor:'white'}}>Unicam</a>
                             <img className="unicamLogo" src={UnicamLogo} alt="unicamLogo"/></p>
-
                     </Card.Body>
                 </Card>
             </div>

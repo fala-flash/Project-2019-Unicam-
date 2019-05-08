@@ -10,8 +10,8 @@ function Faq
         <div>
             <h3 style={{fontWeight:'bold'}}>Faq</h3>
             <br/>
-            <p>"Conosci il nemico come conosci te stesso. Se farai così, anche in mezzo a cento battaglie non ti troverai mai in pericolo.
-              " - Sun Tzu</p>
+            <p>"Conosci il nemico come conosci te stesso. Se farai così, anche in mezzo a cento battaglie non ti troverai mai in pericolo."
+              <p>- Sun Tzu</p></p>
             <p>Ad oggi, il fenomeno di bullismo e cyberbullismo e incredibilmente sottovalutato e ancor meno conosciuto.</p>
             <p>Di seguito scoprirai quanto questo fenomeno è presente nella nostra società</p>
             <br />
