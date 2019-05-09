@@ -1,7 +1,6 @@
 import React from "react";
 import { fire } from "../../../../config/FirebaseConfig";
-import { Button, Card } from "react-bootstrap";
-import { FaAngleLeft } from "react-icons/fa";
+import { Card } from "react-bootstrap";
 
 class MyComments extends React.Component {
   constructor() {
@@ -93,17 +92,13 @@ class MyComments extends React.Component {
 
   componentWillMount() {
     this.readSegnalazioni()
+    this.props.setLocation("Le mie risposte")
+    this.props.setisHome('profile')
   }
 
   render() {
     return (
       <div>
-        <div style={{ display: "flex", justifyContent: "left" }}>
-          <Button style={{fontWeight:'bold', borderRadius:'360px'}} variant="info" href="/profile">
-            <FaAngleLeft />
-          </Button>          
-        </div>
-        <h3 style={{fontWeight:'bold'}}>Le mie risposte</h3>
         {this.getSegnalazioni()}
       </div>
     );

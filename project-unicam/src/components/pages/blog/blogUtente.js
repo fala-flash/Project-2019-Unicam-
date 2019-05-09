@@ -154,12 +154,12 @@ class BlogUtente extends Component {
 
   componentWillMount() {
     this.readSegnalazioni()
+    this.props.setLocation("Blog Utente")
   }
 
   render() {
     return (
       <div>
-        <h3 style={{fontWeight:'bold'}}>Blog Utente</h3> 
         <br/>       
         {this.getSegnalazioneForm()}
         <br/>

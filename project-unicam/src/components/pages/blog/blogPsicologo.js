@@ -347,12 +347,12 @@ class BlogPsicologo extends Component {
 
   componentWillMount() {
     this.readSegnalazioni()
+    this.props.setLocation("Blog Psicologo")
   }
 
   render() {
     return (
       <div>
-        <h3 style={{fontWeight:'bold'}}>Blog Psicologo</h3>
         {this.getSegnalazioniPsicologo()}          
       </div>
     );

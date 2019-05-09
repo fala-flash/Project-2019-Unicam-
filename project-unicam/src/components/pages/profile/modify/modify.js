@@ -84,6 +84,7 @@ class modifyProfile extends Component{
 
       componentWillMount() {
         this.readUserData();
+        this.props.setLocation("Profilo "+this.props.ruolo)
       }
 
       render () {        
@@ -93,7 +94,6 @@ class modifyProfile extends Component{
                 <Button style={{fontWeight:'bold', borderRadius:'360px'}} variant="info" href="/profile"><FaAngleLeft/>
                 </Button>
               </div>
-              <h3 style={{fontWeight:'bold'}}>Profilo {this.props.ruolo}</h3>
               {this.props.picture === 'null'
               ? <Button style={{fontWeight:'bold', borderRadius:'360px'}} variant="outline" href="/profile" size="sm">
                   <FaUserCircle size={60}/>

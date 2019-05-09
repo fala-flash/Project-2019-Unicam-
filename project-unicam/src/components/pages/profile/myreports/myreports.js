@@ -1,7 +1,6 @@
 import React from "react";
 import { fire } from "../../../../config/FirebaseConfig";
-import { Button, Card } from "react-bootstrap";
-import { FaAngleLeft } from "react-icons/fa";
+import { Card } from "react-bootstrap";
 
 class MyReports extends React.Component {
   constructor() {
@@ -102,18 +101,14 @@ class MyReports extends React.Component {
   }
 
   componentWillMount() {
-    this.readSegnalazioni()  
+    this.readSegnalazioni()
+    this.props.setLocation("Le mie segnalazioni")
+    this.props.setisHome('profile')
   }
 
   render() {
     return (
       <div>
-        <div style={{ display: "flex", justifyContent: "left" }}>
-          <Button style={{fontWeight:'bold', borderRadius:'360px'}} variant="info" href="/profile">
-            <FaAngleLeft />
-          </Button>          
-        </div>
-        <h3 style={{fontWeight:'bold'}}>Le mie segnalazioni</h3>
         {this.getSegnalazioni()}
       </div>
     );

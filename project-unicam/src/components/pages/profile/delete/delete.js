@@ -55,11 +55,15 @@ class DeleteProfile extends Component {
     keysToRemove.forEach(k => localStorage.removeItem(k));
   }
 
+  componentWillMount() {
+    this.props.setLocation("Cancellazione Profilo")
+  }
+
   render() {
     return (
       <div>
         <div style={{ display: "flex", justifyContent: "left" }}>
-          <Button variant="info" href="/profile">
+          <Button variant="info" href="/profile" style={{fontWeight: 'bold', borderRadius: '360px'}}>
             <FaAngleLeft />
           </Button>
         </div>
@@ -67,7 +71,6 @@ class DeleteProfile extends Component {
         <div className="deleteComponents">
           <br />
           <div className="txtdelete">
-            <h3 style={{fontWeight:'bold'}}>Cancellazione Profilo</h3>
             <br/>
             <h4>
               Sei davvero sicuro di voler cancellare il tuo account e i dati relativi ad esso?

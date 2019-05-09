@@ -38,11 +38,15 @@ class App extends React.Component {
       name: null,
       picture: null,
       istututo: null,
-      telefono: null
+      telefono: null,
+      headerLocation: "",
+      isHome: 'false'
     }
     this.setAuthenticated = this.setAuthenticated.bind(this)
     this.setRuolo = this.setRuolo.bind(this)
     this.setStateUser = this.setStateUser.bind(this)
+    this.setLocation = this.setLocation.bind(this)
+    this.setisHome = this.setisHome.bind(this)
   }
 
   setLocalUser(id, em, na, pic) {
@@ -93,6 +97,18 @@ class App extends React.Component {
     });
   }
 
+  setLocation(param) {
+    this.setState({
+      headerLocation: param
+    });
+  }
+
+  setisHome(param) {
+    this.setState({
+      isHome: param
+    });
+  }
+
   componentWillMount() {
     this.removeAuthListener = fire.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -126,7 +142,9 @@ class App extends React.Component {
         <div className="headerStyle">
           <Header
           authenticated={this.state.authenticated}
-          name={this.state.name}/>
+          headerLocation={this.state.headerLocation}
+          isHome={this.state.isHome}/>
+
         </div>
          
         <div className="mainStyle">
@@ -136,7 +154,9 @@ class App extends React.Component {
                 <Route exact path="/" render={() =>
                   <Landing
                     authenticated={this.state.authenticated}
-                    name = {this.state.name} />
+                    name = {this.state.name}
+                    setLocation={this.setLocation}
+                    setisHome={this.setisHome} />
                 } />
                 
                 <Route path="/login" render={() =>
@@ -145,7 +165,8 @@ class App extends React.Component {
                     setAuthenticated={this.setAuthenticated}
                     authenticated={this.state.authenticated}
                     setStateUser={this.setStateUser}
-                    setLocalUser={this.setLocalUser} />
+                    setLocalUser={this.setLocalUser}
+                    setLocation={this.setLocation} />
                 } />
 
                 {this.state.authenticated
@@ -164,13 +185,12 @@ class App extends React.Component {
                         ruolo={this.state.ruolo}
                         istituto={this.state.istituto}
                         telefono={this.state.telefono}
-                        /* setRuolo={this.state.setRuolo} 
-                        setLocalUser={this.setLocalUser} */
                         setStateUser={this.setStateUser}                        
                         setLocalName={this.setLocalName}
                         setLocalRole={this.setLocalRole}
                         setLocalIstituto={this.setLocalIstituto}
-                        setLocalTelefono={this.setLocalTelefono} />                     
+                        setLocalTelefono={this.setLocalTelefono}
+                        setLocation={this.setLocation} />                     
                     } />
 
 
@@ -189,7 +209,9 @@ class App extends React.Component {
                         setLocalRole={this.setLocalRole}
                         setLocalIstituto={this.setLocalIstituto}
                         setLocalTelefono={this.setLocalTelefono}
-                        setLocalUser={this.setLocalUser} />
+                        setLocalUser={this.setLocalUser}
+                        setLocation={this.setLocation}
+                        setisHome={this.setisHome} />
                     } />
 
                     <Route path="/deleteProfile" render={() =>
@@ -200,14 +222,16 @@ class App extends React.Component {
                         email={this.state.email}
                         ruolo={this.state.ruolo}
                         istituto={this.state.istituto}
-                        telefono={this.state.telefono} />
+                        telefono={this.state.telefono}
+                        setLocation={this.setLocation}
+                        setisHome={this.setisHome} />
                     } />
 
 
-                    <Route path="/info" component={Info} />
-                    <Route path="/telegrambot" component={Telegrambot} />
-                    <Route path="/telefona" component={Telefona} />
-                    <Route path="/faq" component={Faq} />
+                    <Route path="/info" render={() => <Info setLocation={this.setLocation}/> } />
+                    <Route path="/telegrambot" render={() => <Telegrambot setLocation={this.setLocation}/> }/>
+                    <Route path="/telefona" render={() => <Telefona setLocation={this.setLocation}/> } />
+                    <Route path="/faq" render={() => <Faq setLocation={this.setLocation}/> } />
 
                     {this.state.ruolo === 'Psicologo'
                       ?
@@ -220,7 +244,8 @@ class App extends React.Component {
                             ruolo={this.state.ruolo}
                             setRuolo={this.state.setRuolo}
                             setStateUser={this.setStateUser}
-                            setLocalUser={this.setLocalUser} />
+                            setLocalUser={this.setLocalUser}
+                            setLocation={this.setLocation} />
                         } />
                       : null
                     }
@@ -230,7 +255,9 @@ class App extends React.Component {
                         <Route path="/myReports" render={() =>
                           <MyReports 
                             userID={this.state.userID}
-                            ruolo={this.state.ruolo}/>
+                            ruolo={this.state.ruolo}
+                            setLocation={this.setLocation}
+                            setisHome={this.setisHome} />
                         } />
                       : null
                     }
@@ -240,7 +267,9 @@ class App extends React.Component {
                         <Route path="/myComments" render={() =>
                           <MyComments
                             userID={this.state.userID}
-                            ruolo={this.state.ruolo}/>
+                            ruolo={this.state.ruolo}
+                            setLocation={this.setLocation}
+                            setisHome={this.setisHome} />
                         } />
                       : null
                     }
@@ -256,7 +285,8 @@ class App extends React.Component {
                             ruolo={this.state.ruolo}
                             setRuolo={this.state.setRuolo}
                             setStateUser={this.setStateUser}
-                            setLocalUser={this.setLocalUser} />
+                            setLocalUser={this.setLocalUser}
+                            setLocation={this.setLocation} />
                         } />
                       : null
                     }

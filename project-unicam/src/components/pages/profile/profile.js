@@ -56,12 +56,12 @@ class Profile extends Component {
 
   componentWillMount() {
     this.readUserData();
+    this.props.setLocation("Profilo "+this.props.ruolo)
   }
 
   render() {
     return (
       <div>
-        <h3 style={{fontWeight:'bold'}}>Profilo {this.props.ruolo}</h3>
         <br/>
         <br/>
         {this.props.ruolo === 'Psicologo'

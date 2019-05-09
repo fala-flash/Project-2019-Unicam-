@@ -11,15 +11,22 @@ class Landing extends Component {
       super();
     } */
 
+    getName() {
+        if (this.props.authenticated) {
+            this.props.setLocation("Benvenuto "+this.props.name+" !")
+        } else {
+            this.props.setLocation("Benvenuto !")
+        }
+    }
+
+    componentWillMount() {
+        this.props.setisHome('true')
+        this.getName()
+    }
+
     render() {
         return (
             <div>
-                <h3 style={{fontWeight:'bold'}}>
-                Benvenuto <span>{this.props.authenticated ? this.props.name : null}</span>!
-                </h3>
-
-                <br></br>
-
                 <LandingCarousel />
                 <br></br>
                 {this.props.authenticated === false

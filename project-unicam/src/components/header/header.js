@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
+import { TiHomeOutline } from 'react-icons/ti';
+import { FaAngleLeft } from "react-icons/fa";
 
 
 class Header extends Component {
@@ -10,7 +12,27 @@ class Header extends Component {
                 {this.props.authenticated
                     ?
                     <Navbar fixed="top" bg="info" variant="dark" expand="dark">
-                        <Navbar.Brand className="navbarbrand" style={{color:'white'}} href="/">Stop! Bullying</Navbar.Brand>
+                        {this.props.isHome === 'true'
+                            ?
+                                <Navbar.Brand className="navbarbrandAuthenticated" style={{color:'white'}} href="/">{this.props.headerLocation}</Navbar.Brand>
+                            :
+                                null
+                        }
+
+                        {this.props.isHome === 'false'
+                            ?
+                                <Navbar.Brand className="navbarbrandAuthenticated" style={{color:'white'}} href="/"><TiHomeOutline className="headerIconHome"/> {this.props.headerLocation}</Navbar.Brand>
+                            :
+                                null
+                        }
+                        
+                        {this.props.isHome === 'profile'
+                            ?
+                                <Navbar.Brand className="navbarbrandAuthenticated" style={{color:'white'}} href="/profile"><FaAngleLeft className="headerIcon"/>    {this.props.headerLocation}</Navbar.Brand>
+                            :
+                                null
+                        }
+
                         <Navbar.Toggle style={{backgroundColor:'info'}}aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="mr-auto">
