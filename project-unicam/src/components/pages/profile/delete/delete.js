@@ -80,6 +80,7 @@ class DeleteProfile extends Component {
             variant="danger"
             className="deleteButton"
             onClick={this.handleShow}
+            style={{fontWeight:'bold', borderRadius:'50px'}}
           >
             Cancellazione Dati Account
           </Button>
@@ -108,10 +109,10 @@ class DeleteProfile extends Component {
               </ul>
             </Modal.Body>
             <Modal.Footer>
-              <Button style={{fontWeight:'bold'}} variant="success" onClick={this.handleClose}>
+              <Button style={{fontWeight:'bold', borderRadius:'50px'}} variant="success" onClick={this.handleClose}>
                 Annulla
               </Button>
-              <Button style={{fontWeight:'bold'}} variant="danger" onClick={this.deleteUserData}>
+              <Button style={{fontWeight:'bold', borderRadius:'50px'}} variant="danger" onClick={this.deleteUserData}>
                 Elimina
               </Button>
             </Modal.Footer>

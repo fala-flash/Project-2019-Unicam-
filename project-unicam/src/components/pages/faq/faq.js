@@ -16,7 +16,7 @@ function Faq
             <p>Di seguito scoprirai quanto questo fenomeno è presente nella nostra società</p>
             <br />
             <Card  className="faqcard" bg="info" text="white" style={{ width: '22rem' }}>
-              <Card.Header><h4>Che cosa si intende con bullismo?</h4></Card.Header>
+              <Card.Header><h3>Che cosa si intende con bullismo?</h3></Card.Header>
               <Card.Body>
                 <Card.Text>
                   Con il termine bullismo s’intende definire un comportamento aggressivo 

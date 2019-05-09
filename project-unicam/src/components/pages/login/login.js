@@ -170,18 +170,18 @@ class Login extends Component{
       return (
         <div className="formAccesso">
           <Form className="formLogin" onSubmit={(event) => this.autenticaEmailPassword(event)}>
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group controlId="formBasicEmail" >
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="Inserisci Email" ref={(input) => { this.emailInputAccesso = input }}/>
+              <Form.Control style={{fontWeight:'bold', borderRadius:'50px'}} type="email" placeholder="Inserisci Email" ref={(input) => { this.emailInputAccesso = input }}/>
             </Form.Group>
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Inserisci Password" ref={(input) => { this.passwordInputAccesso = input }}/>
+              <Form.Control style={{fontWeight:'bold', borderRadius:'50px'}} type="password" placeholder="Inserisci Password" ref={(input) => { this.passwordInputAccesso = input }}/>
             </Form.Group>
             <Form.Group controlId="formBasicChecbox">
             </Form.Group>
             <br></br>            
-            <Button variant="info" type="submit">
+            <Button style={{fontWeight:'bold', borderRadius:'50px'}} variant="info" type="submit">
               Accedi
             </Button>                       
           </Form>
@@ -189,7 +189,7 @@ class Login extends Component{
           <p>Oppure</p>
           <div className="googleCentrato">
             <br/>
-            <GoogleLoginButton onClick={() => { this.authentication(providerGoogle) }}>Accedi con Google</GoogleLoginButton>
+            <GoogleLoginButton style={{fontWeight:'bold', borderRadius:'50px'}} onClick={() => { this.authentication(providerGoogle) }}>Accedi con Google</GoogleLoginButton>
             <br/>
           </div>
         </div>
@@ -202,23 +202,23 @@ class Login extends Component{
           <Form className="formLogin" onSubmit={(event) => this.registraEmailPassword(event)}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Inserisci Email" ref={(input) => { this.emailInputRegistrazione = input }}/>
+            <Form.Control style={{fontWeight:'bold', borderRadius:'50px'}} type="email" placeholder="Inserisci Email" ref={(input) => { this.emailInputRegistrazione = input }}/>
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Inserisci Password" ref={(input) => { this.passwordInputRegistrazione = input }}/>
+            <Form.Control style={{fontWeight:'bold', borderRadius:'50px'}} type="password" placeholder="Inserisci Password" ref={(input) => { this.passwordInputRegistrazione = input }}/>
           </Form.Group>
           <Form.Group controlId="formBasicChecbox">
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlSelect1">
           <Form.Label>Sono uno</Form.Label>
-            <Form.Control as="select" ref={(input) => { this.tipoInputRegistrazione = input }}>
-              <option>Psicologo</option>
-              <option>Utente</option>
-            </Form.Control>
+          <Form.Control style={{fontWeight:'bold', borderRadius:'50px'}} as="select" ref={(input) => { this.tipoInputRegistrazione = input }}>
+                  <option>Psicologo</option>
+                  <option>Utente</option>
+          </Form.Control>
           </Form.Group>
           <br></br>            
-          <Button variant="info" type="submit">
+          <Button  style={{fontWeight:'bold', borderRadius:'50px'}} variant="info" type="submit">
             Registrati
           </Button>                       
         </Form>
@@ -235,7 +235,7 @@ class Login extends Component{
         <div className="loginStyle">
         <h3 style={{fontWeight:'bold'}}>Login/Registrazione</h3>
         <br/>
-        <Button variant='info' className="accessoButton"
+        <Button style={{fontWeight:'bold', borderRadius:'50px'}} variant='info' className="accessoButton"
           onClick={() => this.setState({ openRegistrazione: false , openAccesso: !openAccesso})}
           aria-controls="collapse-accedi"
           aria-expanded={openAccesso}>
@@ -248,7 +248,7 @@ class Login extends Component{
           </div>
         </Collapse>
         
-        <Button variant='info' className="accessoButton"
+        <Button style={{fontWeight:'bold', borderRadius:'50px'}} variant='info' className="accessoButton"
           onClick={() => this.setState({ openAccesso: false , openRegistrazione: !openRegistrazione})}
           aria-controls="collapse-registrazione"
           aria-expanded={openRegistrazione}>

@@ -266,10 +266,10 @@ class BlogPsicologo extends Component {
           </ul>
         </Modal.Body>
         <Modal.Footer>
-          <Button style={{fontWeight:'bold'}} variant="success" onClick={this.handleClose}>
+          <Button style={{fontWeight:'bold', borderRadius:'50px'}} variant="success" onClick={this.handleClose}>
             Annulla
           </Button>
-          <Button style={{fontWeight:'bold'}} variant="danger" onClick={() => this.eliminaSegnalazione(this.state.indexSegnalazione)}>
+          <Button style={{fontWeight:'bold', borderRadius:'50px'}} variant="danger" onClick={() => this.eliminaSegnalazione(this.state.indexSegnalazione)}>
             Elimina
           </Button>
         </Modal.Footer>
@@ -292,12 +292,14 @@ class BlogPsicologo extends Component {
                     {this.state.messaggio[index]}
                   </Card.Text>
                   <Button className="blogButton" variant="outline-light"
+                  style={{fontWeight:'bold', borderRadius:'50px'}}
                     onClick={(event) => {this.contattaUtente(event, index)}}
                     aria-controls="collapse-info"
                     aria-expanded={this.state.buttonContatta[index]}>Info Utente
                     <FiInfo className="blogIcon"/>
                   </Button>
                   <Button className="blogButtonElimina" variant="outline-light"
+                  style={{fontWeight:'bold', borderRadius:'50px'}}
                     onClick={() => this.handleShow(index)}>
                     Elimina<TiDeleteOutline className="deleteIcon"/>
                   </Button>
@@ -331,7 +333,7 @@ class BlogPsicologo extends Component {
                     rows={this.state.rows}
                     defaultValue={this.state.txtComment}
                     onChange={this.handleChange}/>
-                  <Button className="commentoButton" variant="outline-light" type="submit" value="Submit"
+                  <Button style={{fontWeight:'bold', borderRadius:'50px'}} className="commentoButton" variant="outline-light" type="submit" value="Submit"
                     onClick={() => {this.aggiungiCommento(index)}}>
                     Commenta<FiMessageCircle className="blogIcon"/>
                   </Button>

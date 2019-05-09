@@ -123,7 +123,7 @@ class BlogUtente extends Component {
                   defaultValue={this.state.txtSegnalazione}
                   onChange={this.handleChange}/>
               </Card.Text>
-              <Button variant="success" className="segnalazioneButton"
+              <Button style={{fontWeight:'bold', borderRadius:'50px'}} variant="success" className="segnalazioneButton"
                 onClick={() => this.aggiungiSegnalazione()}>Invia<FiSend className="blogIcon" />
               </Button>
             </Card.Body>

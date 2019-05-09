@@ -11,11 +11,8 @@ function Telefona() {
             <hr/>
             <p>
             Per ogni emergenza, noi siamo disponibili e volenterosi di ascoltarti. Chiamaci! </p>
-            <p>
-            Il nostro addetto alle chiamate: Marco.
-            </p>
             <p className="mb-0">
-            <Button className="buttonTelefona" variant="outline-success" size="lg" href="tel:+393315909161">
+            <Button style={{fontWeight:'bold', borderRadius:'50px'}} className="buttonTelefona" variant="outline-success" size="lg" href="tel:+393315909161">
                 <FaPhone className="telefonaIcon"/> +39 3334445550
             </Button>
             </p>

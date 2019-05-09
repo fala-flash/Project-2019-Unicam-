@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { fire } from '../../../../config/FirebaseConfig';
 import { Button, Form } from 'react-bootstrap';
-import {FaAngleLeft} from 'react-icons/fa';
+import {FaAngleLeft, FaUserCircle} from 'react-icons/fa';
 
 class modifyProfile extends Component{
 
@@ -49,6 +49,7 @@ class modifyProfile extends Component{
                   this.props.setStateUser()
                 } else if (snapshot.val() === null) {  //altrimenti nulla
                   alert('problemi lettura dati account')
+                  window.location.reload();
                 }
             })  
             }
@@ -89,13 +90,15 @@ class modifyProfile extends Component{
         return (
             <div>
               <div style={{display:"flex", justifyContent:"left"}}>
-                <Button variant="info" href="/profile"><FaAngleLeft/>
+                <Button style={{fontWeight:'bold', borderRadius:'360px'}} variant="info" href="/profile"><FaAngleLeft/>
                 </Button>
               </div>
               <h3 style={{fontWeight:'bold'}}>Profilo {this.props.ruolo}</h3>
               {this.props.picture === 'null'
-              ? null
-              : <Button variant="outline" href="/profile" size="sm">
+              ? <Button style={{fontWeight:'bold', borderRadius:'360px'}} variant="outline" href="/profile" size="sm">
+                  <FaUserCircle size={60}/>
+                </Button> 
+              : <Button style={{fontWeight:'bold', borderRadius:'360px'}} variant="outline" href="/profile" size="sm">
                   <img className="profileImg" src={this.props.picture} alt="UserPicture"/>
                 </Button> 
               }
@@ -103,29 +106,29 @@ class modifyProfile extends Component{
                   <Form.Group controlId="formBasicEmail">
                       <Form.Label>Nome</Form.Label>
                       {this.props.name === '' || this.props.name === null
-                      ?   <Form.Control className="formDatiLabel" type="text" placeholder="inserisci nome" ref={(input) => { this.aggiornaNome = input }}/>
-                      :   <Form.Control className="formDatiLabel" type="text" defaultValue={this.props.name} ref={(input) => { this.aggiornaNome = input }}/>
+                      ?   <Form.Control style={{fontWeight:'bold', borderRadius:'50px'}} className="formDatiLabel" type="text" placeholder="inserisci nome" ref={(input) => { this.aggiornaNome = input }}/>
+                      :   <Form.Control style={{fontWeight:'bold', borderRadius:'50px'}} className="formDatiLabel" type="text" defaultValue={this.props.name} ref={(input) => { this.aggiornaNome = input }}/>
                       }                        
                   </Form.Group>
                   <Form.Group controlId="formBasicEmail">
                       <Form.Label>Email</Form.Label>
                       {this.props.email === '' || this.props.email === null
-                      ?   <Form.Control className="formDatiLabel" type="text" placeholder="inserisci email" ref={(input) => { this.aggiornaEmail = input }}/>
-                      :   <Form.Control className="formDatiLabel" type="text" value={this.props.email}/>
+                      ?   <Form.Control style={{fontWeight:'bold', borderRadius:'50px'}} className="formDatiLabel" type="text" placeholder="inserisci email" ref={(input) => { this.aggiornaEmail = input }}/>
+                      :   <Form.Control style={{fontWeight:'bold', borderRadius:'50px'}} className="formDatiLabel" type="text" value={this.props.email}/>
                       }
                   </Form.Group>
                   <Form.Group controlId="formBasicEmail">
                       <Form.Label>Istituto</Form.Label>
                       {this.props.istituto === ''  || this.props.istituto === null
-                      ?   <Form.Control className="formDatiLabel" type="text" placeholder="inserisci istituto" ref={(input) => { this.aggiornaIstituto = input }}/>
-                      :   <Form.Control className="formDatiLabel" type="text" defaultValue={this.props.istituto} ref={(input) => { this.aggiornaIstituto = input }}/>
+                      ?   <Form.Control style={{fontWeight:'bold', borderRadius:'50px'}} className="formDatiLabel" type="text" placeholder="inserisci istituto" ref={(input) => { this.aggiornaIstituto = input }}/>
+                      :   <Form.Control style={{fontWeight:'bold', borderRadius:'50px'}} className="formDatiLabel" type="text" defaultValue={this.props.istituto} ref={(input) => { this.aggiornaIstituto = input }}/>
                       }
                   </Form.Group>
                   <Form.Group controlId="formBasicPassword">
                       <Form.Label>Telefono</Form.Label>
                       {this.props.telefono === ''  || this.props.telefono === null
-                      ?   <Form.Control className="formDatiLabel" type="text" placeholder="inserisci telefono" ref={(input) => { this.aggiornaTelefono = input }}/>
-                      :   <Form.Control className="formDatiLabel" type="text" defaultValue={this.props.telefono} ref={(input) => { this.aggiornaTelefono = input }}/>
+                      ?   <Form.Control style={{fontWeight:'bold', borderRadius:'50px'}} className="formDatiLabel" type="text" placeholder="inserisci telefono" ref={(input) => { this.aggiornaTelefono = input }}/>
+                      :   <Form.Control style={{fontWeight:'bold', borderRadius:'50px'}} className="formDatiLabel" type="text" defaultValue={this.props.telefono} ref={(input) => { this.aggiornaTelefono = input }}/>
                       }
                   </Form.Group>
                   {/* <Form.Group controlId="formBasicEmail">
@@ -143,7 +146,7 @@ class modifyProfile extends Component{
                   <Form.Group controlId="formBasicChecbox">
                   </Form.Group>
                   <br></br>            
-                  <Button variant="info" type="submit" style={{fontWeight:'bold'}}>
+                  <Button style={{fontWeight:'bold', borderRadius:'50px'}} variant="info" type="submit">
                       Aggiorna
                   </Button>                       
                 </Form>

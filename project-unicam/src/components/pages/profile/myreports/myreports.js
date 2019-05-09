@@ -109,7 +109,7 @@ class MyReports extends React.Component {
     return (
       <div>
         <div style={{ display: "flex", justifyContent: "left" }}>
-          <Button variant="info" href="/profile">
+          <Button style={{fontWeight:'bold', borderRadius:'360px'}} variant="info" href="/profile">
             <FaAngleLeft />
           </Button>          
         </div>
