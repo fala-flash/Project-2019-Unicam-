@@ -1,11 +1,20 @@
-import React from "react";
+
 import { FaApple, FaAndroid, FaTelegramPlane } from "react-icons/fa";
 import { Button} from "react-bootstrap";
 
-function Telegrambot() {
-  return (
-    <div>
-      <h3 style={{fontWeight:'bold'}}>TELEGRAM BOT</h3>
+import React, { Component } from 'react'
+
+ class Telegrambot extends Component {
+
+  componentWillMount() {
+    this.props.setLocation("Telegram Bot")
+  }
+
+  render() {
+    return (
+      <div>
+        <div>
+      
 
       <br></br>
 
@@ -46,7 +55,10 @@ function Telegrambot() {
         <br></br>
     
     </div>
-  );
+      </div>
+    )
+  }
 }
+ 
 
 export default Telegrambot;

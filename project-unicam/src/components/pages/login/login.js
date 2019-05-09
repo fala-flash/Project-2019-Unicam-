@@ -181,7 +181,7 @@ class Login extends Component{
             <Form.Group controlId="formBasicChecbox">
             </Form.Group>
             <br></br>            
-            <Button style={{fontWeight:'bold', borderRadius:'50px'}} variant="info" type="submit">
+            <Button style={{fontWeight:'bold', fontSize:'20px', borderRadius:'50px'}} variant="info" type="submit">
               Accedi
             </Button>                       
           </Form>
@@ -218,7 +218,7 @@ class Login extends Component{
           </Form.Control>
           </Form.Group>
           <br></br>            
-          <Button  style={{fontWeight:'bold', borderRadius:'50px'}} variant="info" type="submit">
+          <Button  style={{fontWeight:'bold', fontSize:'20px', borderRadius:'50px'}} variant="info" type="submit">
             Registrati
           </Button>                       
         </Form>
@@ -239,7 +239,7 @@ class Login extends Component{
           onClick={() => this.setState({ openRegistrazione: false , openAccesso: !openAccesso})}
           aria-controls="collapse-accedi"
           aria-expanded={openAccesso}>
-          <h6 className="accessoButtonText">Hai già un account Stop! Bullying?</h6>
+          <h5 className="accessoButtonText">Hai già un account Stop! Bullying?</h5>
         </Button>
         <br/>
         <Collapse in={this.state.openAccesso}>
@@ -252,7 +252,7 @@ class Login extends Component{
           onClick={() => this.setState({ openAccesso: false , openRegistrazione: !openRegistrazione})}
           aria-controls="collapse-registrazione"
           aria-expanded={openRegistrazione}>
-          <h6 className="accessoButtonText">Prima volta su Stop! Bullying?</h6>
+          <h5 className="accessoButtonText">Prima volta su Stop! Bullying?</h5>
         </Button>
         <br></br>
         <Collapse in={this.state.openRegistrazione}>

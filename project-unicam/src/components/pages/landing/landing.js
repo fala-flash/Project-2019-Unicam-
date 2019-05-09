@@ -30,7 +30,7 @@ class Landing extends Component {
                 <LandingCarousel />
                 <br></br>
                 {this.props.authenticated === false
-                    ?   <Button style={{fontWeight:'bold', borderRadius:'50px'}} variant="info" type="submit" href="/login">
+                    ?   <Button style={{fontWeight:'bold', fontSize:'25px', borderRadius:'50px'}} variant="info" type="submit" href="/login">
                             ENTRA !
                         </Button>
                     :   null
