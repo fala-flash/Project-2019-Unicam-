@@ -55,7 +55,7 @@ class DeleteProfile extends Component {
   }
 
   componentWillMount() {
-    this.props.setLocation("Cancellazione Profilo");
+    this.props.setLocation("Elimina Profilo "+this.props.ruolo);
     this.props.setisHome('profile');
   }
 

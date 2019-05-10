@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from 'react-router-dom';
 import { fire } from '../../../config/FirebaseConfig';
 import { Button } from "react-bootstrap";
 
@@ -6,10 +7,10 @@ class Profile extends Component {
   constructor() {
     super();
     this.state = {
-      nome: null,
-      email: null,
-      istituto: null,
-      telefono: null,
+      nome: "",
+      email: "",
+      istituto: "",
+      telefono: "",
       ruolo: null
     }  
   }
@@ -27,6 +28,7 @@ class Profile extends Component {
             ruolo: 'Utente'
           })
           this.props.setLocalRole(this.state.ruolo)
+          this.props.setLocalName(this.state.nome)
           this.props.setLocalIstituto(this.state.istituto)
           this.props.setLocalTelefono(this.state.telefono)              
           this.props.setStateUser()
@@ -60,6 +62,12 @@ class Profile extends Component {
   }
 
   render() {
+    if (this.props.name === null || this.props.name === '' ||
+        this.props.telefono === null || this.props.telefono === '' ||
+        this.props.istituto === null || this.props.istituto === '') {
+          alert("Completa i dati profilo per accedere alla pagina")
+          return <Redirect to='/modifyProfile'/>      
+    }
     return (
       <div>
         <br/>

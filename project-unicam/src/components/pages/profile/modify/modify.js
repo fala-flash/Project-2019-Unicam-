@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { fire } from '../../../../config/FirebaseConfig';
+import { Redirect } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 import { FaUserCircle } from 'react-icons/fa';
 
@@ -12,10 +13,9 @@ class modifyProfile extends Component{
             email: null,
             istituto: null,
             telefono: null,
-            ruolo: null,
+            ruolo: null
           }     
       }
-
 
       readUserData() {
         const rootUtente = fire.database().ref('Utente/'+this.props.userID);
@@ -30,6 +30,7 @@ class modifyProfile extends Component{
                 ruolo: 'Utente'
               })
               this.props.setLocalRole(this.state.ruolo)
+              this.props.setLocalName(this.state.nome)
               this.props.setLocalIstituto(this.state.istituto)
               this.props.setLocalTelefono(this.state.telefono)              
               this.props.setStateUser()
@@ -75,22 +76,21 @@ class modifyProfile extends Component{
         const nome = this.aggiornaNome.value
         const istituto = this.aggiornaIstituto.value            
         const telefono = this.aggiornaTelefono.value
-        if (nome !== '' && istituto !== '' && telefono !== '') {
-          this.writeUserData(this.props.userID, nome, telefono, istituto)
+        if (nome !== '' && istituto !== '' && telefono !== '' && telefono.length === 10) {
+          this.writeUserData(this.props.userID, nome, telefono, istituto)           
         } else {
-          alert("Tutti i campi devono essere compilati") 
+          alert("Tutti i campi devono essere compilati correttamente") 
         }
-        //this.datiForm.reset();
+        return <Redirect to='/profile'/>
       }
-
 
       componentWillMount() {
         this.readUserData();
-        this.props.setLocation("Profilo "+this.props.ruolo);
+        this.props.setLocation("Modifica Profilo "+this.props.ruolo);
         this.props.setisHome('profile');
       }
 
-      render () {        
+      render () {     
         return (
             <div>
               {this.props.picture === 'null'
@@ -126,23 +126,9 @@ class modifyProfile extends Component{
                   <Form.Group controlId="formBasicPassword">
                       <Form.Label>Telefono</Form.Label>
                       {this.props.telefono === ''  || this.props.telefono === null
-                      ?   <Form.Control style={{fontWeight:'bold', borderRadius:'50px'}} className="formDatiLabel" type="text" placeholder="inserisci telefono" ref={(input) => { this.aggiornaTelefono = input }}/>
-                      :   <Form.Control style={{fontWeight:'bold', borderRadius:'50px'}} className="formDatiLabel" type="text" defaultValue={this.props.telefono} ref={(input) => { this.aggiornaTelefono = input }}/>
+                      ?   <Form.Control style={{fontWeight:'bold', borderRadius:'50px'}} className="formDatiLabel" type="number" placeholder="inserisci telefono" ref={(input) => { this.aggiornaTelefono = input }}/>
+                      :   <Form.Control style={{fontWeight:'bold', borderRadius:'50px'}} className="formDatiLabel" type="number" defaultValue={this.props.telefono} ref={(input) => { this.aggiornaTelefono = input }}/>
                       }
-                  </Form.Group>
-                  {/* <Form.Group controlId="formBasicEmail">
-                      <Form.Label>Email</Form.Label>
-                      <Form.Control className="formDatiLabel" type="text" defaultValue={this.props.email} ref={(input) => { this.aggiornaEmail = input }}/>
-                  </Form.Group>                    
-                  <Form.Group controlId="formBasicEmail">
-                      <Form.Label>Istituto</Form.Label>
-                      <Form.Control className="formDatiLabel" type="text" placeholder={this.state.istituto} ref={(input) => { this.aggiornaIstituto = input }}/>
-                  </Form.Group>
-                  <Form.Group controlId="formBasicPassword">
-                      <Form.Label>Telefono</Form.Label>
-                      <Form.Control className="formDatiLabel" type="text" placeholder={this.state.telefono} ref={(input) => { this.aggiornaTelefono = input }}/>
-                  </Form.Group> */}
-                  <Form.Group controlId="formBasicChecbox">
                   </Form.Group>
                   <br></br>            
                   <Button style={{fontWeight:'bold', borderRadius:'50px'}} variant="info" type="submit">

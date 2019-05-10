@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
 import LandingCarousel from './landingCarousel';
 
 //eslint-disable-next-line
 import Style from '../../style.css';
 
 class Landing extends Component {
-
-    /* constructor() {
-      super();
-    } */
 
     getName() {
         if (this.props.authenticated) {
@@ -26,15 +21,8 @@ class Landing extends Component {
 
     render() {
         return (
-            <div>
-                <LandingCarousel />
-                <br></br>
-                {this.props.authenticated === false
-                    ?   <Button style={{fontWeight:'bold', fontSize:'25px', borderRadius:'50px'}} variant="info" type="submit" href="/login">
-                            ENTRA !
-                        </Button>
-                    :   null
-                }                
+            <div className="carouselDiv">
+                <LandingCarousel /> 
             </div>
         )
     }    

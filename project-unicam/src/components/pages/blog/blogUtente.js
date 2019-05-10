@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { fire } from '../../../config/FirebaseConfig';
+import { Redirect } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
 import { FiSend,  } from 'react-icons/fi';
 
@@ -69,17 +70,18 @@ class BlogUtente extends Component {
   aggiungiSegnalazione() {
     const codiceSegnalazione = this.uniqueIDCode();
     const data = this.getData();
-    if (this.state.txtSegnalazione !== '') {
+    if (this.state.txtSegnalazione !== '' && this.state.txtSegnalazione !== null && this.state.txtSegnalazione.length > 0) {
       if(codiceSegnalazione !== '' && codiceSegnalazione !== null) {
         this.writeUserData(codiceSegnalazione, this.props.userID, this.state.txtSegnalazione, data) //id=this.state.userID
-      alert('Segnalazione '+codiceSegnalazione+' inviata correttamente')
+        alert('Segnalazione '+codiceSegnalazione+' inviata correttamente')
+        window.location.reload();
       } else {
         alert('Errore generazione codice segnalazione, riprova')
+        window.location.reload();
       }      
     } else {
-      alert("Tutti i campi devono essere compilati")
-    }
-    window.location.reload();
+      alert("Segnalazione vuota")
+    }    
   }
 
   handleChange(event) {
@@ -158,6 +160,12 @@ class BlogUtente extends Component {
   }
 
   render() {
+    if (this.props.name === null || this.props.name === '' ||
+        this.props.telefono === null || this.props.telefono === '' ||
+        this.props.istituto === null || this.props.istituto === '') {
+          alert("Completa i dati profilo per accedere alla pagina")
+          return <Redirect to='/modifyProfile'/>      
+    }
     return (
       <div>
         <br/>       

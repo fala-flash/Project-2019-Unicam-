@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { TiHomeOutline } from 'react-icons/ti';
 import { FaAngleLeft } from "react-icons/fa";
+import { Button } from 'react-bootstrap';
 
 
 class Header extends Component {
@@ -45,6 +46,9 @@ class Header extends Component {
                     :
                     <Navbar fixed="top" bg="info" variant="light" expand="light">
                         <Navbar.Brand  className="navbarbrand" style={{color:'white'}} href="/">Stop! Bullying</Navbar.Brand>
+                        <Button style={{borderRadius:'50px'}} variant="outline-light" type="submit" href="/login">
+                            Accedi
+                        </Button>
                     </Navbar>
                 }
             </div>

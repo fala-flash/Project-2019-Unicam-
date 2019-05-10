@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { fire } from '../../../config/FirebaseConfig';
+import { Redirect } from 'react-router-dom';
 import { Button, Card, Collapse, Modal } from 'react-bootstrap';
 import { FiMessageCircle, FiInfo } from 'react-icons/fi';
 import { FaPhone, FaHome } from 'react-icons/fa';
@@ -182,28 +183,32 @@ class BlogPsicologo extends Component {
 
   aggiungiCommento(index) {
     const time = this.getData();
-    fire.database().ref('Segnalazioni/'+ this.state.codice[index]+'/Commenti/'+this.props.userID).set({
-      commento: this.state.txtComment,
-      nome: this.props.name,
-      data: time
-    }).then((data)=>{
-        //success callback
-        //console.log('data ' , data)
-    }).catch((error)=>{
-        //error callback
-        //console.log('error ' , error)
-    })
-    fire.database().ref('Segnalazioni/'+ this.state.codice[index]).update({
-      visto: "true"
-    }).then((data)=>{
-        //success callback
-        //console.log('data ' , data)
-    }).catch((error)=>{
-        //error callback
-        //console.log('error ' , error)
-    })
-    alert('Commento alla segnalazione: ' +this.state.codice[index]+' aggiunto');
-    window.location.reload();
+    if(this.state.txtComment !== '' && this.state.txtComment !== null && this.state.txtComment.length > 0) {
+      fire.database().ref('Segnalazioni/'+ this.state.codice[index]+'/Commenti/'+this.props.userID).set({
+        commento: this.state.txtComment,
+        nome: this.props.name,
+        data: time
+      }).then((data)=>{
+          //success callback
+          //console.log('data ' , data)
+      }).catch((error)=>{
+          //error callback
+          //console.log('error ' , error)
+      })
+      fire.database().ref('Segnalazioni/'+ this.state.codice[index]).update({
+        visto: "true"
+      }).then((data)=>{
+          //success callback
+          //console.log('data ' , data)
+      }).catch((error)=>{
+          //error callback
+          //console.log('error ' , error)
+      })
+      alert('Commento alla segnalazione: ' +this.state.codice[index]+' aggiunto');
+      window.location.reload();
+    } else {
+      alert('Commento vuoto');
+    }    
   }
 
   eliminaSegnalazione(index) {
@@ -351,6 +356,12 @@ class BlogPsicologo extends Component {
   }
 
   render() {
+    if (this.props.name === null || this.props.name === '' ||
+        this.props.telefono === null || this.props.telefono === '' ||
+        this.props.istituto === null || this.props.istituto === '') {
+          alert("Completa i dati profilo per accedere alla pagina")
+          return <Redirect to='/modifyProfile'/>      
+    }
     return (
       <div>
         {this.getSegnalazioniPsicologo()}          
