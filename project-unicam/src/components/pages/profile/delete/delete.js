@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { fire } from "../../../../config/FirebaseConfig";
 import { Button, Modal } from "react-bootstrap";
-import firebase from 'firebase';
+import firebase from "firebase";
 
 class DeleteProfile extends Component {
   constructor() {
@@ -22,15 +22,14 @@ class DeleteProfile extends Component {
   }
 
   deleteUserData = () => {
-
     //cancellazione account
     var userDeleted = firebase.auth().currentUser;
     userDeleted.delete();
-    
+
     //cancellazione dati firebase
     fire
       .database()
-      .ref(this.props.ruolo + '/' + this.props.userID)
+      .ref(this.props.ruolo + "/" + this.props.userID)
       .remove();
 
     //logout
@@ -55,30 +54,30 @@ class DeleteProfile extends Component {
   }
 
   componentWillMount() {
-    this.props.setLocation("Elimina Profilo "+this.props.ruolo);
-    this.props.setisHome('profile');
+    this.props.setLocation("Elimina Profilo " + this.props.ruolo);
+    this.props.setisHome("profile");
   }
 
   render() {
     return (
       <div>
-
         <div className="deleteComponents">
           <br />
           <div className="txtdelete">
-            <br/>
-            <h4>
-              Sei davvero sicuro di voler cancellare il tuo account e i dati relativi ad esso?
             <br />
+            <h4>
+              Sei davvero sicuro di voler cancellare il tuo account e i dati
+              relativi ad esso?
+              <br />
               Le modifiche effettuate e le segnalazioni aggiunte andranno perse.
             </h4>
           </div>
-          <br/>
+          <br />
           <Button
             variant="danger"
             className="deleteButton"
             onClick={this.handleShow}
-            style={{fontWeight:'bold', borderRadius:'50px'}}
+            style={{ fontWeight: "bold", borderRadius: "50px" }}
           >
             Cancellazione Dati Account
           </Button>
@@ -107,10 +106,18 @@ class DeleteProfile extends Component {
               </ul>
             </Modal.Body>
             <Modal.Footer>
-              <Button style={{fontWeight:'bold', borderRadius:'50px'}} variant="success" onClick={this.handleClose}>
+              <Button
+                style={{ fontWeight: "bold", borderRadius: "50px" }}
+                variant="success"
+                onClick={this.handleClose}
+              >
                 Annulla
               </Button>
-              <Button style={{fontWeight:'bold', borderRadius:'50px'}} variant="danger" onClick={this.deleteUserData}>
+              <Button
+                style={{ fontWeight: "bold", borderRadius: "50px" }}
+                variant="danger"
+                onClick={this.deleteUserData}
+              >
                 Elimina
               </Button>
             </Modal.Footer>

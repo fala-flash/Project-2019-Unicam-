@@ -5,9 +5,11 @@ import { FaPhone } from "react-icons/fa";
 import React, { Component } from "react";
 
 class Telefona extends Component {
+  
   componentWillMount() {
     this.props.setLocation("Telefona");
   }
+
   render() {
     return (
       <div>
