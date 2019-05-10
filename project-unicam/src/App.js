@@ -21,8 +21,8 @@ import Faq from './components/pages/faq/faq';
 import Telefona from './components/pages/telefona/telefona';
 import BlogUtente from './components/pages/blog/blogUtente';
 import BlogPsicologo from './components/pages/blog/blogPsicologo';
-import MyReports from './components/pages/profile/myreports/myReports'
-import MyComments from './components/pages/profile/myreports/myComments'
+import LeMieSegnalazioni from './components/pages/profile/commentiEsegnalazioni/leMieSegnalazioni'
+import LeMieRisposte from './components/pages/profile/commentiEsegnalazioni/leMieRisposte'
 
 
 class App extends React.Component {
@@ -252,8 +252,8 @@ class App extends React.Component {
 
                     {this.state.ruolo === 'Utente'
                       ?
-                        <Route path="/myReports" render={() =>
-                          <MyReports 
+                        <Route path="/mieSegnalazioni" render={() =>
+                          <LeMieSegnalazioni 
                             userID={this.state.userID}
                             ruolo={this.state.ruolo}
                             setLocation={this.setLocation}
@@ -264,8 +264,8 @@ class App extends React.Component {
 
                     {this.state.ruolo === 'Psicologo'
                       ?
-                        <Route path="/myComments" render={() =>
-                          <MyComments
+                        <Route path="/mieRisposte" render={() =>
+                          <LeMieRisposte
                             userID={this.state.userID}
                             ruolo={this.state.ruolo}
                             setLocation={this.setLocation}

@@ -2,7 +2,7 @@ import React from "react";
 import { fire } from "../../../../config/FirebaseConfig";
 import { Card } from "react-bootstrap";
 
-class MyReports extends React.Component {
+class LeMieSegnalazioni extends React.Component {
   constructor() {
     super();
     this.state = { 
@@ -115,4 +115,4 @@ class MyReports extends React.Component {
   }
 }
 
-export default MyReports;
+export default LeMieSegnalazioni;

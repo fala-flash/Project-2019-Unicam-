@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { fire } from '../../../../config/FirebaseConfig';
 import { Button, Form } from 'react-bootstrap';
-import {FaAngleLeft, FaUserCircle} from 'react-icons/fa';
+import { FaUserCircle } from 'react-icons/fa';
 
 class modifyProfile extends Component{
 
@@ -12,9 +12,10 @@ class modifyProfile extends Component{
             email: null,
             istituto: null,
             telefono: null,
-            ruolo: null
-          }      
+            ruolo: null,
+          }     
       }
+
 
       readUserData() {
         const rootUtente = fire.database().ref('Utente/'+this.props.userID);
@@ -48,7 +49,7 @@ class modifyProfile extends Component{
                   this.props.setLocalIstituto(this.state.istituto)                  
                   this.props.setStateUser()
                 } else if (snapshot.val() === null) {  //altrimenti nulla
-                  alert('problemi lettura dati account')
+                  alert('problemi lettura dati account');
                   window.location.reload();
                 }
             })  
@@ -77,23 +78,21 @@ class modifyProfile extends Component{
         if (nome !== '' && istituto !== '' && telefono !== '') {
           this.writeUserData(this.props.userID, nome, telefono, istituto)
         } else {
-          alert("Tutti i campi devono essere compilati")
+          alert("Tutti i campi devono essere compilati") 
         }
         //this.datiForm.reset();
       }
 
+
       componentWillMount() {
         this.readUserData();
-        this.props.setLocation("Profilo "+this.props.ruolo)
+        this.props.setLocation("Profilo "+this.props.ruolo);
+        this.props.setisHome('profile');
       }
 
       render () {        
         return (
             <div>
-              <div style={{display:"flex", justifyContent:"left"}}>
-                <Button style={{fontWeight:'bold', borderRadius:'360px'}} variant="info" href="/profile"><FaAngleLeft/>
-                </Button>
-              </div>
               {this.props.picture === 'null'
               ? <Button style={{fontWeight:'bold', borderRadius:'360px'}} variant="outline" href="/profile" size="sm">
                   <FaUserCircle size={60}/>
@@ -148,7 +147,7 @@ class modifyProfile extends Component{
                   <br></br>            
                   <Button style={{fontWeight:'bold', borderRadius:'50px'}} variant="info" type="submit">
                       Aggiorna
-                  </Button>                       
+                  </Button>                     
                 </Form>
             </div>
         );

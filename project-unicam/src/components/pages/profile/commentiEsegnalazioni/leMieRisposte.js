@@ -2,7 +2,7 @@ import React from "react";
 import { fire } from "../../../../config/FirebaseConfig";
 import { Card } from "react-bootstrap";
 
-class MyComments extends React.Component {
+class LeMieRisposte extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -10,7 +10,8 @@ class MyComments extends React.Component {
       testoSegnalazione: [],
       dataSegnalazione: [],
       visto: [],
-      commentoPsicologo: []
+      commentoPsicologo: [],
+      dataCommentoPsicologo:[]
     };
   }
 
@@ -40,7 +41,8 @@ class MyComments extends React.Component {
                 testoSegnalazione: this.state.testoSegnalazione.concat([child.val().messaggio]),
                 dataSegnalazione: this.state.dataSegnalazione.concat([child.val().data]),
                 visto: this.state.visto.concat([child.val().visto]),
-                commentoPsicologo: this.state.commentoPsicologo.concat(extraChild.val().commento)
+                commentoPsicologo: this.state.commentoPsicologo.concat(extraChild.val().commento),
+                dataCommentoPsicologo: this.state.dataCommentoPsicologo.concat(extraChild.val().data)
               });
             }            
           });          
@@ -69,7 +71,7 @@ class MyComments extends React.Component {
                       ? 
                         <>
                           <p style={{fontWeight: "bold"}}>Risposta:</p>
-                          <p>{this.state.commentoPsicologo[index]}</p>
+                          <div><hr/><span>({this.state.dataCommentoPsicologo[index]}) </span> Tu:  {this.state.commentoPsicologo[index]}<br/></div>
                         </>
                       : <p style={{fontWeight: "bold"}}>In attesa di risposta</p>
                     }
@@ -105,4 +107,4 @@ class MyComments extends React.Component {
   }
 }
 
-export default MyComments;
+export default LeMieRisposte;

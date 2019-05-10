@@ -66,7 +66,7 @@ class Profile extends Component {
         <br/>
         {this.props.ruolo === 'Psicologo'
           ? 
-            <Button style={{fontWeight:'bold', borderRadius:'50px'}} href="/myComments" variant="success" size="lg">
+            <Button style={{fontWeight:'bold', borderRadius:'50px'}} href="/mieRisposte" variant="success" size="lg">
               Le mie Risposte
             </Button>
           : null
@@ -74,7 +74,7 @@ class Profile extends Component {
 
         {this.props.ruolo === 'Utente'
           ? 
-            <Button style={{fontWeight:'bold', borderRadius:'50px'}} href="/myReports" variant="success" size="lg">
+            <Button style={{fontWeight:'bold', borderRadius:'50px'}} href="/mieSegnalazioni" variant="success" size="lg">
               Le mie Segnalazioni
             </Button>
           : null

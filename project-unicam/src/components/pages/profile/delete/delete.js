@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { fire } from "../../../../config/FirebaseConfig";
 import { Button, Modal } from "react-bootstrap";
-import { FaAngleLeft } from "react-icons/fa";
 import firebase from 'firebase';
 
 class DeleteProfile extends Component {
@@ -56,17 +55,13 @@ class DeleteProfile extends Component {
   }
 
   componentWillMount() {
-    this.props.setLocation("Cancellazione Profilo")
+    this.props.setLocation("Cancellazione Profilo");
+    this.props.setisHome('profile');
   }
 
   render() {
     return (
       <div>
-        <div style={{ display: "flex", justifyContent: "left" }}>
-          <Button variant="info" href="/profile" style={{fontWeight: 'bold', borderRadius: '360px'}}>
-            <FaAngleLeft />
-          </Button>
-        </div>
 
         <div className="deleteComponents">
           <br />
