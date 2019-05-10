@@ -428,9 +428,14 @@ class BlogPsicologo extends Component {
                     <p>{this.state.commentiPsicologo[index]}</p>
                   </>
                 ) : (
-                  <text style={{ fontWeight: "bold" }}>
-                    In attesa di risposta
-                  </text>
+                  
+                  <>
+                    <br/>
+                    <br/>
+                    <text style={{ fontWeight: "bold" }}>
+                      In attesa di risposta
+                    </text>
+                  </>
 
                 )}
               </Card.Body>
