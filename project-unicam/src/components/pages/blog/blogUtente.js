@@ -187,11 +187,8 @@ class BlogUtente extends Component {
 
   render() {
     if (
-      this.props.name === null ||
       this.props.name === "" ||
-      this.props.telefono === null ||
       this.props.telefono === "" ||
-      this.props.istituto === null ||
       this.props.istituto === ""
     ) {
       alert("Completa i dati profilo per accedere alla pagina");

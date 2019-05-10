@@ -62,7 +62,7 @@ class LeMieRisposte extends React.Component {
   }
 
   getSegnalazioni() {
-    if (this.state.idSegnalazione[0] !== undefined) {
+    if (this.state.idSegnalazione.length > 0) {
       return (
         <div>
           {this.setVisto()}

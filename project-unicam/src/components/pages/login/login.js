@@ -111,7 +111,7 @@ class Login extends Component {
         } else alert("Errore login:" + error);
       });
   }
-
+/* 
   getUserType() {
     const rootUtente = fire.database().ref("Utente/" + this.state.user.uid);
     const rootPsicologo = fire
@@ -138,7 +138,7 @@ class Login extends Component {
         });
       }
     });
-  }
+  } */
 
   autenticaEmailPassword(event) {
     const email = this.emailInputAccesso.value;
@@ -148,7 +148,6 @@ class Login extends Component {
       .signInWithEmailAndPassword(email, password)
       .then(result => {
         this.setUser(result.user);
-        //this.getUserType()
         this.setUserInfo();
         this.props.setAuthenticated(true);
       })
@@ -170,6 +169,7 @@ class Login extends Component {
     this.setState({
       tipo: this.tipoInputRegistrazione.value
     });
+    this.props.setLocalRole(this.state.tipo);
     fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -282,7 +282,7 @@ class Login extends Component {
           </Form.Group>
           <Form.Group controlId="formBasicChecbox" />
           <Form.Group controlId="exampleForm.ControlSelect1">
-            <Form.Label>Sono uno</Form.Label>
+            <Form.Label>Sono un/uno</Form.Label>
             <Form.Control
               style={{ fontWeight: "bold", borderRadius: "50px" }}
               as="select"
@@ -313,7 +313,7 @@ class Login extends Component {
 
   render() {
     if (this.props.authenticated === true) {
-      return <Redirect to="/profile" />;
+      return <Redirect to="/modifyProfile" />;
     }
     const { openAccesso, openRegistrazione } = this.state;
     return (

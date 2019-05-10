@@ -77,12 +77,11 @@ class BlogPsicologo extends Component {
             snapCommenti.forEach(extraChild => {
               this.setState({
                 commento: this.state.commento.concat([
-                  <div>
-                    <hr />
+                  <div> 
+                    <hr />                   
                     <span>({extraChild.val().data}) </span>
                     {extraChild.val().nome}:<br />
                     {extraChild.val().commento}
-                    <br />
                   </div>
                 ])
               });
@@ -420,10 +419,11 @@ class BlogPsicologo extends Component {
                     </p>
                   </div>
                 </Collapse>
-              </Card.Body>
-              <Card.Footer>
+
                 {this.state.visto[index] === "success" ? (
                   <>
+                    <br/>
+                    <br/>
                     <text style={{ fontWeight: "bold" }}>Risposta/e:</text>
                     <p>{this.state.commentiPsicologo[index]}</p>
                   </>
@@ -431,7 +431,10 @@ class BlogPsicologo extends Component {
                   <text style={{ fontWeight: "bold" }}>
                     In attesa di risposta
                   </text>
+
                 )}
+              </Card.Body>
+              <Card.Footer>
                 <textarea
                   className="testoForm"
                   placeholder="inserisci testo commento"
@@ -467,11 +470,8 @@ class BlogPsicologo extends Component {
 
   render() {
     if (
-      this.props.name === null ||
       this.props.name === "" ||
-      this.props.telefono === null ||
       this.props.telefono === "" ||
-      this.props.istituto === null ||
       this.props.istituto === ""
     ) {
       alert("Completa i dati profilo per accedere alla pagina");

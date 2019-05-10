@@ -11,7 +11,7 @@ class Profile extends Component {
       email: "",
       istituto: "",
       telefono: "",
-      ruolo: null
+      ruolo: ""
     };
   }
 
@@ -60,20 +60,17 @@ class Profile extends Component {
         });
       }
     });
+    this.props.setLocation("Profilo " + this.props.ruolo);
   }
 
   componentWillMount() {
     this.readUserData();
-    this.props.setLocation("Profilo " + this.props.ruolo);
   }
 
   render() {
     if (
-      this.props.name === null ||
       this.props.name === "" ||
-      this.props.telefono === null ||
       this.props.telefono === "" ||
-      this.props.istituto === null ||
       this.props.istituto === ""
     ) {
       alert("Completa i dati profilo per accedere alla pagina");

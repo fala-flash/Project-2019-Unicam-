@@ -5,6 +5,17 @@ import LandingCarousel from "./landingCarousel";
 import Style from "../../style.css";
 
 class Landing extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ruolo : this.props.ruolo
+    }
+  }
+
+  /* setHome() {
+    this.props.setisHome("home")
+  } */
+
   getName() {
     if (this.props.authenticated) {
       this.props.setLocation("Benvenuto " + this.props.name + " !");
@@ -21,7 +32,9 @@ class Landing extends Component {
   render() {
     return (
       <div className="carouselDiv">
-        <LandingCarousel />
+        <LandingCarousel 
+        ruolo={this.state.ruolo}
+        /* setHome={this.props.setHome} *//>
       </div>
     );
   }

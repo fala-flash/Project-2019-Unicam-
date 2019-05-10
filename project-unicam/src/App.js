@@ -29,14 +29,14 @@ class App extends React.Component {
     super();
     this.state = {
       authenticated: false,
-      ruolo: null,
+      ruolo: "",
       loading: true,
-      userID: null,
-      email: null,
-      name: null,
-      picture: null,
-      istututo: null,
-      telefono: null,
+      userID: "",
+      email: "",
+      name: "",
+      picture: "",
+      istututo: "",
+      telefono: "",
       headerLocation: "",
       isHome: "false"
     };
@@ -156,6 +156,7 @@ class App extends React.Component {
                     <Landing
                       authenticated={this.state.authenticated}
                       name={this.state.name}
+                      ruolo={this.state.ruolo}
                       setLocation={this.setLocation}
                       setisHome={this.setisHome}
                     />
@@ -172,6 +173,7 @@ class App extends React.Component {
                       setStateUser={this.setStateUser}
                       setLocalUser={this.setLocalUser}
                       setLocation={this.setLocation}
+                      setLocalRole={this.setLocalRole}
                     />
                   )}
                 />

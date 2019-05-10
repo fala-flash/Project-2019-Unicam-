@@ -52,7 +52,8 @@ class LeMieSegnalazioni extends React.Component {
                 this.setState({
                   commento: this.state.commento.concat([
                     <div>
-                      <br />
+                      <hr />
+                      <span>({extraChild.val().data}) </span>
                       {extraChild.val().nome}:<br />
                       {extraChild.val().commento}
                       <br />
@@ -77,7 +78,7 @@ class LeMieSegnalazioni extends React.Component {
   }
 
   getSegnalazioni() {
-    if (this.state.segnalazioni[0] !== undefined) {
+    if (this.state.segnalazioni.length > 0) {
       return (
         <div>
           {this.setVisto()}

@@ -2,17 +2,17 @@ import React, { Component } from "react";
 import { fire } from "../../../../config/FirebaseConfig";
 import { Redirect } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
-import { FaUserCircle } from "react-icons/fa";
+import { FiUser } from "react-icons/fi";
 
 class modifyProfile extends Component {
   constructor() {
     super();
     this.state = {
-      nome: null,
-      email: null,
-      istituto: null,
-      telefono: null,
-      ruolo: null
+      nome: "",
+      email: "",
+      istituto: "",
+      telefono: "",
+      ruolo: ""
     };
   }
 
@@ -101,7 +101,7 @@ class modifyProfile extends Component {
 
   componentWillMount() {
     this.readUserData();
-    this.props.setLocation("Modifica Profilo " + this.props.ruolo);
+    this.props.setLocation("Modifica Profilo ");
     this.props.setisHome("profile");
   }
 
@@ -110,12 +110,12 @@ class modifyProfile extends Component {
       <div>
         {this.props.picture === "null" ? (
           <Button
-            style={{ fontWeight: "bold", borderRadius: "360px" }}
+            style={{ fontWeight: "bold", color: 'white', borderRadius: "360px" }}
             variant="outline"
             href="/profile"
             size="sm"
           >
-            <FaUserCircle size={60} />
+            <FiUser style={{color: 'white', border: '4px solid white', borderRadius: "360px" }} size={60} />
           </Button>
         ) : (
           <Button
@@ -140,7 +140,7 @@ class modifyProfile extends Component {
         >
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Nome</Form.Label>
-            {this.props.name === "" || this.props.name === null ? (
+            {this.props.name === "" || this.props.name === null || this.props.name === "null" ? (
               <Form.Control
                 style={{ fontWeight: "bold", borderRadius: "50px" }}
                 className="formDatiLabel"
