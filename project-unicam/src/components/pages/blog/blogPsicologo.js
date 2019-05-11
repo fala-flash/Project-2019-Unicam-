@@ -793,14 +793,17 @@ class BlogPsicologo extends Component {
         <div>
           {this.setVisto()}
           <div>
-            <Tabs className="tabsDiv" defaultActiveKey="tutte" id="uncontrolled-tab-example">
+            <Tabs style={{position:'fixed'}} className="tabsDiv" defaultActiveKey="tutte" id="uncontrolled-tab-example">
               <Tab eventKey="tutte" title="Tutte">
+              <br/><br/><br/>
                 {this.getTutteSegnalazioni()}
               </Tab>
               <Tab eventKey="lette" title="Lette">
+              <br/><br/><br/>
               {this.getLetteSegnalazioni()}
               </Tab>
               <Tab eventKey="daLeggere" title="Da Leggere">
+              <br/><br/><br/>
                 {this.getDaLeggereSegnalazioni()}
               </Tab>
             </Tabs>

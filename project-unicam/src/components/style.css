@@ -342,12 +342,14 @@ input[type="password"] {
 .tabsDiv {
     font-size: 15px;
     font-weight: bold;
+    width: 90%;
     background-color: white;
     border-radius: 50px;
     margin-right: 10px;
     margin-left: 10px;
     justify-content: center;
     border: 0px; 
+    z-index: 3;
 }
 
 .tabsDiv > a {
@@ -355,4 +357,5 @@ input[type="password"] {
     border-style: hidden;
     border-radius: 10px;
     color: #17a2b8;
+    
 }

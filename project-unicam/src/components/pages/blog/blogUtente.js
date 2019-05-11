@@ -236,12 +236,13 @@ class BlogUtente extends Component {
     }
     return (
       <div>
-        <Tabs className="tabsDiv" defaultActiveKey="segnala" id="uncontrolled-tab-example">
+        <Tabs style={{position:'fixed'}} className="tabsDiv" defaultActiveKey="segnala" id="uncontrolled-tab-example">
           <Tab eventKey="segnala" title="Segnala">
-            <br/>
+            <br/><br/><br/>
             {this.getSegnalazioneForm()}
           </Tab>
-          <Tab eventKey="leggiSegnalazioni" title="Tutte Le Segnalazioni">
+          <Tab  eventKey="leggiSegnalazioni" title="Tutte Le Segnalazioni">
+          <br/><br/><br/>
             {this.getSegnalazioniUtente()}
           </Tab>
         </Tabs>       
