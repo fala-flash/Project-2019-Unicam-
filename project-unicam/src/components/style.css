@@ -350,7 +350,7 @@ input[type="password"] {
     border: 0px; 
 }
 
-.tabsDiv > a{
+.tabsDiv > a {
     background-color: transparent;
     border-style: hidden;
     border-radius: 10px;
