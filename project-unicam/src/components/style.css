@@ -358,3 +358,13 @@ input[type="password"] {
     border-radius: 10px;
     color: #17a2b8;
 }
+
+.nav-tabs .nav-link {
+    border: 0px;
+}
+
+.nav-tabs .nav-link {
+    border: 0px transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+}
