@@ -242,14 +242,17 @@ class LeMieSegnalazioni extends React.Component {
   render() {
     return (
       <div>
-        <Tabs className="tabsDiv" defaultActiveKey="tutte" id="uncontrolled-tab-example">
+        <Tabs  style={{position:'fixed'}} className="tabsDiv" defaultActiveKey="tutte" id="uncontrolled-tab-example">
           <Tab eventKey="tutte" title="Tutte">
+          <br/><br/><br/>
             {this.getTutteSegnalazioni()}
           </Tab>
           <Tab eventKey="lette" title="Lette">
+          <br/><br/><br/>
             {this.getLetteSegnalazioni()}
           </Tab>
           <Tab eventKey="nonLette" title="Non Lette">
+          <br/><br/><br/>
             {this.getTutteSegnalazioni()}
           </Tab>
         </Tabs>
