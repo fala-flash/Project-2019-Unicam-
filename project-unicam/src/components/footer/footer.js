@@ -105,7 +105,6 @@ class Footer extends Component {
             </Navbar.Brand>            
           </Navbar>
         )
-        
         }
       </div>
     );

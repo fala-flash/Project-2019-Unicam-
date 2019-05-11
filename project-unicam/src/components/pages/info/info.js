@@ -25,7 +25,7 @@ class Info extends Component {
             className="infoCard"
             style={{ display: "flex", justifyContent: "center" }}
           >
-            <Card bg="info" text="white" style={{ width: "18rem" }}>
+            <Card style={{borderRadius: "20px", width: "18rem"}} bg="info" text="white">
               <Card.Header>Stop! Bullying</Card.Header>
               <Card.Body>
                 <p>v 1.0.0</p>
@@ -58,7 +58,7 @@ class Info extends Component {
             className="infoCard"
             style={{ display: "flex", justifyContent: "center" }}
           >
-            <Card bg="info" text="white" style={{ width: "18rem" }}>
+            <Card style={{borderRadius: "20px", width: "18rem"}} bg="info" text="white">
               <Card.Header>Seguici</Card.Header>
               <Card.Body>
                 <p>
@@ -123,7 +123,7 @@ class Info extends Component {
             className="infoCard"
             style={{ display: "flex", justifyContent: "center" }}
           >
-            <Card bg="info" text="white" style={{ width: "18rem" }}>
+            <Card style={{borderRadius: "20px", width: "18rem"}} bg="info" text="white">
               <Card.Header>Contattaci</Card.Header>
               <Card.Body>
                 <p>

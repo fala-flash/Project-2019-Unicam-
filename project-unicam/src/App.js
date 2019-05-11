@@ -276,9 +276,13 @@ class App extends React.Component {
                             name={this.state.name}
                             picture={this.state.picture}
                             ruolo={this.state.ruolo}
-                            setRuolo={this.state.setRuolo}
+                            istituto={this.state.istituto}
+                            telefono={this.state.telefono}
                             setStateUser={this.setStateUser}
-                            setLocalUser={this.setLocalUser}
+                            setLocalName={this.setLocalName}
+                            setLocalRole={this.setLocalRole}
+                            setLocalIstituto={this.setLocalIstituto}
+                            setLocalTelefono={this.setLocalTelefono}
                             setLocation={this.setLocation}
                           />
                         )}
@@ -323,9 +327,13 @@ class App extends React.Component {
                             name={this.state.name}
                             picture={this.state.picture}
                             ruolo={this.state.ruolo}
-                            setRuolo={this.state.setRuolo}
+                            istituto={this.state.istituto}
+                            telefono={this.state.telefono}
                             setStateUser={this.setStateUser}
-                            setLocalUser={this.setLocalUser}
+                            setLocalName={this.setLocalName}
+                            setLocalRole={this.setLocalRole}
+                            setLocalIstituto={this.setLocalIstituto}
+                            setLocalTelefono={this.setLocalTelefono}
                             setLocation={this.setLocation}
                           />
                         )}

@@ -184,7 +184,10 @@ class modifyProfile extends Component {
             )}
           </Form.Group>
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Istituto</Form.Label>
+            {this.props.ruolo === 'Psicologo'
+              ? <Form.Label>Società</Form.Label>
+              : <Form.Label>Istituto</Form.Label>
+            }
             {this.props.istituto === "" || this.props.istituto === null ? (
               <Form.Control
                 style={{ fontWeight: "bold", borderRadius: "50px" }}

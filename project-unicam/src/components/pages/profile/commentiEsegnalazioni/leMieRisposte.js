@@ -69,7 +69,7 @@ class LeMieRisposte extends React.Component {
           {this.state.idSegnalazione.map((codice, index) => (
             <div key={codice}>
               <br />
-              <Card
+              <Card style={{borderRadius: "20px"}}
                 bg={this.state.visto[index]}
                 text="white"
                 className="cardStyle"
@@ -88,7 +88,6 @@ class LeMieRisposte extends React.Component {
                     <>
                       <p style={{ fontWeight: "bold" }}>Risposta:</p>
                       <div>
-                        <hr />
                         <span>
                           ({this.state.dataCommentoPsicologo[index]}){" "}
                         </span>{" "}

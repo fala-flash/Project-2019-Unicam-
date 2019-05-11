@@ -222,6 +222,12 @@ div.Card-header > img {
     margin-bottom: 4px;
 }
 
+.contattiIconPhone {
+    margin-left: 5px;
+    margin-bottom: 4px;
+    transform: rotate(90deg);
+}
+
 
 /* header */
 
@@ -330,5 +336,23 @@ input[type="password"] {
 
 .googleCentrato{
     display: flex;
-    justify-content: center
+    justify-content: center;
+}
+
+.tabsDiv {
+    font-size: 15px;
+    font-weight: bold;
+    background-color: white;
+    border-radius: 50px;
+    margin-right: 10px;
+    margin-left: 10px;
+    justify-content: center;
+    border: 0px; 
+}
+
+.tabsDiv > a{
+    background-color: transparent;
+    border-style: hidden;
+    border-radius: 10px;
+    color: #17a2b8;
 }

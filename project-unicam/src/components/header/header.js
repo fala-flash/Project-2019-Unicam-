@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Navbar, Nav } from "react-bootstrap";
-import { TiHomeOutline } from "react-icons/ti";
-import { FaAngleLeft } from "react-icons/fa";
+import { FaHome, FaAngleLeft } from "react-icons/fa";
 import { Button } from "react-bootstrap";
 
 class Header extends Component {
@@ -26,7 +25,7 @@ class Header extends Component {
                 style={{ color: "white" }}
                 href="/"
               >
-                <TiHomeOutline className="headerIconHome" />{" "}
+                <FaHome className="headerIconHome" />{" "}
                 {this.props.headerLocation}
               </Navbar.Brand>
             ) : null}

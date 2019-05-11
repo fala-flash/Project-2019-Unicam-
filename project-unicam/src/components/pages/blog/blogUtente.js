@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { fire } from "../../../config/FirebaseConfig";
 import { Redirect } from "react-router-dom";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Tabs, Tab } from "react-bootstrap";
 import { FiSend } from "react-icons/fi";
 
 //eslint-disable-next-line
@@ -11,6 +11,11 @@ class BlogUtente extends Component {
   constructor() {
     super();
     this.state = {
+      nome: "",
+      email: "",
+      istituto: "",
+      telefono: "",
+      ruolo: "",
       codice: [],
       messaggio: [],
       data: [],
@@ -34,6 +39,31 @@ class BlogUtente extends Component {
     const mese = new Date().getMonth() + 1;
     const anno = new Date().getFullYear();
     return `${giorno}${"/"}${mese < 10 ? `0${mese}` : `${mese}`}${"/"}${anno}`;
+  }
+
+  readUserData() {
+    const rootUtente = fire.database().ref("Utente/" + this.props.userID);
+
+    rootUtente.on("value", snap => {
+      if (snap.val() !== null) {
+        //se utente
+        this.setState({
+          nome: snap.val().nome,
+          istituto: snap.val().istituto,
+          telefono: snap.val().telefono,
+          ruolo: "Utente"
+        });
+        this.props.setLocalRole(this.state.ruolo);
+        this.props.setLocalName(this.state.nome);
+        this.props.setLocalIstituto(this.state.istituto);
+        this.props.setLocalTelefono(this.state.telefono);
+        this.props.setStateUser();
+      } else if (snap.val() === null) {
+          //altrimenti nulla
+          alert("problemi lettura dati account");
+          window.location.reload();
+        }
+    });
   }
 
   readSegnalazioni() {
@@ -129,7 +159,7 @@ class BlogUtente extends Component {
   getSegnalazioneForm() {
     return (
       <div className="segnalazioneForm">
-        <Card bg="info" text="white">
+        <Card style={{borderRadius: "20px"}} bg="info" text="white">
           <Card.Header>
             <Card.Title>Segnalazione</Card.Title>
           </Card.Header>
@@ -159,28 +189,38 @@ class BlogUtente extends Component {
   }
 
   getSegnalazioniUtente() {
-    return (
-      <div>
-        {this.state.codice.map((codice, index) => (
-          <div key={codice}>
-            <br />
-            <Card bg="info" text="white" className="cardStyle">
-              <Card.Header>
-                <Card.Title>
-                  Segnalazione #{codice} del {this.state.data[index]}
-                </Card.Title>
-              </Card.Header>
-              <Card.Body>
-                <Card.Text>{this.state.messaggio[index]}</Card.Text>
-              </Card.Body>
-            </Card>
-          </div>
-        ))}
-      </div>
-    );
+    if (this.state.codice.length > 0) {
+      return (
+        <div>
+          {this.state.codice.map((codice, index) => (
+            <div key={codice}>
+              <br/>
+              <Card style={{borderRadius: "20px"}} bg="info" text="white" className="cardStyle">
+                <Card.Header>
+                  <Card.Title>
+                    Segnalazione #{codice} del {this.state.data[index]}
+                  </Card.Title>
+                </Card.Header>
+                <Card.Body>
+                  <Card.Text>{this.state.messaggio[index]}</Card.Text>
+                </Card.Body>
+              </Card>
+            </div>
+          ))}
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <br />
+          <h5>Non ci sono segnalazioni da visualizzare</h5>
+        </div>
+      );
+    }
   }
 
   componentWillMount() {
+    this.readUserData();
     this.readSegnalazioni();
     this.props.setLocation("Blog Utente");
   }
@@ -196,12 +236,15 @@ class BlogUtente extends Component {
     }
     return (
       <div>
-        <br />
-        {this.getSegnalazioneForm()}
-        <br />
-        <br />
-        <p>Altri utenti hanno pubblicato le seguenti segnalazioni:</p>
-        {this.getSegnalazioniUtente()}
+        <Tabs className="tabsDiv" defaultActiveKey="segnala" id="uncontrolled-tab-example">
+          <Tab eventKey="segnala" title="Segnala">
+            <br/>
+            {this.getSegnalazioneForm()}
+          </Tab>
+          <Tab eventKey="leggiSegnalazioni" title="Tutte Le Segnalazioni">
+            {this.getSegnalazioniUtente()}
+          </Tab>
+        </Tabs>       
       </div>
     );
   }

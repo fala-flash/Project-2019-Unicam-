@@ -233,20 +233,6 @@ class Login extends Component {
             Accedi
           </Button>
         </Form>
-        <br />
-        <p>Oppure</p>
-        <div className="googleCentrato">
-          <br />
-          <GoogleLoginButton
-            style={{ fontWeight: "bold", borderRadius: "50px" }}
-            onClick={() => {
-              this.authentication(providerGoogle);
-            }}
-          >
-            Accedi con Google
-          </GoogleLoginButton>
-          <br />
-        </div>
       </div>
     );
   }
@@ -334,7 +320,7 @@ class Login extends Component {
           aria-expanded={openAccesso}
         >
           <h5 className="accessoButtonText">
-            Hai già un account Stop! Bullying?
+            Hai già un account Stop! Bullying? Accedi
           </h5>
         </Button>
         <br />
@@ -343,6 +329,20 @@ class Login extends Component {
             {this.formAccesso()}
           </div>
         </Collapse>
+        
+        <div className="googleCentrato">
+          <GoogleLoginButton
+            style={{ fontWeight: "bold", borderRadius: "50px" }}
+            onClick={() => {
+              this.authentication(providerGoogle);
+            }}
+          >
+            Accedi con Google
+          </GoogleLoginButton>
+        </div>
+        <span>( Registrazione/Accesso come utente )</span>
+        <br />
+        <br />
 
         <Button
           style={{ fontWeight: "bold", borderRadius: "50px" }}
@@ -357,7 +357,7 @@ class Login extends Component {
           aria-controls="collapse-registrazione"
           aria-expanded={openRegistrazione}
         >
-          <h5 className="accessoButtonText">Prima volta su Stop! Bullying?</h5>
+          <h5 className="accessoButtonText">Prima volta su Stop! Bullying? Registrati</h5>
         </Button>
         <br />
         <Collapse in={this.state.openRegistrazione}>
