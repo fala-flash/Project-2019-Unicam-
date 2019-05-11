@@ -239,24 +239,30 @@ class LeMieSegnalazioni extends React.Component {
     this.props.setisHome("profile");
   }
 
-  render() {
+  getSegnalazioni() {
     return (
       <div>
         <Tabs  style={{position:'fixed'}} className="tabsDiv" defaultActiveKey="tutte" id="uncontrolled-tab-example">
           <Tab eventKey="tutte" title="Tutte">
-          <br/><br/><br/>
+          <br/><br/>
             {this.getTutteSegnalazioni()}
           </Tab>
           <Tab eventKey="lette" title="Lette">
-          <br/><br/><br/>
+          <br/><br/>
             {this.getLetteSegnalazioni()}
           </Tab>
           <Tab eventKey="nonLette" title="Non Lette">
-          <br/><br/><br/>
-            {this.getTutteSegnalazioni()}
+          <br/>
+            {this.getNonLetteSegnalazioni()}
           </Tab>
         </Tabs>
       </div>
+    )
+  }
+
+  render() {
+    return (
+      <div>{this.getSegnalazioni()}</div>
     )
   }
 }

@@ -159,6 +159,7 @@ class BlogUtente extends Component {
   getSegnalazioneForm() {
     return (
       <div className="segnalazioneForm">
+        <br/>
         <Card style={{borderRadius: "20px"}} bg="info" text="white">
           <Card.Header>
             <Card.Title>Segnalazione</Card.Title>
@@ -219,6 +220,23 @@ class BlogUtente extends Component {
     }
   }
 
+  getSegnalazioni () {
+    return (
+      <div>
+        <Tabs style={{position:'fixed'}} className="tabsDiv" defaultActiveKey="segnala" id="uncontrolled-tab-example">
+          <Tab eventKey="segnala" title="Segnala">
+            <br/><br/>
+            {this.getSegnalazioneForm()}
+          </Tab>
+          <Tab  eventKey="leggiSegnalazioni" title="Tutte Le Segnalazioni">
+          <br/><br/>
+            {this.getSegnalazioniUtente()}
+          </Tab>
+        </Tabs>       
+      </div>
+    )
+  }
+
   componentWillMount() {
     this.readUserData();
     this.readSegnalazioni();
@@ -235,18 +253,7 @@ class BlogUtente extends Component {
       return <Redirect to="/modifyProfile" />;
     }
     return (
-      <div>
-        <Tabs style={{position:'fixed'}} className="tabsDiv" defaultActiveKey="segnala" id="uncontrolled-tab-example">
-          <Tab eventKey="segnala" title="Segnala">
-            <br/><br/><br/>
-            {this.getSegnalazioneForm()}
-          </Tab>
-          <Tab  eventKey="leggiSegnalazioni" title="Tutte Le Segnalazioni">
-          <br/><br/><br/>
-            {this.getSegnalazioniUtente()}
-          </Tab>
-        </Tabs>       
-      </div>
+      <div>{this.getSegnalazioni()}</div>
     );
   }
 }
