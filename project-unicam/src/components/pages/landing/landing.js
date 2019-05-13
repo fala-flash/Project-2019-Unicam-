@@ -18,7 +18,7 @@ class Landing extends Component {
 
   getName() {
     if (this.props.authenticated) {
-      this.props.setLocation("Benvenuto " + this.props.name + " !");
+      this.props.setLocation("Benvenuto " + this.props.name.split(' ')[0] + " !");
     } else {
       this.props.setLocation("Benvenuto !");
     }

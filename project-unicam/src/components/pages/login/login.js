@@ -230,7 +230,7 @@ class Login extends Component {
             variant="info"
             type="submit"
           >
-            Accedi
+            Invia
           </Button>
         </Form>
       </div>
@@ -290,7 +290,7 @@ class Login extends Component {
             variant="info"
             type="submit"
           >
-            Registrati
+            Invia
           </Button>
         </Form>
       </div>
@@ -306,7 +306,11 @@ class Login extends Component {
       <div className="loginStyle">
         <h3 style={{ fontWeight: "bold" }}>Login/Registrazione</h3>
         <br />
+
+        <br />
+        <p>Hai già un account Stop!Bullying? Entra!</p>
         <Button
+          size="lg"
           style={{ fontWeight: "bold", borderRadius: "50px" }}
           variant="info"
           className="accessoButton"
@@ -320,7 +324,7 @@ class Login extends Component {
           aria-expanded={openAccesso}
         >
           <h5 className="accessoButtonText">
-            Hai già un account Stop! Bullying? Accedi
+            Accedi
           </h5>
         </Button>
         <br />
@@ -329,7 +333,10 @@ class Login extends Component {
             {this.formAccesso()}
           </div>
         </Collapse>
-        
+
+
+        <br />
+        <p>Registrazione/Accesso come utente</p>
         <div className="googleCentrato">
           <GoogleLoginButton
             style={{ fontWeight: "bold", borderRadius: "50px" }}
@@ -340,10 +347,12 @@ class Login extends Component {
             Accedi con Google
           </GoogleLoginButton>
         </div>
-        <span>( Registrazione/Accesso come utente )</span>
+        
         <br />
         <br />
-
+        
+        <br />
+        <p>Prima volta qui? Crea un account!</p>
         <Button
           style={{ fontWeight: "bold", borderRadius: "50px" }}
           variant="info"
@@ -357,7 +366,7 @@ class Login extends Component {
           aria-controls="collapse-registrazione"
           aria-expanded={openRegistrazione}
         >
-          <h5 className="accessoButtonText">Prima volta su Stop! Bullying? Registrati</h5>
+          <h5 className="accessoButtonText">Registrati</h5>
         </Button>
         <br />
         <Collapse in={this.state.openRegistrazione}>
