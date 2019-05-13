@@ -307,7 +307,6 @@ class Login extends Component {
         <h3 style={{ fontWeight: "bold" }}>Login/Registrazione</h3>
         <br />
 
-        <br />
         <p>Hai già un account Stop!Bullying? Entra!</p>
         <Button
           size="lg"
@@ -334,7 +333,6 @@ class Login extends Component {
           </div>
         </Collapse>
 
-
         <br />
         <p>Registrazione/Accesso come utente</p>
         <div className="googleCentrato">
@@ -349,8 +347,6 @@ class Login extends Component {
         </div>
         
         <br />
-        <br />
-        
         <br />
         <p>Prima volta qui? Crea un account!</p>
         <Button
