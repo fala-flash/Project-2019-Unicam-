@@ -23,6 +23,7 @@ import BlogUtente from "./components/pages/blog/blogUtente";
 import BlogPsicologo from "./components/pages/blog/blogPsicologo";
 import LeMieSegnalazioni from "./components/pages/profile/commentiEsegnalazioni/leMieSegnalazioni";
 import LeMieRisposte from "./components/pages/profile/commentiEsegnalazioni/leMieRisposte";
+import Chat from "./components/pages/chat/chat";
 
 class App extends React.Component {
   constructor() {
@@ -264,6 +265,11 @@ class App extends React.Component {
                     <Route
                       path="/faq"
                       render={() => <Faq setLocation={this.setLocation} />}
+                    />
+
+                    <Route
+                      path="/chat"
+                      render={() => <Chat name={this.state.name} />}
                     />
 
                     {this.state.ruolo === "Psicologo" ? (

@@ -119,6 +119,17 @@ class modifyProfile extends Component {
           </Button>
         ) : (
           <Button
+            style={{ fontWeight: "bold", color: 'white', borderRadius: "360px" }}
+            variant="outline"
+            href="/profile"
+            size="sm"
+          >
+            <FiUser style={{color: 'white', border: '4px solid white', borderRadius: "360px" }} size={60} />
+          </Button>
+
+          //la foto profilo presa da google dà problemi di lettura account, io la toglierei
+          
+          /* <Button
             style={{ fontWeight: "bold", borderRadius: "360px" }}
             variant="outline"
             href="/profile"
@@ -129,7 +140,7 @@ class modifyProfile extends Component {
               src={this.props.picture}
               alt="UserPicture"
             />
-          </Button>
+          </Button> */
         )}
         <Form
           className="formDati"

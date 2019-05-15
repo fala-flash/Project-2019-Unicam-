@@ -1,6 +1,6 @@
 import React from "react";
 import { fire } from "../../../../config/FirebaseConfig";
-import { Card, Tabs, Tab } from "react-bootstrap";
+import { Card, Tabs, Tab, Button } from "react-bootstrap";
 
 class LeMieSegnalazioni extends React.Component {
   constructor() {
@@ -101,6 +101,10 @@ class LeMieSegnalazioni extends React.Component {
                     <>
                       <text style={{ fontWeight: "bold" }}>Risposta/e:</text>
                       <p>{this.state.commentiPsicologo[index]}</p>
+                      <br/>
+                        <Button href='/chat' variant="outline-light">
+                          Chat
+                        </Button>
                     </>
                   ) : (
                     <text style={{ fontWeight: "bold" }}>

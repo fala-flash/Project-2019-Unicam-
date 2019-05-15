@@ -1,6 +1,6 @@
 import React from "react";
 import { fire } from "../../../../config/FirebaseConfig";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 
 class LeMieRisposte extends React.Component {
   constructor() {
@@ -93,6 +93,10 @@ class LeMieRisposte extends React.Component {
                         </span>{" "}
                         Tu: {this.state.commentoPsicologo[index]}
                         <br />
+                        <br/>
+                        <Button href='/chat' variant="outline-light">
+                          Chat
+                        </Button>
                       </div>
                     </>
                   ) : (

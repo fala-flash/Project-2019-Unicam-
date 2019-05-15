@@ -1,8 +1,5 @@
 import Card from "react-bootstrap/Card";
 
-//eslint-disable-next-line
-import Style from "./faq.css";
-
 import React, { Component } from "react";
 
 class Faq extends Component {
@@ -32,7 +29,7 @@ class Faq extends Component {
             className="faqcard"
             bg="info"
             text="white"
-            style={{ width: "22rem" }}
+            style={{ width: "22rem", margin: '0 auto', float:'none', marginBottom:'10px' }}
           >
             <Card.Header>
               <h3>Che cosa si intende con bullismo?</h3>
@@ -53,7 +50,7 @@ class Faq extends Component {
             className="faqcard"
             bg="info"
             text="white"
-            style={{ width: "22rem" }}
+            style={{ width: "22rem", margin: '0 auto', float:'none', marginBottom:'10px' }}
           >
             <Card.Header>
               <h3>In Italia, quanto è diffuso il bullismo ? </h3>
@@ -77,7 +74,7 @@ class Faq extends Component {
             className="faqcard"
             bg="info"
             text="white"
-            style={{ width: "22rem" }}
+            style={{ width: "22rem", margin: '0 auto', float:'none', marginBottom:'10px' }}
           >
             <Card.Header>
               <h3>Ed il CyberBullismo? </h3>
@@ -99,7 +96,7 @@ class Faq extends Component {
             className="faqcard"
             bg="info"
             text="white"
-            style={{ width: "22rem" }}
+            style={{ width: "22rem", margin: '0 auto', float:'none', marginBottom:'10px' }}
           >
             <Card.Header>
               <h3>Quali sono le conseguenze del bullismo? </h3>
@@ -127,7 +124,7 @@ class Faq extends Component {
             className="faqcard"
             bg="info"
             text="white"
-            style={{ width: "22rem" }}
+            style={{ width: "22rem", margin: '0 auto', float:'none', marginBottom:'10px' }}
           >
             <Card.Header>
               <h3>
@@ -153,7 +150,7 @@ class Faq extends Component {
             className="faqcard"
             bg="info"
             text="white"
-            style={{ width: "22rem" }}
+            style={{ width: "22rem", margin: '0 auto', float:'none', marginBottom:'10px' }}
           >
             <Card.Header>
               <h3>Come combatterlo? </h3>
