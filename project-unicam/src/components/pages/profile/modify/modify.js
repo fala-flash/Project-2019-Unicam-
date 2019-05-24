@@ -108,40 +108,21 @@ class modifyProfile extends Component {
   render() {
     return (
       <div>
-        {this.props.picture === "null" ? (
-          <Button
-            style={{ fontWeight: "bold", color: 'white', borderRadius: "360px" }}
-            variant="outline"
-            href="/profile"
-            size="sm"
-          >
-            <FiUser style={{color: 'white', border: '4px solid white', borderRadius: "360px" }} size={60} />
-          </Button>
-        ) : (
-          <Button
-            style={{ fontWeight: "bold", color: 'white', borderRadius: "360px" }}
-            variant="outline"
-            href="/profile"
-            size="sm"
-          >
-            <FiUser style={{color: 'white', border: '4px solid white', borderRadius: "360px" }} size={60} />
-          </Button>
-
-          //la foto profilo presa da google dà problemi di lettura account, io la toglierei
-          
-          /* <Button
-            style={{ fontWeight: "bold", borderRadius: "360px" }}
-            variant="outline"
-            href="/profile"
-            size="sm"
-          >
-            <img
-              className="profileImg"
-              src={this.props.picture}
-              alt="UserPicture"
-            />
-          </Button> */
-        )}
+        <Button
+          style={{ fontWeight: "bold", color: "white", borderRadius: "360px" }}
+          variant="outline"
+          href="/profile"
+          size="sm"
+        >
+          <FiUser
+            style={{
+              color: "white",
+              border: "4px solid white",
+              borderRadius: "360px"
+            }}
+            size={60}
+          />
+        </Button>
         <Form
           className="formDati"
           onSubmit={event => this.aggiornaDati(event)}
@@ -151,7 +132,9 @@ class modifyProfile extends Component {
         >
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Nome</Form.Label>
-            {this.props.name === "" || this.props.name === null || this.props.name === "null" ? (
+            {this.props.name === "" ||
+            this.props.name === null ||
+            this.props.name === "null" ? (
               <Form.Control
                 style={{ fontWeight: "bold", borderRadius: "50px" }}
                 className="formDatiLabel"
@@ -195,10 +178,11 @@ class modifyProfile extends Component {
             )}
           </Form.Group>
           <Form.Group controlId="formBasicEmail">
-            {this.props.ruolo === 'Psicologo'
-              ? <Form.Label>Società</Form.Label>
-              : <Form.Label>Istituto</Form.Label>
-            }
+            {this.props.ruolo === "Psicologo" ? (
+              <Form.Label>Società</Form.Label>
+            ) : (
+              <Form.Label>Istituto</Form.Label>
+            )}
             {this.props.istituto === "" || this.props.istituto === null ? (
               <Form.Control
                 style={{ fontWeight: "bold", borderRadius: "50px" }}

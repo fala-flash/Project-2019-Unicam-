@@ -8,8 +8,8 @@ class Landing extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ruolo : this.props.ruolo
-    }
+      ruolo: this.props.ruolo
+    };
   }
 
   /* setHome() {
@@ -18,7 +18,9 @@ class Landing extends Component {
 
   getName() {
     if (this.props.authenticated) {
-      this.props.setLocation("Benvenuto " + this.props.name.split(' ')[0] + " !");
+      this.props.setLocation(
+        "Benvenuto " + this.props.name.split(" ")[0] + " !"
+      );
     } else {
       this.props.setLocation("Benvenuto !");
     }
@@ -32,9 +34,10 @@ class Landing extends Component {
   render() {
     return (
       <div className="carouselDiv">
-        <LandingCarousel 
-        ruolo={this.state.ruolo}
-        /* setHome={this.props.setHome} *//>
+        <LandingCarousel
+          ruolo={this.state.ruolo}
+          /* setHome={this.props.setHome} */
+        />
       </div>
     );
   }

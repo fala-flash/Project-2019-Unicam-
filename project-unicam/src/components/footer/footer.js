@@ -102,10 +102,9 @@ class Footer extends Component {
                 src={UnicamLogo}
                 alt="unicamLogo"
               />
-            </Navbar.Brand>            
+            </Navbar.Brand>
           </Navbar>
-        )
-        }
+        )}
       </div>
     );
   }

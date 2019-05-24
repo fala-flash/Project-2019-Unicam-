@@ -4,7 +4,6 @@ import { Button } from "react-bootstrap";
 import React, { Component } from "react";
 
 class Telegrambot extends Component {
-  
   componentWillMount() {
     this.props.setLocation("Telegram Bot");
   }

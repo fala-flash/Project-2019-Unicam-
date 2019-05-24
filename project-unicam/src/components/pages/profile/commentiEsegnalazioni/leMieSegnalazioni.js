@@ -1,6 +1,6 @@
 import React from "react";
 import { fire } from "../../../../config/FirebaseConfig";
-import { Card, Tabs, Tab, Button } from "react-bootstrap";
+import { Card, Tabs, Tab } from "react-bootstrap";
 
 class LeMieSegnalazioni extends React.Component {
   constructor() {
@@ -84,7 +84,8 @@ class LeMieSegnalazioni extends React.Component {
           {this.state.segnalazioni.map((codice, index) => (
             <div key={codice}>
               <br />
-              <Card style={{borderRadius: "20px"}}
+              <Card
+                style={{ borderRadius: "20px" }}
                 bg={this.state.visto[index]}
                 text="white"
                 className="cardStyle"
@@ -101,10 +102,6 @@ class LeMieSegnalazioni extends React.Component {
                     <>
                       <text style={{ fontWeight: "bold" }}>Risposta/e:</text>
                       <p>{this.state.commentiPsicologo[index]}</p>
-                      <br/>
-                        <Button href='/chat' variant="outline-light">
-                          Chat
-                        </Button>
                     </>
                   ) : (
                     <text style={{ fontWeight: "bold" }}>
@@ -135,39 +132,42 @@ class LeMieSegnalazioni extends React.Component {
           {this.state.segnalazioni.map((codice, index) => (
             <div key={codice}>
               <br />
-              {this.state.visto[index] === 'success'
-                ?
-                  <div>
-                    <Card style={{borderRadius: "20px"}}
-                      bg={this.state.visto[index]}
-                      text="white"
-                      className="cardStyle"
-                    >
-                      <Card.Header>
-                        <Card.Title>
-                          Segnalazione #{codice} del{" "}
-                          {this.state.dataSegnalazione[index]}
-                        </Card.Title>
-                      </Card.Header>
-                      <Card.Body>
-                        <Card.Text>{this.state.testoSegnalazione[index]}</Card.Text>
-                      </Card.Body>
-                      <Card.Footer className="footerMieSegn">
-                        {this.state.visto[index] === "success" ? (
-                          <>
-                            <text style={{ fontWeight: "bold" }}>Risposta/e:</text>
-                            <p>{this.state.commentiPsicologo[index]}</p>
-                          </>
-                        ) : (
+              {this.state.visto[index] === "success" ? (
+                <div>
+                  <Card
+                    style={{ borderRadius: "20px" }}
+                    bg={this.state.visto[index]}
+                    text="white"
+                    className="cardStyle"
+                  >
+                    <Card.Header>
+                      <Card.Title>
+                        Segnalazione #{codice} del{" "}
+                        {this.state.dataSegnalazione[index]}
+                      </Card.Title>
+                    </Card.Header>
+                    <Card.Body>
+                      <Card.Text>
+                        {this.state.testoSegnalazione[index]}
+                      </Card.Text>
+                    </Card.Body>
+                    <Card.Footer className="footerMieSegn">
+                      {this.state.visto[index] === "success" ? (
+                        <>
                           <text style={{ fontWeight: "bold" }}>
-                            In attesa di risposta
+                            Risposta/e:
                           </text>
-                        )}
-                      </Card.Footer>
-                    </Card>
-                  </div>
-                : null
-              }
+                          <p>{this.state.commentiPsicologo[index]}</p>
+                        </>
+                      ) : (
+                        <text style={{ fontWeight: "bold" }}>
+                          In attesa di risposta
+                        </text>
+                      )}
+                    </Card.Footer>
+                  </Card>
+                </div>
+              ) : null}
             </div>
           ))}
         </div>
@@ -190,39 +190,42 @@ class LeMieSegnalazioni extends React.Component {
           {this.state.segnalazioni.map((codice, index) => (
             <div key={codice}>
               <br />
-              {this.state.visto[index] === 'danger'
-                ?
-                  <div>
-                    <Card style={{borderRadius: "20px"}}
-                      bg={this.state.visto[index]}
-                      text="white"
-                      className="cardStyle"
-                    >
-                      <Card.Header>
-                        <Card.Title>
-                          Segnalazione #{codice} del{" "}
-                          {this.state.dataSegnalazione[index]}
-                        </Card.Title>
-                      </Card.Header>
-                      <Card.Body>
-                        <Card.Text>{this.state.testoSegnalazione[index]}</Card.Text>
-                      </Card.Body>
-                      <Card.Footer className="footerMieSegn">
-                        {this.state.visto[index] === "success" ? (
-                          <>
-                            <text style={{ fontWeight: "bold" }}>Risposta/e:</text>
-                            <p>{this.state.commentiPsicologo[index]}</p>
-                          </>
-                        ) : (
+              {this.state.visto[index] === "danger" ? (
+                <div>
+                  <Card
+                    style={{ borderRadius: "20px" }}
+                    bg={this.state.visto[index]}
+                    text="white"
+                    className="cardStyle"
+                  >
+                    <Card.Header>
+                      <Card.Title>
+                        Segnalazione #{codice} del{" "}
+                        {this.state.dataSegnalazione[index]}
+                      </Card.Title>
+                    </Card.Header>
+                    <Card.Body>
+                      <Card.Text>
+                        {this.state.testoSegnalazione[index]}
+                      </Card.Text>
+                    </Card.Body>
+                    <Card.Footer className="footerMieSegn">
+                      {this.state.visto[index] === "success" ? (
+                        <>
                           <text style={{ fontWeight: "bold" }}>
-                            In attesa di risposta
+                            Risposta/e:
                           </text>
-                        )}
-                      </Card.Footer>
-                    </Card>
-                  </div>
-                : null
-              }
+                          <p>{this.state.commentiPsicologo[index]}</p>
+                        </>
+                      ) : (
+                        <text style={{ fontWeight: "bold" }}>
+                          In attesa di risposta
+                        </text>
+                      )}
+                    </Card.Footer>
+                  </Card>
+                </div>
+              ) : null}
             </div>
           ))}
         </div>
@@ -246,28 +249,33 @@ class LeMieSegnalazioni extends React.Component {
   getSegnalazioni() {
     return (
       <div>
-        <Tabs  style={{position:'fixed'}} className="tabsDiv" defaultActiveKey="tutte" id="uncontrolled-tab-example">
+        <Tabs
+          style={{ position: "fixed" }}
+          className="tabsDiv"
+          defaultActiveKey="tutte"
+          id="uncontrolled-tab-example"
+        >
           <Tab eventKey="tutte" title="Tutte">
-          <br/><br/>
+            <br />
+            <br />
             {this.getTutteSegnalazioni()}
           </Tab>
           <Tab eventKey="lette" title="Lette">
-          <br/><br/>
+            <br />
+            <br />
             {this.getLetteSegnalazioni()}
           </Tab>
           <Tab eventKey="nonLette" title="Non Lette">
-          <br/>
+            <br />
             {this.getNonLetteSegnalazioni()}
           </Tab>
         </Tabs>
       </div>
-    )
+    );
   }
 
   render() {
-    return (
-      <div>{this.getSegnalazioni()}</div>
-    )
+    return <div>{this.getSegnalazioni()}</div>;
   }
 }
 

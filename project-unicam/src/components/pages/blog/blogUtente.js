@@ -59,10 +59,10 @@ class BlogUtente extends Component {
         this.props.setLocalTelefono(this.state.telefono);
         this.props.setStateUser();
       } else if (snap.val() === null) {
-          //altrimenti nulla
-          alert("problemi lettura dati account");
-          window.location.reload();
-        }
+        //altrimenti nulla
+        alert("problemi lettura dati account");
+        window.location.reload();
+      }
     });
   }
 
@@ -159,8 +159,8 @@ class BlogUtente extends Component {
   getSegnalazioneForm() {
     return (
       <div className="segnalazioneForm">
-        <br/>
-        <Card style={{borderRadius: "20px"}} bg="info" text="white">
+        <br />
+        <Card style={{ borderRadius: "20px" }} bg="info" text="white">
           <Card.Header>
             <Card.Title>Segnalazione</Card.Title>
           </Card.Header>
@@ -195,8 +195,13 @@ class BlogUtente extends Component {
         <div>
           {this.state.codice.map((codice, index) => (
             <div key={codice}>
-              <br/>
-              <Card style={{borderRadius: "20px"}} bg="info" text="white" className="cardStyle">
+              <br />
+              <Card
+                style={{ borderRadius: "20px" }}
+                bg="info"
+                text="white"
+                className="cardStyle"
+              >
                 <Card.Header>
                   <Card.Title>
                     Segnalazione #{codice} del {this.state.data[index]}
@@ -220,21 +225,28 @@ class BlogUtente extends Component {
     }
   }
 
-  getSegnalazioni () {
+  getSegnalazioni() {
     return (
       <div>
-        <Tabs style={{position:'fixed'}} className="tabsDiv" defaultActiveKey="segnala" id="uncontrolled-tab-example">
+        <Tabs
+          style={{ position: "fixed" }}
+          className="tabsDiv"
+          defaultActiveKey="segnala"
+          id="uncontrolled-tab-example"
+        >
           <Tab eventKey="segnala" title="Segnala">
-            <br/><br/>
+            <br />
+            <br />
             {this.getSegnalazioneForm()}
           </Tab>
-          <Tab  eventKey="leggiSegnalazioni" title="Tutte Le Segnalazioni">
-          <br/><br/>
+          <Tab eventKey="leggiSegnalazioni" title="Tutte Le Segnalazioni">
+            <br />
+            <br />
             {this.getSegnalazioniUtente()}
           </Tab>
-        </Tabs>       
+        </Tabs>
       </div>
-    )
+    );
   }
 
   componentWillMount() {
@@ -252,9 +264,7 @@ class BlogUtente extends Component {
       alert("Completa i dati profilo per accedere alla pagina");
       return <Redirect to="/modifyProfile" />;
     }
-    return (
-      <div>{this.getSegnalazioni()}</div>
-    );
+    return <div>{this.getSegnalazioni()}</div>;
   }
 }
 

@@ -23,7 +23,6 @@ import BlogUtente from "./components/pages/blog/blogUtente";
 import BlogPsicologo from "./components/pages/blog/blogPsicologo";
 import LeMieSegnalazioni from "./components/pages/profile/commentiEsegnalazioni/leMieSegnalazioni";
 import LeMieRisposte from "./components/pages/profile/commentiEsegnalazioni/leMieRisposte";
-import Chat from "./components/pages/chat/chat";
 
 class App extends React.Component {
   constructor() {
@@ -35,7 +34,6 @@ class App extends React.Component {
       userID: "",
       email: "",
       name: "",
-      picture: "",
       istututo: "",
       telefono: "",
       headerLocation: "",
@@ -52,7 +50,6 @@ class App extends React.Component {
     localStorage.setItem("userID", id);
     localStorage.setItem("userEmail", em);
     localStorage.setItem("userName", na);
-    localStorage.setItem("userPicture", pic);
     //localStorage.setItem('userRole', ru);
   }
 
@@ -77,7 +74,6 @@ class App extends React.Component {
       userID: localStorage.getItem("userID"),
       email: localStorage.getItem("userEmail"),
       name: localStorage.getItem("userName"),
-      picture: localStorage.getItem("userPicture"),
       ruolo: localStorage.getItem("userRole"),
       telefono: localStorage.getItem("userTelefono"),
       istituto: localStorage.getItem("userIstituto")
@@ -193,7 +189,6 @@ class App extends React.Component {
                           userID={this.state.userID}
                           email={this.state.email}
                           name={this.state.name}
-                          picture={this.state.picture}
                           ruolo={this.state.ruolo}
                           istituto={this.state.istituto}
                           telefono={this.state.telefono}
@@ -214,7 +209,6 @@ class App extends React.Component {
                           userID={this.state.userID}
                           email={this.state.email}
                           name={this.state.name}
-                          picture={this.state.picture}
                           ruolo={this.state.ruolo}
                           istituto={this.state.istituto}
                           telefono={this.state.telefono}
@@ -266,12 +260,6 @@ class App extends React.Component {
                       path="/faq"
                       render={() => <Faq setLocation={this.setLocation} />}
                     />
-
-                    <Route
-                      path="/chat"
-                      render={() => <Chat name={this.state.name} />}
-                    />
-
                     {this.state.ruolo === "Psicologo" ? (
                       <Route
                         path="/blogPsicologo"
@@ -280,7 +268,6 @@ class App extends React.Component {
                             userID={this.state.userID}
                             email={this.state.email}
                             name={this.state.name}
-                            picture={this.state.picture}
                             ruolo={this.state.ruolo}
                             istituto={this.state.istituto}
                             telefono={this.state.telefono}
@@ -331,7 +318,6 @@ class App extends React.Component {
                             userID={this.state.userID}
                             email={this.state.email}
                             name={this.state.name}
-                            picture={this.state.picture}
                             ruolo={this.state.ruolo}
                             istituto={this.state.istituto}
                             telefono={this.state.telefono}

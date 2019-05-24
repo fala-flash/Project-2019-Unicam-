@@ -104,8 +104,8 @@ class BlogPsicologo extends Component {
             snapCommenti.forEach(extraChild => {
               this.setState({
                 commento: this.state.commento.concat([
-                  <div> 
-                    <hr />                   
+                  <div>
+                    <hr />
                     <span>({extraChild.val().data}) </span>
                     {extraChild.val().nome}:<br />
                     {extraChild.val().commento}
@@ -373,126 +373,125 @@ class BlogPsicologo extends Component {
       return (
         <div>
           {this.state.codice.map((codice, index) => (
-              <div key={codice}>
-                <br />
-                <Card style={{borderRadius: "20px"}}
-                  bg={this.state.visto[index]}
-                  text="white"
-                  className="cardStyle"
-                >
-                  <Card.Header>
-                    <Card.Title>
-                      Segnalazione #{codice} del {this.state.data[index]}
-                    </Card.Title>
-                  </Card.Header>
-                  <Card.Body>
-                    <Card.Text>{this.state.messaggio[index]}</Card.Text>
-                    <Button
-                      className="blogButton"
-                      variant="outline-light"
-                      style={{ fontWeight: "bold", borderRadius: "50px" }}
-                      onClick={event => {
-                        this.contattaUtente(event, index);
-                      }}
-                      aria-controls="collapse-info"
-                      aria-expanded={this.state.buttonContatta[index]}
-                    >
-                      Info Utente
-                      <FiInfo className="blogIcon" />
-                    </Button>
-                    <Button
-                      className="blogButtonElimina"
-                      variant="outline-light"
-                      style={{ fontWeight: "bold", borderRadius: "50px" }}
-                      onClick={() => this.handleShow(index)}
-                    >
-                      Elimina
-                      <TiDeleteOutline className="deleteIcon" />
-                    </Button>
-                    {this.getModalElimina()}
-    
-                    <Collapse in={this.state.buttonContatta[index]}>
-                      <div className="infoCard" id="collapse-info">
-                        <p>{this.state.nome}</p>
-                        <p>
-                          <a
-                            style={{ color: "white" }}
-                            href={"tel:" + this.state.telefono}
-                          >
-                            {this.state.telefono}
-                          </a>
-                          <FaPhone className="contattiIconPhone" />
-                        </p>
-                        <p>
-                          <a
-                            style={{ color: "white" }}
-                            href={
-                              "https://www.google.com/search?q=" +
-                              this.state.istituto
-                            }
-                          >
-                            {this.state.istituto}
-                          </a>
-                          <FaHome className="contattiIcon" />
-                        </p>
-                        <p>
-                          <a
-                            style={{ color: "white" }}
-                            href={"mailto:" + this.state.email}
-                          >
-                            {this.state.email}
-                          </a>
-                          <MdEmail className="contattiIcon" />
-                        </p>
-                      </div>
-                    </Collapse>
-    
-                    {this.state.visto[index] === "success" ? (
-                      <>
-                        <br/>
-                        <br/>
-                        <text style={{ fontWeight: "bold" }}>Risposta/e:</text>
-                        <p>{this.state.commentiPsicologo[index]}</p>
-                      </>
-                    ) : (
-                      
-                      <>
-                        <br/>
-                        <br/>
-                        <text style={{ fontWeight: "bold" }}>
-                          In attesa di risposta
-                        </text>
-                      </>
-    
-                    )}
-                  </Card.Body>
-                  <Card.Footer>
-                    <textarea
-                      className="testoForm"
-                      placeholder="inserisci testo commento"
-                      rows={this.state.rows}
-                      defaultValue={this.state.txtComment}
-                      onChange={this.handleChange}
-                    />
-                    <Button
-                      style={{ fontWeight: "bold", borderRadius: "50px" }}
-                      className="commentoButton"
-                      variant="outline-light"
-                      type="submit"
-                      value="Submit"
-                      onClick={() => {
-                        this.aggiungiCommento(index);
-                      }}
-                    >
-                      Commenta
-                      <FiMessageCircle className="blogIcon" />
-                    </Button>
-                  </Card.Footer>
-                </Card>
-              </div>
-            ))}
+            <div key={codice}>
+              <br />
+              <Card
+                style={{ borderRadius: "20px" }}
+                bg={this.state.visto[index]}
+                text="white"
+                className="cardStyle"
+              >
+                <Card.Header>
+                  <Card.Title>
+                    Segnalazione #{codice} del {this.state.data[index]}
+                  </Card.Title>
+                </Card.Header>
+                <Card.Body>
+                  <Card.Text>{this.state.messaggio[index]}</Card.Text>
+                  <Button
+                    className="blogButton"
+                    variant="outline-light"
+                    style={{ fontWeight: "bold", borderRadius: "50px" }}
+                    onClick={event => {
+                      this.contattaUtente(event, index);
+                    }}
+                    aria-controls="collapse-info"
+                    aria-expanded={this.state.buttonContatta[index]}
+                  >
+                    Info Utente
+                    <FiInfo className="blogIcon" />
+                  </Button>
+                  <Button
+                    className="blogButtonElimina"
+                    variant="outline-light"
+                    style={{ fontWeight: "bold", borderRadius: "50px" }}
+                    onClick={() => this.handleShow(index)}
+                  >
+                    Elimina
+                    <TiDeleteOutline className="deleteIcon" />
+                  </Button>
+                  {this.getModalElimina()}
+
+                  <Collapse in={this.state.buttonContatta[index]}>
+                    <div className="infoCard" id="collapse-info">
+                      <p>{this.state.nome}</p>
+                      <p>
+                        <a
+                          style={{ color: "white" }}
+                          href={"tel:" + this.state.telefono}
+                        >
+                          {this.state.telefono}
+                        </a>
+                        <FaPhone className="contattiIconPhone" />
+                      </p>
+                      <p>
+                        <a
+                          style={{ color: "white" }}
+                          href={
+                            "https://www.google.com/search?q=" +
+                            this.state.istituto
+                          }
+                        >
+                          {this.state.istituto}
+                        </a>
+                        <FaHome className="contattiIcon" />
+                      </p>
+                      <p>
+                        <a
+                          style={{ color: "white" }}
+                          href={"mailto:" + this.state.email}
+                        >
+                          {this.state.email}
+                        </a>
+                        <MdEmail className="contattiIcon" />
+                      </p>
+                    </div>
+                  </Collapse>
+
+                  {this.state.visto[index] === "success" ? (
+                    <>
+                      <br />
+                      <br />
+                      <text style={{ fontWeight: "bold" }}>Risposta/e:</text>
+                      <p>{this.state.commentiPsicologo[index]}</p>
+                    </>
+                  ) : (
+                    <>
+                      <br />
+                      <br />
+                      <text style={{ fontWeight: "bold" }}>
+                        In attesa di risposta
+                      </text>
+                    </>
+                  )}
+                </Card.Body>
+                <Card.Footer>
+                  <textarea
+                    className="testoForm"
+                    placeholder="inserisci testo commento"
+                    rows={this.state.rows}
+                    defaultValue={this.state.txtComment}
+                    onChange={this.handleChange}
+                  />
+                  <Button
+                    style={{ fontWeight: "bold", borderRadius: "50px" }}
+                    className="commentoButton"
+                    variant="outline-light"
+                    type="submit"
+                    value="Submit"
+                    onClick={() => {
+                      this.aggiungiCommento(index);
+                    }}
+                  >
+                    Commenta
+                    <FiMessageCircle className="blogIcon" />
+                  </Button>
+                </Card.Footer>
+              </Card>
+            </div>
+          ))}
         </div>
-      )
+      );
     } else {
       return (
         <div>
@@ -508,133 +507,131 @@ class BlogPsicologo extends Component {
       return (
         <div>
           {this.state.codice.map((codice, index) => (
-              <div key={codice}>
-                <br />
-                {this.state.visto[index] === 'success'
-                  ?
-                    <div>
-                      <Card style={{borderRadius: "20px"}}
-                        bg={this.state.visto[index]}
-                        text="white"
-                        className="cardStyle"
+            <div key={codice}>
+              <br />
+              {this.state.visto[index] === "success" ? (
+                <div>
+                  <Card
+                    style={{ borderRadius: "20px" }}
+                    bg={this.state.visto[index]}
+                    text="white"
+                    className="cardStyle"
+                  >
+                    <Card.Header>
+                      <Card.Title>
+                        Segnalazione #{codice} del {this.state.data[index]}
+                      </Card.Title>
+                    </Card.Header>
+                    <Card.Body>
+                      <Card.Text>{this.state.messaggio[index]}</Card.Text>
+                      <Button
+                        className="blogButton"
+                        variant="outline-light"
+                        style={{ fontWeight: "bold", borderRadius: "50px" }}
+                        onClick={event => {
+                          this.contattaUtente(event, index);
+                        }}
+                        aria-controls="collapse-info"
+                        aria-expanded={this.state.buttonContatta[index]}
                       >
-                        <Card.Header>
-                          <Card.Title>
-                            Segnalazione #{codice} del {this.state.data[index]}
-                          </Card.Title>
-                        </Card.Header>
-                        <Card.Body>
-                          <Card.Text>{this.state.messaggio[index]}</Card.Text>
-                          <Button
-                            className="blogButton"
-                            variant="outline-light"
-                            style={{ fontWeight: "bold", borderRadius: "50px" }}
-                            onClick={event => {
-                              this.contattaUtente(event, index);
-                            }}
-                            aria-controls="collapse-info"
-                            aria-expanded={this.state.buttonContatta[index]}
-                          >
-                            Info Utente
-                            <FiInfo className="blogIcon" />
-                          </Button>
-                          <Button
-                            className="blogButtonElimina"
-                            variant="outline-light"
-                            style={{ fontWeight: "bold", borderRadius: "50px" }}
-                            onClick={() => this.handleShow(index)}
-                          >
-                            Elimina
-                            <TiDeleteOutline className="deleteIcon" />
-                          </Button>
-                          {this.getModalElimina()}
-          
-                          <Collapse in={this.state.buttonContatta[index]}>
-                            <div className="infoCard" id="collapse-info">
-                              <p>{this.state.nome}</p>
-                              <p>
-                                <a
-                                  style={{ color: "white" }}
-                                  href={"tel:" + this.state.telefono}
-                                >
-                                  {this.state.telefono}
-                                </a>
-                                <FaPhone className="contattiIconPhone" />
-                              </p>
-                              <p>
-                                <a
-                                  style={{ color: "white" }}
-                                  href={
-                                    "https://www.google.com/search?q=" +
-                                    this.state.istituto
-                                  }
-                                >
-                                  {this.state.istituto}
-                                </a>
-                                <FaHome className="contattiIcon" />
-                              </p>
-                              <p>
-                                <a
-                                  style={{ color: "white" }}
-                                  href={"mailto:" + this.state.email}
-                                >
-                                  {this.state.email}
-                                </a>
-                                <MdEmail className="contattiIcon" />
-                              </p>
-                            </div>
-                          </Collapse>
-          
-                          {this.state.visto[index] === "success" ? (
-                            <>
-                              <br/>
-                              <br/>
-                              <text style={{ fontWeight: "bold" }}>Risposta/e:</text>
-                              <p>{this.state.commentiPsicologo[index]}</p>
-                            </>
-                          ) : (
-                            
-                            <>
-                              <br/>
-                              <br/>
-                              <text style={{ fontWeight: "bold" }}>
-                                In attesa di risposta
-                              </text>
-                            </>
-          
-                          )}
-                        </Card.Body>
-                        <Card.Footer>
-                          <textarea
-                            className="testoForm"
-                            placeholder="inserisci testo commento"
-                            rows={this.state.rows}
-                            defaultValue={this.state.txtComment}
-                            onChange={this.handleChange}
-                          />
-                          <Button
-                            style={{ fontWeight: "bold", borderRadius: "50px" }}
-                            className="commentoButton"
-                            variant="outline-light"
-                            type="submit"
-                            value="Submit"
-                            onClick={() => {
-                              this.aggiungiCommento(index);
-                            }}
-                          >
-                            Commenta
-                            <FiMessageCircle className="blogIcon" />
-                          </Button>
-                        </Card.Footer>
-                      </Card>
-                    </div>
-                  : null
-                  }
-                
-              </div>
-            ))}
+                        Info Utente
+                        <FiInfo className="blogIcon" />
+                      </Button>
+                      <Button
+                        className="blogButtonElimina"
+                        variant="outline-light"
+                        style={{ fontWeight: "bold", borderRadius: "50px" }}
+                        onClick={() => this.handleShow(index)}
+                      >
+                        Elimina
+                        <TiDeleteOutline className="deleteIcon" />
+                      </Button>
+                      {this.getModalElimina()}
+
+                      <Collapse in={this.state.buttonContatta[index]}>
+                        <div className="infoCard" id="collapse-info">
+                          <p>{this.state.nome}</p>
+                          <p>
+                            <a
+                              style={{ color: "white" }}
+                              href={"tel:" + this.state.telefono}
+                            >
+                              {this.state.telefono}
+                            </a>
+                            <FaPhone className="contattiIconPhone" />
+                          </p>
+                          <p>
+                            <a
+                              style={{ color: "white" }}
+                              href={
+                                "https://www.google.com/search?q=" +
+                                this.state.istituto
+                              }
+                            >
+                              {this.state.istituto}
+                            </a>
+                            <FaHome className="contattiIcon" />
+                          </p>
+                          <p>
+                            <a
+                              style={{ color: "white" }}
+                              href={"mailto:" + this.state.email}
+                            >
+                              {this.state.email}
+                            </a>
+                            <MdEmail className="contattiIcon" />
+                          </p>
+                        </div>
+                      </Collapse>
+
+                      {this.state.visto[index] === "success" ? (
+                        <>
+                          <br />
+                          <br />
+                          <text style={{ fontWeight: "bold" }}>
+                            Risposta/e:
+                          </text>
+                          <p>{this.state.commentiPsicologo[index]}</p>
+                        </>
+                      ) : (
+                        <>
+                          <br />
+                          <br />
+                          <text style={{ fontWeight: "bold" }}>
+                            In attesa di risposta
+                          </text>
+                        </>
+                      )}
+                    </Card.Body>
+                    <Card.Footer>
+                      <textarea
+                        className="testoForm"
+                        placeholder="inserisci testo commento"
+                        rows={this.state.rows}
+                        defaultValue={this.state.txtComment}
+                        onChange={this.handleChange}
+                      />
+                      <Button
+                        style={{ fontWeight: "bold", borderRadius: "50px" }}
+                        className="commentoButton"
+                        variant="outline-light"
+                        type="submit"
+                        value="Submit"
+                        onClick={() => {
+                          this.aggiungiCommento(index);
+                        }}
+                      >
+                        Commenta
+                        <FiMessageCircle className="blogIcon" />
+                      </Button>
+                    </Card.Footer>
+                  </Card>
+                </div>
+              ) : null}
+            </div>
+          ))}
         </div>
-      )
+      );
     } else {
       return (
         <div>
@@ -650,133 +647,131 @@ class BlogPsicologo extends Component {
       return (
         <div>
           {this.state.codice.map((codice, index) => (
-              <div key={codice}>
-                {this.state.visto[index] === 'danger'
-                  ?
-                    <div>
-                      <br />
-                      <Card style={{borderRadius: "20px"}}
-                        bg={this.state.visto[index]}
-                        text="white"
-                        className="cardStyle"
+            <div key={codice}>
+              {this.state.visto[index] === "danger" ? (
+                <div>
+                  <br />
+                  <Card
+                    style={{ borderRadius: "20px" }}
+                    bg={this.state.visto[index]}
+                    text="white"
+                    className="cardStyle"
+                  >
+                    <Card.Header>
+                      <Card.Title>
+                        Segnalazione #{codice} del {this.state.data[index]}
+                      </Card.Title>
+                    </Card.Header>
+                    <Card.Body>
+                      <Card.Text>{this.state.messaggio[index]}</Card.Text>
+                      <Button
+                        className="blogButton"
+                        variant="outline-light"
+                        style={{ fontWeight: "bold", borderRadius: "50px" }}
+                        onClick={event => {
+                          this.contattaUtente(event, index);
+                        }}
+                        aria-controls="collapse-info"
+                        aria-expanded={this.state.buttonContatta[index]}
                       >
-                        <Card.Header>
-                          <Card.Title>
-                            Segnalazione #{codice} del {this.state.data[index]}
-                          </Card.Title>
-                        </Card.Header>
-                        <Card.Body>
-                          <Card.Text>{this.state.messaggio[index]}</Card.Text>
-                          <Button
-                            className="blogButton"
-                            variant="outline-light"
-                            style={{ fontWeight: "bold", borderRadius: "50px" }}
-                            onClick={event => {
-                              this.contattaUtente(event, index);
-                            }}
-                            aria-controls="collapse-info"
-                            aria-expanded={this.state.buttonContatta[index]}
-                          >
-                            Info Utente
-                            <FiInfo className="blogIcon" />
-                          </Button>
-                          <Button
-                            className="blogButtonElimina"
-                            variant="outline-light"
-                            style={{ fontWeight: "bold", borderRadius: "50px" }}
-                            onClick={() => this.handleShow(index)}
-                          >
-                            Elimina
-                            <TiDeleteOutline className="deleteIcon" />
-                          </Button>
-                          {this.getModalElimina()}
-          
-                          <Collapse in={this.state.buttonContatta[index]}>
-                            <div className="infoCard" id="collapse-info">
-                              <p>{this.state.nome}</p>
-                              <p>
-                                <a
-                                  style={{ color: "white" }}
-                                  href={"tel:" + this.state.telefono}
-                                >
-                                  {this.state.telefono}
-                                </a>
-                                <FaPhone className="contattiIconPhone" />
-                              </p>
-                              <p>
-                                <a
-                                  style={{ color: "white" }}
-                                  href={
-                                    "https://www.google.com/search?q=" +
-                                    this.state.istituto
-                                  }
-                                >
-                                  {this.state.istituto}
-                                </a>
-                                <FaHome className="contattiIcon" />
-                              </p>
-                              <p>
-                                <a
-                                  style={{ color: "white" }}
-                                  href={"mailto:" + this.state.email}
-                                >
-                                  {this.state.email}
-                                </a>
-                                <MdEmail className="contattiIcon" />
-                              </p>
-                            </div>
-                          </Collapse>
-          
-                          {this.state.visto[index] === "success" ? (
-                            <>
-                              <br/>
-                              <br/>
-                              <text style={{ fontWeight: "bold" }}>Risposta/e:</text>
-                              <p>{this.state.commentiPsicologo[index]}</p>
-                            </>
-                          ) : (
-                            
-                            <>
-                              <br/>
-                              <br/>
-                              <text style={{ fontWeight: "bold" }}>
-                                In attesa di risposta
-                              </text>
-                            </>
-          
-                          )}
-                        </Card.Body>
-                        <Card.Footer>
-                          <textarea
-                            className="testoForm"
-                            placeholder="inserisci testo commento"
-                            rows={this.state.rows}
-                            defaultValue={this.state.txtComment}
-                            onChange={this.handleChange}
-                          />
-                          <Button
-                            style={{ fontWeight: "bold", borderRadius: "50px" }}
-                            className="commentoButton"
-                            variant="outline-light"
-                            type="submit"
-                            value="Submit"
-                            onClick={() => {
-                              this.aggiungiCommento(index);
-                            }}
-                          >
-                            Commenta
-                            <FiMessageCircle className="blogIcon" />
-                          </Button>
-                        </Card.Footer>
-                      </Card>
-                    </div>
-                  : null
-                  }
-                
-              </div>
-            ))}
+                        Info Utente
+                        <FiInfo className="blogIcon" />
+                      </Button>
+                      <Button
+                        className="blogButtonElimina"
+                        variant="outline-light"
+                        style={{ fontWeight: "bold", borderRadius: "50px" }}
+                        onClick={() => this.handleShow(index)}
+                      >
+                        Elimina
+                        <TiDeleteOutline className="deleteIcon" />
+                      </Button>
+                      {this.getModalElimina()}
+
+                      <Collapse in={this.state.buttonContatta[index]}>
+                        <div className="infoCard" id="collapse-info">
+                          <p>{this.state.nome}</p>
+                          <p>
+                            <a
+                              style={{ color: "white" }}
+                              href={"tel:" + this.state.telefono}
+                            >
+                              {this.state.telefono}
+                            </a>
+                            <FaPhone className="contattiIconPhone" />
+                          </p>
+                          <p>
+                            <a
+                              style={{ color: "white" }}
+                              href={
+                                "https://www.google.com/search?q=" +
+                                this.state.istituto
+                              }
+                            >
+                              {this.state.istituto}
+                            </a>
+                            <FaHome className="contattiIcon" />
+                          </p>
+                          <p>
+                            <a
+                              style={{ color: "white" }}
+                              href={"mailto:" + this.state.email}
+                            >
+                              {this.state.email}
+                            </a>
+                            <MdEmail className="contattiIcon" />
+                          </p>
+                        </div>
+                      </Collapse>
+
+                      {this.state.visto[index] === "success" ? (
+                        <>
+                          <br />
+                          <br />
+                          <text style={{ fontWeight: "bold" }}>
+                            Risposta/e:
+                          </text>
+                          <p>{this.state.commentiPsicologo[index]}</p>
+                        </>
+                      ) : (
+                        <>
+                          <br />
+                          <br />
+                          <text style={{ fontWeight: "bold" }}>
+                            In attesa di risposta
+                          </text>
+                        </>
+                      )}
+                    </Card.Body>
+                    <Card.Footer>
+                      <textarea
+                        className="testoForm"
+                        placeholder="inserisci testo commento"
+                        rows={this.state.rows}
+                        defaultValue={this.state.txtComment}
+                        onChange={this.handleChange}
+                      />
+                      <Button
+                        style={{ fontWeight: "bold", borderRadius: "50px" }}
+                        className="commentoButton"
+                        variant="outline-light"
+                        type="submit"
+                        value="Submit"
+                        onClick={() => {
+                          this.aggiungiCommento(index);
+                        }}
+                      >
+                        Commenta
+                        <FiMessageCircle className="blogIcon" />
+                      </Button>
+                    </Card.Footer>
+                  </Card>
+                </div>
+              ) : null}
+            </div>
+          ))}
         </div>
-      )
+      );
     } else {
       return (
         <div>
@@ -793,17 +788,25 @@ class BlogPsicologo extends Component {
         <div>
           {this.setVisto()}
           <div>
-            <Tabs style={{position:'fixed'}} className="tabsDiv" defaultActiveKey="tutte" id="uncontrolled-tab-example">
+            <Tabs
+              style={{ position: "fixed" }}
+              className="tabsDiv"
+              defaultActiveKey="tutte"
+              id="uncontrolled-tab-example"
+            >
               <Tab eventKey="tutte" title="Tutte">
-              <br/><br/>
+                <br />
+                <br />
                 {this.getTutteSegnalazioni()}
               </Tab>
               <Tab eventKey="lette" title="Lette">
-              <br/><br/>
-              {this.getLetteSegnalazioni()}
+                <br />
+                <br />
+                {this.getLetteSegnalazioni()}
               </Tab>
               <Tab eventKey="daLeggere" title="Da Leggere">
-              <br/><br/>
+                <br />
+                <br />
                 {this.getDaLeggereSegnalazioni()}
               </Tab>
             </Tabs>

@@ -111,7 +111,7 @@ class Login extends Component {
         } else alert("Errore login:" + error);
       });
   }
-/* 
+  /* 
   getUserType() {
     const rootUtente = fire.database().ref("Utente/" + this.state.user.uid);
     const rootPsicologo = fire
@@ -322,9 +322,7 @@ class Login extends Component {
           aria-controls="collapse-accedi"
           aria-expanded={openAccesso}
         >
-          <h5 className="accessoButtonText">
-            Accedi
-          </h5>
+          <h5 className="accessoButtonText">Accedi</h5>
         </Button>
         <br />
         <Collapse in={this.state.openAccesso}>
@@ -345,7 +343,7 @@ class Login extends Component {
             Accedi con Google
           </GoogleLoginButton>
         </div>
-        
+
         <br />
         <br />
         <p>Prima volta qui? Crea un account!</p>

@@ -45,7 +45,6 @@ class DeleteProfile extends Component {
       "userID",
       "userName",
       "userEmail",
-      "userPicture",
       "userRole",
       "userTelefono",
       "userIstituto"

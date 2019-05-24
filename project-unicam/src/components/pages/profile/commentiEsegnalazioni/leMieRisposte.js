@@ -1,6 +1,6 @@
 import React from "react";
 import { fire } from "../../../../config/FirebaseConfig";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 class LeMieRisposte extends React.Component {
   constructor() {
@@ -69,7 +69,8 @@ class LeMieRisposte extends React.Component {
           {this.state.idSegnalazione.map((codice, index) => (
             <div key={codice}>
               <br />
-              <Card style={{borderRadius: "20px"}}
+              <Card
+                style={{ borderRadius: "20px" }}
                 bg={this.state.visto[index]}
                 text="white"
                 className="cardStyle"
@@ -93,10 +94,6 @@ class LeMieRisposte extends React.Component {
                         </span>{" "}
                         Tu: {this.state.commentoPsicologo[index]}
                         <br />
-                        <br/>
-                        <Button href='/chat' variant="outline-light">
-                          Chat
-                        </Button>
                       </div>
                     </>
                   ) : (

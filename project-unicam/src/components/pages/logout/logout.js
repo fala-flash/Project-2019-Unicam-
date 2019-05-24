@@ -25,7 +25,6 @@ class Logout extends Component {
       "userID",
       "userName",
       "userEmail",
-      "userPicture",
       "userRole",
       "userIstituto",
       "userTelefono"

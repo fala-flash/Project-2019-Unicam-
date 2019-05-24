@@ -5,7 +5,6 @@ import { FaPhone } from "react-icons/fa";
 import React, { Component } from "react";
 
 class Telefona extends Component {
-  
   componentWillMount() {
     this.props.setLocation("Telefona");
   }
@@ -26,7 +25,7 @@ class Telefona extends Component {
               className="buttonTelefona"
               variant="outline-success"
               size="lg"
-              href="tel:+393315909161"
+              href="tel:+393334445550"
             >
               <FaPhone className="telefonaIcon" /> +39 3334445550
             </Button>

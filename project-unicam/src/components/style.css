@@ -1,370 +1,352 @@
-/* APP */
-@import url('https://fonts.googleapis.com/css?family=Courgette');
-@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+
+@import url("https://fonts.googleapis.com/css?family=Courgette");
+@import url("https://fonts.googleapis.com/css?family=Work+Sans");
 
 .mainStyle {
-    margin-bottom : 70px;
-    margin-top: 0px;
-    text-align: center;
-    font-family: 'Work Sans',
-    sans-serif;
+  margin-bottom: 70px;
+  margin-top: 0px;
+  text-align: center;
+  font-family: "Work Sans", sans-serif;
 }
 
-input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
- 
+
 input[type="number"] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
 .carouselDiv {
-    margin-top: 90px;
-    margin-right: -10px;
-    margin-left: -10px;
+  margin-top: 90px;
+  margin-right: -10px;
+  margin-left: -10px;
 }
 
 div.Card-header > img {
-    max-width: 100%;
-    max-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
-.navbarbrand{
-    font-family: 'Courgette', 
-    cursive;
+.navbarbrand {
+  font-family: "Courgette", cursive;
 }
 
-.navbarbrandAuthenticated{
-    font-family: 'Work Sans',
-    sans-serif;
+.navbarbrandAuthenticated {
+  font-family: "Work Sans", sans-serif;
 }
 
 .headerIconHome {
-    margin-top: -8px;
-    margin-bottom: 0px;
-    height: 30px;
-    width: 30px;
-    margin-right: 10px;
+  margin-top: -8px;
+  margin-bottom: 0px;
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
 }
 
 .headerIcon {
-    margin-top: -5px;
-    margin-bottom: 0px;
-    height: 30px;
-    width: 30px;
-    margin-right: 10px;
+  margin-top: -5px;
+  margin-bottom: 0px;
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
 }
 
 .navbarText {
-    margin-top: 5px;
-    font-size: 25px;
-    color: white;
-    font-family: 'Work Sans',
-    sans-serif;
+  margin-top: 5px;
+  font-size: 25px;
+  color: white;
+  font-family: "Work Sans", sans-serif;
 }
 
-.loading{
-    margin-top: 300px;
-    display: flex;
-    justify-content: center;
+.loading {
+  margin-top: 300px;
+  display: flex;
+  justify-content: center;
 }
 
 .headerStyle {
-    margin-bottom: 70px;
+  margin-bottom: 70px;
 }
 
-
-.pageStyle{
-    margin-right : 10px;
-    margin-left: 10px;
-    margin-bottom : 70px;
-    margin-top: 30px;
+.pageStyle {
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 70px;
+  margin-top: 30px;
 }
 
-/* login */
 
 .formLogin {
-    margin-left: 10px;
-    margin-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .accessoButton {
-    margin-bottom : 30px;
-    margin-top: 10px;
+  margin-bottom: 30px;
+  margin-top: 10px;
 }
 
 .accessoButtonText {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .formAccesso {
-    margin-bottom : 30px;
-    margin-top: 10px;
+  margin-bottom: 30px;
+  margin-top: 10px;
 }
 
-/* blog */
 
 .blogButton {
-    margin-right: 5px;
-    margin-left: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .divElimina {
-    text-align: right;
-    margin-top: -10px;
-    margin-bottom: -9px;
-    margin-right: -18px;
+  text-align: right;
+  margin-top: -10px;
+  margin-bottom: -9px;
+  margin-right: -18px;
 }
 
 .deleteIcon {
-    margin-left: 5px;
-    margin-right: -5px;
-    width: 18px;
-    height: 18px;
+  margin-left: 5px;
+  margin-right: -5px;
+  width: 18px;
+  height: 18px;
 }
 
 .cardStyle {
-    margin-left: 10px;
-    margin-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .blogIcon {
-    margin-left: 7px;
-    margin-bottom: 5px;
+  margin-left: 7px;
+  margin-bottom: 5px;
 }
 
 .blogIconCancella {
-    margin-left: 7px;
-    margin-bottom: 0px;
-    margin-top: -5px;
-    width: 21px;
-    height: 21px;
+  margin-left: 7px;
+  margin-bottom: 0px;
+  margin-top: -5px;
+  width: 21px;
+  height: 21px;
 }
 
 .segnalazioneForm {
-    margin-left: 10px;
-    margin-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-.infoCard{
-    color: white;
-    margin-top: 10px;
-    margin-bottom: 10px;
+.infoCard {
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .infoIcon {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 .infoIconTelefona {
-    margin-left: 5px;
-    transform: rotate(90deg);
+  margin-left: 5px;
+  transform: rotate(90deg);
 }
 
 .unicamLogo {
-    margin-left: 5px;
-    width: 15px;
-    height: 18px;
+  margin-left: 5px;
+  width: 15px;
+  height: 18px;
 }
 
 .unicamLogoFooter {
-    margin-left: 10px;
-    width: 20px;
-    height: 23px;
+  margin-left: 10px;
+  width: 20px;
+  height: 23px;
 }
 
 .commentaCard {
-    color: white;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .cardCommento {
-    margin-top: 5px; 
+  margin-top: 5px;
 }
 
 .testoForm {
-    width: 100%;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border-radius: 10px;
-    resize: none;
-    overflow: hidden;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  resize: none;
+  overflow: hidden;
 }
 
 .commentoButton {
-    margin-top: 5px;
-    margin-bottom:5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .leggiCommentiButton {
-    margin-top: 5px;
-    margin-bottom:5px;
-    margin-right: 5px;
-    margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .segnalazioneButton {
-    margin-bottom: 5px;
-    margin-right: 5px;
-    margin-left: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .contattiList {
-    list-style-type: none
+  list-style-type: none;
 }
 
 .contattiIcon {
-    margin-left: 5px;
-    margin-bottom: 4px;
+  margin-left: 5px;
+  margin-bottom: 4px;
 }
 
 .contattiIconPhone {
-    margin-left: 5px;
-    margin-bottom: 4px;
-    transform: rotate(90deg);
+  margin-left: 5px;
+  margin-bottom: 4px;
+  transform: rotate(90deg);
 }
 
 
-/* header */
-
-.mr-auto{
-    text-align: center;
-    font-family: 'Work Sans',
-    sans-serif;
+.mr-auto {
+  text-align: center;
+  font-family: "Work Sans", sans-serif;
 }
 
-/* profile */
 
 .profileImg {
-    width: 70px;
-    height: 70px;
-    border-radius: 50px;
-    margin-bottom: 0px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+  margin-bottom: 0px;
 }
 
 .formDati {
-    margin-top: 30px;
-    margin-left: 50px;
-    margin-right: 50px;
-
+  margin-top: 30px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .formDatiLabel {
-    text-align: center;
+  text-align: center;
 }
 
-/* le mie segnalazioni */
 
-
-/* telefona */
 
 .alertTelefona {
-    margin-left: 30px;
-    margin-right: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 .chiamaText {
-    color: rgb(0, 102, 0);
+  color: rgb(0, 102, 0);
 }
 
 .buttonTelefona {
-    color: rgb(0, 102, 0);
+  color: rgb(0, 102, 0);
 }
 
 .telefonaIcon {
-    width: 25px;
-    height: 25px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    transform: rotate(90deg);
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  transform: rotate(90deg);
 }
 
-/* footer */
+
 
 .footerButton {
-    margin-top: -5px;
-    margin-bottom: -2px;
+  margin-top: -5px;
+  margin-bottom: -2px;
 }
 
-.footericon{
-    width: 20px;
-    height: 20px;
-    margin-top: -10px;
-    margin-bottom: 0px;
+.footericon {
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-bottom: 0px;
 }
 
 .footerText {
-    margin-top: -5px;
-    margin-bottom: -10px;
+  margin-top: -5px;
+  margin-bottom: -10px;
 }
 
 .footericonPhone {
-    width: 18px;
-    height: 18px;
-    margin-top: -10px;
-    margin-bottom: 0px;
-    transform: rotate(90deg);
+  width: 18px;
+  height: 18px;
+  margin-top: -10px;
+  margin-bottom: 0px;
+  transform: rotate(90deg);
 }
 
 .carousel-caption {
-    background: rgba(0, 0, 0, 0.2);    
-   }
+  background: rgba(0, 0, 0, 0.2);
+}
 
-
-.navbarFooter{
-    font-family: 'Work Sans',
-    sans-serif;
+.navbarFooter {
+  font-family: "Work Sans", sans-serif;
 }
 
 ::-webkit-input-placeholder {
-    text-align: center;
-   }
+  text-align: center;
+}
 
+input[type="email"] {
+  text-align: center;
+}
 
-input[type="email"]{  
-    text-align: center; 
-} 
+input[type="password"] {
+  text-align: center;
+}
 
-input[type="password"] {  
-    text-align: center; 
-} 
-
-
-.googleCentrato{
-    display: flex;
-    justify-content: center;
+.googleCentrato {
+  display: flex;
+  justify-content: center;
 }
 
 .tabsDiv {
-    font-size: 15px;
-    font-weight: bold;
-    width: 90%;
-    background-color: white;
-    border-radius: 50px;
-    margin-right: 10px;
-    margin-left: 10px;
-    justify-content: center;
-    border: 0px; 
-    z-index: 3;
+  font-size: 15px;
+  font-weight: bold;
+  width: 90%;
+  background-color: white;
+  border-radius: 50px;
+  margin-right: 10px;
+  margin-left: 10px;
+  justify-content: center;
+  border: 0px;
+  z-index: 3;
 }
 
 .tabsDiv > a {
-    background-color: transparent;
-    border-style: hidden;
-    border-radius: 10px;
-    color: #17a2b8;
+  background-color: transparent;
+  border-style: hidden;
+  border-radius: 10px;
+  color: #17a2b8;
 }
 
 .nav-tabs .nav-link {
-    border: 0px;
+  border: 0px;
 }
 
 .nav-tabs .nav-link {
-    border: 0px transparent;
-    border-top-left-radius: .25rem;
-    border-top-right-radius: .25rem;
+  border: 0px transparent;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
 }

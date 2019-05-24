@@ -67,7 +67,7 @@ class LandingCarousel extends Component {
       </main>
     );
   }
-  
+
   /* componentWillMount() {
     this.props.setHome();
   } */
