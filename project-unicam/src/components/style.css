@@ -9,6 +9,32 @@
   font-family: "Work Sans", sans-serif;
 }
 
+.navbar.navbar-expand-dark.navbar-dark.bg-info.fixed-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+#uncontrolled-tab-example-tab-tutte.nav-item.nav-link.active {
+  border-color: #fff #fff #fff;
+  height: 18px;
+}
+#uncontrolled-tab-example-tab-lette.nav-item.nav-link.active {
+  border-color: #fff #fff #fff;
+  height: 18px;
+}
+#uncontrolled-tab-example-tab-daLeggere.nav-item.nav-link.active {
+  border-color: #fff #fff #fff;
+  height: 18px;
+}
+#uncontrolled-tab-example-tab-segnala.nav-item.nav-link.active {
+  border-color: #fff #fff #fff;
+  height: 18px;
+}
+#uncontrolled-tab-example-tab-leggiSegnalazioni.nav-item.nav-link.active {
+  border-color: #fff #fff #fff;
+  height: 18px;
+}
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -39,19 +65,18 @@ div.Card-header > img {
 }
 
 .headerIconHome {
-  margin-top: -8px;
+  margin-top: -3px;
   margin-bottom: 0px;
   height: 30px;
   width: 30px;
-  margin-right: 10px;
+  color: white;
 }
 
 .headerIcon {
-  margin-top: -5px;
   margin-bottom: 0px;
   height: 30px;
   width: 30px;
-  margin-right: 10px;
+  color: white;
 }
 
 .navbarText {

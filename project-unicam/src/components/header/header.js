@@ -20,25 +20,32 @@ class Header extends Component {
             ) : null}
 
             {this.props.isHome === "false" ? (
-              <Navbar.Brand
-                className="navbarbrandAuthenticated"
-                style={{ color: "white" }}
-                href="/"
-              >
-                <FaHome className="headerIconHome" />{" "}
-                {this.props.headerLocation}
-              </Navbar.Brand>
+              <>
+                <a href="/">
+                  <FaHome className="headerIconHome"/>
+                </a>
+                <Navbar.Brand
+                  className="navbarbrandAuthenticated"
+                  style={{ color: "white" }}
+                >
+                  {this.props.headerLocation}
+                </Navbar.Brand>
+              </>
             ) : null}
 
             {this.props.isHome === "profile" ? (
-              <Navbar.Brand
-                className="navbarbrandAuthenticated"
-                style={{ color: "white" }}
-                href="/profile"
-              >
-                <FaAngleLeft className="headerIcon" />{" "}
-                {this.props.headerLocation}
-              </Navbar.Brand>
+              <>
+                <a href="/profile">
+                  <FaAngleLeft className="headerIcon"/>
+                </a>
+                <Navbar.Brand
+                  className="navbarbrandAuthenticated"
+                  style={{ color: "white" }}
+                  href="/profile"
+                >
+                  {this.props.headerLocation}
+                </Navbar.Brand>
+              </>
             ) : null}
 
             <Navbar.Toggle
