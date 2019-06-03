@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Navbar, Nav } from "react-bootstrap";
-import { FaHome, FaAngleLeft } from "react-icons/fa";
+import { FaAngleLeft } from "react-icons/fa";
+import { MdHome } from "react-icons/md";
 import { Button } from "react-bootstrap";
 
 class Header extends Component {
@@ -22,7 +23,7 @@ class Header extends Component {
             {this.props.isHome === "false" ? (
               <>
                 <a href="/">
-                  <FaHome className="headerIconHome"/>
+                  <MdHome className="headerIconHome"/>
                 </a>
                 <Navbar.Brand
                   className="navbarbrandAuthenticated"
