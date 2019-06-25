@@ -24,18 +24,18 @@ class BlogUtente extends Component {
       minRows: 1,
       maxRows: 15,
       txtSegnalazione: null,
-      punteggioAnalisi: 0,
-      valutazioneAnalisi: ""
+      
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleTextArea = this.handleTextArea.bind(this);
-    this.sentimentAnal = this.sentimentAnal.bind(this);
+    
   }
 
   sentimentAnal(testoSegnalazione) {
     const sentiment = require("multilang-sentiment");
 
     let valutazione;
+    
 
     const segnalazione = sentiment(testoSegnalazione, "it");
 
@@ -56,12 +56,15 @@ class BlogUtente extends Component {
       valutazione = "utile agli altri utenti";
     }
 
-    this.setState({punteggioAnalisi: segnalazione.score, valutazioneAnalisi: valutazione});
+    
 
     console.log("punteggio: " + segnalazione.score + "\n");
     console.log("comparativa: " + segnalazione.comparative + "\n");
     console.dir(segnalazione);
     console.log("\nvalutazione: " + valutazione);
+
+    return {punteggioAnalisi: segnalazione.score, valutazioneAnalisi: valutazione}
+    
   }
 
   uniqueIDCode() {
@@ -148,21 +151,26 @@ class BlogUtente extends Component {
   aggiungiSegnalazione() {
     const codiceSegnalazione = this.uniqueIDCode();
     const data = this.getData();
-    this.sentimentAnal(this.state.txtSegnalazione);
+    
     if (
       this.state.txtSegnalazione !== "" &&
       this.state.txtSegnalazione !== null &&
       this.state.txtSegnalazione.length > 0
     ) {
       if (codiceSegnalazione !== "" && codiceSegnalazione !== null) {
+        const punteggioSentiment = this.sentimentAnal(this.state.txtSegnalazione).punteggioAnalisi;
+        const valutazioneSentiment = this.sentimentAnal(this.state.txtSegnalazione).valutazioneAnalisi;
         
+        console.log("punteggioSentiment"+punteggioSentiment);
+        console.log("valutazioneSentiment"+valutazioneSentiment);
+
         this.writeUserData(
           codiceSegnalazione,
           this.props.userID,
           this.state.txtSegnalazione,
           data,
-          this.state.punteggioAnalisi,
-          this.state.valutazioneAnalisi
+          punteggioSentiment,
+          valutazioneSentiment
         ); //id=this.state.userID
 
         alert("Segnalazione " + codiceSegnalazione + " inviata correttamente");
