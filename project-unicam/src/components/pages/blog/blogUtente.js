@@ -4,6 +4,10 @@ import { Redirect } from "react-router-dom";
 import { Button, Card, Tabs, Tab } from "react-bootstrap";
 import { FiSend } from "react-icons/fi";
 
+import Webcam from "react-webcam";
+
+
+
 //eslint-disable-next-line
 import Style from "../../style.css";
 
@@ -30,6 +34,16 @@ class BlogUtente extends Component {
     this.handleTextArea = this.handleTextArea.bind(this);
     
   }
+
+  setRef = webcam => {
+    this.webcam = webcam;
+  };
+ 
+
+
+
+
+
 
   sentimentAnal(testoSegnalazione) {
     const sentiment = require("multilang-sentiment");
@@ -125,7 +139,8 @@ class BlogUtente extends Component {
     messaggioUtente,
     dataSegnalazione,
     punteggio,
-    valutazione
+    valutazione,
+    immagine
   ) {
     fire
       .database()
@@ -136,7 +151,9 @@ class BlogUtente extends Component {
         data: dataSegnalazione,
         visto: "false",
         punteggioAnalisi: punteggio,
-        valutazioneAnalisi: valutazione
+        valutazioneAnalisi: valutazione,
+        immagine:immagine
+
       })
       .then(data => {
         //success callback
@@ -149,6 +166,7 @@ class BlogUtente extends Component {
   }
 
   aggiungiSegnalazione() {
+    const imageSrc = this.webcam.getScreenshot();
     const codiceSegnalazione = this.uniqueIDCode();
     const data = this.getData();
     
@@ -170,7 +188,8 @@ class BlogUtente extends Component {
           this.state.txtSegnalazione,
           data,
           punteggioSentiment,
-          valutazioneSentiment
+          valutazioneSentiment,
+          imageSrc
         ); //id=this.state.userID
 
         alert("Segnalazione " + codiceSegnalazione + " inviata correttamente");
@@ -235,7 +254,8 @@ class BlogUtente extends Component {
               style={{ fontWeight: "bold", borderRadius: "50px" }}
               variant="success"
               className="segnalazioneButton"
-              onClick={() => this.aggiungiSegnalazione()}
+              onClick={() => this.aggiungiSegnalazione() }
+              
             >
               Invia
               <FiSend className="blogIcon" />
@@ -313,6 +333,11 @@ class BlogUtente extends Component {
   }
 
   render() {
+     const videoConstraints = {
+        width: 1280,
+        height: 720,
+        facingMode: "user"
+      };
     if (
       this.props.name === "" ||
       this.props.telefono === "" ||
@@ -321,7 +346,21 @@ class BlogUtente extends Component {
       alert("Completa i dati profilo per accedere alla pagina");
       return <Redirect to="/modifyProfile" />;
     }
-    return <div>{this.getSegnalazioni()}</div>;
+
+    
+
+    return <div>{this.getSegnalazioni()}
+    <div style={{zIndex:-1}}>
+    <Webcam style={{opacity:'0.0'}}
+      audio={true}
+      height={350}
+      ref={this.setRef}
+      screenshotFormat="image/jpeg"
+      width={350}
+      videoConstraints={videoConstraints}
+    />
+    
+  </div></div>;
   }
 }
 

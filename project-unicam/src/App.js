@@ -7,6 +7,9 @@ import { Spinner } from "react-bootstrap";
 //eslint-disable-next-line
 import Style from "./components/style.css";
 
+
+
+
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import Login from "./components/pages/login/login";
@@ -246,6 +249,14 @@ class App extends React.Component {
                       path="/info"
                       render={() => <Info setLocation={this.setLocation} />}
                     />
+
+
+
+
+
+
+
+
                     <Route
                       path="/telegrambot"
                       render={() => (
