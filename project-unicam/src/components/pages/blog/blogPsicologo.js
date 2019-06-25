@@ -6,7 +6,7 @@ import { FiMessageCircle, FiInfo } from "react-icons/fi";
 import { FaPhone, FaHome } from "react-icons/fa";
 import {FaFrown, FaSmile, FaMeh} from 'react-icons/fa';
 import { MdEmail } from "react-icons/md";
-import { TiDeleteOutline } from "react-icons/ti";
+import { TiDeleteOutline, TiCameraOutline } from "react-icons/ti";
 
 //eslint-disable-next-line
 import Style from "../../style.css";
@@ -32,6 +32,7 @@ class BlogPsicologo extends Component {
       txtComment: null,
       punteggioAnalisi : [],
       valutazioneAnalisi : [],
+      fotoUtente : [],
       //textarea
       rows: 1,
       minRows: 1,
@@ -132,7 +133,8 @@ class BlogPsicologo extends Component {
           punteggioAnalisi: this.state.punteggioAnalisi.concat([child.val().punteggioAnalisi]),
           valutazioneAnalisi: this.state.valutazioneAnalisi.concat([child.val().valutazioneAnalisi]),
           buttonCommenta: this.state.buttonCommenta.concat(false),
-          buttonContatta: this.state.buttonContatta.concat(false)
+          buttonContatta: this.state.buttonContatta.concat(false),
+          fotoUtente: this.state.fotoUtente.concat([child.val().immagine])
         });
         rootRef
           .child("Segnalazioni/" + child.key + "/Commenti")
@@ -369,6 +371,12 @@ class BlogPsicologo extends Component {
     });
   }
 
+  showPhoto(){
+    let image = new Image();
+    image.src = this.state.fotoUtente;
+    document.body.appendChild(image);
+  }
+
   getModalElimina() {
     return (
       <Modal show={this.state.show} onHide={this.handleClose}>
@@ -449,6 +457,19 @@ class BlogPsicologo extends Component {
                     Elimina
                     <TiDeleteOutline className="deleteIcon" />
                   </Button>
+
+                  <br/>
+
+                  <Button
+                    className="blogButton"
+                    variant="outline-light"
+                    style={{ fontWeight: "bold", borderRadius: "50px" }}
+                    onClick={() => this.showPhoto()}
+                  >
+                    Foto Utente
+                    <TiCameraOutline className="blogIcon" />
+                  </Button>
+
                   {this.getModalElimina()}
 
                   <Collapse in={this.state.buttonContatta[index]}>
