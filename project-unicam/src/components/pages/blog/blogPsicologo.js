@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { Button, Card, Collapse, Modal, Tabs, Tab } from "react-bootstrap";
 import { FiMessageCircle, FiInfo } from "react-icons/fi";
 import { FaPhone, FaHome } from "react-icons/fa";
+import {FaFrown, FaSmile, FaMeh} from 'react-icons/fa';
 import { MdEmail } from "react-icons/md";
 import { TiDeleteOutline } from "react-icons/ti";
 
@@ -58,6 +59,37 @@ class BlogPsicologo extends Component {
       }
     }
   }
+
+
+
+  setEmoji(punteggio){
+    
+      if (punteggio === 0) {
+        return <FaMeh style={{color:'#grey', borderRadius:'50%'}} />
+      }else if ( punteggio === -1){
+        return <FaFrown style={{color:'#f2ea15', borderRadius:'50%'}} />
+      }
+    else if ( punteggio === -2){
+      return <FaFrown style={{color:'orange', borderRadius:'50%'}} />
+    
+   }else if ( punteggio <= -3){
+    return <FaFrown style={{color:'#a80000', borderRadius:'50%'}} />
+  
+  }else if ( punteggio === 1){
+    return <FaSmile style={{color:'#7be85a', borderRadius:'50%'}} />
+
+}else if ( punteggio === 2){
+  return <FaSmile style={{color:'#49d81e', borderRadius:'50%'}} />
+
+}else if ( punteggio >= 3){
+  return <FaSmile style={{color:'#28af00', borderRadius:'50%'}} />
+}
+
+    
+    }
+  
+
+
 
   readUserData() {
     const rootPsicologo = fire.database().ref("Psicologo/" + this.props.userID);
@@ -387,10 +419,10 @@ class BlogPsicologo extends Component {
               >
                 <Card.Header>
                   <Card.Title>
-                    Segnalazione #{codice} del {this.state.data[index]}
+                    Segnalazione #{codice} del {this.state.data[index]}  {this.setEmoji(this.state.punteggioAnalisi[index])}
                     <br></br>
                     <br></br>
-                    {this.state.valutazioneAnalisi[index]}
+                    {this.state.valutazioneAnalisi[index]} 
                   </Card.Title>
                 </Card.Header>
                 <Card.Body>
