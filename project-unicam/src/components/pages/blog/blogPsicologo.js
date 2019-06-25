@@ -419,10 +419,10 @@ class BlogPsicologo extends Component {
               >
                 <Card.Header>
                   <Card.Title>
-                    Segnalazione #{codice} del {this.state.data[index]}  {this.setEmoji(this.state.punteggioAnalisi[index])}
+                    Segnalazione #{codice} del {this.state.data[index]}  
                     <br></br>
                     <br></br>
-                    {this.state.valutazioneAnalisi[index]} 
+                    {this.setEmoji(this.state.punteggioAnalisi[index])} <span style={{textTransform:"uppercase"}}>{this.state.valutazioneAnalisi[index]}</span> 
                   </Card.Title>
                 </Card.Header>
                 <Card.Body>
@@ -558,10 +558,10 @@ class BlogPsicologo extends Component {
                   >
                     <Card.Header>
                       <Card.Title>
-                        Segnalazione #{codice} del {this.state.data[index]}  {this.setEmoji(this.state.punteggioAnalisi[index])}
+                        Segnalazione #{codice} del {this.state.data[index]}  
                     <br></br>
                     <br></br>
-                    {this.state.valutazioneAnalisi[index]} 
+                    {this.setEmoji(this.state.punteggioAnalisi[index])} <span style={{textTransform:"uppercase"}}>{this.state.valutazioneAnalisi[index]}</span> 
                       </Card.Title>
                     </Card.Header>
                     <Card.Body>
@@ -701,10 +701,10 @@ class BlogPsicologo extends Component {
                   >
                     <Card.Header>
                       <Card.Title>
-                        Segnalazione #{codice} del {this.state.data[index]}  {this.setEmoji(this.state.punteggioAnalisi[index])}
+                        Segnalazione #{codice} del {this.state.data[index]}  
                     <br></br>
                     <br></br>
-                    {this.state.valutazioneAnalisi[index]} 
+                    {this.setEmoji(this.state.punteggioAnalisi[index])} <span style={{textTransform:"uppercase"}}>{this.state.valutazioneAnalisi[index]}</span> 
                       </Card.Title>
                     </Card.Header>
                     <Card.Body>

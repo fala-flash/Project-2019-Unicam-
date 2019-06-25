@@ -47,7 +47,7 @@ class BlogUtente extends Component {
       valutazione = "negativo";
     } else if (segnalazione.score === 0) {
       valutazione =
-        "neutrale\n\n(potrebbero essere presenti parole non riconosciute che influiscono sul corretto funzionamento dell'algoritmo)";
+        "neutrale";
     } else if (segnalazione.score === 1) {
       valutazione = "positivo";
     } else if (segnalazione.score === 2) {
