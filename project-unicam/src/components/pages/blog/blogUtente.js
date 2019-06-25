@@ -23,10 +23,45 @@ class BlogUtente extends Component {
       rows: 1,
       minRows: 1,
       maxRows: 15,
-      txtSegnalazione: null
+      txtSegnalazione: null,
+      punteggioAnalisi: 0,
+      valutazioneAnalisi: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleTextArea = this.handleTextArea.bind(this);
+    this.sentimentAnal = this.sentimentAnal.bind(this);
+  }
+
+  sentimentAnal(testoSegnalazione) {
+    const sentiment = require("multilang-sentiment");
+
+    let valutazione;
+
+    const segnalazione = sentiment(testoSegnalazione, "it");
+
+    if (segnalazione.score <= -3) {
+      valutazione = "pericoloso";
+    } else if (segnalazione.score === -2) {
+      valutazione = "molto negativo";
+    } else if (segnalazione.score === -1) {
+      valutazione = "negativo";
+    } else if (segnalazione.score === 0) {
+      valutazione =
+        "neutrale\n\n(potrebbero essere presenti errori di ortografia che minano la corretta esecuzione dell'algoritmo di valutazione!)";
+    } else if (segnalazione.score === 1) {
+      valutazione = "positivo";
+    } else if (segnalazione.score === 2) {
+      valutazione = "molto positivo";
+    } else if (segnalazione.score >= 3) {
+      valutazione = "utile agli altri utenti";
+    }
+
+    this.setState({punteggioAnalisi: segnalazione.score, valutazioneAnalisi: valutazione});
+
+    console.log("punteggio: " + segnalazione.score + "\n");
+    console.log("comparativa: " + segnalazione.comparative + "\n");
+    console.dir(segnalazione);
+    console.log("\nvalutazione: " + valutazione);
   }
 
   uniqueIDCode() {
@@ -81,7 +116,14 @@ class BlogUtente extends Component {
     });
   }
 
-  writeUserData(codice, idUtente, messaggioUtente, dataSegnalazione) {
+  writeUserData(
+    codice,
+    idUtente,
+    messaggioUtente,
+    dataSegnalazione,
+    punteggio,
+    valutazione
+  ) {
     fire
       .database()
       .ref("Segnalazioni/" + codice)
@@ -89,7 +131,9 @@ class BlogUtente extends Component {
         id: idUtente,
         messaggio: messaggioUtente,
         data: dataSegnalazione,
-        visto: "false"
+        visto: "false",
+        punteggioAnalisi: punteggio,
+        valutazioneAnalisi: valutazione
       })
       .then(data => {
         //success callback
@@ -104,18 +148,23 @@ class BlogUtente extends Component {
   aggiungiSegnalazione() {
     const codiceSegnalazione = this.uniqueIDCode();
     const data = this.getData();
+    this.sentimentAnal(this.state.txtSegnalazione);
     if (
       this.state.txtSegnalazione !== "" &&
       this.state.txtSegnalazione !== null &&
       this.state.txtSegnalazione.length > 0
     ) {
       if (codiceSegnalazione !== "" && codiceSegnalazione !== null) {
+        
         this.writeUserData(
           codiceSegnalazione,
           this.props.userID,
           this.state.txtSegnalazione,
-          data
+          data,
+          this.state.punteggioAnalisi,
+          this.state.valutazioneAnalisi
         ); //id=this.state.userID
+
         alert("Segnalazione " + codiceSegnalazione + " inviata correttamente");
         window.location.reload();
       } else {
