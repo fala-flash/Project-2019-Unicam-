@@ -29,6 +29,8 @@ class BlogPsicologo extends Component {
       commentiPsicologo: [],
       commento: [],
       txtComment: null,
+      punteggioAnalisi : [],
+      valutazioneAnalisi : [],
       //textarea
       rows: 1,
       minRows: 1,
@@ -95,6 +97,8 @@ class BlogPsicologo extends Component {
           data: this.state.data.concat([child.val().data]),
           id: this.state.id.concat([child.val().id]),
           visto: this.state.visto.concat([child.val().visto]),
+          punteggioAnalisi: this.state.punteggioAnalisi.concat([child.val().punteggioAnalisi]),
+          valutazioneAnalisi: this.state.valutazioneAnalisi.concat([child.val().valutazioneAnalisi]),
           buttonCommenta: this.state.buttonCommenta.concat(false),
           buttonContatta: this.state.buttonContatta.concat(false)
         });
@@ -384,6 +388,9 @@ class BlogPsicologo extends Component {
                 <Card.Header>
                   <Card.Title>
                     Segnalazione #{codice} del {this.state.data[index]}
+                    <br></br>
+                    <br></br>
+                    {this.state.valutazioneAnalisi[index]}
                   </Card.Title>
                 </Card.Header>
                 <Card.Body>
