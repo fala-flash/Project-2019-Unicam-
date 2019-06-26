@@ -392,6 +392,8 @@ class BlogPsicologo extends Component {
     document.body.appendChild(image); */
 
     console.log(srcPhoto)
+
+    //eslint-disable-next-line
     const Photo =  () => <img src={'${srcPhoto}'} />
     return <Photo />
   }
@@ -404,6 +406,7 @@ class BlogPsicologo extends Component {
         </Modal.Header>
         <Modal.Body>
          
+        {/* eslint-disable-next-line */}
           <img src={this.state.fotoUtente[this.state.indexSegnalazione]} />
         </Modal.Body>
         <Modal.Footer>
@@ -412,7 +415,7 @@ class BlogPsicologo extends Component {
             variant="success"
             onClick={this.handlePhotoClose}
           >
-            Annulla
+            Chiudi
           </Button>
           
         </Modal.Footer>
