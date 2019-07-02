@@ -7,7 +7,7 @@ import {
   FaPhone,
   FaUserCircle
 } from "react-icons/fa";
-import UnicamLogo from "../../components/media/unicam.png";
+
 
 //eslint-disable-next-line
 import Style from "../style.css";
@@ -84,26 +84,7 @@ class Footer extends Component {
             </Nav.Item>
           </Navbar>
         ) : (
-          <Navbar
-            fixed="bottom"
-            bg="info"
-            variant="light"
-            expand="light"
-            className="navbarFooter"
-          >
-            <Navbar.Brand
-              className="navbarbrand"
-              style={{ color: "white" }}
-              href="https://www.unicam.it/"
-            >
-              Unicam
-              <img
-                className="unicamLogoFooter"
-                src={UnicamLogo}
-                alt="unicamLogo"
-              />
-            </Navbar.Brand>
-          </Navbar>
+          <></>
         )}
       </div>
     );

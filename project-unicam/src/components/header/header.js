@@ -9,7 +9,7 @@ class Header extends Component {
     return (
       <div>
         {this.props.authenticated ? (
-          <Navbar fixed="top" bg="info" variant="dark" expand="dark">
+          <Navbar fixed="top" bg="info" variant="light" expand="light">
             {this.props.isHome === "true" ? (
               <Navbar.Brand
                 className="navbarbrandAuthenticated"
@@ -41,7 +41,6 @@ class Header extends Component {
                 </a>
                 <Navbar.Brand
                   className="navbarbrandAuthenticated"
-                  style={{ color: "white" }}
                   href="/profile"
                 >
                   {this.props.headerLocation}

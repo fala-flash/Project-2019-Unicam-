@@ -82,9 +82,9 @@ class Profile extends Component {
         <br />
         {this.props.ruolo === "Psicologo" ? (
           <Button
-            style={{ fontWeight: "bold", borderRadius: "50px" }}
+            style={{ fontWeight: "bold", borderRadius: "50px", backgroundColor:"rgb(10,126,126)" }}
             href="/mieRisposte"
-            variant="success"
+            variant="info"
             size="lg"
           >
             Le mie Risposte
@@ -93,9 +93,9 @@ class Profile extends Component {
 
         {this.props.ruolo === "Utente" ? (
           <Button
-            style={{ fontWeight: "bold", borderRadius: "50px" }}
+            style={{ fontWeight: "bold", borderRadius: "50px", backgroundColor:"rgb(10,126,126)" }}
             href="/mieSegnalazioni"
-            variant="success"
+            variant="info"
             size="lg"
           >
             Le mie Segnalazioni
@@ -104,7 +104,7 @@ class Profile extends Component {
         <br />
         <br />
         <Button
-          style={{ fontWeight: "bold", borderRadius: "50px" }}
+          style={{ fontWeight: "bold", borderRadius: "50px", backgroundColor:"rgb(10,126,126)" }}
           href="modifyProfile"
           variant="info"
           size="lg"
@@ -114,9 +114,9 @@ class Profile extends Component {
         <br />
         <br />
         <Button
-          style={{ fontWeight: "bold", borderRadius: "50px" }}
+          style={{ fontWeight: "bold", borderRadius: "50px", backgroundColor:"rgb(10,126,126)" }}
           href="deleteProfile"
-          variant="danger"
+          variant="info"
           size="lg"
         >
           Elimina profilo
@@ -124,9 +124,9 @@ class Profile extends Component {
         <br />
         <br />
         <Button
-          style={{ fontWeight: "bold", borderRadius: "50px" }}
+          style={{ fontWeight: "bold", borderRadius: "50px", backgroundColor:"rgb(10,126,126)" }}
           href="logout"
-          variant="secondary"
+          variant="info"
           size="lg"
         >
           Logout

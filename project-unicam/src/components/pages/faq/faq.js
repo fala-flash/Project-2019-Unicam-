@@ -22,7 +22,7 @@ class Faq extends Component {
           </p>
           <p>
             Di seguito scoprirai quanto questo fenomeno è presente nella nostra
-            società
+            società.
           </p>
           <br />
           <Card
@@ -33,7 +33,8 @@ class Faq extends Component {
               width: "22rem",
               margin: "0 auto",
               float: "none",
-              marginBottom: "10px"
+              marginBottom: "10px",
+              borderRadius: "20px"
             }}
           >
             <Card.Header>
@@ -59,7 +60,8 @@ class Faq extends Component {
               width: "22rem",
               margin: "0 auto",
               float: "none",
-              marginBottom: "10px"
+              marginBottom: "10px",
+              borderRadius: "20px"
             }}
           >
             <Card.Header>
@@ -88,7 +90,8 @@ class Faq extends Component {
               width: "22rem",
               margin: "0 auto",
               float: "none",
-              marginBottom: "10px"
+              marginBottom: "10px",
+              borderRadius: "20px"
             }}
           >
             <Card.Header>
@@ -115,7 +118,8 @@ class Faq extends Component {
               width: "22rem",
               margin: "0 auto",
               float: "none",
-              marginBottom: "10px"
+              marginBottom: "10px",
+              borderRadius: "20px"
             }}
           >
             <Card.Header>
@@ -148,7 +152,8 @@ class Faq extends Component {
               width: "22rem",
               margin: "0 auto",
               float: "none",
-              marginBottom: "10px"
+              marginBottom: "10px",
+              borderRadius: "20px"
             }}
           >
             <Card.Header>
@@ -179,7 +184,8 @@ class Faq extends Component {
               width: "22rem",
               margin: "0 auto",
               float: "none",
-              marginBottom: "10px"
+              marginBottom: "10px",
+              borderRadius: "20px"
             }}
           >
             <Card.Header>

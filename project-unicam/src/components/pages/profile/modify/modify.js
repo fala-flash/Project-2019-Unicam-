@@ -116,8 +116,8 @@ class modifyProfile extends Component {
         >
           <FiUser
             style={{
-              color: "white",
-              border: "4px solid white",
+              color: "rgb(10,126,126)",
+              border: "4px solid rgb(10,126,126)",
               borderRadius: "360px"
             }}
             size={60}
@@ -231,7 +231,7 @@ class modifyProfile extends Component {
           </Form.Group>
           <br />
           <Button
-            style={{ fontWeight: "bold", borderRadius: "50px" }}
+            style={{ fontWeight: "bold", borderRadius: "50px", backgroundColor:"rgb(10,126,126)" }}
             variant="info"
             type="submit"
           >

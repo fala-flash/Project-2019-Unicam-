@@ -1,4 +1,3 @@
-
 @import url("https://fonts.googleapis.com/css?family=Courgette");
 @import url("https://fonts.googleapis.com/css?family=Work+Sans");
 
@@ -13,6 +12,32 @@
   display: flex;
   justify-content: space-between;
 }
+
+.navbarFooter.navbar.navbar-expand-light.navbar-light.bg-info.fixed-bottom {
+  background-color: rgb(244, 244, 244) !important;
+  border-top: solid;
+  border-color: rgb(10,126,126);
+  border-width: 1px;
+}
+
+.navbar.navbar-expand-light.navbar-light.bg-info.fixed-top {
+  
+  background-color: rgb(10, 126, 126)!important;
+}
+
+.navbarbrandAuthenticated.navbar-brand {
+  color: white !important;
+}
+
+.nav-tabs .nav-link{
+  color: rgb(10, 126, 126)!important;
+}
+.footerButton.btn.btn-info {
+  background-color: rgb(244, 244, 244) !important;
+  border: 0px;
+}
+
+
 
 #uncontrolled-tab-example-tab-tutte.nav-item.nav-link.active {
   border-color: #fff #fff #fff;
@@ -72,6 +97,15 @@ div.Card-header > img {
   color: white;
 }
 
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+}
+
+.navbar-toggler{
+  border: 0px!important;
+}
+
 .headerIcon {
   margin-bottom: 0px;
   height: 30px;
@@ -103,7 +137,6 @@ div.Card-header > img {
   margin-top: 30px;
 }
 
-
 .formLogin {
   margin-left: 10px;
   margin-right: 10px;
@@ -122,7 +155,6 @@ div.Card-header > img {
   margin-bottom: 30px;
   margin-top: 10px;
 }
-
 
 .blogButton {
   margin-right: 5px;
@@ -166,6 +198,10 @@ div.Card-header > img {
 .segnalazioneForm {
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.card.bg-info.text-white{
+  background-color: rgb(10, 126, 126)!important;
 }
 
 .infoCard {
@@ -247,12 +283,10 @@ div.Card-header > img {
   transform: rotate(90deg);
 }
 
-
 .mr-auto {
   text-align: center;
   font-family: "Work Sans", sans-serif;
 }
-
 
 .profileImg {
   width: 70px;
@@ -270,8 +304,6 @@ div.Card-header > img {
 .formDatiLabel {
   text-align: center;
 }
-
-
 
 .alertTelefona {
   margin-left: 30px;
@@ -294,8 +326,6 @@ div.Card-header > img {
   transform: rotate(90deg);
 }
 
-
-
 .footerButton {
   margin-top: -5px;
   margin-bottom: -2px;
@@ -306,11 +336,13 @@ div.Card-header > img {
   height: 20px;
   margin-top: -10px;
   margin-bottom: 0px;
+  color: rgb(10, 126, 126);
 }
 
 .footerText {
   margin-top: -5px;
   margin-bottom: -10px;
+  color: rgb(10, 126, 126);
 }
 
 .footericonPhone {
@@ -319,7 +351,10 @@ div.Card-header > img {
   margin-top: -10px;
   margin-bottom: 0px;
   transform: rotate(90deg);
+  color: rgb(10, 126, 126);
 }
+
+
 
 .carousel-caption {
   background: rgba(0, 0, 0, 0.2);
@@ -363,7 +398,7 @@ input[type="password"] {
   background-color: transparent;
   border-style: hidden;
   border-radius: 10px;
-  color: #17a2b8;
+  color: black;
 }
 
 .nav-tabs .nav-link {
