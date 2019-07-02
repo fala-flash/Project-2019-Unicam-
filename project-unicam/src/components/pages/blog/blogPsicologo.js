@@ -400,19 +400,23 @@ class BlogPsicologo extends Component {
 
   getModalFoto(){
     return (
-      <Modal show={this.state.showImg} onHide={this.handleFotoClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Foto</Modal.Title>
+      <Modal show={this.state.showImg} onHide={this.handlePhotoClose}>
+        <Modal.Header style={{textAlign:"center", background:'#17a2b8',color:'white'}} closeButton>
+          <Modal.Title >Foto</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body  style={{textAlign:"center", justifyContent:'center', background:'#92C8D0'}}>
          
         {/* eslint-disable-next-line */}
-          <img src={this.state.fotoUtente[this.state.indexSegnalazione]} />
+          { this.state.fotoUtente[this.state.indexSegnalazione] != null ? 
+          <img style={{width:'50%' , height:'50%'}} alt="fotoutente" src={this.state.fotoUtente[this.state.indexSegnalazione]} />
+           : 
+          <h3> La foto non è disponibile</h3>
+          }
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer style={{textAlign:"center", justifyContent:'center', background:'#17a2b8'}}>
           <Button
             style={{ fontWeight: "bold", borderRadius: "50px" }}
-            variant="success"
+            variant="light"
             onClick={this.handlePhotoClose}
           >
             Chiudi
