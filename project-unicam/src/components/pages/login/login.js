@@ -13,7 +13,7 @@ class Login extends Component {
     this.state = {
       user: null,
       tipo: null,
-      openAccesso: false,
+      /* openAccesso: false, */
       openRegistrazione: false
     };
     this.authentication = this.authentication.bind(this);
@@ -190,7 +190,7 @@ class Login extends Component {
     event.preventDefault();
   }
 
-  formAccesso() {
+  /* formAccesso() {
     return (
       <div className="formAccesso">
         <Form
@@ -235,7 +235,7 @@ class Login extends Component {
         </Form>
       </div>
     );
-  }
+  } */
 
   formRegistrazione() {
     return (
@@ -285,7 +285,8 @@ class Login extends Component {
             style={{
               fontWeight: "bold",
               fontSize: "20px",
-              borderRadius: "50px"
+              borderRadius: "50px",
+              backgroundColor:"rgb(10,126,126)"
             }}
             variant="info"
             type="submit"
@@ -301,10 +302,10 @@ class Login extends Component {
     if (this.props.authenticated === true) {
       return <Redirect to="/modifyProfile" />;
     }
-    const { openAccesso, openRegistrazione } = this.state;
+    const { /* openAccesso, */ openRegistrazione } = this.state;
     return (
       <div className="loginStyle">
-        <h3 style={{ fontWeight: "bold" }}>Login/Registrazione</h3>
+        {/* <h3 style={{ fontWeight: "bold" }}>Login/Registrazione</h3>
         <br />
 
         <p>Hai già un account Stop!Bullying? Entra!</p>
@@ -329,10 +330,59 @@ class Login extends Component {
           <div className="" id="collapse-accedi">
             {this.formAccesso()}
           </div>
-        </Collapse>
+        </Collapse> */}
+        <br/>
 
+        <p>Effettua l'accesso con le tue credenziali ..</p>
+
+
+        <div className="formAccesso">
+          <Form
+            className="formLogin"
+            onSubmit={event => this.autenticaEmailPassword(event)}
+          >
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                style={{ fontWeight: "bold", borderRadius: "50px" }}
+                type="email"
+                placeholder="Inserisci Email"
+                ref={input => {
+                  this.emailInputAccesso = input;
+                }}
+              />
+            </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                style={{ fontWeight: "bold", borderRadius: "50px" }}
+                type="password"
+                placeholder="Inserisci Password"
+                ref={input => {
+                  this.passwordInputAccesso = input;
+                }}
+              />
+            </Form.Group>
+            <Form.Group controlId="formBasicChecbox" />
+            <br />
+            <Button
+              style={{
+                fontWeight: "bold",
+                fontSize: "20px",
+                borderRadius: "50px",
+                backgroundColor:"rgb(10,126,126)"
+              }}
+              variant="info"
+              type="submit"
+            >
+              Login
+            </Button>
+          </Form>
+        </div>
+        <br/>
         <br />
-        <p>Registrazione/Accesso come utente</p>
+        {/* <p>Registrazione/Accesso come utente</p> */}
+        <p>.. o con il tuo account Google!</p>
         <div className="googleCentrato">
           <GoogleLoginButton
             style={{ fontWeight: "bold", borderRadius: "50px" }}
@@ -345,10 +395,11 @@ class Login extends Component {
         </div>
 
         <br />
-        <br />
-        <p>Prima volta qui? Crea un account!</p>
+        {/* <br />
+        <p>Prima volta qui? Crea un account!</p> */}
+        <p>Non hai un account? Registrati!</p>
         <Button
-          style={{ fontWeight: "bold", borderRadius: "50px" }}
+          style={{ fontWeight: "bold", borderRadius: "50px", backgroundColor:"rgb(10,126,126)" }}
           variant="info"
           className="accessoButton"
           onClick={() =>
